@@ -8,6 +8,11 @@ import { Navbar } from "@/components/shared/Navbar"
 import { ArrowUpRight } from "lucide-react"
 import AthleteSvg from "@/assets/images/athlete-man.svg";
 import { Badge } from "@/components/ui/badge"
+import { cardsInfoAdvantages } from "@/utils/constants"
+import { CardInfo } from "@/components/shared/CardInfo"
+import ManTypeSvg from "@/assets/images/man-type.svg";
+import AtlheteWomanSvg from "@/assets/images/athlete-woman.svg";
+import AppSvg from "@/assets/images/app.svg";
 
 export default function Home() {
   return (
@@ -42,50 +47,65 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-gray-900 py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-10">How BJJLink will help you</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { title: "Create your portfolio", description: "Easily build your athletic profile" },
-                { title: "Showcase achievements", description: "Display your medals and titles" },
-                { title: "Connect with others", description: "Network with athletes and coaches" },
-                { title: "Track progress", description: "Monitor your growth over time" },
-              ].map((feature, index) => (
-                <Card key={index} className="bg-gray-800 border-gray-700">
-                  <CardHeader>
-                    <div className="w-10 h-10 rounded-full bg-blue-600 mb-4"></div>
-                    <CardTitle>{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-400">{feature.description}</p>
-                  </CardContent>
-                </Card>
+        <section className="bg-gray-1100 py-16">
+          <div className="container mx-auto px-4 flex flex-col justify-center items-center">
+            <h2 className="text-2xl md:text-4xl text-center font-semibold text-brand-blue-50">
+              Como BjjLink vai te ajudar?
+            </h2>
+            <p className="text-sm md:text-base text-gray-200 text-center">
+              Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+              {cardsInfoAdvantages.map((card, index) => (
+                <CardInfo key={index} title={card.title} img={card.img} bgColor={card.bgColor} />
               ))}
             </div>
           </div>
         </section>
 
-        <section className="container mx-auto px-4 py-20">
-          <div className="flex flex-col md:flex-row items-center mb-20">
+        <section className="container mx-auto md:px-12 pt-10 md:py-20">
+          <div className="flex flex-col-reverse md:flex-row-reverse items-center md:py-16">
             <div className="md:w-1/2 mb-10 md:mb-0">
-              <Image src="/placeholder.svg?height=300&width=300" width={300} height={300} alt="Athlete using phone" className="rounded-lg" />
+              <Image src={ManTypeSvg} width={400} height={400} alt="Man typing on a cell phone" className="rounded-lg" />
             </div>
-            <div className="md:w-1/2 md:pl-10">
-              <h2 className="text-3xl font-bold mb-4">Your portfolio ready in minutes</h2>
-              <p className="text-gray-400 mb-4">Quickly set up your profile and start showcasing your achievements.</p>
-              <Button variant="outline">Learn more</Button>
+            <div className="md:w-1/2 md:pr-10 md:pl-0 px-4">
+              <Badge className="bg-brand-blue-600 rounded-sm">Crie em poucos minutos</Badge>
+              <h3 className="text-3xl md:text-4xl font-medium text-brand-blue-50 my-2">
+                Seu portfólio pronto em poucos minutos
+              </h3>
+              <p className="text-sm md:text-base text-gray-200">
+                Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.
+              </p>
+            </div>
+          </div>
+            
+          <div className="flex flex-col-reverse md:flex-row items-center mb-20">
+            <div className="md:w-1/2 mb-10 md:mb-0">
+              <Image src={AppSvg} width={400} height={400} alt="Print screen of the app" className="rounded-lg" />
+            </div>
+            <div className="md:w-1/2 md:pr-10 md:pl-0 px-4">
+              <Badge className="bg-brand-blue-600 rounded-sm">Bem apresentável</Badge>
+              <h3 className="text-3xl md:text-4xl font-medium text-brand-blue-50 my-2">
+                O seu portfólio com design profissional
+              </h3>
+              <p className="text-sm md:text-base text-gray-200">
+                Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.
+              </p>
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row-reverse items-center">
+          <div className="flex flex-col-reverse md:flex-row-reverse items-center md:py-16">
             <div className="md:w-1/2 mb-10 md:mb-0">
-              <Image src="/placeholder.svg?height=300&width=300" width={300} height={300} alt="Mobile app screenshot" className="rounded-lg" />
+              <Image src={AtlheteWomanSvg} width={400} height={400} alt="Athlete woman with a cell phone" className="rounded-lg" />
             </div>
-            <div className="md:w-1/2 md:pr-10">
-              <h2 className="text-3xl font-bold mb-4">Professional design for your portfolio</h2>
-              <p className="text-gray-400 mb-4">Stand out with a sleek and professional-looking athlete profile.</p>
-              <Button variant="outline">See examples</Button>
+            <div className="md:w-1/2 md:pr-10 md:pl-0 px-4">
+              <Badge className="bg-brand-blue-600 rounded-sm">Rede sociais</Badge>
+              <h3 className="text-3xl md:text-4xl font-medium text-brand-blue-50 my-2">
+                Centralizar todas as suas informações em único lugar!
+              </h3>
+              <p className="text-sm md:text-base text-gray-200">
+                Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.
+              </p>
             </div>
           </div>
         </section>
