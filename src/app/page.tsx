@@ -1,10 +1,9 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Navbar } from "@/components/shared/Navbar"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, ChevronRight } from "lucide-react"
 import AthleteSvg from "@/assets/images/athlete-man.svg";
 import { Badge } from "@/components/ui/badge"
 import { cardsInfoAdvantages } from "@/utils/constants"
@@ -15,6 +14,7 @@ import AppSvg from "@/assets/images/app.svg";
 import PricingComponent from "@/components/shared/PricingComponent"
 import { Separator } from "@/components/ui/separator"
 import TestimonialCarousel from "@/components/shared/TestimonialCarousel"
+import { BlogCarousel } from "@/components/shared/BlogCarousel"
 
 export default function Home() {
   return (
@@ -153,25 +153,22 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="container mx-auto px-4 py-20">
-          <h2 className="text-3xl font-bold text-center mb-10">Latest from our blog</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[...Array(3)].map((_, index) => (
-              <Card key={index} className="bg-gray-800 border-gray-700">
-                <Image src="/placeholder.svg?height=200&width=400" width={400} height={200} alt="Blog post thumbnail" className="w-full" />
-                <CardHeader>
-                  <CardTitle>Blog Post Title</CardTitle>
-                  <CardDescription>Date</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-400">Short description of the blog post goes here...</p>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="link" className="text-blue-400">Read more</Button>
-                </CardFooter>
-              </Card>
-            ))}
+        <section className="mx-auto pt-10 md:py-20 mb-16">
+          <div className="container mx-auto px-4 mb-4 flex flex-row justify-between items-end">
+            <div>
+              <h4 className="text-xl md:text-3xl font-semibold text-brand-blue-50 mb-2">
+                Publicações do blog
+              </h4>
+              <p className="text-sm md:text-base text-gray-200">
+                Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis
+              </p>
+            </div>
+            <Button variant="ghost" className="hidden md:flex font-secondary font-semibold flex-row gap-1 items-center text-brand-blue-50">
+              Ghost
+              <ChevronRight size={16} />
+            </Button>
           </div>
+          <BlogCarousel />
         </section>
 
         <section className="container mx-auto px-4 py-20">
