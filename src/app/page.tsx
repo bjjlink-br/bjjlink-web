@@ -13,6 +13,8 @@ import { CardInfo } from "@/components/shared/CardInfo"
 import ManTypeSvg from "@/assets/images/man-type.svg";
 import AtlheteWomanSvg from "@/assets/images/athlete-woman.svg";
 import AppSvg from "@/assets/images/app.svg";
+import PricingComponent from "@/components/shared/PricingComponent"
+import { Separator } from "@/components/ui/separator"
 
 export default function Home() {
   return (
@@ -110,40 +112,20 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-gray-900 py-20">
+        <section className="mx-auto md:px-12 pt-10 md:py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-10">Choose your plan</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { title: "Free", price: "R$ 0,00", features: ["Basic portfolio", "Limited storage", "Community access"] },
-                { title: "Premium", price: "R$ 14,90", features: ["Advanced portfolio", "Unlimited storage", "Priority support", "Analytics"] },
-                { title: "Professional", price: "R$ 29,90", features: ["Custom domain", "SEO tools", "Marketing integrations", "Team management"] },
-              ].map((plan, index) => (
-                <Card key={index} className="bg-gray-800 border-gray-700">
-                  <CardHeader>
-                    <CardTitle>{plan.title}</CardTitle>
-                    <CardDescription className="text-2xl font-bold">{plan.price}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-center">
-                          <svg className="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                  <CardFooter>
-                    <Button className="w-full">Choose plan</Button>
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
+            <h2 className="text-xl md:text-3xl text-center font-semibold text-brand-blue-50">
+              Nossos planos
+            </h2>
+            <p className="text-sm md:text-base text-gray-200 text-center">
+              Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.
+            </p>
+            <PricingComponent />
           </div>
         </section>
+        <div className="md:block hidden py-10 md:px-12">
+          <Separator className="bg-gray-600"/>
+        </div>
 
         <section className="container mx-auto px-4 py-20">
           <h2 className="text-3xl font-bold text-center mb-10">Athletes using our platform</h2>
