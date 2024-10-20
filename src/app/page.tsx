@@ -15,6 +15,7 @@ import AtlheteWomanSvg from "@/assets/images/athlete-woman.svg";
 import AppSvg from "@/assets/images/app.svg";
 import PricingComponent from "@/components/shared/PricingComponent"
 import { Separator } from "@/components/ui/separator"
+import TestimonialCarousel from "@/components/shared/TestimonialCarousel"
 
 export default function Home() {
   return (
@@ -127,21 +128,16 @@ export default function Home() {
           <Separator className="bg-gray-600"/>
         </div>
 
-        <section className="container mx-auto px-4 py-20">
-          <h2 className="text-3xl font-bold text-center mb-10">Athletes using our platform</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[...Array(6)].map((_, index) => (
-              <Card key={index} className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <CardTitle>Athlete Name</CardTitle>
-                  <CardDescription>Belt Rank</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-400">"BJJLink has been a game-changer for my career. It's so easy to showcase my achievements and connect with sponsors."</p>
-                </CardContent>
-              </Card>
-            ))}
+        <section className="mx-auto pt-10 md:py-20 mb-16">
+          <div className="container mx-auto px-4 mb-4">
+            <h2 className="text-xl md:text-3xl text-center font-semibold text-brand-blue-50">
+              Atletas que já usam a plataforma
+            </h2>
+            <p className="text-sm md:text-base text-gray-200 text-center">
+              Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.
+            </p>
           </div>
+          <TestimonialCarousel />
         </section>
 
         <section className="bg-gray-900 py-20">

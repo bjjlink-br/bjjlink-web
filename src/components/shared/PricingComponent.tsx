@@ -73,7 +73,7 @@ export default function PricingComponent() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`rounded-lg p-6 ${
+              className={`rounded-lg p-6 flex flex-col ${
                 plan.popular ? 'bg-brand-blue-950' : 'bg-gray-900'
               }`}
             >
@@ -117,8 +117,9 @@ export default function PricingComponent() {
                   </li>
                 ))}
               </ul>
+              <div className="flex-grow"></div>
               <button
-                className={`w-full py-2 rounded-md ${
+                className={`w-full py-2 rounded-md mt-auto ${
                   plan.popular
                     ? 'bg-brand-blue-600 hover:bg-brand-blue-700'
                     : 'border border-gray-100 bg-transparent hover:bg-gray-600'
