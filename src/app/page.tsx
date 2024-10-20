@@ -2,7 +2,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Navbar } from "@/components/shared/Navbar"
 import { ArrowUpRight } from "lucide-react"
@@ -140,13 +139,17 @@ export default function Home() {
           <TestimonialCarousel />
         </section>
 
-        <section className="bg-gray-900 py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-10">Start creating your portfolio for free</h2>
-            <div className="max-w-md mx-auto">
-              <Input type="email" placeholder="Enter your email" className="mb-4" />
-              <Button className="w-full bg-blue-600 hover:bg-blue-700">Get Started</Button>
+        <section className="bg-transparent px-4 md:px-0">
+          <div className="container flex flex-col items-center justify-center bg-gray-900 rounded-2xl max-w-[930px] mx-auto p-8 md:px-52 md:py-16">
+            <div className="container mx-auto px-4 mb-4">
+              <h2 className="text-xl md:text-3xl text-center font-semibold text-brand-blue-50 mb-2">
+                Comece a criar o seu portfólio gratuitamente
+              </h2>
+              <p className="text-sm md:text-base text-gray-200 text-center">
+                Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.
+              </p>
             </div>
+            <Button className="max-w-44 text-white bg-brand-blue-600 hover:bg-brand-blue-700 mt-1">Comece agora</Button>
           </div>
         </section>
 
