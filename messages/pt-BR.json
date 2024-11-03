@@ -1,5 +1,46 @@
 {
     "navbar": {
-        "home": "Início"
+        "home": "Início",
+        "plans": "Planos",
+        "blog": "Blog",
+        "help": "Ajuda",
+        "how-works": "Como funciona",
+        "contact": "Contato",
+        "login": "Login",
+        "register": "Começar agora"
+    },
+    "footer": {
+        "home": "Início",
+        "plans": "Planos",
+        "blog": "Blog",
+        "help": "Ajuda",
+        "how-works": "Como funciona",
+        "contact": "Contato",
+        "login": "Login",
+        "register": "Começar agora"
+    },
+    "register": {
+        "title": "Registrar-se",
+        "terms-info": "Quando criar conta, você está concordando com os",
+        "terms-info-description": "da plataforma e leu nosso",
+        "terms-info-link": "termos e condições",
+        "privacy-link": "aviso de privacidade",
+        "or-divider": "ou",
+        "login-google-button": "Continue com Google",
+        "login-text": "Você já possui uma conta?",
+        "login-link": "Entrar",
+        "form": {
+            "user-name": "Nome de usuário",
+            "user-name-placeholder": "Digite seu nome de usuário",
+            "email": "E-mail",
+            "email-placeholder": "Digite seu e-mail",
+            "password": "Senha",
+            "confirmation-password": "Confirmar senha",
+            "password-placeholder": "Digite a sua senha",
+            "confirmation-placeholder": "Digite a sua senha novamente",
+            "hidden-password-button": "Ocultar",
+            "show-password-button": "Mostrar",
+            "start-now-button": "Entrar agora"
+        }   
     }
 }

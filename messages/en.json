@@ -1,5 +1,46 @@
 {
     "navbar": {
-        "home": "Home"
+        "home": "Home",
+        "plans": "Plans",
+        "blog": "Blog",
+        "help": "Help",
+        "how-works": "How works",
+        "contact": "Contact",
+        "login": "Login",
+        "register": "Start now"
+    },
+    "footer": {
+        "home": "Home",
+        "plans": "Plans",
+        "blog": "Blog",
+        "help": "Help",
+        "how-works": "How works",
+        "contact": "Contact",
+        "login": "Login",
+        "register": "Start now"
+    },
+    "register": {
+        "title": "Register",
+        "terms-info": "When you create an account, you are agreeing to the",
+        "terms-info-description": "platform's terms and conditions and have read our",
+        "terms-info-link": "terms and conditions",
+        "privacy-link": "privacy notice",
+        "or-divider": "or",
+        "login-google-button": "Continue with Google",
+        "login-text": "Do you already have an account?",
+        "login-link": "Login",
+        "form": {
+            "user-name": "User name",
+            "user-name-placeholder": "Type your user name",
+            "email": "E-mail",
+            "email-placeholder": "Type your e-mail",
+            "password": "Password",
+            "confirmation-password": "Confirm your password",
+            "password-placeholder": "Type your password",
+            "confirmation-placeholder": "Type your password again",
+            "hidden-password-button": "Hidden",
+            "show-password-button": "Show",
+            "start-now-button": "Register now"
+        }   
     }
 }

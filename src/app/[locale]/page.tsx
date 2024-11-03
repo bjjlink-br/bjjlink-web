@@ -15,10 +15,14 @@ import TestimonialCarousel from "@/components/shared/TestimonialCarousel"
 import { BlogCarousel } from "@/components/shared/BlogCarousel"
 import { FaqCards } from "@/components/shared/FaqCards"
 import { Footer } from "@/components/shared/Footer"
+import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-1300 text-gray-50">
+        <div className="hidden md:flex md:justify-end md:pt-1">
+            <LanguageSwitcher />
+        </div>
       <Navbar />
 
       <main>

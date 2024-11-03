@@ -5,10 +5,12 @@ import Link from 'next/link'
 import { Menu, User, X } from 'lucide-react'
 import { Separator } from '../ui/separator'
 import { LogoTitle } from './LogoTitle'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+import { LanguageSwitcher } from './LanguageSwitcher'
 
 export function Navbar() {
   const t = useTranslations("navbar")
+  const locale = useLocale()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -22,65 +24,65 @@ export function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-900 text-gray-200 md:border md:border-gray-700 md:rounded-md md:mx-24 md:mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="bg-gray-900 text-gray-200 md:border md:border-gray-700 md:rounded-md md:mx-4 lg:mx-24 md:mt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
         <div className="flex items-center justify-between h-16">
           <LogoTitle />
 
           {/* Menu Web */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-4 lg:ml-6 flex items-baseline space-x-1 lg:space-x-3">
               <Link 
                 href="/" 
-                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold"
+                className="px-1 lg:px-2 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold whitespace-nowrap"
               >
                 {t('home')}
               </Link>
               <button
                 onClick={() => scrollToSection('plans')}
-                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold"
+                className="px-1 lg:px-2 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold whitespace-nowrap"
               >
-                Planos
+                {t('plans')}
               </button>
               <button
                 onClick={() => scrollToSection('blog')}
-                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold"
+                className="px-1 lg:px-2 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold whitespace-nowrap"
               >
-                Blog
+                {t('blog')}
               </button>
               <button
                 onClick={() => scrollToSection('help')}
-                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold"
+                className="px-1 lg:px-2 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold whitespace-nowrap"
               >
-                Ajuda
+                {t('help')}
               </button>
               <button
                 onClick={() => scrollToSection('how-works')}
-                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold"
+                className="px-1 lg:px-2 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold whitespace-nowrap"
               >
-                Como funciona
+                {t('how-works')}
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold"
+                className="px-1 lg:px-2 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold whitespace-nowrap"
               >
-                Contato
+                {t('contact')}
               </button>
             </div>
           </div>
           <div className="hidden md:flex md:flex-row md:items-center">
             <Link
-              href="/login"
-              className="flex flex-row items-center px-3 py-2 gap-1 rounded-md text-base font-medium font-secondary text-brand-blue-50 hover:bg-gray-700"
+              href={`/${locale}/login`}
+              className="flex flex-row items-center px-1 lg:px-2 py-2 gap-1 rounded-md text-sm lg:text-base font-medium font-secondary text-brand-blue-50 hover:bg-gray-700 whitespace-nowrap"
             >
-              <User size={18} color="#D8D8E1" />
-              Login
+              <User size={16} color="#D8D8E1" />
+              {t('login')}
             </Link>
             <Link
-              href="/register"
-              className="ml-4 px-4 py-2 rounded-md text-base font-medium font-secondary text-brand-blue-50 bg-blue-600 hover:bg-blue-700"
+              href={`/${locale}/register`}
+              className="ml-1 lg:ml-2 px-2 lg:px-3 py-2 rounded-md text-sm lg:text-base font-medium font-secondary text-brand-blue-50 bg-blue-600 hover:bg-blue-700 whitespace-nowrap"
             >
-              Começar agora
+              {t('register')}
             </Link>
           </div>
           <div className="md:hidden">
@@ -98,16 +100,16 @@ export function Navbar() {
           <div className="pt-4 pb-3 border-t border-gray-700 font-secondary">
             <div className="px-2 space-y-1">
               <Link
-                href="/login"
+                href={`/${locale}/login`}
                 className="block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700"
               >
-                Login
+                {t('login')}
               </Link>
               <Link
-                href="/register"
+                href={`/${locale}/register`}
                 className="block w-full text-left px-3 py-2 rounded-md text-base font-medium"
               >
-                Começar agora
+                {t('register')}
               </Link>
             </div>
           </div>
@@ -118,32 +120,35 @@ export function Navbar() {
               onClick={() => scrollToSection('plans')}
               className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700"
             >
-              Planos
+              {t('plans')}
             </button>
             <button
               onClick={() => scrollToSection('blog')}
               className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700"
             >
-              Blog
+              {t('blog')}
             </button>
             <button
               onClick={() => scrollToSection('help')}
               className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700"
             >
-              Ajuda
+              {t('help')}
             </button>
             <button
               onClick={() => scrollToSection('how-works')}
               className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700"
             >
-              Como funciona
+              {t('how-works')}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
               className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700"
             >
-              Contato
+              {t('contact')}
             </button>
+            <div className="md:hidden px-3 flex pt-1 md:p-0">
+              <LanguageSwitcher isMobileMenuOpen />
+            </div>
           </div>
         </div>
       )}

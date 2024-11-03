@@ -1,10 +1,19 @@
+'use client'
 import Link from "next/link"
 import { Facebook, Instagram, Linkedin } from "lucide-react"
 import { LogoTitle } from "./LogoTitle"
 import XLogoSvg from '@/assets/icons/x.svg'
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 
 export function Footer() {
+  const t = useTranslations("footer")
+
+  const scrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <footer className="text-gray-300" id="contact">
       <div className="mx-auto">
@@ -64,33 +73,48 @@ export function Footer() {
             <ul className="flex flex-wrap justify-center md:justify-end space-x-4">
               <li>
                 <Link href="/" className="hover:text-white">
-                  Início
+                  {t('home')}
                 </Link>
               </li>
               <li>
-                <Link href="/planos" className="hover:text-white">
-                  Planos
-                </Link>
+                <button
+                  onClick={() => scrollToSection('plans')}
+                  className="hover:text-brand-blue-50 border-none"
+                >
+                  {t('plans')}
+                </button>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-white">
-                  Blog
-                </Link>
+                <button
+                  onClick={() => scrollToSection('plans')}
+                  className="hover:text-brand-blue-50 border-none"
+                >
+                  {t('blog')}
+                </button>
               </li>
               <li>
-                <Link href="/ajuda" className="hover:text-white">
-                  Ajuda
-                </Link>
+                <button
+                  onClick={() => scrollToSection('plans')}
+                  className="hover:text-brand-blue-50 border-none"
+                >
+                  {t('help')}
+                </button>
               </li>
               <li>
-                <Link href="/como-funciona" className="hover:text-white">
-                  Como funciona
-                </Link>
+                <button
+                  onClick={() => scrollToSection('plans')}
+                  className="hover:text-brand-blue-50 border-none"
+                >
+                  {t('how-works')}
+                </button>
               </li>
               <li>
-                <Link href="/contato" className="hover:text-white">
-                  Contato
-                </Link>
+                <button
+                  onClick={() => scrollToSection('plans')}
+                  className="hover:text-brand-blue-50 border-none"
+                >
+                  {t('contact')}
+                </button>
               </li>
             </ul>
           </nav>
