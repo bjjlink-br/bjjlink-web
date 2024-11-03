@@ -5,8 +5,10 @@ import Link from 'next/link'
 import { Menu, User, X } from 'lucide-react'
 import { Separator } from '../ui/separator'
 import { LogoTitle } from './LogoTitle'
+import { useTranslations } from 'next-intl'
 
 export function Navbar() {
+  const t = useTranslations("navbar")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -28,7 +30,12 @@ export function Navbar() {
           {/* Menu Web */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <Link href="/" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold">Inicio</Link>
+              <Link 
+                href="/" 
+                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold"
+              >
+                {t('home')}
+              </Link>
               <button
                 onClick={() => scrollToSection('plans')}
                 className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold"
