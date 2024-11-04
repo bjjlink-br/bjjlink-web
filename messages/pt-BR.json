@@ -42,5 +42,30 @@
             "show-password-button": "Mostrar",
             "start-now-button": "Entrar agora"
         }   
+    },
+    "vertical-menu": {
+        "navbar": {
+            "dashboard": "Dashboard",
+            "dashboard-alt-icon": "ícone de uma casa",
+            "portifolio": "Portifólio",
+            "portifolio-alt-icon": "ícone de um caderno aberto",
+            "analytics": "Analytics",
+            "analytics-alt-icon": "ícone de um pequeno gráfico de barras",
+            "my-account": "Minha conta",
+            "my-account-alt-icon": "ícone de uma pessoa",
+            "settings": "Configurações",
+            "settings-alt-icon": "ícone de engrenagens",
+            "logout": "Sair",
+            "logout-alt-icon": "ícone de uma porta"
+        }
+    },
+    "dashboard": {
+        "alt-image-background": "Lutadores treinando jiu jitsu",
+        "acquire-title": "Pegar plano pago",
+        "acquire-button": "Adquira agora",
+        "title": "Meus portfólios",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "create-title": "Criar portfólio",
+        "create-description": "Clique no mais para criar o seu portfólio."
     }
 }

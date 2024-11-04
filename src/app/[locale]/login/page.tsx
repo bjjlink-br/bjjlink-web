@@ -8,14 +8,19 @@ import { Separator } from '@/components/ui/separator'
 import { LoginForm } from './components/LoginForm'
 import { loginSchema } from '@/utils/schema'
 import { z } from 'zod'
+import { useLocale } from 'next-intl'
+import { useRouter } from 'next/navigation'
 
 export default function Login() {
+    const router = useRouter()
+    const locale = useLocale()
     const [isLoading, setIsLoading] = useState(false);
 
     async function handleLoginSubmit(values: z.infer<typeof loginSchema>) {
         setIsLoading(true)
         console.log(values)
-      }
+        router.push(`/${locale}/dashboard`)
+    }
 
   return (
     <div className="min-h-screen">

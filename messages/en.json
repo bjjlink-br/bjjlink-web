@@ -42,5 +42,30 @@
             "show-password-button": "Show",
             "start-now-button": "Register now"
         }   
+    },
+    "vertical-menu": {
+        "navbar": {
+            "dashboard": "Dashboard",
+            "dashboard-alt-icon": "house icon",
+            "portifolio": "Portfolio",
+            "portifolio-alt-icon": "open notebook icon",
+            "analytics": "Analytics",
+            "analytics-alt-icon": "small bar chart icon",
+            "my-account": "My Account",
+            "my-account-alt-icon": "person icon",
+            "settings": "Settings",
+            "settings-alt-icon": "gear icon",
+            "logout": "Logout",
+            "logout-alt-icon": "door icon"
+        }
+    },
+    "dashboard": {
+        "alt-image-background": "Fighters training jiu jitsu",
+        "acquire-title": "Get paid plan",
+        "acquire-button": "Get now",
+        "title": "My portfolios",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "create-title": "Create portfolio",
+        "create-description": "Click on plus to create your portfolio."
     }
 }
