@@ -1,7 +1,8 @@
 import { useTranslations } from "next-intl";
 import { VerticalMenu } from "@/components/shared/VerticalMenu";
 import { PromotionalBanner } from "./components/PromotionalBanner";
-import { EmptyState } from "./components/EmptyState";
+import { PortifolioCard } from "./components/PortifolioCard";
+import { UpgradePlanCard } from "./components/UpgradePlanCard";
 
 export default function Dashboard() {
     const t = useTranslations("dashboard");
@@ -19,7 +20,12 @@ export default function Dashboard() {
                         {t('description')}
                     </p>
 
-                    <EmptyState />
+                    {/* <EmptyState /> */}
+
+                    <div className="w-full max-w-3xl grid gap-4 grid-cols-1 md:grid-cols-2">
+                        <PortifolioCard />
+                        <UpgradePlanCard />
+                    </div>
                 </div>
             </main>
         </div>

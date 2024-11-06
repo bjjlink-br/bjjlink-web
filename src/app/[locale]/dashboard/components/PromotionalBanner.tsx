@@ -18,7 +18,7 @@ export const PromotionalBanner = () => {
                     className="object-cover"
                 />
                 {/* Overlay escuro para melhorar a legibilidade do texto */}
-                <div className="absolute inset-0 bg-black/20" />
+                <div className="absolute inset-0 bg-brand-blue-300 md:bg-black/20" />
             </div>
             <div className="relative z-10 p-8">
                 <h2 className="text-2xl font-semibold mb-1 text-gray-1300">{t('acquire-title')}</h2>
