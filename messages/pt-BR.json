@@ -40,8 +40,15 @@
             "confirmation-placeholder": "Digite a sua senha novamente",
             "hidden-password-button": "Ocultar",
             "show-password-button": "Mostrar",
-            "start-now-button": "Entrar agora"
-        }   
+            "start-now-button": "Entrar agora",
+            "passwords-not-matching": "Os valores nos campos Senha e Confirmar Senha não correspondem"
+        },
+        "toast": {
+            "title": "Conta criada com sucesso! 🤩",
+            "description": "Acesse a página de login e entre na sua conta.",
+            "error-create-user-title": "Ops! 😵 Algo deu errado.",
+            "error-create-user-description": "Tente criar sua conta novamente."
+        }
     },
     "vertical-menu": {
         "navbar": {
@@ -67,5 +74,29 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "create-title": "Criar portfólio",
         "create-description": "Clique no mais para criar o seu portfólio."
+    },
+    "login": {
+        "title": "Seja bem-vindo!",
+        "description": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "login-now": "Entre Agora:",
+        "terms-info": "Quando criar conta, você está concordando com os",
+        "terms-info-description": "da plataforma e leu nosso",
+        "terms-info-link": "termos e condições",
+        "privacy-link": "aviso de privacidade",
+        "or-divider": "ou",
+        "login-google-button": "Continue com Google",
+        "register-text": "Você não tem uma conta?",
+        "register-link": "Cadastre-se",
+        "toast": {
+            "title": "Bem-vindo de volta! 🤩",
+            "error-create-user-title": "Ops! 😵 Algo deu errado.",
+            "error-create-user-description": "Tente novamente."
+        }
+    },
+    "create-portifolio": {
+        "title": "Meus portfólio",
+        "subtitle": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "button-change-layout": "Alterar layout",
+        "add-section-button": "Adicionar seção"
     }
 }

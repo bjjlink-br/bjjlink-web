@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 
 import HomeIcon from '@/assets/icons/home.svg'
@@ -7,11 +8,21 @@ import AnalyticsIcon from '@/assets/icons/analytics-chart.svg'
 import UserIcon from '@/assets/icons/user.svg'
 import LogoutIcon from '@/assets/icons/logout.svg'
 import { LogoTitle } from "@/components/shared/LogoTitle";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
+import { Button } from "../ui/button";
+import { signOut } from "@/utils/functions";
+import { useRouter } from "next/navigation";
 
 export const VerticalMenu = () => {
     const t = useTranslations("vertical-menu");
+    const router = useRouter()
+    const locale = useLocale()
+
+    const handleLogout = () => {
+        signOut();
+        router.push(`/${locale}`);
+    }
 
     return (
         <aside className="w-56 bg-gray-900 p-4 flex flex-col items-start">
@@ -58,13 +69,14 @@ export const VerticalMenu = () => {
                 </nav>
 
                 <div className="mt-auto pt-4 border-t border-zinc-800">
-                    <Link
-                        href="#"
+                    <Button
+                        variant="ghost"
+                        onClick={handleLogout}
                         className="font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors"
                     >
                         <Image src={LogoutIcon} alt={t('navbar.logout-alt-icon')} />
                         {t('navbar.logout')}
-                    </Link>
+                    </Button>
                 </div>
             </aside>
     )

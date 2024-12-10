@@ -40,8 +40,15 @@
             "confirmation-placeholder": "Type your password again",
             "hidden-password-button": "Hidden",
             "show-password-button": "Show",
-            "start-now-button": "Register now"
-        }   
+            "start-now-button": "Register now",
+            "passwords-not-matching": "The values ​​in the Password and Confirm Password fields do not match"
+        },
+        "toast": {
+            "title": "Account created successfully! 🤩",
+            "description": "Go to the login page and log in to your account.",
+            "error-create-user-title": "Oops! 😵 Something went wrong.",
+            "error-create-user-description": "Try creating your account again."
+        }
     },
     "vertical-menu": {
         "navbar": {
@@ -67,5 +74,29 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "create-title": "Create portfolio",
         "create-description": "Click on plus to create your portfolio."
+    },
+    "login": {
+        "title": "Welcome!",
+        "description": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "login-now": "Join Now:",
+        "terms-info": "By creating an account, you are agreeing to the",
+        "terms-info-description": "of the platform and have read our",
+        "terms-info-link": "terms and conditions",
+        "privacy-link": "privacy notice",
+        "or-divider": "or",
+        "login-google-button": "Continue with Google",
+        "register-text": "Don't have an account?",
+        "register-link": "Sign up",
+        "toast": {
+            "title": "Welcome back! 🤩",
+            "error-create-user-title": "Oops! 😵 Something went wrong.",
+            "error-create-user-description": "Try again."
+        }
+    },
+    "create-portfolio": {
+        "title": "My portfolios",
+        "subtitle": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "button-change-layout": "Change layout",
+        "add-section-button": "Add section"
     }
 }

@@ -6,19 +6,35 @@ import { registerSchema } from '@/utils/schema';
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { Spinner } from '@/components/shared/Spinner';
 
 type RegisterFormProps = {
   onSubmit: (values: z.infer<typeof registerSchema>) => void;
+  isLoading?: boolean;
 }
 
-export function RegisterForm({ onSubmit }: RegisterFormProps) {
+export function RegisterForm({ onSubmit, isLoading }: RegisterFormProps) {
     const t = useTranslations("register")
     const [showPassword, setShowPassword] = useState(false)
     const form = useForm<z.infer<typeof registerSchema>>({
         resolver: zodResolver(registerSchema),
     });
+
+  const password = form.watch("password");
+  const confirmPassword = form.watch("confirm_password");
+
+  useEffect(() => {
+    if (password !== confirmPassword) {
+        form.setError("confirm_password", {
+            type: "manual",
+            message: t('form.passwords-not-matching'),
+        });
+    } else {
+        form.clearErrors("confirm_password");
+    }
+  }, [password, confirmPassword, form, t]); 
 
   return (
     <Form {...form}>
@@ -38,6 +54,7 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
                         placeholder={t('form.user-name-placeholder')}
                         type="username"
                         className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                        disabled={isLoading}
                         {...field}
                     />
                 </div>
@@ -60,6 +77,7 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
                         placeholder={t('form.email-placeholder')}
                         type="email"
                         className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                        disabled={isLoading}
                         {...field} 
                     />
                 </div>
@@ -83,6 +101,7 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
                                 placeholder={t('form.password-placeholder')}
                                 type={showPassword ? "text" : "password"}
                                 className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                                disabled={isLoading}
                                 {...field}
                             />
                             <Button
@@ -115,6 +134,7 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
                                 placeholder={t('form.confirmation-placeholder')}
                                 type={showPassword ? "text" : "password"}
                                 className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                                disabled={isLoading}
                                 {...field}
                             />
                             <Button
@@ -126,13 +146,22 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
                                 {showPassword ? t('form.hidden-password-button') : t('form.show-password-button')}
                             </Button>
                         </div>
+                        {form.formState.errors.confirm_password && (
+                            <span className="text-red-400 text-sm">
+                                {form.formState.errors.confirm_password.message}
+                            </span>
+                        )}
                     </div>
               </FormControl>
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-            {t('form.start-now-button')}
+        <Button 
+          type="submit" 
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+          disabled={isLoading || !!form.formState.errors.confirm_password}
+        >
+          {isLoading ? <Spinner /> : t('form.start-now-button')}
         </Button>
       </form>
     </Form>

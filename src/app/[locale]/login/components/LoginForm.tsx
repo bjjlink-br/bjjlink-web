@@ -12,9 +12,10 @@ import { Checkbox } from '@/components/ui/checkbox';
 
 type LoginFormProps = {
   onSubmit: (values: z.infer<typeof loginSchema>) => void;
+  isLoading?: boolean;
 }
 
-export function LoginForm({ onSubmit }: LoginFormProps) {
+export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
     const [showPassword, setShowPassword] = useState(false)
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -88,8 +89,12 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
                 Manter logado
             </Label>
         </div>
-        <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-            Entrar agora
+        <Button 
+          type="submit" 
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+          disabled={isLoading || !form.formState.isValid}
+        >
+          Entrar agora
         </Button>
       </form>
     </Form>
