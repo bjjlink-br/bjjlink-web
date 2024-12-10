@@ -98,5 +98,26 @@
         "subtitle": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "button-change-layout": "Alterar layout",
         "add-section-button": "Adicionar seção"
+    },
+    "settings": {
+        "tabs": {
+            "profile": "Perfil",
+            "subscription": "Assinatura"
+        },
+        "profile": {
+            "title": "Minha conta",
+            "name": "Nome",
+            "button-delete-account": "Excluir minha conta",
+            "dialog-confirmation": {
+                "title": "Você tem certeza?",
+                "description": "Esta ação não pode ser desfeita. Isso excluirá permanentemente sua conta e removerá seus dados de nossos servidores.",
+                "cancel": "Cancelar",
+                "delete": "Excluir minha conta"
+            }
+        },
+        "subscription": {
+            "title": "Minha assinatura",
+            "manage-button": "Gerenciar minha assinatura"
+        }
     }
 }

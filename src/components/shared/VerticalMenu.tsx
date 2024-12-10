@@ -14,7 +14,7 @@ import { Button } from "../ui/button";
 import { signOut } from "@/utils/functions";
 import { useRouter } from "next/navigation";
 
-export const VerticalMenu = () => {
+export const VerticalMenu = ({ activeMenu = 'dashboard' }: {activeMenu?: string; }) => {
     const t = useTranslations("vertical-menu");
     const router = useRouter()
     const locale = useLocale()
@@ -32,36 +32,36 @@ export const VerticalMenu = () => {
                 
                 <nav className="flex-1 space-y-2">
                     <Link
-                        href="#"
-                        className="font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors"
+                        href={`/${locale}/dashboard`}
+                        className={`font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'dashboard' ? 'bg-zinc-900' : ''}`}
                     >
                         <Image src={HomeIcon} alt={t('navbar.dashboard-alt-icon')} />
                         {t('navbar.dashboard')}
                     </Link>
                     <Link
                         href="#"
-                        className="font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors"
+                        className={`font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'portifolio' ? 'bg-zinc-900' : ''}`}
                     >
                         <Image src={NotebookIcon} alt={t('navbar.portifolio-alt-icon')} />
                         {t('navbar.portifolio')}
                     </Link>
                     <Link
                         href="#"
-                        className="font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors"
+                        className={`font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'analytics' ? 'bg-zinc-900' : ''}`}
                     >
                         <Image src={AnalyticsIcon} alt={t('navbar.analytics-alt-icon')} />
                         {t('navbar.analytics')}
                     </Link>
                     <Link
-                        href="#"
-                        className="font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors"
+                        href={`/${locale}/settings`}
+                        className={`font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'account' ? 'bg-zinc-900' : ''}`}
                     >
                         <Image src={UserIcon} alt={t('navbar.my-account-alt-icon')} />
                         {t('navbar.my-account')}
                     </Link>
                     <Link
-                        href="#"
-                        className="font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors"
+                        href={`/${locale}/settings`}
+                        className={`font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'settings' ? 'bg-zinc-900' : ''}`}
                     >
                         <Image src={SettingsIcon} alt={t('navbar.settings-alt-icon')} />
                         {t('navbar.settings')}
