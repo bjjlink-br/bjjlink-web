@@ -1,8 +1,8 @@
 
 import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext";
 import { api } from "@/services/api";
-import { authUser, createUser } from "@/services/userService.service";
-import { RegisterUserBody, UserLogin, UserResponse } from "@/utils/types";
+import { authUser, createUser, resetPassword } from "@/services/userService.service";
+import { RegisterUserBody, UserLogin, UserResetPassword, UserResponse } from "@/utils/types";
 import { useState } from "react";
 
 export const useCreateUser = () => {
@@ -51,4 +51,25 @@ export const useAuthUser = () => {
     };
 
     return { loading, error, fetchAuthUser, refetch: fetchAuthUser };
+}
+
+export const useRecoveryPassword = () => {
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
+
+    const fetchRecoveryPassword = async ({ email, password, passwordConfirmation }: UserResetPassword) => {
+        setLoading(true);
+        try {
+            await resetPassword({ email, password, passwordConfirmation });
+            setError(null);
+            return 'success';
+        } catch (err) {
+            setError((err as Error).message || 'Erro ao adicionar usuário');
+            return null
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { loading, error, fetchRecoveryPassword, refetch: fetchRecoveryPassword };
 }

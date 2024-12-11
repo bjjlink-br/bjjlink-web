@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useLocale } from 'next-intl';
 
 type LoginFormProps = {
   onSubmit: (values: z.infer<typeof loginSchema>) => void;
@@ -16,7 +17,8 @@ type LoginFormProps = {
 }
 
 export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
-    const [showPassword, setShowPassword] = useState(false)
+  const locale = useLocale()
+  const [showPassword, setShowPassword] = useState(false)
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
   });
@@ -57,7 +59,7 @@ export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
                             <Label htmlFor="password" className="text-sm font-medium text-gray-200">
                                 Senha
                             </Label>
-                            <Link href="#" className="text-sm text-gray-200 hover:underline">
+                            <Link href={`/${locale}/reset-password`} className="text-sm text-gray-200 hover:underline">
                                 Esqueceu a senha?
                             </Link>
                         </div>

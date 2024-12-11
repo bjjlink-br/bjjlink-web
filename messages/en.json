@@ -124,5 +124,31 @@
             "title": "My subscription",
             "manage-button": "Manage my subscription"
         }
+    },
+    "reset-password": {
+        "title": "Reset your password",
+        "description": "Forgot your password? No problem, enter your registered email and type your new password. And we will send you a confirmation email.",
+        "title-reset-succes": "Password reset successfully!",
+        "description-reset-succes": "Check your email and confirm the link in the email to reset your password.",
+        "login-text": "Do you already have an account?",
+        "login-link": "Log in",
+        "continue-back-login": "Continue",
+        "form": {
+            "passwords-not-matching": "The values ​​in the Password and Confirm Password fields do not match",
+            "weak-password": "The password must contain at least one uppercase letter, one lowercase letter, one number and one special character.",
+            "email": "Email", "email-placeholder": "Enter your email",
+            "password": "New Password",
+            "confirmation-password": "Confirm new password",
+            "password-placeholder": "Enter your new password",
+            "confirmation-placeholder": "Enter your new password again",
+            "hidden-password-button": "Hide",
+            "show-password-button": "Show",
+            "reset-password-button": "Reset password"
+        },
+        "toast": {
+            "success": "Password reset successfully! ✅",
+            "error-title": "Oops! 😵 Something went wrong.",
+            "error-description": "Please check if the email you entered is correct and try again"
+        }
     }
 }

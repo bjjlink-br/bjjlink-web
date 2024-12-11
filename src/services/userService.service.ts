@@ -1,4 +1,4 @@
-import { RegisterUserBody, UserLogin, UserResponse } from "@/utils/types";
+import { RegisterUserBody, UserLogin, UserResetPassword, UserResponse } from "@/utils/types";
 import { api } from "./api";
 
 export const createUser = async (userData: RegisterUserBody): Promise<UserResponse> => {
@@ -9,4 +9,8 @@ export const createUser = async (userData: RegisterUserBody): Promise<UserRespon
 export const authUser = async (userData: UserLogin): Promise<{ acess_token: string }> => {
     const response = await api.post<{ acess_token: string }>('/account/auth', userData);
     return response.data;
+};
+
+export const resetPassword = async (userData: UserResetPassword): Promise<void> => {
+    await api.post<void>('/account/password/recovery', userData);
 };

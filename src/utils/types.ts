@@ -29,3 +29,9 @@ export interface AuthContextData extends AuthState {
     signIn: (credentials: UserLogin) => Promise<void>;
     signOut: () => void;
 }
+
+export type UserResetPassword = {
+    email: string;
+    password: string;
+    passwordConfirmation: string;
+}

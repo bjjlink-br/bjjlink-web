@@ -124,5 +124,32 @@
             "title": "Minha assinatura",
             "manage-button": "Gerenciar minha assinatura"
         }
+    },
+    "reset-password": {
+        "title": "Redefina sua senha",
+        "description": "Esqueceu sua senha? Sem problemas, insira seu email cadastrado e digite sua nova senha. E enviaremos um email de confirmação.",
+        "title-reset-succes": "Senha redefinida com sucesso!",
+        "description-reset-succes": "Verifique seu email e Confirme no link do email a redefinição da sua senha.",
+        "login-text": "Você já possui uma conta?",
+        "login-link": "Entrar",
+        "continue-back-login": "Continuar",
+        "form": {
+            "passwords-not-matching": "Os valores nos campos Senha e Confirmar Senha não correspondem",
+            "weak-password": "A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.",
+            "email": "E-mail",
+            "email-placeholder": "Digite seu e-mail",
+            "password": "Nova Senha",
+            "confirmation-password": "Confirmar nova senha",
+            "password-placeholder": "Digite a sua nova senha",
+            "confirmation-placeholder": "Digite a sua nova senha novamente",
+            "hidden-password-button": "Ocultar",
+            "show-password-button": "Mostrar",
+            "reset-password-button": "Redefinir senha"
+        },
+        "toast": {
+            "success": "Senha redefinida com sucesso! ✅",
+            "error-title": "Ops! 😵 Algo deu errado.",
+            "error-description": "Verifique se o email digitado está correto e tente novamente"
+        }
     }
 }
