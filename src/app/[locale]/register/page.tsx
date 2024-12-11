@@ -17,7 +17,7 @@ export default function Register() {
     const router = useRouter()
     const locale = useLocale()
     const t = useTranslations("register")
-    const { fetchCreateUser, error, loading, user } = useCreateUser()
+    const { fetchCreateUser, error, loading } = useCreateUser()
 
     async function handleRegisterSubmit(values: z.infer<typeof registerSchema>) {
         const response = await fetchCreateUser({
@@ -28,7 +28,7 @@ export default function Register() {
         });
 
         if(!!response){
-            localStorage.setItem('@Bjjlink-user', JSON.stringify(user));
+            localStorage.setItem('@Bjjlink-user', JSON.stringify(response));
             toast({
                 title: `${t('toast.title')}`,
                 description: `${t('toast.description')}`,

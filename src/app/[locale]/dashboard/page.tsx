@@ -1,11 +1,32 @@
-import { useTranslations } from "next-intl";
+"use client"
+import { useLocale, useTranslations } from "next-intl";
 import { VerticalMenu } from "@/components/shared/VerticalMenu";
 import { PromotionalBanner } from "./components/PromotionalBanner";
 import { PortifolioCard } from "./components/PortifolioCard";
 import { UpgradePlanCard } from "./components/UpgradePlanCard";
+import { useEffect } from "react";
+import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
+import { toast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function Dashboard() {
     const t = useTranslations("dashboard");
+    const router = useRouter()
+    const locale = useLocale()
+
+    useEffect(() => {
+        const dataUser = localStorage.getItem('@Bjjlink-user');
+        const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
+        if(!dataUser && !userToken) {
+            toast({
+                title: `${t('toast.title-no-authenticated')}`,
+                description: `${t('toast.description-no-authenticated')}`,
+                duration: 3000
+            });
+            router.push(`/${locale}/login`);
+        }
+    },[locale, router, t])
 
     return(
         <div className="bg-gray-1300 min-h-screen flex">
@@ -28,6 +49,7 @@ export default function Dashboard() {
                     </div>
                 </div>
             </main>
+            <Toaster />
         </div>
     )
 }

@@ -25,14 +25,33 @@ export function RegisterForm({ onSubmit, isLoading }: RegisterFormProps) {
   const password = form.watch("password");
   const confirmPassword = form.watch("confirm_password");
 
+  const validatePasswordStrength = (password: string) => {
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChars = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    return hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChars;
+  };
+
   useEffect(() => {
     if (password !== confirmPassword) {
         form.setError("confirm_password", {
-            type: "manual",
-            message: t('form.passwords-not-matching'),
+          type: "manual",
+          message: t('form.passwords-not-matching'),
         });
     } else {
         form.clearErrors("confirm_password");
+    }
+
+    if (password && confirmPassword && password === confirmPassword) {
+      if (!validatePasswordStrength(password)) {
+        form.setError("password", {
+          type: "manual",
+          message: t('form.weak-password'),
+        });
+      } else {
+        form.clearErrors("password");
+      }
     }
   }, [password, confirmPassword, form, t]); 
 
@@ -147,9 +166,14 @@ export function RegisterForm({ onSubmit, isLoading }: RegisterFormProps) {
                             </Button>
                         </div>
                         {form.formState.errors.confirm_password && (
-                            <span className="text-red-400 text-sm">
-                                {form.formState.errors.confirm_password.message}
-                            </span>
+                          <span className="text-red-400 text-sm">
+                            {form.formState.errors.confirm_password.message}
+                          </span>
+                        )}
+                        {form.formState.errors.password && (
+                          <span className="text-red-400 text-sm">
+                            {form.formState.errors.password.message}
+                          </span>
                         )}
                     </div>
               </FormControl>

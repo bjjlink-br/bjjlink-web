@@ -41,7 +41,8 @@
             "hidden-password-button": "Ocultar",
             "show-password-button": "Mostrar",
             "start-now-button": "Entrar agora",
-            "passwords-not-matching": "Os valores nos campos Senha e Confirmar Senha não correspondem"
+            "passwords-not-matching": "Os valores nos campos Senha e Confirmar Senha não correspondem",
+            "weak-password": "A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial."
         },
         "toast": {
             "title": "Conta criada com sucesso! 🤩",
@@ -73,7 +74,11 @@
         "title": "Meus portfólios",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "create-title": "Criar portfólio",
-        "create-description": "Clique no mais para criar o seu portfólio."
+        "create-description": "Clique no mais para criar o seu portfólio.",
+        "toast": {
+            "title-no-authenticated": "Ops! Você não está autenticado. 🤔",
+            "description-no-authenticated": "Volte para a tela de login e entre com a sua conta."
+        }
     },
     "login": {
         "title": "Seja bem-vindo!",

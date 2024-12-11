@@ -41,7 +41,8 @@
             "hidden-password-button": "Hidden",
             "show-password-button": "Show",
             "start-now-button": "Register now",
-            "passwords-not-matching": "The values ​​in the Password and Confirm Password fields do not match"
+            "passwords-not-matching": "The values ​​in the Password and Confirm Password fields do not match",
+            "weak-password": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
         },
         "toast": {
             "title": "Account created successfully! 🤩",
@@ -73,7 +74,11 @@
         "title": "My portfolios",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "create-title": "Create portfolio",
-        "create-description": "Click on plus to create your portfolio."
+        "create-description": "Click on plus to create your portfolio.",
+        "toast": {
+            "title-no-authenticated": "Oops! You are not authenticated. 🤔",
+            "description-no-authenticated": "Go back to the login screen and log in with your account."
+        }
     },
     "login": {
         "title": "Welcome!",
