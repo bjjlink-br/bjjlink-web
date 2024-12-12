@@ -39,7 +39,7 @@ export const VerticalMenu = ({ activeMenu = 'dashboard' }: {activeMenu?: string;
                         {t('navbar.dashboard')}
                     </Link>
                     <Link
-                        href="#"
+                        href={`/${locale}/portifolio/create`}
                         className={`font-sans text-base flex items-center gap-3 px-3 py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'portifolio' ? 'bg-zinc-900' : ''}`}
                     >
                         <Image src={NotebookIcon} alt={t('navbar.portifolio-alt-icon')} />
