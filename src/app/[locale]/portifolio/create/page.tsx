@@ -38,7 +38,7 @@ export default function Create() {
 
   return (
     <div className="bg-gray-1300 min-h-screen flex">
-      <VerticalMenu />
+      <VerticalMenu activeMenu='portifolio' />
 
       <main className="flex-1 p-8">
           <div className="flex items-start w-full justify-between">

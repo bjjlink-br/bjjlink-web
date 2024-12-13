@@ -35,3 +35,12 @@ export type UserResetPassword = {
     password: string;
     passwordConfirmation: string;
 }
+
+export type PlanType = {
+    name: string;
+    price: number;
+    discount?: string;
+    description: string;
+    features: string[];
+    popular?: boolean;
+}

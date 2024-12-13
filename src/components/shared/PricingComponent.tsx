@@ -4,8 +4,9 @@ import { useState } from 'react'
 import { Check } from 'lucide-react'
 import { PlanButton } from './PlanButton'
 import { Separator } from '../ui/separator'
+import { PlanType } from '@/utils/types'
 
-const plans = [
+const plans: PlanType[] = [
   {
     name: 'Free',
     price: 0,
@@ -49,7 +50,11 @@ const plans = [
   },
 ]
 
-export default function PricingComponent() {
+type PricingComponentProps = {
+  handleSelectPlan: ({ plan, isAnnual }: { plan: PlanType; isAnnual: boolean }) => void;
+}
+
+export default function PricingComponent({ handleSelectPlan }: PricingComponentProps) {
   const [isAnnual, setIsAnnual] = useState(false)
 
   return (
@@ -119,6 +124,10 @@ export default function PricingComponent() {
               </ul>
               <div className="flex-grow"></div>
               <button
+                onClick={() => handleSelectPlan({
+                  plan,
+                  isAnnual
+                })}
                 className={`w-full py-2 rounded-md mt-auto ${
                   plan.popular
                     ? 'bg-brand-blue-600 hover:bg-brand-blue-700'

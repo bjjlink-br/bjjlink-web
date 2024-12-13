@@ -19,6 +19,37 @@
         "login": "Login",
         "register": "Começar agora"
     },
+    "home": {
+        "new": "Novo",
+        "subtitle-tag": "Aumente sua visibilidade!",
+        "title": "Seu portfólio",
+        "subtitle": "DE ATLETA",
+        "description": "Saiba como se apresentar na internet mostrando todo o seu potencial e experiência, tudo em um só lugar com alto nível e perfomace no seu portfólio.",
+        "create-portifolio-button": "Criar portfólio grátis",
+        "access-button": "Acessar agora",
+        "what-bjj-title": "Como BjjLink vai te ajudar?",
+        "what-bjj-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "create": "Crie em poucos minutos",
+        "create-subtitle": "Seu portfólio pronto em poucos minutos",
+        "create-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "badge-description": "Bem apresentável",
+        "your-portifolio": "O seu portfólio com design profissional",
+        "your-portifolio-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "social-media-badge": "Rede sociais",
+        "social-media-title": "Centralizar todas as suas informações em único lugar!",
+        "social-media-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "our-plans-title": "Nossos planos",
+        "our-plans-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "testimonials-title": "Atletas que já usam a plataforma",
+        "testimonials-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "create-portifolio-now-title": "Comece a criar o seu portfólio gratuitamente",
+        "create-portifolio-now-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "start-now": "Comece agora",
+        "blog-title": "Publicações do blog",
+        "blog-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis",
+        "faq-title": "Perguntas frequentes",
+        "faq-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus."
+    },
     "register": {
         "title": "Registrar-se",
         "terms-info": "Quando criar conta, você está concordando com os",
@@ -153,5 +184,12 @@
             "error-title": "Ops! 😵 Algo deu errado.",
             "error-description": "Verifique se o email digitado está correto e tente novamente"
         }
+    },
+    "loadingPage": {
+        "title": "Aguarde um momento enquanto confirmamos seu acesso e informações do plano.",
+        "error-button": "Tentar novamente",
+        "loading-message": "Estamos processando suas informações...",
+        "loading-success": "Tudo certo! Estamos preparando seu checkout.",
+        "error-message": "Houve um problema ao processar seu login. Tente novamente."
     }
 }
