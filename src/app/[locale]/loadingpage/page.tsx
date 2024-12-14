@@ -4,29 +4,26 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader, AlertCircle, CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { checkoutPayment } from "@/services/checkout.service";
 
 export default function LoadingPage() {
   const t = useTranslations("loadingPage")
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
-  const selectedPlan = searchParams.get("selectedPlan");
+  // const selectedPlan = searchParams.get("selectedPlan");
   
   const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
   const [message, setMessage] = useState(t("loading-message"));
 
   useEffect(() => {
     async function processLoginAndPlan() {
-      console.log(token, selectedPlan)
       try {
-        // checkoutPayment()
-        await new Promise((resolve) => setTimeout(resolve, 3000)); // Simula tempo de processamento
+        const response = await checkoutPayment(token as string);
         setMessage(t("loading-success"));
         setStatus("success");
 
-        // setTimeout(() => {
-        //   router.push("/checkout");
-        // }, 2000);
+        router.push(response.url);
       } catch (error) {
         console.error(error);
         setMessage(t("error-message"));
@@ -35,7 +32,7 @@ export default function LoadingPage() {
     }
 
     processLoginAndPlan();
-  }, [router]);
+  }, [router, token, t]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-1300">
@@ -60,7 +57,7 @@ export default function LoadingPage() {
         {status === "error" && (
           <>
             <AlertCircle className="text-red-500 w-10 h-10" />
-            <p className="text-lg font-semibold text-center">{message}</p>
+            <p className="text-lg font-semibold text-center text-brand-blue-950">{message}</p>
             <button
               onClick={() => location.reload()}
               className="px-4 py-2 mt-4 text-white bg-red-500 rounded-lg hover:bg-red-600"

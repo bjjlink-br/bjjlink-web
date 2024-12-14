@@ -41,7 +41,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-1300 text-gray-50">
+    <div className="min-h-screen bg-gray-1300 text-gray-50 hidden-scroll-bar">
         <div className="hidden md:flex md:justify-end md:pt-1">
             <LanguageSwitcher />
         </div>

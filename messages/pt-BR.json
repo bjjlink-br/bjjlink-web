@@ -161,8 +161,8 @@
     "reset-password": {
         "title": "Redefina sua senha",
         "description": "Esqueceu sua senha? Sem problemas, insira seu email cadastrado e digite sua nova senha. E enviaremos um email de confirmação.",
-        "title-reset-succes": "Senha redefinida com sucesso!",
-        "description-reset-succes": "Verifique seu email e Confirme no link do email a redefinição da sua senha.",
+        "title-reset-succes": "O link de redefinição de senha foi enviada para o seu email.",
+        "description-reset-succes": "Verifique seu email e confirme a redefinição da sua senha.",
         "login-text": "Você já possui uma conta?",
         "login-link": "Entrar",
         "continue-back-login": "Continuar",

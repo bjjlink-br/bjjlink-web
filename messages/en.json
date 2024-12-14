@@ -160,8 +160,8 @@
     "reset-password": {
         "title": "Reset your password",
         "description": "Forgot your password? No problem, enter your registered email and type your new password. And we will send you a confirmation email.",
-        "title-reset-succes": "Password reset successfully!",
-        "description-reset-succes": "Check your email and confirm the link in the email to reset your password.",
+        "title-reset-succes": "The password reset link has been sent to your email.",
+        "description-reset-succes": "Please check your email and confirm your password reset.",
         "login-text": "Do you already have an account?",
         "login-link": "Log in",
         "continue-back-login": "Continue",
