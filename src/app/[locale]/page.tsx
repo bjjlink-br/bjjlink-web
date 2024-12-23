@@ -16,7 +16,6 @@ import TestimonialCarousel from "@/components/shared/TestimonialCarousel"
 import { BlogCarousel } from "@/components/shared/BlogCarousel"
 import { FaqCards } from "@/components/shared/FaqCards"
 import { Footer } from "@/components/shared/Footer"
-import { LanguageSwitcher } from "@/components/shared/LanguageSwitcher";
 import { useLocale } from "next-intl";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -32,7 +31,6 @@ export default function Home() {
     const dataUser = localStorage.getItem('@Bjjlink-user');
     const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
     if(dataUser && userToken){
-      console.log(plan)
       console.log({ isAnnual})
       router.push(`/${locale}/loadingpage?token=${userToken}&selectedPlan=${plan.name}`);
     } else {
@@ -42,9 +40,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-1300 text-gray-50 hidden-scroll-bar">
-        <div className="hidden md:flex md:justify-end md:pt-1">
+        {/* <div className="hidden md:flex md:justify-end md:pt-1">
             <LanguageSwitcher />
-        </div>
+        </div> */}
       <Navbar />
 
       <main>

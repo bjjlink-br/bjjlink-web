@@ -189,5 +189,13 @@
         "loading-message": "We are processing your information...",
         "loading-success": "All good! We are preparing your checkout.",
         "error-message": "There was a problem processing your login. Please try again."
+    },
+    "payment": {
+        "success-title": "Payment successful!",
+        "button-back": "Log in to my account",
+        "update-success-title": "Subscription changed successfully!",
+        "update-button-back": "Back to my Dashboard",
+        "error-title": "Something went wrong while processing your payment.",
+        "error-button": "Try again"
     }
 }

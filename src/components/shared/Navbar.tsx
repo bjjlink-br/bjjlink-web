@@ -24,7 +24,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-900 text-gray-200 md:border md:border-gray-700 md:rounded-md md:mx-4 lg:mx-24 md:mt-16">
+    <nav className="bg-gray-900 text-gray-200 md:border md:border-gray-700 md:rounded-md md:mx-4 lg:mx-24 md:mt-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
         <div className="flex items-center justify-between h-16">
           <LogoTitle />
@@ -32,12 +32,6 @@ export function Navbar() {
           {/* Menu Web */}
           <div className="hidden md:block">
             <div className="ml-4 lg:ml-6 flex items-baseline space-x-1 lg:space-x-3">
-              <Link 
-                href="/" 
-                className="px-1 lg:px-2 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold whitespace-nowrap"
-              >
-                {t('home')}
-              </Link>
               <button
                 onClick={() => scrollToSection('plans')}
                 className="px-1 lg:px-2 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold whitespace-nowrap"
@@ -56,12 +50,12 @@ export function Navbar() {
               >
                 {t('help')}
               </button>
-              <button
+              {/* <button
                 onClick={() => scrollToSection('how-works')}
                 className="px-1 lg:px-2 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold whitespace-nowrap"
               >
                 {t('how-works')}
-              </button>
+              </button> */}
               <button
                 onClick={() => scrollToSection('contact')}
                 className="px-1 lg:px-2 py-2 rounded-md text-sm font-medium hover:bg-gray-700 hover:text-brand-blue-50 hover:font-semibold whitespace-nowrap"
@@ -70,20 +64,25 @@ export function Navbar() {
               </button>
             </div>
           </div>
-          <div className="hidden md:flex md:flex-row md:items-center">
-            <Link
-              href={`/${locale}/login`}
-              className="flex flex-row items-center px-1 lg:px-2 py-2 gap-1 rounded-md text-sm lg:text-base font-medium font-secondary text-brand-blue-50 hover:bg-gray-700 whitespace-nowrap"
-            >
-              <User size={16} color="#D8D8E1" />
-              {t('login')}
-            </Link>
-            <Link
-              href={`/${locale}/register`}
-              className="ml-1 lg:ml-2 px-2 lg:px-3 py-2 rounded-md text-sm lg:text-base font-medium font-secondary text-brand-blue-50 bg-blue-600 hover:bg-blue-700 whitespace-nowrap"
-            >
-              {t('register')}
-            </Link>
+          <div className='md:flex md:flex-row md:gap-3'>
+            <div className="hidden md:flex md:flex-row md:items-center">
+              <Link
+                href={`/${locale}/login`}
+                className="flex flex-row items-center px-1 lg:px-2 py-2 gap-1 rounded-md text-sm lg:text-base font-medium font-secondary text-brand-blue-50 hover:bg-gray-700 whitespace-nowrap"
+              >
+                <User size={16} color="#D8D8E1" />
+                {t('login')}
+              </Link>
+              <Link
+                href={`/${locale}/register`}
+                className="ml-1 lg:ml-2 px-2 lg:px-3 py-2 rounded-md text-sm lg:text-base font-medium font-secondary text-brand-blue-50 bg-blue-600 hover:bg-blue-700 whitespace-nowrap"
+              >
+                {t('register')}
+              </Link>
+            </div>
+            <div className="hidden md:flex md:justify-end">
+              <LanguageSwitcher />
+            </div>
           </div>
           <div className="md:hidden">
             <button onClick={toggleMenu} className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">

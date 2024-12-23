@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader, AlertCircle, CheckCircle } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { checkoutPayment } from "@/services/checkout.service";
 
 export default function LoadingPage() {
   const t = useTranslations("loadingPage")
   const router = useRouter();
+  const locale = useLocale()
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
   // const selectedPlan = searchParams.get("selectedPlan");
@@ -19,7 +20,7 @@ export default function LoadingPage() {
   useEffect(() => {
     async function processLoginAndPlan() {
       try {
-        const response = await checkoutPayment(token as string);
+        const response = await checkoutPayment(token as string, locale);
         setMessage(t("loading-success"));
         setStatus("success");
 
@@ -32,7 +33,7 @@ export default function LoadingPage() {
     }
 
     processLoginAndPlan();
-  }, [router, token, t]);
+  }, [router, token, t, locale]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-1300">

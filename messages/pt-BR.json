@@ -191,5 +191,13 @@
         "loading-message": "Estamos processando suas informações...",
         "loading-success": "Tudo certo! Estamos preparando seu checkout.",
         "error-message": "Houve um problema ao processar seu login. Tente novamente."
+    },
+    "payment": {
+        "success-title": "Pagamento realizado com sucesso!",
+        "button-back": "Entrar na minha conta",
+        "update-success-title": "Assinatura alterada com sucesso!",
+        "update-button-back": "Voltar para meu Dashboard",
+        "error-title": "Algo deu errado no processamento do seu pagamento.",
+        "error-button": "Tentar novamente"
     }
 }
