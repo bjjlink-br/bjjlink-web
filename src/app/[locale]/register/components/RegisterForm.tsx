@@ -24,6 +24,7 @@ export function RegisterForm({ onSubmit, isLoading }: RegisterFormProps) {
 
   const password = form.watch("password");
   const confirmPassword = form.watch("confirm_password");
+  const username = form.watch("username");
 
   const validatePasswordStrength = (password: string) => {
     const hasUpperCase = /[A-Z]/.test(password);
@@ -31,6 +32,11 @@ export function RegisterForm({ onSubmit, isLoading }: RegisterFormProps) {
     const hasNumbers = /\d/.test(password);
     const hasSpecialChars = /[!@#$%^&*(),.?":{}|<>]/.test(password);
     return hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChars;
+  };
+
+  const validateUsername = (username: string) => {
+    const hasSpecialChars = /[^a-zA-Z0-9]/.test(username);
+    return !hasSpecialChars;
   };
 
   useEffect(() => {
@@ -53,7 +59,16 @@ export function RegisterForm({ onSubmit, isLoading }: RegisterFormProps) {
         form.clearErrors("password");
       }
     }
-  }, [password, confirmPassword, form, t]); 
+
+    if (username && !validateUsername(username)) {
+        form.setError("username", {
+            type: "manual",
+            message: t('form.invalid-username'),
+        });
+    } else {
+        form.clearErrors("username");
+    }
+  }, [password, confirmPassword, username, form, t]); 
 
   return (
     <Form {...form}>
@@ -76,6 +91,11 @@ export function RegisterForm({ onSubmit, isLoading }: RegisterFormProps) {
                         disabled={isLoading}
                         {...field}
                     />
+                    {form.formState.errors.username && (
+                      <span className="text-red-400 text-sm">
+                        {form.formState.errors.username?.message}
+                      </span>
+                    )}
                 </div>
               </FormControl>
             </FormItem>
@@ -183,7 +203,7 @@ export function RegisterForm({ onSubmit, isLoading }: RegisterFormProps) {
         <Button 
           type="submit" 
           className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-          disabled={isLoading || !!form.formState.errors.confirm_password}
+          disabled={isLoading || !!form.formState.errors.confirm_password || !!form.formState.errors.username}
         >
           {isLoading ? <Spinner /> : t('form.start-now-button')}
         </Button>

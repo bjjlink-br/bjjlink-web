@@ -72,7 +72,8 @@
             "show-password-button": "Show",
             "start-now-button": "Register now",
             "passwords-not-matching": "The values ​​in the Password and Confirm Password fields do not match",
-            "weak-password": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+            "weak-password": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
+            "invalid-username": "Username cannot contain special characters. Only letters and numbers."
         },
         "toast": {
             "title": "Account created successfully! 🤩",

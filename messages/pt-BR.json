@@ -73,7 +73,8 @@
             "show-password-button": "Mostrar",
             "start-now-button": "Entrar agora",
             "passwords-not-matching": "Os valores nos campos Senha e Confirmar Senha não correspondem",
-            "weak-password": "A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial."
+            "weak-password": "A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.",
+            "invalid-username": "Nome de usuário não pode conter caractere especial. Apenas letras e números."
         },
         "toast": {
             "title": "Conta criada com sucesso! 🤩",
