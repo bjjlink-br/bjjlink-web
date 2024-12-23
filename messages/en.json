@@ -182,6 +182,10 @@
             "success": "Password reset successfully! ✅",
             "error-title": "Oops! 😵 Something went wrong.",
             "error-description": "Please check if the email you entered is correct and try again"
+        },
+        "confirmation-reset": {
+            "title": "Password reset successfully!",
+            "button-go-login": "Log in to my account"
         }
     },
     "loadingPage": {

@@ -184,6 +184,10 @@
             "success": "Senha redefinida com sucesso! ✅",
             "error-title": "Ops! 😵 Algo deu errado.",
             "error-description": "Verifique se o email digitado está correto e tente novamente"
+        },
+        "confirmation-reset": {
+            "title": "Senha redefinida com sucesso!",
+            "button-go-login": "Entrar na minha conta"
         }
     },
     "loadingPage": {
