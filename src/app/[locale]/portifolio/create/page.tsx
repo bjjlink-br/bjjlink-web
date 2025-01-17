@@ -11,6 +11,7 @@ import { BioAccordion } from '../components/BioAccordion';
 import { useState } from "react";
 import { createPortifolioSchema } from '@/utils/schema';
 import { Form } from '@/components/ui/form';
+import { PerfilAccordion } from '../components/PerfilAccordion';
 
 export default function Create() {
   const t = useTranslations("create-portifolio");
@@ -53,7 +54,8 @@ export default function Create() {
                     <button className="text-brand-blue-500 hover:text-blue-400">{t('button-change-layout')}</button>
                   </div>
 
-                  <div className="my-4">
+                  <div className="my-4 flex flex-col gap-2">
+                    <PerfilAccordion />
                     <BioAccordion />
                   </div>
                   
