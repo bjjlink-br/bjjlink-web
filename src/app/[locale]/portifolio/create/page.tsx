@@ -12,6 +12,7 @@ import { useState } from "react";
 import { createPortifolioSchema } from '@/utils/schema';
 import { Form } from '@/components/ui/form';
 import { PerfilAccordion } from '../components/PerfilAccordion';
+import { SocialAccordion } from '../components/SocialAccordion';
 
 export default function Create() {
   const t = useTranslations("create-portifolio");
@@ -57,6 +58,7 @@ export default function Create() {
                   <div className="my-4 flex flex-col gap-2">
                     <PerfilAccordion />
                     <BioAccordion />
+                    <SocialAccordion />
                   </div>
                   
                   <Button 

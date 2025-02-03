@@ -135,7 +135,25 @@
         "button-change-layout": "Change layout",
         "add-section-button": "Add section",
         "publish-portifolio-button": "Publish Portfolio",
-        "copy-link-button": "Copy Link"
+        "copy-link-button": "Copy Link",
+        "steps": {
+        "profile": {
+            "title": "Your Profile",
+            "subtitle": "Tell us about yourself",
+            "description": "Profile",
+            "upload-title": "Add your photo",
+            "upload-description": "Drag and drop your image here or select it.",
+            "toast-upload-success": "Image uploaded successfully!",
+            "toast-upload-error": "Image upload failed."
+            },
+            "social": {
+                "title": "Social Networks",
+                "subtitle": "Tell us about yourself",
+                "facebook": "Facebook",
+                "insta": "Instagram",
+                "x": "X (Twitter)"
+            }
+        }
     },
     "settings": {
         "tabs": {

@@ -146,6 +146,13 @@
                 "upload-description": "Arraste e solte sua imagem aqui ou selecione ela.",
                 "toast-upload-success": "Imagem enviada com sucesso!",
                 "toast-upload-error": "Falha ao enviar imagem."
+            },
+            "social": {
+                "title": "Redes sociais",
+                "subtitle": "Fale sobre você",
+                "facebook": "Facebook",
+                "insta": "Instagram",
+                "x": "X (Twitter)"
             }
         }
     },
