@@ -136,7 +136,18 @@
         "button-change-layout": "Alterar layout",
         "add-section-button": "Adicionar seção",
         "publish-portifolio-button": "Publicar portfólio",
-        "copy-link-button": "Copiar link"
+        "copy-link-button": "Copiar link",
+        "steps": {
+            "profile": {
+                "title": "Seu Perfil",
+                "subtitle": "Fale sobre você",
+                "description": "Perfil",
+                "upload-title": "Adicionar sua foto",
+                "upload-description": "Arraste e solte sua imagem aqui ou selecione ela.",
+                "toast-upload-success": "Imagem enviada com sucesso!",
+                "toast-upload-error": "Falha ao enviar imagem."
+            }
+        }
     },
     "settings": {
         "tabs": {

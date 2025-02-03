@@ -10,15 +10,38 @@ import {
 } from "@/components/ui/accordion"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
 import { useState } from 'react'
-import { Upload } from '@/components/shared/Upload'
+import { useTranslations } from 'next-intl'
+import { toast } from '@/hooks/use-toast'
+import { Toaster } from "@/components/ui/toaster"
+import { UploadImage } from '@/components/shared/UploadImage'
 
 export function PerfilAccordion() {
+  const t = useTranslations("create-portifolio");
   const [headline, setHeadline] = useState("")
   const [supportingText, setSupportingText] = useState("")
   const [buttonName, setButtonName] = useState("")
   const [buttonUrl, setButtonUrl] = useState("")
+
+  const handleImageUpload = async (files: File[]) => {
+    // Here you would typically upload the file to your server or cloud storage
+    // This is just a mock example
+    try {
+      // Simulate upload delay
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      toast({
+        title: `${t("steps.profile.toast-upload-success")}`,
+        duration: 3000,
+      });
+    } catch (error) {
+      toast({
+        title: `${t("steps.profile.toast-upload-error")}`,
+        variant: "destructive",
+        duration: 3000,
+      });
+    }
+  }
 
   return (
     <div className="w-full max-w-[575px] space-y-4 bg-gray-900 text-white rounded-lg overflow-hidden">
@@ -31,8 +54,8 @@ export function PerfilAccordion() {
                   <CircleUserRound size={20} color='#85CBFF' />
                 </div>
                 <div className='flex flex-col items-start'>
-                  <h1 className="text-base font-bold no-underline text-gray-50 font-secondary">Seu Perfil</h1>
-                  <p className='text-gray-200 text-sm font-secondary'>Fale sobre você</p>
+                  <h1 className="text-base font-bold no-underline text-gray-50 font-secondary">{t("steps.profile.title")}</h1>
+                  <p className='text-gray-200 text-sm font-secondary'>{t("steps.profile.subtitle")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 mr-2">
@@ -52,8 +75,13 @@ export function PerfilAccordion() {
           <AccordionContent>
             <div className="p-4 space-y-6">
               <div className="space-y-4">
-                <h2 className="text-lg font-medium">Perfil</h2>
-                <Upload />
+                <h2 className="text-lg font-medium">{t("steps.profile.description")}</h2>
+                {/* <Upload /> */}
+                <UploadImage  
+                  className='border-dashed border-2 border-brand-blue-600 bg-brand-blue-600/15 cursor-pointer' 
+                  maxSize={5} 
+                  onImageUpload={handleImageUpload}
+                />
                 <div className="space-y-2">
                   <Label htmlFor="headline" className='text-gray-200 font-secondary text-sm'>Título em destaque</Label>
                   <Input
@@ -81,6 +109,7 @@ export function PerfilAccordion() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <Toaster />
     </div>
   )
 }
