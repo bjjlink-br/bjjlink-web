@@ -13,6 +13,7 @@ import { createPortifolioSchema } from '@/utils/schema';
 import { Form } from '@/components/ui/form';
 import { PerfilAccordion } from '../components/PerfilAccordion';
 import { SocialAccordion } from '../components/SocialAccordion';
+import { PhotoGallery } from '../components/PhotoGallery';
 
 export default function Create() {
   const t = useTranslations("create-portifolio");
@@ -59,6 +60,7 @@ export default function Create() {
                     <PerfilAccordion />
                     <BioAccordion />
                     <SocialAccordion />
+                    <PhotoGallery />
                   </div>
                   
                   <Button 

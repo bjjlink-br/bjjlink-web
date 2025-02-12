@@ -15,6 +15,7 @@ import { useTranslations } from 'next-intl'
 import { toast } from '@/hooks/use-toast'
 import { Toaster } from "@/components/ui/toaster"
 import { UploadImage } from '@/components/shared/UploadImage'
+import { UploadSingleImage } from '@/components/shared/UploadSingleImage'
 
 export function PerfilAccordion() {
   const t = useTranslations("create-portifolio");
@@ -23,7 +24,7 @@ export function PerfilAccordion() {
   const [buttonName, setButtonName] = useState("")
   const [buttonUrl, setButtonUrl] = useState("")
 
-  const handleImageUpload = async (files: File[]) => {
+  const handleImageUpload = async (file: File | null) => {
     // Here you would typically upload the file to your server or cloud storage
     // This is just a mock example
     try {
@@ -77,7 +78,7 @@ export function PerfilAccordion() {
               <div className="space-y-4">
                 <h2 className="text-lg font-medium">{t("steps.profile.description")}</h2>
                 {/* <Upload /> */}
-                <UploadImage  
+                <UploadSingleImage  
                   className='border-dashed border-2 border-brand-blue-600 bg-brand-blue-600/15 cursor-pointer' 
                   maxSize={5} 
                   onImageUpload={handleImageUpload}

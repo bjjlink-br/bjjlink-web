@@ -153,6 +153,12 @@
                 "facebook": "Facebook",
                 "insta": "Instagram",
                 "x": "X (Twitter)"
+            },
+            "photo-gallery": {
+                "title": "Galeria",
+                "subtitle": "Fale sobre você",
+                "button-save": "Salvar",
+                "description": "Galeria de fotos"
             }
         }
     },

@@ -137,14 +137,14 @@
         "publish-portifolio-button": "Publish Portfolio",
         "copy-link-button": "Copy Link",
         "steps": {
-        "profile": {
-            "title": "Your Profile",
-            "subtitle": "Tell us about yourself",
-            "description": "Profile",
-            "upload-title": "Add your photo",
-            "upload-description": "Drag and drop your image here or select it.",
-            "toast-upload-success": "Image uploaded successfully!",
-            "toast-upload-error": "Image upload failed."
+            "profile": {
+                "title": "Your Profile",
+                "subtitle": "Tell us about yourself",
+                "description": "Profile",
+                "upload-title": "Add your photo",
+                "upload-description": "Drag and drop your image here or select it.",
+                "toast-upload-success": "Image uploaded successfully!",
+                "toast-upload-error": "Image upload failed."
             },
             "social": {
                 "title": "Social Networks",
@@ -152,6 +152,12 @@
                 "facebook": "Facebook",
                 "insta": "Instagram",
                 "x": "X (Twitter)"
+            },
+            "photo-gallery": {
+                "title": "Gallery",
+                "subtitle": "Tell us about yourself",
+                "button-save": "Save",
+                "description": "Photo gallery"
             }
         }
     },
