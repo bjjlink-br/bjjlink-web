@@ -13,10 +13,11 @@ export const PromotionalBanner = () => {
     const router = useRouter()
     
     const selectPlan = () => {
-        const dataUser = localStorage.getItem('@Bjjlink-user');
+        // const dataUser = localStorage.getItem('@Bjjlink-user');
         const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
-        if(dataUser && userToken){
-          window.open(`/${locale}/loadingpage?token=${userToken}&selectedPlan=Premium`, '_blank');
+        if(userToken){
+            const token = JSON.parse(userToken)
+            window.open(`/${locale}/loadingpage?token=${token.acess_token}&selectedPlan=Premium`, '_blank');
         } else {
           router.push(`/${locale}/login`);
         }

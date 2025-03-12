@@ -28,11 +28,11 @@ export default function Home() {
   const locale = useLocale()
 
   const selectPlan = ({ plan, isAnnual }: { plan: PlanType; isAnnual: boolean }) => {
-    const dataUser = localStorage.getItem('@Bjjlink-user');
+    // const dataUser = localStorage.getItem('@Bjjlink-user');
     const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
-    if(dataUser && userToken){
-      console.log({ isAnnual})
-      router.push(`/${locale}/loadingpage?token=${userToken}&selectedPlan=${plan.name}`);
+    if(userToken){
+      const token = JSON.parse(userToken)
+      router.push(`/${locale}/loadingpage?token=${token.acess_token}&selectedPlan=${plan.name}`);
     } else {
       router.push(`/${locale}/login`);
     }

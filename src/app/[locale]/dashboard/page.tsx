@@ -18,14 +18,14 @@ export default function Dashboard() {
     useEffect(() => {
         const dataUser = localStorage.getItem('@Bjjlink-user');
         const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
-        // if(!dataUser && !userToken) {
-        //     toast({
-        //         title: `${t('toast.title-no-authenticated')}`,
-        //         description: `${t('toast.description-no-authenticated')}`,
-        //         duration: 3000
-        //     });
-        //     router.push(`/${locale}/login`);
-        // }
+        if(!dataUser && !userToken) {
+            toast({
+                title: `${t('toast.title-no-authenticated')}`,
+                description: `${t('toast.description-no-authenticated')}`,
+                duration: 3000
+            });
+            router.push(`/${locale}/login`);
+        }
     },[locale, router, t])
 
     return(

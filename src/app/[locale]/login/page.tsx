@@ -12,6 +12,8 @@ import { useRouter } from 'next/navigation'
 import { useAuthUser } from '@/hooks/useUsers'
 import { toast } from '@/hooks/use-toast'
 import { Toaster } from "@/components/ui/toaster"
+import { useEffect } from "react"
+import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext"
 
 export default function Login() {
     const t = useTranslations("login")
@@ -41,6 +43,17 @@ export default function Login() {
             console.error('Erro ao fazer login:', error);
         }
     }
+
+    useEffect(() => {
+        const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
+        if(userToken) {
+            toast({
+                title: `${t('toast.title')}`,
+                duration: 3000,
+            });
+            router.push(`/${locale}/dashboard`);
+        }
+    },[])
 
   return (
     <div className="min-h-screen">
