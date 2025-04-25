@@ -33,9 +33,9 @@ export default function Create() {
     setActiveSteps((prev) => [...prev, prev.length + 1]); 
   };
 
-  const removeSection = (section: number) => {
-    setActiveSteps((prev) => prev.filter((s) => s !== section));
-  };
+  // const removeSection = (section: number) => {
+  //   setActiveSteps((prev) => prev.filter((s) => s !== section));
+  // };
 
   function handleFinalSubmit(values: z.infer<typeof createPortifolioSchema>) {}
 
@@ -46,14 +46,14 @@ export default function Create() {
       <main className="flex-1 p-8">
           <div className="flex items-start w-full justify-between">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(handleFinalSubmit)} className="flex items-start w-full justify-between">
+              <form onSubmit={form.handleSubmit(handleFinalSubmit)} className="flex flex-col md:flex-row items-start w-full justify-between">
                 <div className="flex-1 pr-4">
                   <div className="w-full max-w-xl flex justify-between items-end text-white mb-4">
                     <div>
                       <h1 className="text-xl text-gray-50 font-semibold">{t('title')}</h1>
                       <p className="text-gray-200 text-sm">{t('subtitle')}</p>
                     </div>
-                    <button className="text-brand-blue-500 hover:text-blue-400">{t('button-change-layout')}</button>
+                    {/* <button className="text-brand-blue-500 hover:text-blue-400">{t('button-change-layout')}</button> */}
                   </div>
 
                   <div className="my-4 flex flex-col gap-2">
@@ -63,18 +63,20 @@ export default function Create() {
                     <PhotoGallery />
                   </div>
                   
-                  <Button 
+                  {/* <Button 
                     className="flex gap-1 items-center w-full max-w-xl bg-brand-blue-600 hover:bg-blue-700" 
                     size="lg"
                     onClick={addSection}
                   >
                     <CirclePlus size={18} color="#D8D8E1" />
                     {t('add-section-button')}
-                  </Button>
+                  </Button> */}
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <PreviewPortifolio />
+                  <div className='hidden md:block'>
+                    <PreviewPortifolio />
+                  </div>
                   <Button className="w-full max-w-xl bg-blue-700 hover:bg-blue-800" size="lg">
                     {t('publish-portifolio-button')}
                   </Button>

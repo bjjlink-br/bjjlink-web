@@ -1,6 +1,6 @@
 "use client"
 
-import { CircleUserRound, Pencil, Save, Trash2 } from 'lucide-react'
+import { CircleUserRound, Save } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import {
   Accordion,
@@ -10,32 +10,41 @@ import {
 } from "@/components/ui/accordion"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
+import { useLocale, useTranslations } from 'next-intl'
 import { toast } from '@/hooks/use-toast'
 import { Toaster } from "@/components/ui/toaster"
-import { UploadImage } from '@/components/shared/UploadImage'
 import { UploadSingleImage } from '@/components/shared/UploadSingleImage'
+import { useDataSections } from '@/contexts/DataSectionsContext'
+import { AUTH_STORAGE_KEY } from '@/contexts/AuthContext'
+import { saveSectionPortifolio } from '@/services/portifolio.service'
+import { useRouter } from 'next/navigation'
 
 export function PerfilAccordion() {
   const t = useTranslations("create-portifolio");
+  const locale = useLocale()
+  const router = useRouter()
+  const { dataSections ,setDataSections } = useDataSections();
+
   const [headline, setHeadline] = useState("")
-  const [supportingText, setSupportingText] = useState("")
-  const [buttonName, setButtonName] = useState("")
-  const [buttonUrl, setButtonUrl] = useState("")
 
   const handleImageUpload = async (file: File | null) => {
-    // Here you would typically upload the file to your server or cloud storage
-    // This is just a mock example
     try {
-      // Simulate upload delay
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      toast({
-        title: `${t("steps.profile.toast-upload-success")}`,
-        duration: 3000,
-      });
+      setDataSections((prev) => ({
+        ...prev,
+        profile: {
+          type: 'profile',
+          image: file,
+          texts: [
+            {
+              order: 1,
+              text: headline
+            }
+          ]
+        },
+      }));
     } catch (error) {
+      console.log(error)
       toast({
         title: `${t("steps.profile.toast-upload-error")}`,
         variant: "destructive",
@@ -43,6 +52,44 @@ export function PerfilAccordion() {
       });
     }
   }
+
+  const handleSubmitSave = async () => {
+    const token = localStorage.getItem(AUTH_STORAGE_KEY);
+    const tokenObj = JSON.parse(token!)
+
+    if(dataSections.profile.image && !!headline.length) {
+      const formData = new FormData();
+
+      // 1. Adiciona o arquivo (ou vários arquivos, se quiser)
+      formData.append('images', dataSections.profile.image) // Se tiver mais de um, faça um loop
+
+      // 2. Adiciona os campos normais, mas precisa converter para string os que são objetos
+      formData.append('type', 'PROFILE')
+
+      formData.append('texts', JSON.stringify([
+        { order: 1, text: headline },
+      ]))
+
+      
+      const response = await saveSectionPortifolio(tokenObj.acess_token as string, locale, formData);
+  
+      console.log(response)
+  
+  
+  
+      toast({
+        title: `${t("steps.profile.toast-upload-success")}`,
+        duration: 3000,
+      });
+    }
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem(AUTH_STORAGE_KEY);
+    if(!token){
+      router.push(`/${locale}/login`);
+    }
+  },[locale, router])
 
   return (
     <div className="w-full max-w-[575px] space-y-4 bg-gray-900 text-white rounded-lg overflow-hidden">
@@ -59,7 +106,7 @@ export function PerfilAccordion() {
                   <p className='text-gray-200 text-sm font-secondary'>{t("steps.profile.subtitle")}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 mr-2">
+              {/* <div className="flex items-center gap-3 mr-2">
                 <Button 
                   variant="ghost" 
                   size="icon" 
@@ -70,7 +117,7 @@ export function PerfilAccordion() {
                 <Button variant="ghost" size="icon" className="bg-semantic-red-500/5 text-semantic-red-500 hover:bg-semantic-red-500/5 hover:text-semantic-red-500">
                   <Trash2 className="w-4 h-4" />
                 </Button>
-              </div>
+              </div> */}
             </div>
           </AccordionTrigger>
           <AccordionContent>
@@ -88,13 +135,27 @@ export function PerfilAccordion() {
                   <Input
                     id="headline"
                     value={headline}
-                    onChange={(e) => setHeadline(e.target.value)}
-                    maxLength={150}
+                    onChange={(e) => {
+                      setHeadline(e.target.value);
+                      setDataSections((prev) => ({
+                        ...prev,
+                        profile: {
+                          type: 'profile',
+                          texts: [
+                            {
+                              order: 1,
+                              text: e.target.value
+                            }
+                          ]
+                        },
+                      }));
+                    }}
+                    maxLength={22}
                     placeholder="Escreva"
                     className="bg-gray-800 border-gray-600 text-white"
                   />
                   <div className="text-xs text-gray-400 text-right">
-                    {headline.length}/150
+                    {headline.length}/22
                   </div>
                 </div>
               </div>
@@ -102,6 +163,7 @@ export function PerfilAccordion() {
               <Button 
                 className="w-full bg-transparent border border-gray-100 text-brand-blue-50 hover:bg-transparent font-secondary" 
                 size="lg"
+                onClick={handleSubmitSave}
               >
                 <Save className="w-4 h-4" />
                 Salvar
