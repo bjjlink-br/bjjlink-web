@@ -9,6 +9,7 @@ export type Section = {
     type: SectionsTypes
     texts?: TextsSection[];
     image?: File | null;
+    imagesGallery?: File[] | null;
 };
 
 export type SectionBodyAPI = {

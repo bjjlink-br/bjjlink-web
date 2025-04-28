@@ -12,7 +12,7 @@ const defaultDataSections: DataSections = {
   profile: { type: 'profile', image: null },
   biography: { type: 'biography', texts: [] },
   social_media: { type: 'social_media', texts: [] },
-  gallery: { type: 'gallery', texts: [] },
+  gallery: { type: 'gallery', imagesGallery: null },
 };
 
 const DataSectionsContext = createContext<DataSectionsContextType | undefined>(undefined);

@@ -101,7 +101,7 @@ export function UploadImage({
                       width={46} 
                       height={46} 
                     />
-                    <span className="text-sm text-brand-blue-100 truncate">{file.name}</span>
+                    <span className="text-sm text-brand-blue-100 truncate">Imagem {index+1}</span>
                   </div>
                   <Button
                     variant="ghost"

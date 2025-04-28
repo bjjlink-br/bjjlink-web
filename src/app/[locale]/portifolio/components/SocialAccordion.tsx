@@ -1,6 +1,6 @@
 "use client"
 
-import { Pencil, Save, Smartphone, Trash2 } from 'lucide-react'
+import { Save, Smartphone } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import {
   Accordion,
@@ -11,15 +11,61 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+import { toast } from '@/hooks/use-toast'
+import { useDataSections } from '@/contexts/DataSectionsContext'
+import { AUTH_STORAGE_KEY } from '@/contexts/AuthContext'
+import { saveSectionPortifolioWIthouFormData } from '@/services/portifolio.service'
 
 export function SocialAccordion() {
     const t = useTranslations("create-portifolio");
+    const locale = useLocale()
     const [socialUrls, setSocialUrls] = useState({
         facebook: '',
         instagram: '',
         x: ''
     })
+    const { dataSections ,setDataSections } = useDataSections();
+
+    const updateBiographyText = (order: number, text: string) => {
+        setDataSections((prev) => {
+        const existingTexts = prev.social_media.texts || [];
+    
+        const updatedTexts = existingTexts.some((tx) => tx.order === order)
+            ? existingTexts.map((tx) =>
+                tx.order === order ? { ...tx, text } : tx
+            )
+            : [...existingTexts, { order, text }];
+    
+        return {
+            ...prev,
+            social_media: {
+            type: 'social_media',
+            texts: updatedTexts,
+            },
+        };
+        });
+    };
+
+
+  const handleSave = async () => {
+    const token = localStorage.getItem(AUTH_STORAGE_KEY);
+    const tokenObj = JSON.parse(token!);
+
+    if(dataSections.biography.texts) {
+      const response = await saveSectionPortifolioWIthouFormData(tokenObj.acess_token as string, locale, {
+        type: 'social_media',
+        texts: dataSections.social_media.texts
+      });
+  
+      console.log(response)
+  
+      toast({
+        title: `${t("steps.profile.toast-upload-success")}`,
+        duration: 3000,
+      });
+    }
+  }
 
     return (
         <div className="w-full max-w-[575px] space-y-4 bg-gray-900 text-white rounded-lg overflow-hidden">
@@ -36,7 +82,7 @@ export function SocialAccordion() {
                                     <p className='text-gray-200 text-sm font-secondary'>{t("steps.social.subtitle")}</p>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-3 mr-2">
+                            {/* <div className="flex items-center gap-3 mr-2">
                                 <Button 
                                 variant="ghost" 
                                 size="icon" 
@@ -47,7 +93,7 @@ export function SocialAccordion() {
                                 <Button variant="ghost" size="icon" className="bg-semantic-red-500/5 text-semantic-red-500 hover:bg-semantic-red-500/5 hover:text-semantic-red-500">
                                     <Trash2 className="w-4 h-4" />
                                 </Button>
-                            </div>
+                            </div> */}
                         </div>
                     </AccordionTrigger>
                     <AccordionContent>
@@ -62,7 +108,10 @@ export function SocialAccordion() {
                                         <Input
                                             id="facebookURL"
                                             value={socialUrls.facebook}
-                                            onChange={(e) => setSocialUrls({...socialUrls, facebook: e.target.value})}
+                                            onChange={(e) => {
+                                                setSocialUrls({...socialUrls, facebook: e.target.value})
+                                                updateBiographyText(1, e.target.value)
+                                            }}
                                             placeholder="Colocar link"
                                             className="bg-gray-800 border-gray-600 text-white rounded-l-none"
                                         />
@@ -79,7 +128,10 @@ export function SocialAccordion() {
                                         <Input
                                             id="instagramURL"
                                             value={socialUrls.facebook}
-                                            onChange={(e) => setSocialUrls({...socialUrls, instagram: e.target.value})}
+                                            onChange={(e) => {
+                                                setSocialUrls({...socialUrls, instagram: e.target.value})
+                                                updateBiographyText(2, e.target.value)
+                                            }}
                                             placeholder="Colocar link"
                                             className="bg-gray-800 border-gray-600 text-white rounded-l-none"
                                         />
@@ -96,7 +148,10 @@ export function SocialAccordion() {
                                         <Input
                                             id="xURL"
                                             value={socialUrls.x}
-                                            onChange={(e) => setSocialUrls({...socialUrls, x: e.target.value})}
+                                            onChange={(e) => {
+                                                setSocialUrls({...socialUrls, x: e.target.value})
+                                                updateBiographyText(3, e.target.value)
+                                            }}
                                             placeholder="Colocar link"
                                             className="bg-gray-800 border-gray-600 text-white rounded-l-none"
                                         />
@@ -107,6 +162,7 @@ export function SocialAccordion() {
                             <Button 
                                 className="w-full bg-transparent border border-gray-100 text-brand-blue-50 hover:bg-transparent font-secondary" 
                                 size="lg"
+                                onClick={handleSave}
                             >
                                 <Save className="w-4 h-4" />
                                 Salvar

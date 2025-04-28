@@ -2,19 +2,36 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { ChevronLeft, ChevronRight, Facebook, Instagram, Twitter } from "lucide-react";
 import { useDataSections } from "@/contexts/DataSectionsContext";
+import { useRef } from "react";
 
 export const PreviewPortifolio = () => {
   const { dataSections } = useDataSections();
 
-  const exampleImage = 'https://i.ibb.co/gFg9NLy1/young-woman-doing-karate.jpg'
+  const exampleImage = 'https://i.ibb.co/gFg9NLy1/young-woman-doing-karate.jpg';
+  const exampleImage2 = "https://i.ibb.co/SDV9sVSf/black-belt-athlete-practicing-jujitsu-with-determination-generative-ai.jpg"
+  const examplegallery = [exampleImage, exampleImage2, exampleImage2, exampleImage]
 
   const handleGoTo = (route: string | null) => {
     if(route) {
       window.open(`${route}`, '_blank', 'noopener,noreferrer');
     }
   }
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const scrollAmount = 100; // você pode ajustar a distância do scroll
+    if (direction === "left") {
+      scrollRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    } else {
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  const images = dataSections.gallery.imagesGallery || examplegallery;
 
   return (
       <div className="relative w-[320px] h-[650px] bg-black rounded-[50px] overflow-hidden shadow-xl border-8 border-gray-800">
@@ -71,7 +88,7 @@ export const PreviewPortifolio = () => {
                       <div className="flex gap-4">
                         <Facebook className="w-4 h-4 text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" />
                         <Instagram className="w-4 h-4 text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" />
-                        <Linkedin className="w-4 h-4 text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" />
+                        {/* <Linkedin className="w-4 h-4 text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" /> */}
                         <Twitter className="w-4 h-4 text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" />
                       </div>
                     </div>
@@ -80,41 +97,34 @@ export const PreviewPortifolio = () => {
                       <div className="flex justify-between items-center">
                         <h3 className="font-semibold text-sm">Sobre o meu trabalho</h3>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-6 w-6 p-0">
+                          <Button variant="ghost" size="icon" className="h-6 w-6 p-0" onClick={() => handleScroll("left")}>
                             <ChevronLeft className="h-3 w-3" />
                           </Button>
-                          <Button variant="ghost" size="icon" className="h-6 w-6 p-0">
+                          <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            className="h-6 w-6 p-0 disabled:cursor-not-allowed" 
+                            disabled={images.length <= 3} 
+                            onClick={() => handleScroll("right")}
+                          >
                             <ChevronRight className="h-3 w-3" />
                           </Button>
                         </div>
                       </div>
-                      <div className="grid grid-cols-3 gap-1">
-                        {/*
-                          Url de galeria default
-                            https://i.ibb.co/SDV9sVSf/black-belt-athlete-practicing-jujitsu-with-determination-generative-ai.jpg
-                            https://i.ibb.co/gFg9NLy1/young-woman-doing-karate.jpg
-                        */}
-                        <Image
-                          src="https://github.com/gabriellennon.png"
-                          alt="Work sample 1"
-                          width={80}
-                          height={80}
-                          className="rounded-lg object-cover w-full h-20"
-                        />
-                        <Image
-                          src="https://github.com/gabriellennon.png"
-                          alt="Work sample 2"
-                          width={80}
-                          height={80}
-                          className="rounded-lg object-cover w-full h-20"
-                        />
-                        <Image
-                          src="https://github.com/gabriellennon.png"
-                          alt="Work sample 3"
-                          width={80}
-                          height={80}
-                          className="rounded-lg object-cover w-full h-20"
-                        />
+                      <div
+                        ref={scrollRef}
+                        className="flex gap-2 overflow-x-auto scrollbar-hide"
+                      >
+                        {images.map((image: any, index: number) => (
+                          <Image
+                            key={`${index}-${image}`}
+                            src={dataSections.gallery.imagesGallery ? URL.createObjectURL(image) : image}
+                            alt="Exemplo de imagem de portifólio"
+                            width={80}
+                            height={80}
+                            className="rounded-lg object-cover h-20 flex-shrink-0"
+                          />
+                        ))}
                       </div>
                     </div>
                   </CardContent>
