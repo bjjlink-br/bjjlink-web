@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useTranslations } from "next-intl"
+import { useDataSections } from "@/contexts/DataSectionsContext"
 
 interface UploadImageProps {
   className?: string
@@ -23,6 +24,7 @@ export function UploadSingleImage({
 }: UploadImageProps) {
   const t = useTranslations("create-portifolio");
   const [error, setError] = React.useState<string | null>(null)
+  const { setDataSections } = useDataSections();
   const [uploadedFile, setUploadedFile] = React.useState<{
     file: File,
     preview: string,
@@ -48,6 +50,8 @@ export function UploadSingleImage({
         name: file.name
       }
 
+      console.log(newFile)
+
       setUploadedFile(newFile)
 
       if (onImageUpload) {
@@ -63,6 +67,13 @@ export function UploadSingleImage({
       setUploadedFile(null)
       if (onImageUpload) {
         onImageUpload(null)
+        setDataSections((prev) => ({
+          ...prev,
+          gallery: {
+              type: 'profile',
+              image: null 
+          },
+        }));
       }
     }
   }

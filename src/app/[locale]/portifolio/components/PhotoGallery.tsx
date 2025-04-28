@@ -102,6 +102,7 @@ export const PhotoGallery = () => {
                                     className='border-dashed border-2 border-brand-blue-600 bg-brand-blue-600/15 cursor-pointer' 
                                     maxSize={5} 
                                     onImageUpload={handleImageUpload}
+                                    sectionUpload="gallery"
                                 />
                             </div>
 

@@ -9,25 +9,53 @@ import { cn } from "@/lib/utils"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useTranslations } from "next-intl"
+import { useDataSections } from "@/contexts/DataSectionsContext"
 
 interface UploadImageProps {
   className?: string
   maxSize?: number // in MB
   onImageUpload?: (files: File[]) => void 
+  sectionUpload: "gallery" | "profile"
 }
 
 export function UploadImage({
   className,
   maxSize = 5, // Default max size is 5MB
   onImageUpload,
+  sectionUpload = "profile"
 }: UploadImageProps) {
   const t = useTranslations("create-portifolio");
   const [error, setError] = React.useState<string | null>(null)
+  const { setDataSections } = useDataSections();
   const [uploadedFiles, setUploadedFiles] = React.useState<Array<{
     file: File,
     preview: string,
     name: string
   }>>([])
+
+  const removePhotodsFromContext = () => {
+    switch (sectionUpload) {
+      case "gallery":
+        setDataSections((prev) => ({
+          ...prev,
+          gallery: {
+              type: 'gallery',
+              imagesGallery: null
+          },
+        }));
+        break;
+    
+      default:
+        setDataSections((prev) => ({
+          ...prev,
+          gallery: {
+              type: 'profile',
+              image: null 
+          },
+        }));
+        break;
+    }
+  }
 
   const onDrop = React.useCallback(
     (acceptedFiles: File[]) => {
@@ -63,6 +91,7 @@ export function UploadImage({
       newFiles.splice(index, 1)
       return newFiles
     })
+    removePhotodsFromContext();
   }
 
   // Modificar o useDropzone para aceitar múltiplos arquivos

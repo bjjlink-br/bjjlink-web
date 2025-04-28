@@ -25,6 +25,7 @@ export function PerfilAccordion() {
   const locale = useLocale()
   const router = useRouter()
   const { dataSections ,setDataSections } = useDataSections();
+  const [loading, setLoading] = useState(false);
 
   const [headline, setHeadline] = useState("")
 
@@ -54,6 +55,8 @@ export function PerfilAccordion() {
   }
 
   const handleSubmitSave = async () => {
+    console.log('entrou')
+    setLoading(true)
     const token = localStorage.getItem(AUTH_STORAGE_KEY);
     const tokenObj = JSON.parse(token!)
 
@@ -71,16 +74,21 @@ export function PerfilAccordion() {
       ]))
 
       
-      const response = await saveSectionPortifolio(tokenObj.acess_token as string, locale, formData);
-  
-      console.log(response)
-  
-  
-  
-      toast({
-        title: `${t("steps.profile.toast-upload-success")}`,
-        duration: 3000,
+      await saveSectionPortifolio(tokenObj.acess_token as string, locale, formData)
+      .then(response => {
+        console.log(response)
+        toast({
+          title: `${t("steps.profile.toast-upload-success")}`,
+          duration: 3000,
+        });
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      .finally(() => {
+        setLoading(false);
       });
+  
     }
   }
 
@@ -161,8 +169,9 @@ export function PerfilAccordion() {
               </div>
 
               <Button 
-                className="w-full bg-transparent border border-gray-100 text-brand-blue-50 hover:bg-transparent font-secondary" 
+                className="w-full bg-transparent border border-gray-100 text-brand-blue-50 hover:bg-transparent font-secondary disabled:cursor-not-allowed" 
                 size="lg"
+                disabled={loading || !headline.length}
                 onClick={handleSubmitSave}
               >
                 <Save className="w-4 h-4" />

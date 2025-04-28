@@ -44,7 +44,8 @@ export const PreviewPortifolio = () => {
                   <CardContent className="p-4 space-y-4">
                     <div className="flex items-center gap-3">
                       <Image
-                        src={dataSections.profile.image ? `${dataSections.profile.image}` : exampleImage}
+                        key={dataSections.profile.image ? `${dataSections.profile.image}` : exampleImage}
+                        src={dataSections.profile.image ? URL.createObjectURL(dataSections.profile.image) : exampleImage} 
                         alt="Profile"
                         width={40}
                         height={40}
