@@ -55,7 +55,6 @@ export function PerfilAccordion() {
   }
 
   const handleSubmitSave = async () => {
-    console.log('entrou')
     setLoading(true)
     const token = localStorage.getItem(AUTH_STORAGE_KEY);
     const tokenObj = JSON.parse(token!)
@@ -149,6 +148,7 @@ export function PerfilAccordion() {
                         ...prev,
                         profile: {
                           type: 'profile',
+                          image: prev.profile.image,
                           texts: [
                             {
                               order: 1,
