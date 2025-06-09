@@ -144,6 +144,7 @@
                 "upload-title": "Add your photo",
                 "upload-description": "Drag and drop your image here or select it.",
                 "toast-upload-success": "Image uploaded successfully!",
+                "toast-success": "Content saved successfully!",
                 "toast-upload-error": "Image upload failed."
             },
             "social": {

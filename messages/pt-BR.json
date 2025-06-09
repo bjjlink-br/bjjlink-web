@@ -145,6 +145,7 @@
                 "upload-title": "Adicionar sua foto",
                 "upload-description": "Arraste e solte sua imagem aqui ou selecione ela.",
                 "toast-upload-success": "Imagem enviada com sucesso!",
+                "toast-success": "Conteúdo salvo sucesso!",
                 "toast-upload-error": "Falha ao enviar imagem."
             },
             "social": {

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useDropzone } from "react-dropzone"
-import { Plus, Trash2 } from "lucide-react"
+import { FilePlus, Plus, Trash2 } from "lucide-react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
@@ -15,14 +15,14 @@ interface UploadImageProps {
   className?: string
   maxSize?: number // in MB
   onImageUpload?: (files: File[]) => void 
-  sectionUpload: "gallery" | "profile"
+  sectionUpload: "GALLERY" | "PROFILE"
 }
 
 export function UploadImage({
   className,
   maxSize = 5, // Default max size is 5MB
   onImageUpload,
-  sectionUpload = "profile"
+  sectionUpload = "PROFILE"
 }: UploadImageProps) {
   const t = useTranslations("create-portifolio");
   const [error, setError] = React.useState<string | null>(null)
@@ -33,29 +33,26 @@ export function UploadImage({
     name: string
   }>>([])
 
-  const removePhotodsFromContext = () => {
-    switch (sectionUpload) {
-      case "gallery":
-        setDataSections((prev) => ({
-          ...prev,
-          gallery: {
-              type: 'gallery',
-              imagesGallery: null
-          },
-        }));
-        break;
-    
-      default:
-        setDataSections((prev) => ({
-          ...prev,
-          gallery: {
-              type: 'profile',
-              image: null 
-          },
-        }));
-        break;
+  React.useEffect(() => {
+    if (sectionUpload === "GALLERY") {
+      setDataSections(prev => ({
+        ...prev,
+        gallery: {
+          type: 'GALLERY',
+          imagesGallery: uploadedFiles.map(f => f.file)
+        }
+      }));
+    } else {
+      setDataSections(prev => ({
+        ...prev,
+        gallery: {
+          type: 'PROFILE',
+          image: uploadedFiles[0]?.file || null
+        }
+      }));
     }
-  }
+  }, [uploadedFiles, sectionUpload, setDataSections]);
+
 
   const onDrop = React.useCallback(
     (acceptedFiles: File[]) => {
@@ -78,10 +75,11 @@ export function UploadImage({
       setUploadedFiles(prev => [...prev, ...newFiles])
 
       if (onImageUpload) {
-        onImageUpload(validFiles)
+        // onImageUpload(validFiles)
+        onImageUpload([...uploadedFiles.map(f => f.file), ...validFiles])
       }
     },
-    [maxSize, onImageUpload],
+    [maxSize, onImageUpload, uploadedFiles],
   )
 
   const removeImage = (index: number) => {
@@ -91,8 +89,14 @@ export function UploadImage({
       newFiles.splice(index, 1)
       return newFiles
     })
-    removePhotodsFromContext();
   }
+
+   // Limpar objetos URL quando o componente desmontar
+   React.useEffect(() => {
+    return () => {
+      uploadedFiles.forEach(file => URL.revokeObjectURL(file.preview))
+    }
+  }, [uploadedFiles])
 
   // Modificar o useDropzone para aceitar múltiplos arquivos
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -129,8 +133,11 @@ export function UploadImage({
                       className="object-contain rounded-md" 
                       width={46} 
                       height={46} 
+                      onLoad={() => URL.revokeObjectURL(file.preview)}
                     />
-                    <span className="text-sm text-brand-blue-100 truncate">Imagem {index+1}</span>
+                    <span className="text-sm text-brand-blue-100 truncate">
+                      {sectionUpload === "GALLERY" ? `Imagem ${index+1}` : "Imagem de perfil"}
+                    </span>
                   </div>
                   <Button
                     variant="ghost"
@@ -146,6 +153,12 @@ export function UploadImage({
                 </div>
               </div>
             ))}
+            {sectionUpload === "GALLERY" && (
+              <div className="flex items-center gap-2 mt-4 justify-center">
+                <FilePlus className="w-3 h-3 text-white" />
+                <p className="text-white">Adicionar mais fotos</p>
+              </div>
+            )}
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center gap-4">

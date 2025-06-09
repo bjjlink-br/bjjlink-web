@@ -19,6 +19,8 @@ import { useDataSections } from '@/contexts/DataSectionsContext'
 import { AUTH_STORAGE_KEY } from '@/contexts/AuthContext'
 import { saveSectionPortifolio } from '@/services/portifolio.service'
 import { useRouter } from 'next/navigation'
+import { KEYS_STORAGE } from '@/utils/constants'
+import { DataSections } from '@/utils/dataSections'
 
 export function PerfilAccordion() {
   const t = useTranslations("create-portifolio");
@@ -34,7 +36,7 @@ export function PerfilAccordion() {
       setDataSections((prev) => ({
         ...prev,
         profile: {
-          type: 'profile',
+          type: 'PROFILE',
           image: file,
           texts: [
             {
@@ -75,7 +77,23 @@ export function PerfilAccordion() {
       
       await saveSectionPortifolio(tokenObj.acess_token as string, locale, formData)
       .then(response => {
-        console.log(response)
+
+        const updated = {
+          ...dataSections,
+          profile: {
+            type: 'PROFILE',
+            image: response.images[0].url,
+            texts: [
+              {
+                order: 1,
+                text: response.texts[0].text
+              }
+            ]
+          }
+        };
+
+        localStorage.setItem(KEYS_STORAGE.sections, JSON.stringify(updated));
+
         toast({
           title: `${t("steps.profile.toast-upload-success")}`,
           duration: 3000,
@@ -96,7 +114,14 @@ export function PerfilAccordion() {
     if(!token){
       router.push(`/${locale}/login`);
     }
-  },[locale, router])
+
+    const stored = localStorage.getItem(KEYS_STORAGE.sections);
+    if (stored) {
+      const parsed: DataSections = JSON.parse(stored);
+      setHeadline(parsed.profile.texts?.[0]?.text || "");
+      setDataSections(parsed);
+    }
+  },[locale, router, setDataSections])
 
   return (
     <div className="w-full max-w-[575px] space-y-4 bg-gray-900 text-white rounded-lg overflow-hidden">
@@ -131,7 +156,6 @@ export function PerfilAccordion() {
             <div className="p-4 space-y-6">
               <div className="space-y-4">
                 <h2 className="text-lg font-medium">{t("steps.profile.description")}</h2>
-                {/* <Upload /> */}
                 <UploadSingleImage  
                   className='border-dashed border-2 border-brand-blue-600 bg-brand-blue-600/15 cursor-pointer' 
                   maxSize={5} 
@@ -147,7 +171,7 @@ export function PerfilAccordion() {
                       setDataSections((prev) => ({
                         ...prev,
                         profile: {
-                          type: 'profile',
+                          type: 'PROFILE',
                           image: prev.profile.image,
                           texts: [
                             {

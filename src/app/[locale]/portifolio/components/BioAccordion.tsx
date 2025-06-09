@@ -16,31 +16,42 @@ import { useLocale, useTranslations } from 'next-intl'
 import { useDataSections } from '@/contexts/DataSectionsContext'
 import { AUTH_STORAGE_KEY } from '@/contexts/AuthContext'
 import { saveSectionPortifolioWIthouFormData } from '@/services/portifolio.service'
+import { KEYS_STORAGE } from '@/utils/constants'
+import { useState } from 'react'
 
 export function BioAccordion() {
   const t = useTranslations("create-portifolio");
   const locale = useLocale()
   const { dataSections ,setDataSections } = useDataSections();
+  const [loading, setLoading] = useState(false);
 
   const updateBiographyText = (order: number, text: string) => {
     setDataSections((prev) => {
       const existingTexts = prev.biography.texts || [];
   
-      const updatedTexts = existingTexts.some((tx) => tx.order === order)
-        ? existingTexts.map((tx) =>
-            tx.order === order ? { ...tx, text } : tx
-          )
-        : [...existingTexts, { order, text }];
+      // Garante que todos os 4 campos estejam preenchidos, mesmo que seja com texto vazio
+      const orders = [1, 2, 3, 4];
+      const filledTexts = orders.map((ord) => {
+        if (ord === order) {
+          return { order: ord, text }; // atualiza o que está sendo alterado agora
+        }
+  
+        const existing = existingTexts.find((t) => t.order === ord);
+        return { order: ord, text: existing?.text || "" }; // mantém valor anterior ou vazio
+      });
   
       return {
         ...prev,
         biography: {
-          type: 'biography',
-          texts: updatedTexts,
+          type: "BIOGRAPHY",
+          texts: filledTexts,
         },
       };
     });
   };
+
+  // Função auxiliar para pegar o texto pelo order
+  const getBiographyText = (order: number) => dataSections.biography.texts?.find((tx) => tx.order === order)?.text || '';
   
 
   const handleSave = async () => {
@@ -48,16 +59,34 @@ export function BioAccordion() {
     const tokenObj = JSON.parse(token!);
 
     if(dataSections.biography.texts) {
-      const response = await saveSectionPortifolioWIthouFormData(tokenObj.acess_token as string, locale, {
-        type: 'biography',
+      await saveSectionPortifolioWIthouFormData(tokenObj.acess_token as string, locale, {
+        type: 'BIOGRAPHY',
         texts: dataSections.biography.texts
-      });
-  
-      console.log(response)
-  
-      toast({
-        title: `${t("steps.profile.toast-upload-success")}`,
-        duration: 3000,
+      }).then(response => {
+        const updated = {
+          ...dataSections,
+          profile: {
+            type: 'BIOGRAPHY',
+            image: response.images[0].url,
+            texts: [
+              {
+                order: 1,
+                text: response.texts[0].text
+              }
+            ]
+          }
+        };
+
+        localStorage.setItem(KEYS_STORAGE.sections, JSON.stringify(updated));
+
+        toast({
+          title: `${t("steps.profile.toast-success")}`,
+          duration: 3000,
+        });
+      }).catch(error => {
+        console.log(error)
+      }).finally(() => {
+        setLoading(false);
       });
     }
   }
@@ -99,28 +128,28 @@ export function BioAccordion() {
                   <Label htmlFor="headline" className='text-gray-200 font-secondary text-sm'>Título em destaque</Label>
                   <Input
                     id="headline"
-                    value={dataSections.biography.texts?.[0]?.text || ''}
+                    value={getBiographyText(1)}
                     onChange={(e) => updateBiographyText(1, e.target.value)}
                     maxLength={150}
                     placeholder="Escreva"
                     className="bg-gray-800 border-gray-600 text-white"
                   />
                   <div className="text-xs text-gray-400 text-right">
-                    {dataSections.biography.texts?.[0]?.text || '0'}/150
+                    {dataSections.biography.texts?.[0]?.text.length || '0'}/150
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="supportingText" className='text-gray-200 font-secondary text-sm'>Texto de apoio</Label>
                   <Textarea
                     id="supportingText"
-                    value={dataSections.biography.texts?.[1]?.text || ''}
+                    value={getBiographyText(2)}
                     onChange={(e) => updateBiographyText(2, e.target.value)}
-                    maxLength={150}
+                    maxLength={200}
                     placeholder="Escreva"
                     className="bg-gray-800 border-gray-600 text-white min-h-[100px]"
                   />
                   <div className="text-xs text-gray-400 text-right">
-                    {dataSections.biography.texts?.[1]?.text || '0'}/150
+                    {dataSections.biography.texts?.[1]?.text.length || '0'}/200
                   </div>
                 </div>
               </div>
@@ -131,14 +160,14 @@ export function BioAccordion() {
                   <Label htmlFor="buttonName" className='text-gray-200 font-secondary text-sm'>Nome do botão</Label>
                   <Input
                     id="buttonName"
-                    value={dataSections.biography.texts?.[2]?.text || ''}
+                    value={getBiographyText(3)}
                     onChange={(e) => updateBiographyText(3, e.target.value)}
-                    maxLength={50}
-                    placeholder="Escreva o nome do botão"
+                    maxLength={20}
+                    placeholder="Vamos conversar"
                     className="bg-gray-800 border-gray-600 text-white"
                   />
                   <div className="text-xs text-gray-400 text-right">
-                    {dataSections.biography.texts?.[2]?.text || '0'}/50
+                    {dataSections.biography.texts?.[2]?.text.length || '0'}/20
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -149,7 +178,7 @@ export function BioAccordion() {
                     </div>
                     <Input
                       id="buttonUrl"
-                      value={dataSections.biography.texts?.[3]?.text || ''}
+                      value={getBiographyText(4)}
                       onChange={(e) => updateBiographyText(4, e.target.value)}
                       placeholder="Colocar link"
                       className="bg-gray-800 border-gray-600 text-white rounded-l-none"

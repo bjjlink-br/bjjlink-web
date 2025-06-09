@@ -127,7 +127,7 @@ export function SocialAccordion() {
                                         </div>
                                         <Input
                                             id="instagramURL"
-                                            value={socialUrls.facebook}
+                                            value={socialUrls.instagram}
                                             onChange={(e) => {
                                                 setSocialUrls({...socialUrls, instagram: e.target.value})
                                                 updateBiographyText(2, e.target.value)

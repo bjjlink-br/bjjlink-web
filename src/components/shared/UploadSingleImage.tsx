@@ -3,7 +3,6 @@
 import * as React from "react"
 import { useDropzone } from "react-dropzone"
 import { Plus, Trash2 } from "lucide-react"
-import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 import { Card } from "@/components/ui/card"
@@ -70,7 +69,7 @@ export function UploadSingleImage({
         setDataSections((prev) => ({
           ...prev,
           gallery: {
-              type: 'profile',
+              type: 'PROFILE',
               image: null 
           },
         }));
@@ -105,12 +104,10 @@ export function UploadSingleImage({
             <div className="relative w-full">
               <div className="flex flex-row items-center justify-between bg-slate-900 p-2 rounded">
                 <div className="flex items-center gap-2">
-                  <Image 
+                  <img 
                     src={uploadedFile.preview} 
                     alt={uploadedFile.name} 
-                    className="object-contain rounded-md" 
-                    width={46} 
-                    height={46} 
+                    className="object-contain rounded-md h-[46px] w-[46px]" 
                   />
                   <span className="text-sm text-brand-blue-100 truncate">{uploadedFile.name}</span>
                 </div>

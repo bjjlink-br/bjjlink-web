@@ -3,7 +3,7 @@ export type TextsSection = {
     order: number;
 };
 
-export type SectionsTypes = "profile" | "biography" | "social_media" | "gallery";
+export type SectionsTypes = "PROFILE" | "BIOGRAPHY" | "SOCIAL_MEDIA" | "GALLERY";
 
 export type Section = {
     type: SectionsTypes

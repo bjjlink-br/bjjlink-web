@@ -9,10 +9,10 @@ type DataSectionsContextType = {
 };
 
 const defaultDataSections: DataSections = {
-  profile: { type: 'profile', image: null },
-  biography: { type: 'biography', texts: [] },
-  social_media: { type: 'social_media', texts: [] },
-  gallery: { type: 'gallery', imagesGallery: null },
+  profile: { type: 'PROFILE', image: null },
+  biography: { type: 'BIOGRAPHY', texts: [] },
+  social_media: { type: 'SOCIAL_MEDIA', texts: [] },
+  gallery: { type: 'GALLERY', imagesGallery: null },
 };
 
 const DataSectionsContext = createContext<DataSectionsContextType | undefined>(undefined);
