@@ -17,7 +17,8 @@ import { useDataSections } from '@/contexts/DataSectionsContext'
 import { AUTH_STORAGE_KEY } from '@/contexts/AuthContext'
 import { saveSectionPortifolioWIthouFormData } from '@/services/portifolio.service'
 import { KEYS_STORAGE } from '@/utils/constants'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { DataSections } from '@/utils/dataSections'
 
 export function BioAccordion() {
   const t = useTranslations("create-portifolio");
@@ -55,6 +56,7 @@ export function BioAccordion() {
   
 
   const handleSave = async () => {
+    setLoading(true);
     const token = localStorage.getItem(AUTH_STORAGE_KEY);
     const tokenObj = JSON.parse(token!);
 
@@ -62,18 +64,12 @@ export function BioAccordion() {
       await saveSectionPortifolioWIthouFormData(tokenObj.acess_token as string, locale, {
         type: 'BIOGRAPHY',
         texts: dataSections.biography.texts
-      }).then(response => {
+      }).then(() => {
         const updated = {
           ...dataSections,
-          profile: {
+          biography: {
             type: 'BIOGRAPHY',
-            image: response.images[0].url,
-            texts: [
-              {
-                order: 1,
-                text: response.texts[0].text
-              }
-            ]
+            texts: dataSections.biography.texts
           }
         };
 
@@ -90,6 +86,14 @@ export function BioAccordion() {
       });
     }
   }
+
+  useEffect(() => {
+    const stored = localStorage.getItem(KEYS_STORAGE.sections);
+    if (stored) {
+      const parsed: DataSections = JSON.parse(stored);
+      setDataSections(parsed);
+    }
+  },[locale, setDataSections])
 
   return (
     <div className="w-full max-w-[575px] space-y-4 bg-gray-900 text-white rounded-lg overflow-hidden">
@@ -191,9 +195,10 @@ export function BioAccordion() {
                 className="w-full bg-transparent border border-gray-100 text-brand-blue-50 hover:bg-transparent font-secondary" 
                 size="lg"
                 onClick={handleSave}
+                disabled={loading}
               >
                 <Save className="w-4 h-4" />
-                Salvar
+                {loading ? 'Carregando...' : 'Salvar'}
               </Button>
             </div>
           </AccordionContent>

@@ -118,6 +118,7 @@ export function PerfilAccordion() {
     const stored = localStorage.getItem(KEYS_STORAGE.sections);
     if (stored) {
       const parsed: DataSections = JSON.parse(stored);
+
       setHeadline(parsed.profile.texts?.[0]?.text || "");
       setDataSections(parsed);
     }

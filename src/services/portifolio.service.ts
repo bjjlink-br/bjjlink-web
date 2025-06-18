@@ -13,6 +13,7 @@ export const saveSectionPortifolio = async (token: string, locale: string, secti
 };
 
 export const saveSectionPortifolioWIthouFormData = async (token: string, locale: string, section: Section) => {
+    console.log(section)
     const response = await api.post('/portifolio/components', section, {
         headers: {
             Authorization: `Bearer ${token}`,

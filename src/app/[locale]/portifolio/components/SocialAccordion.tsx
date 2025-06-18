@@ -10,12 +10,14 @@ import {
 } from "@/components/ui/accordion"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { toast } from '@/hooks/use-toast'
 import { useDataSections } from '@/contexts/DataSectionsContext'
 import { AUTH_STORAGE_KEY } from '@/contexts/AuthContext'
 import { saveSectionPortifolioWIthouFormData } from '@/services/portifolio.service'
+import { KEYS_STORAGE } from '@/utils/constants'
+import { DataSections } from '@/utils/dataSections'
 
 export function SocialAccordion() {
     const t = useTranslations("create-portifolio");
@@ -54,18 +56,40 @@ export function SocialAccordion() {
 
     if(dataSections.biography.texts) {
       const response = await saveSectionPortifolioWIthouFormData(tokenObj.acess_token as string, locale, {
-        type: 'social_media',
+        type: 'SOCIAL_MEDIA',
         texts: dataSections.social_media.texts
       });
   
       console.log(response)
-  
+      const updated = {
+        ...dataSections,
+        social_media: {
+          type: 'SOCIAL_MEDIA',
+          texts: dataSections.social_media.texts
+        }
+      };
+      
+      localStorage.setItem(KEYS_STORAGE.sections, JSON.stringify(updated));
+
       toast({
         title: `${t("steps.profile.toast-upload-success")}`,
         duration: 3000,
       });
     }
   }
+
+  useEffect(() => {
+    const stored = localStorage.getItem(KEYS_STORAGE.sections);
+    if (stored) {
+      const parsed: DataSections = JSON.parse(stored);
+      setDataSections(parsed);
+      setSocialUrls({
+        facebook: parsed.social_media.texts?.find(tx => tx.order === 1)?.text || '',
+        instagram: parsed.social_media.texts?.find(tx => tx.order === 2)?.text || '',
+        x: parsed.social_media.texts?.find(tx => tx.order === 3)?.text || ''
+      })
+    }
+  },[locale, setDataSections])
 
     return (
         <div className="w-full max-w-[575px] space-y-4 bg-gray-900 text-white rounded-lg overflow-hidden">

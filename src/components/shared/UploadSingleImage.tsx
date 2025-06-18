@@ -23,7 +23,7 @@ export function UploadSingleImage({
 }: UploadImageProps) {
   const t = useTranslations("create-portifolio");
   const [error, setError] = React.useState<string | null>(null)
-  const { setDataSections } = useDataSections();
+  const { setDataSections, dataSections } = useDataSections();
   const [uploadedFile, setUploadedFile] = React.useState<{
     file: File,
     preview: string,
@@ -48,8 +48,6 @@ export function UploadSingleImage({
         preview: URL.createObjectURL(file),
         name: file.name
       }
-
-      console.log(newFile)
 
       setUploadedFile(newFile)
 
@@ -84,6 +82,18 @@ export function UploadSingleImage({
     },
     multiple: false, // Agora só aceita uma única imagem
   })
+
+  React.useEffect(() => {
+    const profileImage = dataSections.profile?.image
+  
+    if (profileImage && typeof profileImage === 'string') {
+      setUploadedFile({
+        file: {} as File,
+        preview: profileImage,
+        name: (profileImage as string).split('/').pop() || "imagem-salva"
+      })
+    }
+  }, [])
 
   return (
     <Card className={cn("w-full max-w-md mx-auto", className)}>
