@@ -44,6 +44,10 @@ export const PreviewPortifolio = () => {
       return image;
     }
   
+    if (typeof image === 'object' && image.preview) {
+      return image.preview;
+    }
+  
     if (typeof image === 'object' && image.url) {
       return image.url;
     }

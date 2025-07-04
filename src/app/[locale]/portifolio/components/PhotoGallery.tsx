@@ -45,8 +45,10 @@ export const PhotoGallery = () => {
 
         if(dataSections.gallery.imagesGallery) {
             const formData = new FormData();
+            // ⚡ Filtra apenas arquivos novos (isRemote === false)
+            const newFiles = dataSections.gallery.imagesGallery?.filter((img: any) => !img.isRemote && img.file).map((img: any) => img.file) || [];
 
-            dataSections.gallery.imagesGallery.forEach((file) => {
+            newFiles.forEach((file: File) => {
                 formData.append('images', file);
             });
 
@@ -55,11 +57,26 @@ export const PhotoGallery = () => {
             
             const response = await saveSectionPortifolio(tokenObj.acess_token as string, locale, formData);
         
+            // Converte imagens retornadas pelo backend em GalleryImage[]
+            const newImages: any[] = response.images.map((img: any) => ({
+                name: img.filename,
+                preview: img.url,
+                isRemote: true
+            }));
+            
+            // Recupera imagens antigas já salvas (remotas)
+            const oldImages = (dataSections.gallery.imagesGallery || [])
+                .filter((img: any) => img.isRemote);
+            
+            // Junta as antigas com as novas
+            const mergedImages = [...oldImages, ...newImages];
+            
+            // Atualiza o localStorage
             const updated = {
                 ...dataSections,
                 gallery: {
-                  type: 'GALLERY',
-                  imagesGallery: response.images
+                    type: 'GALLERY',
+                    imagesGallery: mergedImages
                 }
             };
       
