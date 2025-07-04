@@ -32,9 +32,27 @@ export const PreviewPortifolio = () => {
   };
 
   // Função para obter a URL da imagem, tratando tanto File quanto string
-  const getImageUrl = (image: File | string | null): string => {
+  // const getImageUrl = (image: File | string | null): string => {
+  //   if (!image) return exampleImage;
+  //   return typeof image === 'string' ? image : URL.createObjectURL(image);
+  // };
+
+  const getImageUrl = (image: any): string => {
     if (!image) return exampleImage;
-    return typeof image === 'string' ? image : URL.createObjectURL(image);
+  
+    if (typeof image === 'string') {
+      return image;
+    }
+  
+    if (typeof image === 'object' && image.url) {
+      return image.url;
+    }
+  
+    if (image instanceof File) {
+      return URL.createObjectURL(image);
+    }
+  
+    return exampleImage;
   };
 
   // Obter imagens para a galeria de forma segura

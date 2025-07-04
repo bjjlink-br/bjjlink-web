@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { useDataSections } from "@/contexts/DataSectionsContext";
 import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext";
 import { saveSectionPortifolio } from "@/services/portifolio.service";
+import { KEYS_STORAGE } from "@/utils/constants";
 
 export const PhotoGallery = () => {
     const t = useTranslations("create-portifolio");
@@ -54,8 +55,15 @@ export const PhotoGallery = () => {
             
             const response = await saveSectionPortifolio(tokenObj.acess_token as string, locale, formData);
         
-            console.log(response)
-        
+            const updated = {
+                ...dataSections,
+                gallery: {
+                  type: 'GALLERY',
+                  imagesGallery: response.images
+                }
+            };
+      
+            localStorage.setItem(KEYS_STORAGE.sections, JSON.stringify(updated));
         
         
             toast({

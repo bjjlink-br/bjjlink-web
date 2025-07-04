@@ -10,19 +10,22 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useTranslations } from "next-intl"
 import { useDataSections } from "@/contexts/DataSectionsContext"
+import { KEYS_STORAGE } from "@/utils/constants"
 
 interface UploadImageProps {
   className?: string
   maxSize?: number // in MB
   onImageUpload?: (files: File[]) => void 
-  sectionUpload: "GALLERY" | "PROFILE"
+  sectionUpload: "GALLERY" | "PROFILE";
+  isRemote?: boolean;
 }
 
 export function UploadImage({
   className,
   maxSize = 5, // Default max size is 5MB
   onImageUpload,
-  sectionUpload = "PROFILE"
+  sectionUpload = "PROFILE",
+  isRemote
 }: UploadImageProps) {
   const t = useTranslations("create-portifolio");
   const [error, setError] = React.useState<string | null>(null)
@@ -34,22 +37,37 @@ export function UploadImage({
   }>>([])
 
   React.useEffect(() => {
-    if (sectionUpload === "GALLERY") {
-      setDataSections(prev => ({
-        ...prev,
-        gallery: {
-          type: 'GALLERY',
-          imagesGallery: uploadedFiles.map(f => f.file)
-        }
+    const sectionsString = localStorage.getItem(KEYS_STORAGE.sections);
+
+    if (sectionsString) {
+      const sections = JSON.parse(sectionsString);
+      const gallery = sections?.gallery?.imagesGallery || [];
+  
+      const remoteFiles = gallery.map((img: any) => ({
+        name: img.filename,
+        preview: img.url,
+        isRemote: true
       }));
+  
+      setUploadedFiles(remoteFiles);
     } else {
-      setDataSections(prev => ({
-        ...prev,
-        gallery: {
-          type: 'PROFILE',
-          image: uploadedFiles[0]?.file || null
-        }
-      }));
+      if (sectionUpload === "GALLERY") {
+        setDataSections(prev => ({
+          ...prev,
+          gallery: {
+            type: 'GALLERY',
+            imagesGallery: uploadedFiles.map(f => f.file)
+          }
+        }));
+      } else {
+        setDataSections(prev => ({
+          ...prev,
+          gallery: {
+            type: 'PROFILE',
+            image: uploadedFiles[0]?.file || null
+          }
+        }));
+      }
     }
   }, [uploadedFiles, sectionUpload, setDataSections]);
 
@@ -84,11 +102,23 @@ export function UploadImage({
 
   const removeImage = (index: number) => {
     setUploadedFiles(prev => {
-      const newFiles = [...prev]
-      URL.revokeObjectURL(newFiles[index].preview)
-      newFiles.splice(index, 1)
-      return newFiles
-    })
+      const newFiles = [...prev];
+      const removed = newFiles[index];
+  
+      if (!removed.isRemote) {
+        URL.revokeObjectURL(removed.preview);
+      }
+  
+      newFiles.splice(index, 1);
+      return newFiles;
+    });
+    
+    // setUploadedFiles(prev => {
+    //   const newFiles = [...prev]
+    //   URL.revokeObjectURL(newFiles[index].preview)
+    //   newFiles.splice(index, 1)
+    //   return newFiles
+    // })
   }
 
    // Limpar objetos URL quando o componente desmontar
