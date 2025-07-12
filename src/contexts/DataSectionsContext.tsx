@@ -8,7 +8,7 @@ type DataSectionsContextType = {
   setDataSections: React.Dispatch<React.SetStateAction<DataSections>>;
 };
 
-const defaultDataSections: DataSections = {
+export const defaultDataSections: DataSections = {
   profile: { type: 'PROFILE', image: null },
   biography: { type: 'BIOGRAPHY', texts: [] },
   social_media: { type: 'SOCIAL_MEDIA', texts: [] },

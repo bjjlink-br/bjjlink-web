@@ -153,13 +153,19 @@
                 "subtitle": "Fale sobre você",
                 "facebook": "Facebook",
                 "insta": "Instagram",
-                "x": "X (Twitter)"
+                "x": "X (Twitter)",
+                "toast-success": "Conteúdo salvo sucesso!"
             },
             "photo-gallery": {
                 "title": "Galeria",
                 "subtitle": "Fale sobre você",
                 "button-save": "Salvar",
                 "description": "Galeria de fotos"
+            }
+        },
+        "publish": {
+            "toast": {
+                "success": "Portfólio publicado com sucesso!"
             }
         }
     },

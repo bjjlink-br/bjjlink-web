@@ -1,6 +1,6 @@
 "use client"
 
-import { Save, Smartphone } from 'lucide-react'
+import { Loader, Save, Smartphone } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import {
   Accordion,
@@ -21,7 +21,8 @@ import { DataSections } from '@/utils/dataSections'
 
 export function SocialAccordion() {
     const t = useTranslations("create-portifolio");
-    const locale = useLocale()
+    const locale = useLocale();
+    const [loading, setLoading] = useState(false);
     const [socialUrls, setSocialUrls] = useState({
         facebook: '',
         instagram: '',
@@ -51,6 +52,7 @@ export function SocialAccordion() {
 
 
   const handleSave = async () => {
+    setLoading(true);
     const token = localStorage.getItem(AUTH_STORAGE_KEY);
     const tokenObj = JSON.parse(token!);
 
@@ -60,7 +62,6 @@ export function SocialAccordion() {
         texts: dataSections.social_media.texts
       });
   
-      console.log(response)
       const updated = {
         ...dataSections,
         social_media: {
@@ -72,10 +73,13 @@ export function SocialAccordion() {
       localStorage.setItem(KEYS_STORAGE.sections, JSON.stringify(updated));
 
       toast({
-        title: `${t("steps.profile.toast-upload-success")}`,
+        title: `${t("steps.social.toast-success")}`,
         duration: 3000,
       });
+      setLoading(false);
     }
+
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -187,9 +191,19 @@ export function SocialAccordion() {
                                 className="w-full bg-transparent border border-gray-100 text-brand-blue-50 hover:bg-transparent font-secondary" 
                                 size="lg"
                                 onClick={handleSave}
+                                disabled={loading}
                             >
-                                <Save className="w-4 h-4" />
-                                Salvar
+                                {loading? (
+                                    <>
+                                        <Loader className="w-4 h-4" />
+                                        Carregando...
+                                    </>
+                                    ) : (
+                                    <>
+                                        <Save className="w-4 h-4" />
+                                        Salvar
+                                    </>
+                                )}
                             </Button>
                         </div>
                     </AccordionContent>

@@ -93,7 +93,7 @@ export function UploadSingleImage({
         name: (profileImage as string).split('/').pop() || "imagem-salva"
       })
     }
-  }, [])
+  }, [dataSections])
 
   return (
     <Card className={cn("w-full max-w-md mx-auto", className)}>

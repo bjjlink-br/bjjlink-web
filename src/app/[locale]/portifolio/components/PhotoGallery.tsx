@@ -9,6 +9,8 @@ import { useDataSections } from "@/contexts/DataSectionsContext";
 import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext";
 import { saveSectionPortifolio } from "@/services/portifolio.service";
 import { KEYS_STORAGE } from "@/utils/constants";
+import { useEffect } from "react";
+import { DataSections } from "@/utils/dataSections";
 
 export const PhotoGallery = () => {
     const t = useTranslations("create-portifolio");
@@ -89,6 +91,14 @@ export const PhotoGallery = () => {
             });
         }
     }
+
+    useEffect(() => {
+        const stored = localStorage.getItem(KEYS_STORAGE.sections);
+        if (stored) {
+        const parsed: DataSections = JSON.parse(stored);
+            setDataSections(parsed);
+        }
+    },[setDataSections]);
 
     return (
         <div className="w-full max-w-[575px] space-y-4 bg-gray-900 text-white rounded-lg overflow-hidden">

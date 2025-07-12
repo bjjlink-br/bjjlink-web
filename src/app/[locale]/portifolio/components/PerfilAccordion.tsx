@@ -1,6 +1,6 @@
 "use client"
 
-import { CircleUserRound, Save } from 'lucide-react'
+import { CircleUserRound, Loader, Save } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import {
   Accordion,
@@ -199,8 +199,17 @@ export function PerfilAccordion() {
                 disabled={loading || !headline.length}
                 onClick={handleSubmitSave}
               >
-                <Save className="w-4 h-4" />
-                Salvar
+                {loading? (
+                  <>
+                    <Loader className="w-4 h-4" />
+                    Carregando...
+                  </>
+                ) : (
+                  <>
+                    <Save className="w-4 h-4" />
+                    Salvar
+                  </>
+                )}
               </Button>
             </div>
           </AccordionContent>

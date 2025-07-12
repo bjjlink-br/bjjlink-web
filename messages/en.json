@@ -152,13 +152,19 @@
                 "subtitle": "Tell us about yourself",
                 "facebook": "Facebook",
                 "insta": "Instagram",
-                "x": "X (Twitter)"
+                "x": "X (Twitter)",
+                "toast-success": "Content saved successfully!"
             },
             "photo-gallery": {
                 "title": "Gallery",
                 "subtitle": "Tell us about yourself",
                 "button-save": "Save",
                 "description": "Photo gallery"
+            }
+        },
+        "publish": {
+            "toast": {
+                "success": "Portfolio published successfully!"
             }
         }
     },

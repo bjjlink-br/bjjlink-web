@@ -14,9 +14,14 @@ import { Form } from '@/components/ui/form';
 import { PerfilAccordion } from '../components/PerfilAccordion';
 import { SocialAccordion } from '../components/SocialAccordion';
 import { PhotoGallery } from '../components/PhotoGallery';
+import { defaultDataSections, useDataSections } from '@/contexts/DataSectionsContext';
+import { validateDataSections } from '@/utils/functions';
+import { toast } from '@/hooks/use-toast'
+import { useRouter } from 'next/navigation';
 
 export default function Create() {
   const t = useTranslations("create-portifolio");
+  const router = useRouter();
   const form = useForm<z.infer<typeof createPortifolioSchema>>({
     resolver: zodResolver(createPortifolioSchema),
   });
@@ -27,6 +32,7 @@ export default function Create() {
     socialMedia: {},
     galleryPhotos: [],
   });
+  const { dataSections, setDataSections } = useDataSections();
 
   const addSection = () => {
     // setPortfolioData((prev) => ({ ...prev, [currentStep]: data }));
@@ -38,6 +44,28 @@ export default function Create() {
   // };
 
   function handleFinalSubmit(values: z.infer<typeof createPortifolioSchema>) {}
+
+  function handlePublishPortifolio() {
+    const validate = validateDataSections(dataSections);
+
+    if (!validate.isValid) {
+      toast({
+        title: `${t("publish.toast.success")}`,
+        description: `${validate.errors.join(', ')}`,
+        duration: 3000,
+      });
+      return;
+    }
+
+    toast({
+      title: `${t("publish.toast.success")}`,
+      duration: 3000,
+    });
+    // Resetar os dados do portfólio após a publicação
+    setDataSections(defaultDataSections);
+    // Redirecionar para a página do portfólio publicado
+    // router.push(`/${}`);
+  }
 
   return (
     <div className="bg-gray-1300 min-h-screen flex">
@@ -77,7 +105,11 @@ export default function Create() {
                   <div className='hidden md:block'>
                     <PreviewPortifolio />
                   </div>
-                  <Button className="w-full max-w-xl bg-blue-700 hover:bg-blue-800" size="lg">
+                  <Button 
+                    className="w-full max-w-xl bg-blue-700 hover:bg-blue-800" 
+                    size="lg"
+                    onClick={handlePublishPortifolio}
+                  >
                     {t('publish-portifolio-button')}
                   </Button>
                   

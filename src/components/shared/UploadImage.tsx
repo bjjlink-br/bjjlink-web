@@ -40,10 +40,10 @@ export function UploadImage({
       const gallery = sections?.gallery?.imagesGallery || [];
 
       const remoteFiles: GalleryImage[] = gallery.map((img: any) => ({
-        name: img.filename,
-        preview: img.url,
+        name: img.name || img.filename,
+        preview: img.preview || img.url,
         isRemote: true,
-      }));
+      }));      
 
       setUploadedFiles(remoteFiles);
     }

@@ -32,6 +32,7 @@ export default function Login() {
                 title: `${t('toast.title')}`,
                 duration: 3000,
             });
+            // Salvar no local storage o usuario e email 
             router.push(`/${locale}/dashboard`);
         } else {
             toast({
