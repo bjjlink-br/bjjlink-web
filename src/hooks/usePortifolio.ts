@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { getPortifolioByDomainUser } from "@/services/portifolio.service";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { getPortifolioByDomainUser, getPortifolios } from "@/services/portifolio.service";
 import { Section } from "@/utils/dataSections";
 
 export function usePortifolioByDomain(domain: string | undefined) {
@@ -10,5 +10,12 @@ export function usePortifolioByDomain(domain: string | undefined) {
     staleTime: 1000 * 60 * 5, // 5 min de cache
     gcTime: 1000 * 60 * 30, // 30 min em cache mesmo não usado
     retry: 1, // tenta apenas 1x se der erro
+  });
+}
+
+export function useGetListPortifolio() {
+  return useMutation<Section[], Error, { token: string; locale: string; }>({
+    mutationFn: ({ token, locale }) => getPortifolios(token, locale),
+    retry: 1,
   });
 }

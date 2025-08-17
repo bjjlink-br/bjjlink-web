@@ -6,6 +6,7 @@ import { getMessages } from 'next-intl/server'
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { DataSectionsProvider } from "@/contexts/DataSectionsContext";
+import Providers from "@/utils/providers";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -42,7 +43,9 @@ export default async function RootLayout({
         <body className={`antialiased bg-gray-1300 text-gray-50 ${poppins.variable} ${openSans.variable}`} >
           <DataSectionsProvider>
             <NextIntlClientProvider messages={messages}>
+              <Providers>
                 {children}
+              </Providers>
             </NextIntlClientProvider>
           </DataSectionsProvider>
         </body>
