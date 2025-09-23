@@ -13,9 +13,10 @@ export function usePortifolioByDomain(domain: string | undefined) {
   });
 }
 
-export function useGetListPortifolio() {
+export function useGetListPortifolio(onError?: (error: Error | unknown) => void) {
   return useMutation<Section[], Error, { token: string; locale: string; }>({
     mutationFn: ({ token, locale }) => getPortifolios(token, locale),
     retry: 1,
+    onError: onError,
   });
 }

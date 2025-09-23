@@ -4,6 +4,18 @@ import { api } from "@/services/api";
 import { authUser, createUser, resetPassword } from "@/services/userService.service";
 import { RegisterUserBody, UserLogin, UserResetPassword, UserResponse } from "@/utils/types";
 import { useState } from "react";
+import { jwtDecode } from "jwt-decode";
+
+// Interface para o payload do JWT
+interface JWTPayload {
+    sub: string; // ID do usuário
+    email: string;
+    name?: string;
+    role?: string;
+    exp: number; // timestamp de expiração
+    iat: number; // timestamp de criação
+    [key: string]: string | number | boolean | undefined; // outras propriedades que podem estar no token
+}
 
 export const useCreateUser = () => {
     const [user, setUser] = useState<UserResponse>();
@@ -31,26 +43,38 @@ export const useCreateUser = () => {
 export const useAuthUser = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const [userInfo, setUserInfo] = useState<JWTPayload | null>(null);
 
     const fetchAuthUser = async ({ email, password }: UserLogin) => {
         setLoading(true);
         try {
             const response = await authUser({ email, password });
             const { acess_token } = response;
+            
+            const decodedToken = jwtDecode<JWTPayload>(acess_token);
+            
             localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify({ acess_token }));
+            
+            localStorage.setItem('@Bjjlink-user', JSON.stringify(decodedToken));
+            
             api.defaults.headers.token = acess_token;
+            
+            setUserInfo(decodedToken);
             setError(null);
-            const token = acess_token
-            return token;
+            
+            return {
+                token: acess_token,
+                user: decodedToken
+            };
         } catch (err) {
-            setError((err as Error).message || 'Erro ao adicionar usuário');
+            setError((err as Error).message || 'Erro ao fazer login');
             return null
         } finally {
             setLoading(false);
         }
     };
 
-    return { loading, error, fetchAuthUser, refetch: fetchAuthUser };
+    return { loading, error, userInfo, fetchAuthUser, refetch: fetchAuthUser };
 }
 
 export const useRecoveryPassword = () => {

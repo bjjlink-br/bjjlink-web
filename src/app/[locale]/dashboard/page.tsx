@@ -13,17 +13,47 @@ import { useGetListPortifolio } from "@/hooks/usePortifolio";
 import { PortfolioSkeleton } from "./components/PortfolioSkeleton";
 import { Button } from "@/components/ui/button";
 
+interface AxiosError {
+    response?: {
+        status?: number;
+        data?: {
+            statusCode?: number;
+            message?: string;
+        };
+    };
+}
+
 export default function Dashboard() {
     const t = useTranslations("dashboard");
     const router = useRouter();
     const locale = useLocale();
-    const { mutate, isError, isPending, data } = useGetListPortifolio();
+    
+    const handleError = (error: Error | unknown) => {
+        // Verifica se o erro é 401 (token expirado)
+        if (error && typeof error === 'object' && 'response' in error) {
+            const axiosError = error as AxiosError;
+            if (axiosError.response?.status === 401 || 
+                (axiosError.response?.data?.statusCode === 401 && axiosError.response?.data?.message === "Unauthorized")) {
+                localStorage.removeItem(AUTH_STORAGE_KEY);
+                
+                toast({
+                    title: "Sessão expirada",
+                    description: "Sua sessão expirou. Faça login novamente.",
+                    duration: 3000
+                });
+                
+                router.push(`/${locale}/login`);
+                return;
+            }
+        }
+    };
+    
+    const { mutate, isError, isPending, data } = useGetListPortifolio(handleError);
 
     useEffect(() => {
-        const dataUser = localStorage.getItem('@Bjjlink-user');
         const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
         
-        if (!dataUser && !userToken) {
+        if (!userToken) {
             toast({
                 title: `${t('toast.title-no-authenticated')}`,
                 description: `${t('toast.description-no-authenticated')}`,
@@ -38,7 +68,7 @@ export default function Dashboard() {
                 });
             }
         }
-    }, [locale, router, t]);
+    }, [locale, router, t, mutate]);
 
     return (
         <div className="bg-gray-1300 min-h-screen flex">
