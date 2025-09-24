@@ -20,7 +20,7 @@ import { toast } from '@/hooks/use-toast'
 import { useRouter } from 'next/navigation';
 
 export default function Create() {
-  const t = useTranslations("create-portifolio");
+  const t = useTranslations("create-portfolio");
   const router = useRouter();
   const form = useForm<z.infer<typeof createPortifolioSchema>>({
     resolver: zodResolver(createPortifolioSchema),

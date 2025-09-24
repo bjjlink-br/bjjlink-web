@@ -44,3 +44,25 @@ export type PlanType = {
     features: string[];
     popular?: boolean;
 }
+
+export enum AccountStatus {
+    TRIALING = 'TRIALING',
+    ACTIVE = 'ACTIVE',
+    PAST_DUE = 'PAST_DUE',
+    UNPAID = 'UNPAID',
+    CANCELED = 'CANCELED',
+    INCOMPLETE = 'INCOMPLETE',
+    NEWLY_CREATED = 'NEWLY_CREATED',
+}
+
+export type UserAccountInfo = {
+    username: string;
+    sub: string;
+    roles: string[];
+    email: string;
+    account_id: string;
+    status: AccountStatus;
+    domain: string;
+    iat: number;
+    exp: number
+}

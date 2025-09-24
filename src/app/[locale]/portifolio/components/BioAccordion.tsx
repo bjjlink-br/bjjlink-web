@@ -21,7 +21,7 @@ import { useEffect, useState } from 'react'
 import { DataSections } from '@/utils/dataSections'
 
 export function BioAccordion() {
-  const t = useTranslations("create-portifolio");
+  const t = useTranslations("create-portfolio");
   const locale = useLocale()
   const { dataSections ,setDataSections } = useDataSections();
   const [loading, setLoading] = useState(false);
@@ -106,8 +106,8 @@ export function BioAccordion() {
                   <BookText size={20} color='#85CBFF' />
                 </div>
                 <div className='flex flex-col items-start'>
-                  <h1 className="text-base font-bold no-underline text-gray-50 font-secondary">Sua Bio</h1>
-                  <p className='text-gray-200 text-sm font-secondary'>Fale sobre você</p>
+                  <h1 className="text-base font-bold no-underline text-gray-50 font-secondary">{t("steps.bio.title")}</h1>
+                  <p className='text-gray-200 text-sm font-secondary'>{t("steps.bio.description")}</p>
                 </div>
               </div>
               {/* <div className="flex items-center gap-3 mr-2">
@@ -127,9 +127,9 @@ export function BioAccordion() {
           <AccordionContent>
             <div className="p-4 space-y-6">
               <div className="space-y-4">
-                <h2 className="text-lg font-medium">Sua bio</h2>
+                <h2 className="text-lg font-medium">{t("steps.bio.title")}</h2>
                 <div className="space-y-2">
-                  <Label htmlFor="headline" className='text-gray-200 font-secondary text-sm'>Título em destaque</Label>
+                  <Label htmlFor="headline" className='text-gray-200 font-secondary text-sm'>{t("steps.bio.headline")}</Label>
                   <Input
                     id="headline"
                     value={getBiographyText(1)}

@@ -20,7 +20,7 @@ import { KEYS_STORAGE } from '@/utils/constants'
 import { DataSections } from '@/utils/dataSections'
 
 export function SocialAccordion() {
-    const t = useTranslations("create-portifolio");
+    const t = useTranslations("create-portfolio");
     const locale = useLocale();
     const [loading, setLoading] = useState(false);
     const [socialUrls, setSocialUrls] = useState({

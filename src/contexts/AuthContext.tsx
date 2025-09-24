@@ -7,6 +7,7 @@ import { createContext, useCallback, useContext, useState } from "react";
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AUTH_STORAGE_KEY = '@Bjjlink:auth';
+export const USER_DATA_STORAGE_KEY = '@Bjjlink-user';
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [data, setData] = useState<AuthState>(() => {

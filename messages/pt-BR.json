@@ -130,7 +130,7 @@
             "error-create-user-description": "Tente novamente."
         }
     },
-    "create-portifolio": {
+    "create-portfolio": {
         "title": "Meus portfólio",
         "subtitle": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "button-change-layout": "Alterar layout",
@@ -161,6 +161,11 @@
                 "subtitle": "Fale sobre você",
                 "button-save": "Salvar",
                 "description": "Galeria de fotos"
+            },
+            "bio": {
+                "title": "Sua bio",
+                "description": "Fale sobre você",
+                "headline": "Título em destaque"
             }
         },
         "publish": {

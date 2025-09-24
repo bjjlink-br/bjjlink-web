@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { DataSections } from "@/utils/dataSections";
 
 export const PhotoGallery = () => {
-    const t = useTranslations("create-portifolio");
+    const t = useTranslations("create-portfolio");
     const locale = useLocale()
     const { dataSections ,setDataSections } = useDataSections();
 

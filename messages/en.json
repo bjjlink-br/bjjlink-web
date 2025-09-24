@@ -160,6 +160,11 @@
                 "subtitle": "Tell us about yourself",
                 "button-save": "Save",
                 "description": "Photo gallery"
+            },
+            "bio": {
+                "title": "Your bio",
+                "description": "Tell us about yourself",
+                "headline": "Headline"
             }
         },
         "publish": {

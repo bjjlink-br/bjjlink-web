@@ -1,10 +1,15 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import { UserAccountInfo } from "@/utils/types"
 import { Pencil, Trash2 } from "lucide-react"
 import Image from "next/image"
 
-export const PortifolioCard = () => {
+type PortifolioCardProps = {
+    user: UserAccountInfo;
+}
+
+export const PortifolioCard = ({ user }: PortifolioCardProps) => {
     return (
         <Card className="bg-gray-900 border-gray-700">
             <CardContent className="p-6">
@@ -17,8 +22,8 @@ export const PortifolioCard = () => {
                         height={48}
                     />
                     <div className="flex-1">
-                        <h3 className="text-base font-semibold text-gray-50">Big Tiger</h3>
-                        <p className="text-sm text-gray-200">@jlink.site/bigtiger</p>
+                        <h3 className="text-base font-semibold text-gray-50">{user.username}</h3>
+                        <p className="text-sm text-gray-200">bjjlink.site/{user.domain}</p>
                     </div>
                 </div>
                 <Separator className="bg-gray-600 my-4" />

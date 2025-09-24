@@ -4,14 +4,16 @@ import { VerticalMenu } from "@/components/shared/VerticalMenu";
 import { PromotionalBanner } from "./components/PromotionalBanner";
 import { PortifolioCard } from "./components/PortifolioCard";
 import { UpgradePlanCard } from "./components/UpgradePlanCard";
-import { useEffect } from "react";
-import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext";
+import { useEffect, useState } from "react";
+import { AUTH_STORAGE_KEY, USER_DATA_STORAGE_KEY } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 import { useGetListPortifolio } from "@/hooks/usePortifolio";
 import { PortfolioSkeleton } from "./components/PortfolioSkeleton";
 import { Button } from "@/components/ui/button";
+import { EmptyState } from "./components/EmptyState";
+import { AccountStatus, UserAccountInfo } from "@/utils/types";
 
 interface AxiosError {
     response?: {
@@ -25,6 +27,7 @@ interface AxiosError {
 
 export default function Dashboard() {
     const t = useTranslations("dashboard");
+    const [user, setUser] = useState<UserAccountInfo>();
     const router = useRouter();
     const locale = useLocale();
     
@@ -52,8 +55,9 @@ export default function Dashboard() {
 
     useEffect(() => {
         const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
+        const userData = localStorage.getItem(USER_DATA_STORAGE_KEY);
         
-        if (!userToken) {
+        if (!userToken || !userData) {
             toast({
                 title: `${t('toast.title-no-authenticated')}`,
                 description: `${t('toast.description-no-authenticated')}`,
@@ -61,11 +65,12 @@ export default function Dashboard() {
             });
             router.push(`/${locale}/login`);
         } else {
-            if (userToken) {
+            if (userToken && userData) {
                 mutate({
                     locale,
                     token: JSON.parse(userToken).acess_token
                 });
+                setUser(JSON.parse(userData));
             }
         }
     }, [locale, router, t, mutate]);
@@ -75,7 +80,9 @@ export default function Dashboard() {
             <VerticalMenu />
 
             <main className="flex-1 p-8">
-                <PromotionalBanner />
+                {(user?.status === AccountStatus.NEWLY_CREATED || user?.status == AccountStatus.UNPAID)  && (
+                    <PromotionalBanner />
+                )}
                 <h2 className="text-2xl font-semibold mb-1 text-gray-50">{t('title')}</h2>
                 <p className="text-gray-200 text-base mb-6">
                     {t('description')}
@@ -85,8 +92,8 @@ export default function Dashboard() {
                 {!isPending && !isError && data && (
                     <div>
                         <div className="w-full max-w-3xl grid gap-4 grid-cols-1 md:grid-cols-2">
-                            <PortifolioCard />
-                            <UpgradePlanCard />
+                            {data.length > 0 ? <PortifolioCard user={user!} /> : <EmptyState />}
+                            {/* <UpgradePlanCard /> */}
                         </div>
                     </div>
                 )}

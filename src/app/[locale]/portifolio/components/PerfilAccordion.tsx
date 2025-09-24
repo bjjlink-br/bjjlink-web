@@ -23,7 +23,7 @@ import { KEYS_STORAGE } from '@/utils/constants'
 import { DataSections } from '@/utils/dataSections'
 
 export function PerfilAccordion() {
-  const t = useTranslations("create-portifolio");
+  const t = useTranslations("create-portfolio");
   const locale = useLocale()
   const router = useRouter()
   const { dataSections ,setDataSections } = useDataSections();

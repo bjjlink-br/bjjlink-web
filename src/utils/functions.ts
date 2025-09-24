@@ -1,11 +1,11 @@
 import { api } from "@/services/api";
 
-import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext";
+import { AUTH_STORAGE_KEY, USER_DATA_STORAGE_KEY } from "@/contexts/AuthContext";
 import { DataSections } from "./dataSections";
 
 export const signOut = () => {
     localStorage.removeItem(AUTH_STORAGE_KEY);
-    localStorage.removeItem('@Bjjlink-user');
+    localStorage.removeItem(USER_DATA_STORAGE_KEY);
     api.defaults.headers.token = '';
 }
 

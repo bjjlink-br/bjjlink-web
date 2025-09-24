@@ -26,7 +26,7 @@ export function UploadImage({
   onImageUpload,
   sectionUpload = "PROFILE",
 }: UploadImageProps) {
-  const t = useTranslations("create-portifolio");
+  const t = useTranslations("create-portfolio");
   const [error, setError] = React.useState<string | null>(null);
   const { setDataSections } = useDataSections();
   const [uploadedFiles, setUploadedFiles] = React.useState<GalleryImage[]>([]);
