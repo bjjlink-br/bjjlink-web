@@ -21,7 +21,7 @@ export function UploadSingleImage({
   maxSize = 5, // Default max size is 5MB
   onImageUpload,
 }: UploadImageProps) {
-  const t = useTranslations("create-portifolio");
+  const t = useTranslations("create-portfolio");
   const [error, setError] = React.useState<string | null>(null)
   const { setDataSections, dataSections } = useDataSections();
   const [uploadedFile, setUploadedFile] = React.useState<{

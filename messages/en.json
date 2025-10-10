@@ -169,8 +169,13 @@
         },
         "publish": {
             "toast": {
-                "success": "Portfolio published successfully!"
+                "success": "Portfolio published successfully!",
+                "error": "Failed to publish portfolio."
             }
+        },
+        "toast": {
+            "title-no-authenticated": "Oops! You are not authenticated. 🤔",
+            "description-no-authenticated": "Go back to the login screen and log in with your account."
         }
     },
     "settings": {
@@ -192,6 +197,10 @@
         "subscription": {
             "title": "My subscription",
             "manage-button": "Manage my subscription"
+        },
+        "toast": {
+            "title-no-authenticated": "Oops! You are not authenticated. 🤔",
+            "description-no-authenticated": "Go back to the login screen and log in with your account."
         }
     },
     "reset-password": {

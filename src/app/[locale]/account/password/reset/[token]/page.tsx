@@ -10,7 +10,6 @@ const ResetPasswordPage = () => {
   const t = useTranslations("reset-password")
   const locale = useLocale()
   const { token } = useParams();
-  console.log(token)
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-1300">

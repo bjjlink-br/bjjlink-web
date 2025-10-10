@@ -170,8 +170,13 @@
         },
         "publish": {
             "toast": {
-                "success": "Portfólio publicado com sucesso!"
+                "success": "Portfólio publicado com sucesso!",
+                "error": "Falha ao publicar portfólio."
             }
+        },
+        "toast": {
+            "title-no-authenticated": "Ops! Você não está autenticado. 🤔",
+            "description-no-authenticated": "Volte para a tela de login e entre com a sua conta."
         }
     },
     "settings": {
@@ -188,6 +193,10 @@
                 "description": "Esta ação não pode ser desfeita. Isso excluirá permanentemente sua conta e removerá seus dados de nossos servidores.",
                 "cancel": "Cancelar",
                 "delete": "Excluir minha conta"
+            },
+            "toast": {
+                "title-no-authenticated": "Ops! Você não está autenticado. 🤔",
+                "description-no-authenticated": "Volte para a tela de login e entre com a sua conta."
             }
         },
         "subscription": {

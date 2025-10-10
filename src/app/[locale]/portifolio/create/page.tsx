@@ -5,10 +5,10 @@ import { useForm } from "react-hook-form"
 import { VerticalMenu } from "@/components/shared/VerticalMenu";
 import { Button } from "@/components/ui/button";
 import { CirclePlus, Copy } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { PreviewPortifolio } from "../components/PreviewPortifolio";
 import { BioAccordion } from '../components/BioAccordion';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortifolioSchema } from '@/utils/schema';
 import { Form } from '@/components/ui/form';
 import { PerfilAccordion } from '../components/PerfilAccordion';
@@ -18,10 +18,15 @@ import { defaultDataSections, useDataSections } from '@/contexts/DataSectionsCon
 import { validateDataSections } from '@/utils/functions';
 import { toast } from '@/hooks/use-toast'
 import { useRouter } from 'next/navigation';
+import { USER_DATA_STORAGE_KEY } from '@/contexts/AuthContext';
+import { UserAccountInfo } from '@/utils/types';
+import { KEYS_STORAGE } from '@/utils/constants';
 
 export default function Create() {
   const t = useTranslations("create-portfolio");
   const router = useRouter();
+  const locale = useLocale();
+  const [user, setUser] = useState<UserAccountInfo>();
   const form = useForm<z.infer<typeof createPortifolioSchema>>({
     resolver: zodResolver(createPortifolioSchema),
   });
@@ -50,7 +55,7 @@ export default function Create() {
 
     if (!validate.isValid) {
       toast({
-        title: `${t("publish.toast.success")}`,
+        title: `${t("publish.toast.error")}`,
         description: `${validate.errors.join(', ')}`,
         duration: 3000,
       });
@@ -61,11 +66,25 @@ export default function Create() {
       title: `${t("publish.toast.success")}`,
       duration: 3000,
     });
-    // Resetar os dados do portfólio após a publicação
     setDataSections(defaultDataSections);
-    // Redirecionar para a página do portfólio publicado
-    // router.push(`/${}`);
+    localStorage.removeItem(KEYS_STORAGE.sections);
+    router.push(`/portifolio/${user?.domain}`);
   }
+
+  useEffect(() => {
+    const userData = localStorage.getItem(USER_DATA_STORAGE_KEY);
+    
+    if (!userData) {
+      toast({
+          title: `${t('toast.title-no-authenticated')}`,
+          description: `${t('toast.description-no-authenticated')}`,
+          duration: 3000
+      });
+      router.push(`/${locale}/login`);
+    } else {
+      setUser(JSON.parse(userData));
+    }
+  }, [locale, router, t]);
 
   return (
     <div className="bg-gray-1300 min-h-screen flex">

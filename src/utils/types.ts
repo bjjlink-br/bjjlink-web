@@ -63,6 +63,7 @@ export type UserAccountInfo = {
     account_id: string;
     status: AccountStatus;
     domain: string;
+    profile_photo?: string;
     iat: number;
     exp: number
 }

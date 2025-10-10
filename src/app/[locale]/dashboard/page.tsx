@@ -28,6 +28,7 @@ interface AxiosError {
 export default function Dashboard() {
     const t = useTranslations("dashboard");
     const [user, setUser] = useState<UserAccountInfo>();
+    const [acess_token, setAccessToken] = useState<string | null>(null);
     const router = useRouter();
     const locale = useLocale();
     
@@ -51,7 +52,7 @@ export default function Dashboard() {
         }
     };
     
-    const { mutate, isError, isPending, data } = useGetListPortifolio(handleError);
+    const { isError, isPending, data, error } = useGetListPortifolio(acess_token, locale);
 
     useEffect(() => {
         const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
@@ -66,14 +67,18 @@ export default function Dashboard() {
             router.push(`/${locale}/login`);
         } else {
             if (userToken && userData) {
-                mutate({
-                    locale,
-                    token: JSON.parse(userToken).acess_token
-                });
+                setAccessToken(JSON.parse(userToken).acess_token);
                 setUser(JSON.parse(userData));
             }
         }
-    }, [locale, router, t, mutate]);
+    }, [locale, router, t]);
+
+    // Handle query errors
+    useEffect(() => {
+        if (error) {
+            handleError(error);
+        }
+    }, [error]);
 
     return (
         <div className="bg-gray-1300 min-h-screen flex">
@@ -92,7 +97,7 @@ export default function Dashboard() {
                 {!isPending && !isError && data && (
                     <div>
                         <div className="w-full max-w-3xl grid gap-4 grid-cols-1 md:grid-cols-2">
-                            {data.length > 0 ? <PortifolioCard user={user!} /> : <EmptyState />}
+                            {data && data.length > 0 ? <PortifolioCard user={user!} acess_token={acess_token!} /> : <EmptyState />}
                             {/* <UpgradePlanCard /> */}
                         </div>
                     </div>

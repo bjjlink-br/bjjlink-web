@@ -42,3 +42,16 @@ export const getPortifolios = (token: string, locale: string) => {
         throw error;
     });
 }
+
+export const deletePortifolio = (token: string, locale: string) => {
+    const response = api.delete(`/portifolio`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            locale: locale
+        }
+    });
+    return response.then(response => response.data).catch(error => {
+        console.error("Error deleting portifolio:", error);
+        throw error;
+    });
+}

@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -18,11 +17,11 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useTranslations } from "next-intl"
+import { UserAccountInfo } from "@/utils/types"
+import DEFAULT_AVATAR from "@/assets/images/user.png"
 
-export function ProfileSettings() {
+export function ProfileSettings({ user }: { user: UserAccountInfo }) {
   const t = useTranslations("settings");
-  const [name, setName] = useState("Kevin Hart")
-  const [email, setEmail] = useState("kevin@example.com")
 
   return (
     <Card className="w-full mx-auto bg-gray-900 border-none">
@@ -32,8 +31,8 @@ export function ProfileSettings() {
       <CardContent className="space-y-6">
         <div className="flex flex-col items-center gap-4">
           <Avatar className="w-24 h-24">
-            <AvatarImage src="https://github.com/gabriellennon.png" alt="Profile picture" />
-            <AvatarFallback>KH</AvatarFallback>
+            <AvatarImage src={user.profile_photo ?? DEFAULT_AVATAR} alt="Profile picture" />
+            <AvatarFallback>{user.username.charAt(0).toUpperCase()}</AvatarFallback>
           </Avatar>
         </div>
 
@@ -43,7 +42,7 @@ export function ProfileSettings() {
             <Input
               className="bg-gray-800 border border-gray-600 text-gray-100"
               id="name"
-              value={name}
+              value={user.username}
               readOnly
             />
           </div>
@@ -54,7 +53,7 @@ export function ProfileSettings() {
               className="bg-gray-800 border border-gray-600 text-gray-100"
               id="email"
               type="email"
-              value={email}
+              value={user.email}
               readOnly
             />
           </div>
@@ -85,4 +84,5 @@ export function ProfileSettings() {
     </Card>
   )
 }
+
 
