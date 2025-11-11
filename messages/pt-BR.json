@@ -1,0 +1,253 @@
+{
+    "navbar": {
+        "home": "Início",
+        "plans": "Planos",
+        "blog": "Blog",
+        "help": "Ajuda",
+        "how-works": "Como funciona",
+        "contact": "Contato",
+        "login": "Login",
+        "register": "Começar agora"
+    },
+    "footer": {
+        "home": "Início",
+        "plans": "Planos",
+        "blog": "Blog",
+        "help": "Ajuda",
+        "how-works": "Como funciona",
+        "contact": "Contato",
+        "login": "Login",
+        "register": "Começar agora"
+    },
+    "home": {
+        "new": "Novo",
+        "subtitle-tag": "Aumente sua visibilidade!",
+        "title": "Seu portfólio",
+        "subtitle": "DE ATLETA",
+        "description": "Saiba como se apresentar na internet mostrando todo o seu potencial e experiência, tudo em um só lugar com alto nível e perfomace no seu portfólio.",
+        "create-portifolio-button": "Criar portfólio grátis",
+        "access-button": "Acessar agora",
+        "what-bjj-title": "Como BjjLink vai te ajudar?",
+        "what-bjj-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "create": "Crie em poucos minutos",
+        "create-subtitle": "Seu portfólio pronto em poucos minutos",
+        "create-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "badge-description": "Bem apresentável",
+        "your-portifolio": "O seu portfólio com design profissional",
+        "your-portifolio-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "social-media-badge": "Rede sociais",
+        "social-media-title": "Centralizar todas as suas informações em único lugar!",
+        "social-media-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "our-plans-title": "Nossos planos",
+        "our-plans-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "testimonials-title": "Atletas que já usam a plataforma",
+        "testimonials-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "create-portifolio-now-title": "Comece a criar o seu portfólio gratuitamente",
+        "create-portifolio-now-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "start-now": "Comece agora",
+        "blog-title": "Publicações do blog",
+        "blog-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis",
+        "faq-title": "Perguntas frequentes",
+        "faq-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus."
+    },
+    "register": {
+        "title": "Registrar-se",
+        "terms-info": "Quando criar conta, você está concordando com os",
+        "terms-info-description": "da plataforma e leu nosso",
+        "terms-info-link": "termos e condições",
+        "privacy-link": "aviso de privacidade",
+        "or-divider": "ou",
+        "login-google-button": "Continue com Google",
+        "login-text": "Você já possui uma conta?",
+        "login-link": "Entrar",
+        "form": {
+            "user-name": "Nome de usuário",
+            "user-name-placeholder": "Digite seu nome de usuário",
+            "email": "E-mail",
+            "email-placeholder": "Digite seu e-mail",
+            "password": "Senha",
+            "confirmation-password": "Confirmar senha",
+            "password-placeholder": "Digite a sua senha",
+            "confirmation-placeholder": "Digite a sua senha novamente",
+            "hidden-password-button": "Ocultar",
+            "show-password-button": "Mostrar",
+            "start-now-button": "Entrar agora",
+            "passwords-not-matching": "Os valores nos campos Senha e Confirmar Senha não correspondem",
+            "weak-password": "A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.",
+            "invalid-username": "Nome de usuário não pode conter caractere especial. Apenas letras e números."
+        },
+        "toast": {
+            "title": "Conta criada com sucesso! 🤩",
+            "description": "Acesse a página de login e entre na sua conta.",
+            "error-create-user-title": "Ops! 😵 Algo deu errado.",
+            "error-create-user-description": "Tente criar sua conta novamente."
+        }
+    },
+    "vertical-menu": {
+        "navbar": {
+            "dashboard": "Dashboard",
+            "dashboard-alt-icon": "ícone de uma casa",
+            "portifolio": "Portifólio",
+            "portifolio-alt-icon": "ícone de um caderno aberto",
+            "analytics": "Analytics",
+            "analytics-alt-icon": "ícone de um pequeno gráfico de barras",
+            "my-account": "Minha conta",
+            "my-account-alt-icon": "ícone de uma pessoa",
+            "settings": "Configurações",
+            "settings-alt-icon": "ícone de engrenagens",
+            "logout": "Sair",
+            "logout-alt-icon": "ícone de uma porta"
+        }
+    },
+    "dashboard": {
+        "alt-image-background": "Lutadores treinando jiu jitsu",
+        "acquire-title": "Pegar plano pago",
+        "acquire-button": "Adquira agora",
+        "title": "Meus portfólios",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "create-title": "Criar portfólio",
+        "create-description": "Clique no mais para criar o seu portfólio.",
+        "toast": {
+            "title-no-authenticated": "Ops! Você não está autenticado. 🤔",
+            "description-no-authenticated": "Volte para a tela de login e entre com a sua conta."
+        }
+    },
+    "login": {
+        "title": "Seja bem-vindo!",
+        "description": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "login-now": "Entre Agora:",
+        "terms-info": "Quando criar conta, você está concordando com os",
+        "terms-info-description": "da plataforma e leu nosso",
+        "terms-info-link": "termos e condições",
+        "privacy-link": "aviso de privacidade",
+        "or-divider": "ou",
+        "login-google-button": "Continue com Google",
+        "register-text": "Você não tem uma conta?",
+        "register-link": "Cadastre-se",
+        "toast": {
+            "title": "Bem-vindo de volta! 🤩",
+            "error-create-user-title": "Ops! 😵 Algo deu errado.",
+            "error-create-user-description": "Tente novamente."
+        }
+    },
+    "create-portfolio": {
+        "title": "Meus portfólio",
+        "subtitle": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "button-change-layout": "Alterar layout",
+        "add-section-button": "Adicionar seção",
+        "publish-portifolio-button": "Publicar portfólio",
+        "copy-link-button": "Copiar link",
+        "steps": {
+            "profile": {
+                "title": "Seu Perfil",
+                "subtitle": "Fale sobre você",
+                "description": "Perfil",
+                "upload-title": "Adicionar sua foto",
+                "upload-description": "Arraste e solte sua imagem aqui ou selecione ela.",
+                "toast-upload-success": "Imagem enviada com sucesso!",
+                "toast-success": "Conteúdo salvo sucesso!",
+                "toast-upload-error": "Falha ao enviar imagem."
+            },
+            "social": {
+                "title": "Redes sociais",
+                "subtitle": "Fale sobre você",
+                "facebook": "Facebook",
+                "insta": "Instagram",
+                "x": "X (Twitter)",
+                "toast-success": "Conteúdo salvo sucesso!"
+            },
+            "photo-gallery": {
+                "title": "Galeria",
+                "subtitle": "Fale sobre você",
+                "button-save": "Salvar",
+                "description": "Galeria de fotos"
+            },
+            "bio": {
+                "title": "Sua bio",
+                "description": "Fale sobre você",
+                "headline": "Título em destaque"
+            }
+        },
+        "publish": {
+            "toast": {
+                "success": "Portfólio publicado com sucesso!",
+                "error": "Falha ao publicar portfólio."
+            }
+        },
+        "toast": {
+            "title-no-authenticated": "Ops! Você não está autenticado. 🤔",
+            "description-no-authenticated": "Volte para a tela de login e entre com a sua conta."
+        }
+    },
+    "settings": {
+        "tabs": {
+            "profile": "Perfil",
+            "subscription": "Assinatura"
+        },
+        "profile": {
+            "title": "Minha conta",
+            "name": "Nome",
+            "button-delete-account": "Excluir minha conta",
+            "dialog-confirmation": {
+                "title": "Você tem certeza?",
+                "description": "Esta ação não pode ser desfeita. Isso excluirá permanentemente sua conta e removerá seus dados de nossos servidores.",
+                "cancel": "Cancelar",
+                "delete": "Excluir minha conta"
+            },
+            "toast": {
+                "title-no-authenticated": "Ops! Você não está autenticado. 🤔",
+                "description-no-authenticated": "Volte para a tela de login e entre com a sua conta."
+            }
+        },
+        "subscription": {
+            "title": "Minha assinatura",
+            "manage-button": "Gerenciar minha assinatura"
+        }
+    },
+    "reset-password": {
+        "title": "Redefina sua senha",
+        "description": "Esqueceu sua senha? Sem problemas, insira seu email cadastrado e digite sua nova senha. E enviaremos um email de confirmação.",
+        "title-reset-succes": "O link de redefinição de senha foi enviada para o seu email.",
+        "description-reset-succes": "Verifique seu email e confirme a redefinição da sua senha.",
+        "login-text": "Você já possui uma conta?",
+        "login-link": "Entrar",
+        "continue-back-login": "Continuar",
+        "form": {
+            "passwords-not-matching": "Os valores nos campos Senha e Confirmar Senha não correspondem",
+            "weak-password": "A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.",
+            "email": "E-mail",
+            "email-placeholder": "Digite seu e-mail",
+            "password": "Nova Senha",
+            "confirmation-password": "Confirmar nova senha",
+            "password-placeholder": "Digite a sua nova senha",
+            "confirmation-placeholder": "Digite a sua nova senha novamente",
+            "hidden-password-button": "Ocultar",
+            "show-password-button": "Mostrar",
+            "reset-password-button": "Redefinir senha"
+        },
+        "toast": {
+            "success": "Senha redefinida com sucesso! ✅",
+            "error-title": "Ops! 😵 Algo deu errado.",
+            "error-description": "Verifique se o email digitado está correto e tente novamente"
+        },
+        "confirmation-reset": {
+            "title": "Senha redefinida com sucesso!",
+            "button-go-login": "Entrar na minha conta"
+        }
+    },
+    "loadingPage": {
+        "title": "Aguarde um momento enquanto confirmamos seu acesso e informações do plano.",
+        "error-button": "Tentar novamente",
+        "loading-message": "Estamos processando suas informações...",
+        "loading-success": "Tudo certo! Estamos preparando seu checkout.",
+        "error-message": "Houve um problema ao processar seu login. Tente novamente."
+    },
+    "payment": {
+        "success-title": "Pagamento realizado com sucesso!",
+        "button-back": "Entrar na minha conta",
+        "update-success-title": "Assinatura alterada com sucesso!",
+        "update-button-back": "Voltar para meu Dashboard",
+        "error-title": "Algo deu errado no processamento do seu pagamento.",
+        "error-button": "Tentar novamente"
+    }
+}

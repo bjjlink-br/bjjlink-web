@@ -1,8 +1,12 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin()
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['github.com']
+        domains: ['github.com', 'i.ibb.co', '4561a5ff23ce27a982981d5e7b734da7.r2.cloudflarestorage.com', 'cloudflare.r2.com', 'pub-b7fcacbec59b458d9eefc2e434a74cbf.r2.dev']
     }
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

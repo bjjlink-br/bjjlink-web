@@ -1,0 +1,251 @@
+{
+    "navbar": {
+        "home": "Home",
+        "plans": "Plans",
+        "blog": "Blog",
+        "help": "Help",
+        "how-works": "How works",
+        "contact": "Contact",
+        "login": "Login",
+        "register": "Start now"
+    },
+    "footer": {
+        "home": "Home",
+        "plans": "Plans",
+        "blog": "Blog",
+        "help": "Help",
+        "how-works": "How works",
+        "contact": "Contact",
+        "login": "Login",
+        "register": "Start now"
+    },
+    "home": {
+        "new": "New",
+        "subtitle-tag": "Increase your visibility!",
+        "title": "Your portfolio",
+        "subtitle": "FROM ATHLETE",
+        "description": "Learn how to present yourself on the internet, showing all your potential and experience, all in one place with high level and performance in your portfolio.",
+        "create-portifolio-button": "Create a free portfolio",
+        "access-button": "Access now",
+        "what-bjj-title": "How will BjjLink help you?",
+        "what-bjj-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "create": "Create in a few minutes",
+        "create-subtitle": "Your portfolio ready in a few minutes", "create-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "badge-description": "Very presentable",
+        "your-portifolio": "Your professionally designed portfolio",
+        "your-portifolio-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "social-media-badge": "Social networks",
+        "social-media-title": "Centralize all your information in one place!",
+        "social-media-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "our-plans-title": "Our plans",
+        "our-plans-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "testimonials-title": "Athletes who already use the platform",
+        "testimonials-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "create-portifolio-now-title": "Start creating your portfolio for free",
+        "create-portifolio-now-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "start-now": "Start now",
+        "blog-title": "Blog posts",
+        "blog-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis",
+        "faq-title": "Frequently asked questions",
+        "faq-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus."
+    },
+    "register": {
+        "title": "Register",
+        "terms-info": "When you create an account, you are agreeing to the",
+        "terms-info-description": "platform's terms and conditions and have read our",
+        "terms-info-link": "terms and conditions",
+        "privacy-link": "privacy notice",
+        "or-divider": "or",
+        "login-google-button": "Continue with Google",
+        "login-text": "Do you already have an account?",
+        "login-link": "Login",
+        "form": {
+            "user-name": "User name",
+            "user-name-placeholder": "Type your user name",
+            "email": "E-mail",
+            "email-placeholder": "Type your e-mail",
+            "password": "Password",
+            "confirmation-password": "Confirm your password",
+            "password-placeholder": "Type your password",
+            "confirmation-placeholder": "Type your password again",
+            "hidden-password-button": "Hidden",
+            "show-password-button": "Show",
+            "start-now-button": "Register now",
+            "passwords-not-matching": "The values ​​in the Password and Confirm Password fields do not match",
+            "weak-password": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
+            "invalid-username": "Username cannot contain special characters. Only letters and numbers."
+        },
+        "toast": {
+            "title": "Account created successfully! 🤩",
+            "description": "Go to the login page and log in to your account.",
+            "error-create-user-title": "Oops! 😵 Something went wrong.",
+            "error-create-user-description": "Try creating your account again."
+        }
+    },
+    "vertical-menu": {
+        "navbar": {
+            "dashboard": "Dashboard",
+            "dashboard-alt-icon": "house icon",
+            "portifolio": "Portfolio",
+            "portifolio-alt-icon": "open notebook icon",
+            "analytics": "Analytics",
+            "analytics-alt-icon": "small bar chart icon",
+            "my-account": "My Account",
+            "my-account-alt-icon": "person icon",
+            "settings": "Settings",
+            "settings-alt-icon": "gear icon",
+            "logout": "Logout",
+            "logout-alt-icon": "door icon"
+        }
+    },
+    "dashboard": {
+        "alt-image-background": "Fighters training jiu jitsu",
+        "acquire-title": "Get paid plan",
+        "acquire-button": "Get now",
+        "title": "My portfolios",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "create-title": "Create portfolio",
+        "create-description": "Click on plus to create your portfolio.",
+        "toast": {
+            "title-no-authenticated": "Oops! You are not authenticated. 🤔",
+            "description-no-authenticated": "Go back to the login screen and log in with your account."
+        }
+    },
+    "login": {
+        "title": "Welcome!",
+        "description": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "login-now": "Join Now:",
+        "terms-info": "By creating an account, you are agreeing to the",
+        "terms-info-description": "of the platform and have read our",
+        "terms-info-link": "terms and conditions",
+        "privacy-link": "privacy notice",
+        "or-divider": "or",
+        "login-google-button": "Continue with Google",
+        "register-text": "Don't have an account?",
+        "register-link": "Sign up",
+        "toast": {
+            "title": "Welcome back! 🤩",
+            "error-create-user-title": "Oops! 😵 Something went wrong.",
+            "error-create-user-description": "Try again."
+        }
+    },
+    "create-portfolio": {
+        "title": "My portfolios",
+        "subtitle": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "button-change-layout": "Change layout",
+        "add-section-button": "Add section",
+        "publish-portifolio-button": "Publish Portfolio",
+        "copy-link-button": "Copy Link",
+        "steps": {
+            "profile": {
+                "title": "Your Profile",
+                "subtitle": "Tell us about yourself",
+                "description": "Profile",
+                "upload-title": "Add your photo",
+                "upload-description": "Drag and drop your image here or select it.",
+                "toast-upload-success": "Image uploaded successfully!",
+                "toast-success": "Content saved successfully!",
+                "toast-upload-error": "Image upload failed."
+            },
+            "social": {
+                "title": "Social Networks",
+                "subtitle": "Tell us about yourself",
+                "facebook": "Facebook",
+                "insta": "Instagram",
+                "x": "X (Twitter)",
+                "toast-success": "Content saved successfully!"
+            },
+            "photo-gallery": {
+                "title": "Gallery",
+                "subtitle": "Tell us about yourself",
+                "button-save": "Save",
+                "description": "Photo gallery"
+            },
+            "bio": {
+                "title": "Your bio",
+                "description": "Tell us about yourself",
+                "headline": "Headline"
+            }
+        },
+        "publish": {
+            "toast": {
+                "success": "Portfolio published successfully!",
+                "error": "Failed to publish portfolio."
+            }
+        },
+        "toast": {
+            "title-no-authenticated": "Oops! You are not authenticated. 🤔",
+            "description-no-authenticated": "Go back to the login screen and log in with your account."
+        }
+    },
+    "settings": {
+        "tabs": {
+            "profile": "Profile",
+            "subscription": "Subscription"
+        },
+        "profile": {
+            "title": "My Account",
+            "name": "Name",
+            "button-delete-account": "Delete my account",
+            "dialog-confirmation": {
+                "title": "Are you sure?",
+                "description": "This action cannot be undone. This will permanently delete your account and remove your data from our servers.",
+                "cancel": "Cancel",
+                "delete": "Delete my account"
+            }
+        },
+        "subscription": {
+            "title": "My subscription",
+            "manage-button": "Manage my subscription"
+        },
+        "toast": {
+            "title-no-authenticated": "Oops! You are not authenticated. 🤔",
+            "description-no-authenticated": "Go back to the login screen and log in with your account."
+        }
+    },
+    "reset-password": {
+        "title": "Reset your password",
+        "description": "Forgot your password? No problem, enter your registered email and type your new password. And we will send you a confirmation email.",
+        "title-reset-succes": "The password reset link has been sent to your email.",
+        "description-reset-succes": "Please check your email and confirm your password reset.",
+        "login-text": "Do you already have an account?",
+        "login-link": "Log in",
+        "continue-back-login": "Continue",
+        "form": {
+            "passwords-not-matching": "The values ​​in the Password and Confirm Password fields do not match",
+            "weak-password": "The password must contain at least one uppercase letter, one lowercase letter, one number and one special character.",
+            "email": "Email", "email-placeholder": "Enter your email",
+            "password": "New Password",
+            "confirmation-password": "Confirm new password",
+            "password-placeholder": "Enter your new password",
+            "confirmation-placeholder": "Enter your new password again",
+            "hidden-password-button": "Hide",
+            "show-password-button": "Show",
+            "reset-password-button": "Reset password"
+        },
+        "toast": {
+            "success": "Password reset successfully! ✅",
+            "error-title": "Oops! 😵 Something went wrong.",
+            "error-description": "Please check if the email you entered is correct and try again"
+        },
+        "confirmation-reset": {
+            "title": "Password reset successfully!",
+            "button-go-login": "Log in to my account"
+        }
+    },
+    "loadingPage": {
+        "title": "Please wait a moment while we confirm your login and plan information.",
+        "error-button": "Try again",
+        "loading-message": "We are processing your information...",
+        "loading-success": "All good! We are preparing your checkout.",
+        "error-message": "There was a problem processing your login. Please try again."
+    },
+    "payment": {
+        "success-title": "Payment successful!",
+        "button-back": "Log in to my account",
+        "update-success-title": "Subscription changed successfully!",
+        "update-button-back": "Back to my Dashboard",
+        "error-title": "Something went wrong while processing your payment.",
+        "error-button": "Try again"
+    }
+}
