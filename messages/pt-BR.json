@@ -104,7 +104,7 @@
         "acquire-title": "Pegar plano pago",
         "acquire-button": "Adquira agora",
         "title": "Meus portfólios",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "description": "Esses são seus portfólios, aqui você pode ver todos os seus portfólios e gerenciar eles.",
         "create-title": "Criar portfólio",
         "create-description": "Clique no mais para criar o seu portfólio.",
         "toast": {
@@ -131,8 +131,8 @@
         }
     },
     "create-portfolio": {
-        "title": "Meus portfólio",
-        "subtitle": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "title": "Criar portfólio",
+        "subtitle": "Crie o seu portfólio e mostre-se para o mundo!",
         "button-change-layout": "Alterar layout",
         "add-section-button": "Adicionar seção",
         "publish-portifolio-button": "Publicar portfólio",

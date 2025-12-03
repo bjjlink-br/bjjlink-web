@@ -103,7 +103,7 @@
         "acquire-title": "Get paid plan",
         "acquire-button": "Get now",
         "title": "My portfolios",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "description": "These are your portfolios, here you can see all your portfolios and manage them.",
         "create-title": "Create portfolio",
         "create-description": "Click on plus to create your portfolio.",
         "toast": {
@@ -130,8 +130,8 @@
         }
     },
     "create-portfolio": {
-        "title": "My portfolios",
-        "subtitle": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "title": "Create portfolio",
+        "subtitle": "Create your portfolio and show yourself to the world!",
         "button-change-layout": "Change layout",
         "add-section-button": "Add section",
         "publish-portifolio-button": "Publish Portfolio",
