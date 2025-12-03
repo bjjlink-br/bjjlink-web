@@ -32,5 +32,6 @@ export const cardsInfoAdvantages = [
 ]
 
 export const KEYS_STORAGE = {
-    sections: '@BJJLink:portifolio_sections'
+    sections: '@BJJLink:portifolio_sections',
+    sectionsEdit: '@BJJLink-Edit:portifolio_sections'
 }

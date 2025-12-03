@@ -23,6 +23,8 @@ import { useLocale } from "next-intl"
 import { toast } from "@/hooks/use-toast"
 import { useQueryClient } from "@tanstack/react-query"
 import DEFAULT_AVATAR from "@/assets/images/user.png"
+import { useRouter } from "next/navigation"
+import { KEYS_STORAGE } from "@/utils/constants"
 
 type PortifolioCardProps = {
     user: UserAccountInfo;
@@ -34,6 +36,7 @@ type PortifolioCardProps = {
 export const PortifolioCard = ({ user, acess_token, portfolioId, onDeleteSuccess }: PortifolioCardProps) => {
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const locale = useLocale();
+    const router = useRouter();
     const queryClient = useQueryClient();
     
     const deletePortifolioMutation = useDeletePortifolio(
@@ -65,11 +68,26 @@ export const PortifolioCard = ({ user, acess_token, portfolioId, onDeleteSuccess
             });
             return;
         }
+
+        localStorage.removeItem(KEYS_STORAGE.sectionsEdit);
         
         deletePortifolioMutation.mutate({
             token: acess_token,
             locale
         });
+    };
+
+    const handleEditPortfolio = () => {
+        if (!user.domain) {
+            toast({
+                title: "Erro",
+                description: "Domínio do usuário não encontrado.",
+                variant: "destructive",
+            });
+            return;
+        }
+        
+        router.push(`/${locale}/portifolio/edit/${user.domain}`);
     };
     return (
         <Card className="bg-gray-900 border-gray-700">
@@ -93,7 +111,12 @@ export const PortifolioCard = ({ user, acess_token, portfolioId, onDeleteSuccess
                         Editar link
                     </Button>
                     <div className="flex gap-2">
-                        <Button variant="ghost" size="icon" className="text-brand-blue-500 hover:text-brand-blue-600 hover:bg-brand-blue-600/15">
+                        <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            className="text-brand-blue-500 hover:text-brand-blue-600 hover:bg-brand-blue-600/15"
+                            onClick={handleEditPortfolio}
+                        >
                             <Pencil className="h-4 w-4" />
                             <span className="sr-only">Edit</span>
                         </Button>

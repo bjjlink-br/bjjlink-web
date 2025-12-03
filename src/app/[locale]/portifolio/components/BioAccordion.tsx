@@ -17,14 +17,32 @@ import { useDataSections } from '@/contexts/DataSectionsContext'
 import { AUTH_STORAGE_KEY } from '@/contexts/AuthContext'
 import { saveSectionPortifolioWIthouFormData } from '@/services/portifolio.service'
 import { KEYS_STORAGE } from '@/utils/constants'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { DataSections } from '@/utils/dataSections'
+import { useEditMode } from '@/contexts/EditModeContext'
 
 export function BioAccordion() {
   const t = useTranslations("create-portfolio");
   const locale = useLocale()
   const { dataSections ,setDataSections } = useDataSections();
   const [loading, setLoading] = useState(false);
+  
+  // Verifica se está em modo de edição (com fallback para modo criação)
+  const { isEditMode, storageKey } = useMemo(() => {
+    try {
+      const editModeContext = useEditMode();
+      return {
+        isEditMode: editModeContext.isEditMode,
+        storageKey: editModeContext.getStorageKey()
+      };
+    } catch {
+      // Se não estiver dentro do EditModeProvider, usa o modo padrão (criação)
+      return {
+        isEditMode: false,
+        storageKey: KEYS_STORAGE.sections
+      };
+    }
+  }, []);
 
   const updateBiographyText = (order: number, text: string) => {
     setDataSections((prev) => {
@@ -73,7 +91,7 @@ export function BioAccordion() {
           }
         };
 
-        localStorage.setItem(KEYS_STORAGE.sections, JSON.stringify(updated));
+        localStorage.setItem(storageKey, JSON.stringify(updated));
 
         toast({
           title: `${t("steps.profile.toast-success")}`,
@@ -88,12 +106,12 @@ export function BioAccordion() {
   }
 
   useEffect(() => {
-    const stored = localStorage.getItem(KEYS_STORAGE.sections);
+    const stored = localStorage.getItem(storageKey);
     if (stored) {
       const parsed: DataSections = JSON.parse(stored);
       setDataSections(parsed);
     }
-  },[locale, setDataSections])
+  },[locale, setDataSections, storageKey])
 
   return (
     <div className="w-full max-w-[575px] space-y-4 bg-gray-900 text-white rounded-lg overflow-hidden">

@@ -45,9 +45,10 @@ export const validateDataSections = (sections: DataSections): {
     };
 };
 
-export const isPortfolioReadyToPublish = (): boolean => {
+export const isPortfolioReadyToPublish = (storageKey?: string): boolean => {
   try {
-    const storedSections = localStorage.getItem(KEYS_STORAGE.sections);
+    const key = storageKey || KEYS_STORAGE.sections;
+    const storedSections = localStorage.getItem(key);
     
     if (!storedSections) {
       return false;

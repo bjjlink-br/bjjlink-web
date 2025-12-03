@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/accordion"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { toast } from '@/hooks/use-toast'
 import { useDataSections } from '@/contexts/DataSectionsContext'
@@ -18,11 +18,29 @@ import { AUTH_STORAGE_KEY } from '@/contexts/AuthContext'
 import { saveSectionPortifolioWIthouFormData } from '@/services/portifolio.service'
 import { KEYS_STORAGE } from '@/utils/constants'
 import { DataSections } from '@/utils/dataSections'
+import { useEditMode } from '@/contexts/EditModeContext'
 
 export function SocialAccordion() {
     const t = useTranslations("create-portfolio");
     const locale = useLocale();
     const [loading, setLoading] = useState(false);
+    
+    // Verifica se está em modo de edição (com fallback para modo criação)
+    const { isEditMode, storageKey } = useMemo(() => {
+      try {
+        const editModeContext = useEditMode();
+        return {
+          isEditMode: editModeContext.isEditMode,
+          storageKey: editModeContext.getStorageKey()
+        };
+      } catch {
+        // Se não estiver dentro do EditModeProvider, usa o modo padrão (criação)
+        return {
+          isEditMode: false,
+          storageKey: KEYS_STORAGE.sections
+        };
+      }
+    }, []);
     const [socialUrls, setSocialUrls] = useState({
         facebook: '',
         instagram: '',
@@ -70,7 +88,7 @@ export function SocialAccordion() {
         }
       };
       
-      localStorage.setItem(KEYS_STORAGE.sections, JSON.stringify(updated));
+      localStorage.setItem(storageKey, JSON.stringify(updated));
 
       toast({
         title: `${t("steps.social.toast-success")}`,
@@ -83,7 +101,7 @@ export function SocialAccordion() {
   }
 
   useEffect(() => {
-    const stored = localStorage.getItem(KEYS_STORAGE.sections);
+    const stored = localStorage.getItem(storageKey);
     if (stored) {
       const parsed: DataSections = JSON.parse(stored);
       setDataSections(parsed);
@@ -93,7 +111,7 @@ export function SocialAccordion() {
         x: parsed.social_media.texts?.find(tx => tx.order === 3)?.text || ''
       })
     }
-  },[locale, setDataSections])
+  },[locale, setDataSections, storageKey])
 
     return (
         <div className="w-full max-w-[575px] space-y-4 bg-gray-900 text-white rounded-lg overflow-hidden">
