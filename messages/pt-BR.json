@@ -137,6 +137,10 @@
         "add-section-button": "Adicionar seção",
         "publish-portifolio-button": "Publicar portfólio",
         "copy-link-button": "Copiar link",
+        "copy-link-toast": {
+            "success": "Link copiado com sucesso!",
+            "error": "Falha ao copiar link."
+        },
         "steps": {
             "profile": {
                 "title": "Seu Perfil",

@@ -136,6 +136,10 @@
         "add-section-button": "Add section",
         "publish-portifolio-button": "Publish Portfolio",
         "copy-link-button": "Copy Link",
+        "copy-link-toast": {
+            "success": "Link copied successfully!",
+            "error": "Failed to copy link."
+        },
         "steps": {
             "profile": {
                 "title": "Your Profile",

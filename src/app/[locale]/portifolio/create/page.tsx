@@ -71,6 +71,15 @@ export default function Create() {
     router.push(`/portifolio/${user?.domain}`);
   }
 
+  const handleCopyPotifolioUrl = () => {
+    if(!user?.domain) return;
+    navigator.clipboard.writeText(`https://bjjlink.com/${user?.domain}`);
+    toast({
+      title: `${t("copy-link-toast.success")}`,
+      duration: 3000,
+    });
+  }
+
   useEffect(() => {
     const userData = localStorage.getItem(USER_DATA_STORAGE_KEY);
     
@@ -132,7 +141,7 @@ export default function Create() {
                     {t('publish-portifolio-button')}
                   </Button>
                   
-                  <Button className="w-full max-w-xl bg-transparent border-gray-100 text-brand-blue-50" variant="outline" size="lg">
+                  <Button onClick={handleCopyPotifolioUrl} className="w-full max-w-xl bg-transparent border-gray-100 text-brand-blue-50" variant="outline" size="lg">
                     <Copy size={14} color="#D8D8E1" />
                     {t('copy-link-button')}
                   </Button>
