@@ -161,11 +161,6 @@ export function UploadImage({
                       className="object-contain rounded-md"
                       width={46}
                       height={46}
-                      onLoad={() => {
-                        if (!file.isRemote && file.file) {
-                          URL.revokeObjectURL(file.preview);
-                        }
-                      }}
                     />
                     <span className="text-sm text-brand-blue-100 truncate">
                       {sectionUpload === "GALLERY"

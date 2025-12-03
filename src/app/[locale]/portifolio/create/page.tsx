@@ -15,7 +15,7 @@ import { PerfilAccordion } from '../components/PerfilAccordion';
 import { SocialAccordion } from '../components/SocialAccordion';
 import { PhotoGallery } from '../components/PhotoGallery';
 import { defaultDataSections, useDataSections } from '@/contexts/DataSectionsContext';
-import { validateDataSections } from '@/utils/functions';
+import { validateDataSections, isPortfolioReadyToPublish } from '@/utils/functions';
 import { toast } from '@/hooks/use-toast'
 import { useRouter } from 'next/navigation';
 import { USER_DATA_STORAGE_KEY } from '@/contexts/AuthContext';
@@ -27,6 +27,7 @@ export default function Create() {
   const router = useRouter();
   const locale = useLocale();
   const [user, setUser] = useState<UserAccountInfo>();
+  const [isPublishEnabled, setIsPublishEnabled] = useState(false);
   const form = useForm<z.infer<typeof createPortifolioSchema>>({
     resolver: zodResolver(createPortifolioSchema),
   });
@@ -95,6 +96,31 @@ export default function Create() {
     }
   }, [locale, router, t]);
 
+  // Monitora mudanças no localStorage para habilitar/desabilitar o botão de publicar
+  useEffect(() => {
+    const checkPortfolioStatus = () => {
+      setIsPublishEnabled(isPortfolioReadyToPublish());
+    };
+
+    // Verifica inicialmente
+    checkPortfolioStatus();
+
+    // Monitora mudanças no localStorage
+    const handleStorageChange = () => {
+      checkPortfolioStatus();
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    // Também monitora mudanças no contexto dataSections
+    const interval = setInterval(checkPortfolioStatus, 1000);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      clearInterval(interval);
+    };
+  }, [dataSections]);
+
   return (
     <div className="bg-gray-1300 min-h-screen flex">
       <VerticalMenu activeMenu='portifolio' />
@@ -134,9 +160,10 @@ export default function Create() {
                     <PreviewPortifolio />
                   </div>
                   <Button 
-                    className="w-full max-w-xl bg-blue-700 hover:bg-blue-800" 
+                    className="w-full max-w-xl bg-blue-700 hover:bg-blue-800 disabled:bg-gray-600 disabled:cursor-not-allowed" 
                     size="lg"
                     onClick={handlePublishPortifolio}
+                    disabled={!isPublishEnabled}
                   >
                     {t('publish-portifolio-button')}
                   </Button>

@@ -2,6 +2,7 @@ import { api } from "@/services/api";
 
 import { AUTH_STORAGE_KEY, USER_DATA_STORAGE_KEY } from "@/contexts/AuthContext";
 import { DataSections } from "./dataSections";
+import { KEYS_STORAGE } from "./constants";
 
 export const signOut = () => {
     localStorage.removeItem(AUTH_STORAGE_KEY);
@@ -42,4 +43,50 @@ export const validateDataSections = (sections: DataSections): {
       isValid: errors.length === 0,
       errors,
     };
+};
+
+export const isPortfolioReadyToPublish = (): boolean => {
+  try {
+    const storedSections = localStorage.getItem(KEYS_STORAGE.sections);
+    
+    if (!storedSections) {
+      return false;
+    }
+
+    const sections: DataSections = JSON.parse(storedSections);
+
+    // Validar PROFILE
+    const hasProfileImage = sections.profile?.image !== null && sections.profile?.image !== undefined;
+    const hasProfileText = sections.profile?.texts && sections.profile.texts.length > 0 && sections.profile.texts[0]?.text?.trim();
+
+    // Validar BIOGRAPHY
+    const hasBiographyTexts = sections.biography?.texts && sections.biography.texts.length >= 4;
+    const hasBiographyTitle = sections.biography?.texts?.[0]?.text?.trim();
+    const hasBiographyDescription = sections.biography?.texts?.[1]?.text?.trim();
+    const hasBiographyButton = sections.biography?.texts?.[2]?.text?.trim();
+    const hasBiographyLink = sections.biography?.texts?.[3]?.text?.trim();
+
+    // Validar SOCIAL_MEDIA
+    const hasSocialTexts = sections.social_media?.texts && sections.social_media.texts.length >= 3;
+    const hasSocialLinks = sections.social_media?.texts?.every(text => text.text?.trim());
+
+    // Validar GALLERY
+    const hasGalleryImages = sections.gallery?.imagesGallery && sections.gallery.imagesGallery.length > 0;
+
+    return (
+      hasProfileImage &&
+      hasProfileText &&
+      hasBiographyTexts &&
+      hasBiographyTitle &&
+      hasBiographyDescription &&
+      hasBiographyButton &&
+      hasBiographyLink &&
+      hasSocialTexts &&
+      hasSocialLinks &&
+      hasGalleryImages
+    );
+  } catch (error) {
+    console.error('Erro ao validar portfólio:', error);
+    return false;
+  }
 };

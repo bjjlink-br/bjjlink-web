@@ -40,20 +40,30 @@ export const PreviewPortifolio = () => {
   const getImageUrl = (image: any): string => {
     if (!image) return exampleImage;
   
+    // Se for string (URL direta)
     if (typeof image === 'string') {
       return image;
     }
   
-    if (typeof image === 'object' && image.preview) {
-      return image.preview;
-    }
-  
-    if (typeof image === 'object' && image.url) {
-      return image.url;
-    }
-  
+    // Se for File (arquivo local)
     if (image instanceof File) {
       return URL.createObjectURL(image);
+    }
+  
+    // Se for objeto (GalleryImage ou RemoteImage)
+    if (typeof image === 'object') {
+      // Prioriza preview (para imagens locais)
+      if (image.preview) {
+        return image.preview;
+      }
+      // Depois url (para imagens remotas)
+      if (image.url) {
+        return image.url;
+      }
+      // Se tem file, cria URL
+      if (image.file && image.file instanceof File) {
+        return URL.createObjectURL(image.file);
+      }
     }
   
     return exampleImage;
@@ -75,6 +85,19 @@ export const PreviewPortifolio = () => {
 
   const galleryImages = getGalleryImages();
 
+  // Limpeza das URLs quando o componente for desmontado
+  React.useEffect(() => {
+    return () => {
+      if (galleryImages && Array.isArray(galleryImages)) {
+        galleryImages.forEach((image: any) => {
+          if (image && typeof image === 'object' && image.preview && !image.isRemote && image.file) {
+            URL.revokeObjectURL(image.preview);
+          }
+        });
+      }
+    };
+  }, [galleryImages]);
+
   return (
     <div className="relative w-[320px] h-[650px] bg-black rounded-[50px] overflow-hidden shadow-xl border-8 border-gray-800">
       {/* Notch */}
@@ -92,11 +115,6 @@ export const PreviewPortifolio = () => {
                 width={40}
                 height={40}
                 className="rounded-full h-10 w-10 object-cover"
-                onLoadingComplete={(img) => {
-                  if (dataSections.profile.image instanceof File) {
-                    URL.revokeObjectURL(img.src);
-                  }
-                }}
               />
               <div>
                 {dataSections.profile.texts?.map((tx) => (
@@ -164,19 +182,14 @@ export const PreviewPortifolio = () => {
                 </div>
               </div>
               <div ref={scrollRef} className="flex gap-2 overflow-x-auto scrollbar-hide">
-                {galleryImages.map((image, index) => (
-                  <div key={`preview-${index}`} className="relative flex-shrink-0">
+                {galleryImages.map((image: any, index: number) => (
+                  <div key={`gallery-${index}-${image?.name || image?.filename || index}`} className="relative flex-shrink-0">
                     <Image
                       src={getImageUrl(image)}
                       alt={`Preview imagem ${index + 1}`}
                       width={80}
                       height={80}
                       className="rounded-lg object-cover h-20 w-20"
-                      onLoadingComplete={(img) => {
-                        if (image instanceof File) {
-                          URL.revokeObjectURL(img.src);
-                        }
-                      }}
                     />
                   </div>
                 ))}
