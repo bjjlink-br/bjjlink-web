@@ -168,7 +168,14 @@
             "bio": {
                 "title": "Your bio",
                 "description": "Tell us about yourself",
-                "headline": "Headline"
+                "headline": "Headline",
+                "supporting-text": "Supporting text",
+                "button-section": "Button",
+                "button-name": "Button name",
+                "button-link": "Link",
+                "button-link-placeholder": "Enter link",
+                "save-button": "Save",
+                "loading": "Loading..."
             }
         },
         "publish": {
@@ -251,5 +258,23 @@
         "update-button-back": "Back to my Dashboard",
         "error-title": "Something went wrong while processing your payment.",
         "error-button": "Try again"
+    },
+    "preview": {
+        "my-networks": "My networks:",
+        "about-my-work": "About my work",
+        "page-created": "Page created on BjjLink platform",
+        "profile-image": "Profile image",
+        "gallery-image": "Image"
+    },
+    "edit": {
+        "title": "Edit Portfolio",
+        "subtitle": "Edit your portfolio information",
+        "update-button": "Update Portfolio",
+        "copy-link": "Copy Link"
+    },
+    "upload": {
+        "add-more-photos": "Add more photos",
+        "profile-image": "Profile image",
+        "gallery-image": "Image"
     }
 }

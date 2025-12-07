@@ -169,7 +169,14 @@
             "bio": {
                 "title": "Sua bio",
                 "description": "Fale sobre você",
-                "headline": "Título em destaque"
+                "headline": "Título em destaque",
+                "supporting-text": "Texto de apoio",
+                "button-section": "Botão",
+                "button-name": "Nome do botão",
+                "button-link": "Link",
+                "button-link-placeholder": "Colocar link",
+                "save-button": "Salvar",
+                "loading": "Carregando..."
             }
         },
         "publish": {
@@ -253,5 +260,23 @@
         "update-button-back": "Voltar para meu Dashboard",
         "error-title": "Algo deu errado no processamento do seu pagamento.",
         "error-button": "Tentar novamente"
+    },
+    "preview": {
+        "my-networks": "Minhas redes:",
+        "about-my-work": "Sobre o meu trabalho",
+        "page-created": "Página criada na plataforma BjjLink",
+        "profile-image": "Imagem de perfil",
+        "gallery-image": "Imagem"
+    },
+    "edit": {
+        "title": "Editar Portfólio",
+        "subtitle": "Edite as informações do seu portfólio",
+        "update-button": "Atualizar Portfólio",
+        "copy-link": "Copiar Link"
+    },
+    "upload": {
+        "add-more-photos": "Adicionar mais fotos",
+        "profile-image": "Imagem de perfil",
+        "gallery-image": "Imagem"
     }
 }

@@ -121,12 +121,12 @@ export function Navbar() {
             >
               {t('plans')}
             </button>
-            <button
+            {/* <button
               onClick={() => scrollToSection('blog')}
               className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700"
             >
               {t('blog')}
-            </button>
+            </button> */}
             <button
               onClick={() => scrollToSection('help')}
               className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700"

@@ -4,10 +4,12 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight, Facebook, Instagram, Twitter } from "lucide-react";
 import { useDataSections } from "@/contexts/DataSectionsContext";
+import { useTranslations } from "next-intl";
 import React, { useRef } from "react";
 
 export const PreviewPortifolio = () => {
   const { dataSections } = useDataSections();
+  const t = useTranslations("preview");
 
   const exampleImage = 'https://i.ibb.co/gFg9NLy1/young-woman-doing-karate.jpg';
   const exampleImage2 = "https://i.ibb.co/SDV9sVSf/black-belt-athlete-practicing-jujitsu-with-determination-generative-ai.jpg"
@@ -164,7 +166,7 @@ export const PreviewPortifolio = () => {
             </Button>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-sm">Minhas redes:</h3>
+              <h3 className="font-semibold text-sm">{t("my-networks")}</h3>
               <div className="flex gap-4">
                 <Facebook className="w-4 h-4 text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" />
                 <Instagram className="w-4 h-4 text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" />
@@ -174,7 +176,7 @@ export const PreviewPortifolio = () => {
 
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <h3 className="font-semibold text-sm">Sobre o meu trabalho</h3>
+                <h3 className="font-semibold text-sm">{t("about-my-work")}</h3>
                 <div className="flex gap-1">
                   <Button variant="ghost" size="icon" className="h-6 w-6 p-0" onClick={() => handleScroll("left")}>
                     <ChevronLeft className="h-3 w-3" />
@@ -206,7 +208,7 @@ export const PreviewPortifolio = () => {
             </div>
           </CardContent>
           <CardFooter className="px-4 py-2 border-t border-zinc-800">
-            <p className="text-[10px] text-zinc-500">Página criada na plataforma BjjLink</p>
+            <p className="text-[10px] text-zinc-500">{t("page-created")}</p>
           </CardFooter>
         </Card>
       </div>

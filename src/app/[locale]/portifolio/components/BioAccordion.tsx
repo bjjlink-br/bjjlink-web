@@ -161,7 +161,7 @@ export function BioAccordion() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="supportingText" className='text-gray-200 font-secondary text-sm'>Texto de apoio</Label>
+                  <Label htmlFor="supportingText" className='text-gray-200 font-secondary text-sm'>{t("steps.bio.supporting-text")}</Label>
                   <Textarea
                     id="supportingText"
                     value={getBiographyText(2)}
@@ -177,9 +177,9 @@ export function BioAccordion() {
               </div>
 
               <div className="space-y-4">
-                <h2 className="text-lg font-medium">Botão</h2>
+                <h2 className="text-lg font-medium">{t("steps.bio.button-section")}</h2>
                 <div className="space-y-2">
-                  <Label htmlFor="buttonName" className='text-gray-200 font-secondary text-sm'>Nome do botão</Label>
+                  <Label htmlFor="buttonName" className='text-gray-200 font-secondary text-sm'>{t("steps.bio.button-name")}</Label>
                   <Input
                     id="buttonName"
                     value={getBiographyText(3)}
@@ -193,7 +193,7 @@ export function BioAccordion() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="buttonUrl">Link</Label>
+                  <Label htmlFor="buttonUrl">{t("steps.bio.button-link")}</Label>
                   <div className="flex">
                     <div className="bg-gray-1100 px-3 py-2 rounded-l-md border border-r-0 border-gray-700 text-[#D0D1D3]">
                       http://
@@ -202,7 +202,7 @@ export function BioAccordion() {
                       id="buttonUrl"
                       value={getBiographyText(4)}
                       onChange={(e) => updateBiographyText(4, e.target.value)}
-                      placeholder="Colocar link"
+                      placeholder={t("steps.bio.button-link-placeholder")}
                       className="bg-gray-800 border-gray-600 text-white rounded-l-none"
                     />
                   </div>
@@ -216,7 +216,7 @@ export function BioAccordion() {
                 disabled={loading}
               >
                 <Save className="w-4 h-4" />
-                {loading ? 'Carregando...' : 'Salvar'}
+                {loading ? t('steps.bio.loading') : t('steps.bio.save-button')}
               </Button>
             </div>
           </AccordionContent>

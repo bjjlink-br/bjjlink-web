@@ -27,6 +27,7 @@ export function UploadImage({
   sectionUpload = "PROFILE",
 }: UploadImageProps) {
   const t = useTranslations("create-portfolio");
+  const tUpload = useTranslations("upload");
   const [error, setError] = React.useState<string | null>(null);
   const { setDataSections } = useDataSections();
   const [uploadedFiles, setUploadedFiles] = React.useState<GalleryImage[]>([]);
@@ -188,8 +189,8 @@ export function UploadImage({
                     />
                     <span className="text-sm text-brand-blue-100 truncate">
                       {sectionUpload === "GALLERY"
-                        ? `Imagem ${index + 1}`
-                        : "Imagem de perfil"}
+                        ? `${tUpload("gallery-image")} ${index + 1}`
+                        : tUpload("profile-image")}
                     </span>
                   </div>
                   <Button
@@ -209,7 +210,7 @@ export function UploadImage({
             {sectionUpload === "GALLERY" && (
               <div className="flex items-center gap-2 mt-4 justify-center">
                 <FilePlus className="w-3 h-3 text-white" />
-                <p className="text-white">Adicionar mais fotos</p>
+                <p className="text-white">{tUpload("add-more-photos")}</p>
               </div>
             )}
           </div>
