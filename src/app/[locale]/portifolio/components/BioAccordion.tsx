@@ -153,7 +153,7 @@ export function BioAccordion() {
                     value={getBiographyText(1)}
                     onChange={(e) => updateBiographyText(1, e.target.value)}
                     maxLength={150}
-                    placeholder="Escreva"
+                    placeholder="Meu objetivo como atleta!"
                     className="bg-gray-800 border-gray-600 text-white"
                   />
                   <div className="text-xs text-gray-400 text-right">
@@ -167,7 +167,7 @@ export function BioAccordion() {
                     value={getBiographyText(2)}
                     onChange={(e) => updateBiographyText(2, e.target.value)}
                     maxLength={200}
-                    placeholder="Escreva"
+                    placeholder="Com disciplina e maestria, BJJ Master é um ícone do jiu-jitsu..."
                     className="bg-gray-800 border-gray-600 text-white min-h-[100px]"
                   />
                   <div className="text-xs text-gray-400 text-right">

@@ -70,6 +70,7 @@ export const PortifolioCard = ({ user, acess_token, portfolioId, onDeleteSuccess
         }
 
         localStorage.removeItem(KEYS_STORAGE.sectionsEdit);
+        localStorage.removeItem(KEYS_STORAGE.sections);
         
         deletePortifolioMutation.mutate({
             token: acess_token,

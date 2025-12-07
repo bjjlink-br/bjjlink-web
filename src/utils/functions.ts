@@ -7,6 +7,8 @@ import { KEYS_STORAGE } from "./constants";
 export const signOut = () => {
     localStorage.removeItem(AUTH_STORAGE_KEY);
     localStorage.removeItem(USER_DATA_STORAGE_KEY);
+    localStorage.removeItem(KEYS_STORAGE.sections);
+    localStorage.removeItem(KEYS_STORAGE.sectionsEdit);
     api.defaults.headers.token = '';
 }
 
