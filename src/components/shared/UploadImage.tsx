@@ -33,13 +33,17 @@ export function UploadImage({
 
   // Carregar do localStorage se houver
   React.useEffect(() => {
-    const sectionsString = localStorage.getItem(KEYS_STORAGE.sections);
+    // Tenta primeiro o modo de edição, depois o modo de criação
+    const editSectionsString = localStorage.getItem(KEYS_STORAGE.sectionsEdit);
+    const createSectionsString = localStorage.getItem(KEYS_STORAGE.sections);
+    const sectionsString = editSectionsString || createSectionsString;
 
     if (sectionsString) {
       const sections = JSON.parse(sectionsString);
       const gallery = sections?.gallery?.imagesGallery || [];
 
-      const remoteFiles: GalleryImage[] = gallery.map((img: any) => ({
+      const remoteFiles: GalleryImage[] = gallery.map((img: any, index: number) => ({
+        id: img.id || `remote-${index}-${Date.now()}`,
         name: img.name || img.filename,
         preview: img.preview || img.url,
         isRemote: true,
@@ -83,6 +87,7 @@ export function UploadImage({
       });
 
       const newFiles: GalleryImage[] = validFiles.map(file => ({
+        id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
         name: file.name,
         preview: URL.createObjectURL(file),
         file,
@@ -111,6 +116,25 @@ export function UploadImage({
       }
 
       newFiles.splice(index, 1);
+      
+      // Atualiza o localStorage após remoção (suporta ambos os modos)
+      const editSectionsString = localStorage.getItem(KEYS_STORAGE.sectionsEdit);
+      const createSectionsString = localStorage.getItem(KEYS_STORAGE.sections);
+      const sectionsString = editSectionsString || createSectionsString;
+      const storageKey = editSectionsString ? KEYS_STORAGE.sectionsEdit : KEYS_STORAGE.sections;
+      
+      if (sectionsString) {
+        const sections = JSON.parse(sectionsString);
+        const updatedSections = {
+          ...sections,
+          gallery: {
+            type: 'GALLERY',
+            imagesGallery: newFiles
+          }
+        };
+        localStorage.setItem(storageKey, JSON.stringify(updatedSections));
+      }
+      
       return newFiles;
     });
   };
@@ -152,7 +176,7 @@ export function UploadImage({
         {uploadedFiles.length > 0 ? (
           <div className="w-full space-y-2">
             {uploadedFiles.map((file, index) => (
-              <div key={file.name + index} className="relative w-full">
+              <div key={file.id} className="relative w-full">
                 <div className="flex flex-row items-center justify-between bg-slate-900 p-2 rounded">
                   <div className="flex items-center gap-2">
                     <Image

@@ -78,7 +78,8 @@ export const PhotoGallery = () => {
             const response = await saveSectionPortifolio(tokenObj.acess_token as string, locale, formData);
         
             // Converte imagens retornadas pelo backend em GalleryImage[]
-            const newImages: any[] = response.images.map((img: any) => ({
+            const newImages: any[] = response.images.map((img: any, index: number) => ({
+                id: img.id || `backend-${index}-${Date.now()}`,
                 name: img.filename,
                 preview: img.url,
                 isRemote: true

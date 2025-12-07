@@ -76,7 +76,8 @@ export default function EditPortfolio({ params }: { params: { id: string } }) {
         case 'GALLERY':
           sections.gallery = {
             type: 'GALLERY',
-            imagesGallery: section.images?.map((img: any) => ({
+            imagesGallery: section.images?.map((img: any, index: number) => ({
+              id: img.id || `api-${index}-${Date.now()}`,
               name: img.filename,
               preview: img.url,
               isRemote: true

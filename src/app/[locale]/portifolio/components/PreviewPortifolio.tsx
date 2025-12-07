@@ -38,7 +38,9 @@ export const PreviewPortifolio = () => {
   // };
 
   const getImageUrl = (image: any): string => {
-    if (!image) return exampleImage;
+    if (!image) {
+      return exampleImage;
+    }
   
     // Se for string (URL direta)
     if (typeof image === 'string') {
@@ -47,22 +49,29 @@ export const PreviewPortifolio = () => {
   
     // Se for File (arquivo local)
     if (image instanceof File) {
-      return URL.createObjectURL(image);
+      const url = URL.createObjectURL(image);
+      return url;
     }
   
     // Se for objeto (GalleryImage ou RemoteImage)
     if (typeof image === 'object') {
-      // Prioriza preview (para imagens locais)
+      
+      // Para GalleryImage, sempre usar preview
       if (image.preview) {
         return image.preview;
       }
-      // Depois url (para imagens remotas)
+      // Fallback para url (compatibilidade com formato antigo)
       if (image.url) {
         return image.url;
       }
       // Se tem file, cria URL
       if (image.file && image.file instanceof File) {
-        return URL.createObjectURL(image.file);
+        const url = URL.createObjectURL(image.file);
+        return url;
+      }
+      // Se tem name e é string, pode ser uma URL
+      if (typeof image.name === 'string' && image.name.startsWith('http')) {
+        return image.name;
       }
     }
   
@@ -183,7 +192,7 @@ export const PreviewPortifolio = () => {
               </div>
               <div ref={scrollRef} className="flex gap-2 overflow-x-auto scrollbar-hide">
                 {galleryImages.map((image: any, index: number) => (
-                  <div key={`gallery-${index}-${image?.name || image?.filename || index}`} className="relative flex-shrink-0">
+                  <div key={image?.id || `gallery-${index}-${image?.name || image?.filename || index}`} className="relative flex-shrink-0">
                     <Image
                       src={getImageUrl(image)}
                       alt={`Preview imagem ${index + 1}`}

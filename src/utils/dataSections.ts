@@ -7,6 +7,7 @@ export type SectionsTypes = "PROFILE" | "BIOGRAPHY" | "SOCIAL_MEDIA" | "GALLERY"
 
 // Novo tipo unificado que permite File OU objeto remoto
 export type GalleryImage = {
+    id: string;
     name: string;
     preview: string;
     file?: File;
