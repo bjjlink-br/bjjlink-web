@@ -150,7 +150,7 @@ export default function Home() {
           <Separator className="bg-gray-600"/>
         </div>
 
-        <section className="mx-auto pt-10 md:py-20 mb-16">
+        {/* <section className="mx-auto pt-10 md:py-20 mb-16">
           <div className="container mx-auto px-4 mb-4">
             <h2 className="text-xl md:text-3xl text-center font-semibold text-brand-blue-50">
               {t("testimonials-title")}
@@ -160,7 +160,7 @@ export default function Home() {
             </p>
           </div>
           <TestimonialCarousel />
-        </section>
+        </section> */}
 
         <section className="bg-transparent px-4 md:px-0">
           <div className="container flex flex-col items-center justify-center bg-gray-900 rounded-2xl max-w-[930px] mx-auto p-8 md:px-52 md:py-16">
@@ -176,7 +176,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto pt-10 md:py-20 mb-16" id="blog">
+        {/* <section className="mx-auto pt-10 md:py-20 mb-16" id="blog">
           <div className="container mx-auto px-4 mb-4 flex flex-row justify-between items-end">
             <div>
               <h4 className="text-xl md:text-3xl font-semibold text-brand-blue-50 mb-2">
@@ -192,7 +192,7 @@ export default function Home() {
             </Button>
           </div>
           <BlogCarousel />
-        </section>
+        </section> */}
 
         <section className="container mx-auto py-10 px-4 md:py-20" id="help">
           <div className="container mx-auto px-4 mb-8">
