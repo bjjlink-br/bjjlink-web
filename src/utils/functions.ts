@@ -1,6 +1,6 @@
 import { api } from "@/services/api";
 
-import { AUTH_STORAGE_KEY, USER_DATA_STORAGE_KEY } from "@/contexts/AuthContext";
+import { AUTH_STORAGE_KEY, GET_COMPONENTS_KEY, USER_DATA_STORAGE_KEY } from "@/contexts/AuthContext";
 import { DataSections } from "./dataSections";
 import { KEYS_STORAGE } from "./constants";
 
@@ -9,6 +9,7 @@ export const signOut = () => {
     localStorage.removeItem(USER_DATA_STORAGE_KEY);
     localStorage.removeItem(KEYS_STORAGE.sections);
     localStorage.removeItem(KEYS_STORAGE.sectionsEdit);
+    localStorage.removeItem(GET_COMPONENTS_KEY)
     api.defaults.headers.token = '';
 }
 

@@ -80,7 +80,9 @@
             "title": "Conta criada com sucesso! 🤩",
             "description": "Acesse a página de login e entre na sua conta.",
             "error-create-user-title": "Ops! 😵 Algo deu errado.",
-            "error-create-user-description": "Tente criar sua conta novamente."
+            "error-create-user-description": "Tente criar sua conta novamente.",
+            "error-title-email-already-in-use": "Algo de errado com o seu email ou domínio.",
+            "error-description-email-already-in-use": "Email ou domínio já está em uso. Por favor, tente outro email ou nome de usuário."
         }
     },
     "vertical-menu": {
@@ -125,9 +127,11 @@
         "register-text": "Você não tem uma conta?",
         "register-link": "Cadastre-se",
         "toast": {
-            "title": "Bem-vindo de volta! 🤩",
+            "title": "Bem-vindo de volta!",
             "error-create-user-title": "Ops! 😵 Algo deu errado.",
-            "error-create-user-description": "Tente novamente."
+            "error-create-user-description": "Tente novamente.",
+            "error-incorrect-credentials-title": "Credenciais inválidas",
+            "error-incorrect-credentials-description": "Email ou senha incorretos. Por favor, verifique suas informações e tente novamente."
         }
     },
     "create-portfolio": {

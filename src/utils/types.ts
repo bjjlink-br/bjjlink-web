@@ -5,6 +5,12 @@ export type UserResponse = {
 	domain: string
 	createdAt: string;
 	_id: string;
+    token: string;
+}
+
+export type CreateUserResponse = {
+    account: UserResponse;
+    token: string;
 }
 
 export type UserLogin = {

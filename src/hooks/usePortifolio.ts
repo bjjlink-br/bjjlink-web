@@ -1,6 +1,8 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { getPortifolioByDomainUser, getPortifolios, deletePortifolio } from "@/services/portifolio.service";
 import { Section } from "@/utils/dataSections";
+import { useEffect } from "react";
+import { GET_COMPONENTS_KEY } from "@/contexts/AuthContext";
 
 export function usePortifolioByDomain(domain: string | undefined) {
   return useQuery<Section[], Error>({
@@ -14,7 +16,7 @@ export function usePortifolioByDomain(domain: string | undefined) {
 }
 
 export function useGetListPortifolio(token: string | null, locale: string) {
-  return useQuery<Section[], Error>({
+  const query = useQuery<Section[], Error>({
     queryKey: ["portfolios", token, locale],
     queryFn: () => getPortifolios(token!, locale),
     enabled: !!token,
@@ -22,6 +24,14 @@ export function useGetListPortifolio(token: string | null, locale: string) {
     gcTime: 1000 * 60 * 30, // 30 min em cache mesmo não usado
     retry: 1,
   });
+
+  useEffect(() => {
+    if (query.data && !query.isLoading && !query.isError) {
+      localStorage.setItem(GET_COMPONENTS_KEY, JSON.stringify(query.data));
+    }
+  }, [query.data, query.isLoading, query.isError]);
+
+  return query;
 }
 
 export function useDeletePortifolio(onSuccess?: () => void, onError?: (error: Error | unknown) => void) {

@@ -79,7 +79,9 @@
             "title": "Account created successfully! 🤩",
             "description": "Go to the login page and log in to your account.",
             "error-create-user-title": "Oops! 😵 Something went wrong.",
-            "error-create-user-description": "Try creating your account again."
+            "error-create-user-description": "Try creating your account again.",
+            "error-title-email-already-in-use": "Something went wrong with your email or domain.",
+            "error-description-email-already-in-use": "Email or domain already in use. Please try another email or username."
         }
     },
     "vertical-menu": {
@@ -126,7 +128,9 @@
         "toast": {
             "title": "Welcome back! 🤩",
             "error-create-user-title": "Oops! 😵 Something went wrong.",
-            "error-create-user-description": "Try again."
+            "error-create-user-description": "Try again.",
+            "error-incorrect-credentials-title": "Invalid credentials",
+            "error-incorrect-credentials-description": "Incorrect email or password. Please check your information and try again."
         }
     },
     "create-portfolio": {

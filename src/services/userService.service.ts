@@ -1,8 +1,8 @@
-import { RegisterUserBody, UserLogin, UserResetPassword, UserResponse } from "@/utils/types";
+import { CreateUserResponse, RegisterUserBody, UserLogin, UserResetPassword } from "@/utils/types";
 import { api } from "./api";
 
-export const createUser = async (userData: RegisterUserBody): Promise<UserResponse> => {
-    const response = await api.post<UserResponse>('/account', userData);
+export const createUser = async (userData: RegisterUserBody): Promise<CreateUserResponse> => {
+    const response = await api.post<CreateUserResponse>('/account', userData);
     return response.data;
 };
 

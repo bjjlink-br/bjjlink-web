@@ -19,9 +19,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useTranslations } from "next-intl"
 import { UserAccountInfo } from "@/utils/types"
 import DEFAULT_AVATAR from "@/assets/images/user.png"
+import { Section } from "@/utils/dataSections"
 
-export function ProfileSettings({ user }: { user: UserAccountInfo }) {
+export function ProfileSettings({ user, components }: { user: UserAccountInfo; components: Section[] }) {
   const t = useTranslations("settings");
+  const userPhoto = components.find((component) => component.type === "PROFILE") as any;
 
   return (
     <Card className="w-full mx-auto bg-gray-900 border-none">
@@ -31,7 +33,7 @@ export function ProfileSettings({ user }: { user: UserAccountInfo }) {
       <CardContent className="space-y-6">
         <div className="flex flex-col items-center gap-4">
           <Avatar className="w-24 h-24">
-            <AvatarImage src={user.profile_photo ?? DEFAULT_AVATAR} alt="Profile picture" />
+            <AvatarImage src={userPhoto.images[0].url ?? DEFAULT_AVATAR} alt="Profile picture" />
             <AvatarFallback>{user.username.charAt(0).toUpperCase()}</AvatarFallback>
           </Avatar>
         </div>

@@ -8,6 +8,7 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AUTH_STORAGE_KEY = '@Bjjlink:auth';
 export const USER_DATA_STORAGE_KEY = '@Bjjlink-user';
+export const GET_COMPONENTS_KEY = '@Bjjlink-components';
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [data, setData] = useState<AuthState>(() => {

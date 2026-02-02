@@ -25,19 +25,22 @@ import { useQueryClient } from "@tanstack/react-query"
 import DEFAULT_AVATAR from "@/assets/images/user.png"
 import { useRouter } from "next/navigation"
 import { KEYS_STORAGE } from "@/utils/constants"
+import { Section } from "@/utils/dataSections"
 
 type PortifolioCardProps = {
     user: UserAccountInfo;
     acess_token: string;
     portfolioId?: string;
     onDeleteSuccess?: () => void;
+    components: Section[];
 }
 
-export const PortifolioCard = ({ user, acess_token, portfolioId, onDeleteSuccess }: PortifolioCardProps) => {
+export const PortifolioCard = ({ user, acess_token, portfolioId, onDeleteSuccess, components }: PortifolioCardProps) => {
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const locale = useLocale();
     const router = useRouter();
     const queryClient = useQueryClient();
+    const userPhoto = components.find((component) => component.type === "PROFILE") as any;
     
     const deletePortifolioMutation = useDeletePortifolio(
         () => {
@@ -95,7 +98,7 @@ export const PortifolioCard = ({ user, acess_token, portfolioId, onDeleteSuccess
             <CardContent className="p-6">
                 <div className="flex items-center gap-2">
                     <Image
-                        src={user.profile_photo ?? DEFAULT_AVATAR}
+                        src={userPhoto.images[0].url ?? DEFAULT_AVATAR}
                         alt="Profile avatar"
                         className="rounded-full"
                         width={48}
