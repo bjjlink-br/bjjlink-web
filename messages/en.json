@@ -136,6 +136,8 @@
     "create-portfolio": {
         "title": "Create portfolio",
         "subtitle": "Create your portfolio and show yourself to the world!",
+        "edit-title": "Edit portfolio",
+        "edit-subtitle": "Edit your portfolio and show yourself to the world!",
         "button-change-layout": "Change layout",
         "add-section-button": "Add section",
         "publish-portifolio-button": "Publish Portfolio",

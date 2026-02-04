@@ -49,22 +49,34 @@ export function SocialAccordion() {
     const { dataSections ,setDataSections } = useDataSections();
 
     const updateBiographyText = (order: number, text: string) => {
+        // Remove http:// ou https:// do início do texto para exibição no campo
+        let processedText = text.replace(/^(https?:\/\/)/i, '');
+        
+        // Atualiza o estado socialUrls para refletir o texto sem prefixo
+        if (order === 1) {
+            setSocialUrls(prev => ({ ...prev, facebook: processedText }));
+        } else if (order === 2) {
+            setSocialUrls(prev => ({ ...prev, instagram: processedText }));
+        } else if (order === 3) {
+            setSocialUrls(prev => ({ ...prev, x: processedText }));
+        }
+        
         setDataSections((prev) => {
-        const existingTexts = prev.social_media.texts || [];
-    
-        const updatedTexts = existingTexts.some((tx) => tx.order === order)
-            ? existingTexts.map((tx) =>
-                tx.order === order ? { ...tx, text } : tx
-            )
-            : [...existingTexts, { order, text }];
-    
-        return {
-            ...prev,
-            social_media: {
-            type: 'social_media',
-            texts: updatedTexts,
-            },
-        };
+            const existingTexts = prev.social_media.texts || [];
+        
+            const updatedTexts = existingTexts.some((tx) => tx.order === order)
+                ? existingTexts.map((tx) =>
+                    tx.order === order ? { ...tx, text: processedText } : tx
+                )
+                : [...existingTexts, { order, text: processedText }];
+        
+            return {
+                ...prev,
+                social_media: {
+                    type: 'SOCIAL_MEDIA',
+                    texts: updatedTexts,
+                },
+            };
         });
     };
 
@@ -74,27 +86,49 @@ export function SocialAccordion() {
     const token = localStorage.getItem(AUTH_STORAGE_KEY);
     const tokenObj = JSON.parse(token!);
 
-    if(dataSections.biography.texts) {
-      const response = await saveSectionPortifolioWIthouFormData(tokenObj.acess_token as string, locale, {
-        type: 'SOCIAL_MEDIA',
-        texts: dataSections.social_media.texts
-      });
-  
-      const updated = {
-        ...dataSections,
-        social_media: {
-          type: 'SOCIAL_MEDIA',
-          texts: dataSections.social_media.texts
+    if(dataSections.social_media.texts) {
+      // Processa os links para garantir que todos tenham https:// no início
+      const processedTexts = dataSections.social_media.texts.map(item => {
+        if (item.text && item.text.trim() !== '') {
+          // Verifica se o texto já começa com http:// ou https://
+          if (!item.text.match(/^(https?:\/\/)/i)) {
+            // Adiciona https:// no início do texto
+            return { ...item, text: `https://${item.text}` };
+          }
         }
-      };
-      
-      localStorage.setItem(storageKey, JSON.stringify(updated));
-
-      toast({
-        title: `${t("steps.social.toast-success")}`,
-        duration: 3000,
+        return item;
       });
-      setLoading(false);
+
+      try {
+        await saveSectionPortifolioWIthouFormData(tokenObj.acess_token as string, locale, {
+          type: 'SOCIAL_MEDIA',
+          texts: processedTexts
+        });
+    
+        // Mantém o estado local sem o prefixo para exibição no campo
+        const updated = {
+          ...dataSections,
+          social_media: {
+            type: 'SOCIAL_MEDIA',
+            texts: dataSections.social_media.texts
+          }
+        };
+        
+        localStorage.setItem(storageKey, JSON.stringify(updated));
+
+        toast({
+          title: `${t("steps.social.toast-success")}`,
+          duration: 3000,
+        });
+      } catch (error) {
+        console.error('Erro ao salvar redes sociais:', error);
+        toast({
+          title: "Erro ao salvar",
+          description: "Ocorreu um erro ao salvar suas redes sociais",
+          variant: "destructive",
+          duration: 3000,
+        });
+      }
     }
 
     setLoading(false)
@@ -149,7 +183,7 @@ export function SocialAccordion() {
                                     <Label htmlFor="buttonUrl">{t("steps.social.facebook")}</Label>
                                     <div className="flex">
                                         <div className="bg-gray-1100 px-3 py-2 rounded-l-md border border-r-0 border-gray-700 text-[#D0D1D3]">
-                                            http://
+                                            https://
                                         </div>
                                         <Input
                                             id="facebookURL"
@@ -169,7 +203,7 @@ export function SocialAccordion() {
                                     <Label htmlFor="buttonUrl">{t("steps.social.insta")}</Label>
                                     <div className="flex">
                                         <div className="bg-gray-1100 px-3 py-2 rounded-l-md border border-r-0 border-gray-700 text-[#D0D1D3]">
-                                            http://
+                                            https://
                                         </div>
                                         <Input
                                             id="instagramURL"
@@ -189,7 +223,7 @@ export function SocialAccordion() {
                                     <Label htmlFor="buttonUrl">{t("steps.social.x")}</Label>
                                     <div className="flex">
                                         <div className="bg-gray-1100 px-3 py-2 rounded-l-md border border-r-0 border-gray-700 text-[#D0D1D3]">
-                                            http://
+                                            https://
                                         </div>
                                         <Input
                                             id="xURL"

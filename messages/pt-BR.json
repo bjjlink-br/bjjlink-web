@@ -137,6 +137,8 @@
     "create-portfolio": {
         "title": "Criar portfólio",
         "subtitle": "Crie o seu portfólio e mostre-se para o mundo!",
+        "edit-title": "Editar portfólio",
+        "edit-subtitle": "Edite o seu portfólio e mostre-se para o mundo!",
         "button-change-layout": "Alterar layout",
         "add-section-button": "Adicionar seção",
         "publish-portifolio-button": "Publicar portfólio",

@@ -202,9 +202,9 @@ export default function EditPortfolio({ params }: { params: { id: string } }) {
                               <ArrowLeft className="w-4 h-4" />
                             </Button>
                           </Link>
-                          <h1 className="text-xl text-gray-50 font-semibold">{t("edit.title")}</h1>
+                          <h1 className="text-xl text-gray-50 font-semibold">{t("edit-title")}</h1>
                         </div>
-                        <p className="text-gray-200 text-sm">{t("edit.subtitle")}</p>
+                        <p className="text-gray-200 text-sm">{t("edit-subtitle")}</p>
                       </div>
                     </div>
 
@@ -226,12 +226,12 @@ export default function EditPortfolio({ params }: { params: { id: string } }) {
                       onClick={handleUpdatePortfolio}
                       disabled={!isPublishEnabled}
                     >
-                      {t("edit.update-button")}
+                      {t("publish-portifolio-button")}
                     </Button>
                     
                     <Button onClick={handleCopyPotifolioUrl} className="w-full max-w-xl bg-transparent border-gray-100 text-brand-blue-50" variant="outline" size="lg">
                       <Copy size={14} color="#D8D8E1" />
-                      {t("edit.copy-link")}
+                      {t("copy-link-button")}
                     </Button>
                   </div>
                 </form>

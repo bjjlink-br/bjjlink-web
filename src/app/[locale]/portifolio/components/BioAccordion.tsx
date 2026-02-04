@@ -45,6 +45,14 @@ export function BioAccordion() {
   }, []);
 
   const updateBiographyText = (order: number, text: string) => {
+    // Tratamento especial para o campo de URL (order === 4)
+    let processedText = text;
+    
+    if (order === 4) {
+      // Remove http:// ou https:// do início do texto para exibição no campo
+      processedText = text.replace(/^(https?:\/\/)/i, '');
+    }
+    
     setDataSections((prev) => {
       const existingTexts = prev.biography.texts || [];
   
@@ -52,7 +60,7 @@ export function BioAccordion() {
       const orders = [1, 2, 3, 4];
       const filledTexts = orders.map((ord) => {
         if (ord === order) {
-          return { order: ord, text }; // atualiza o que está sendo alterado agora
+          return { order: ord, text: processedText }; // atualiza o que está sendo alterado agora
         }
   
         const existing = existingTexts.find((t) => t.order === ord);
@@ -79,10 +87,24 @@ export function BioAccordion() {
     const tokenObj = JSON.parse(token!);
 
     if(dataSections.biography.texts) {
+      // Cria uma cópia dos textos para não modificar o estado diretamente
+      const processedTexts = dataSections.biography.texts.map(item => {
+        // Se for o campo de URL (order === 4) e não estiver vazio
+        if (item.order === 4 && item.text) {
+          // Verifica se o texto já começa com http:// ou https://
+          if (!item.text.match(/^(https?:\/\/)/i)) {
+            // Adiciona https:// no início do texto
+            return { ...item, text: `https://${item.text}` };
+          }
+        }
+        return item;
+      });
+
       await saveSectionPortifolioWIthouFormData(tokenObj.acess_token as string, locale, {
         type: 'BIOGRAPHY',
-        texts: dataSections.biography.texts
+        texts: processedTexts
       }).then(() => {
+        // Mantém o estado local sem o prefixo para exibição no campo
         const updated = {
           ...dataSections,
           biography: {
@@ -196,7 +218,7 @@ export function BioAccordion() {
                   <Label htmlFor="buttonUrl">{t("steps.bio.button-link")}</Label>
                   <div className="flex">
                     <div className="bg-gray-1100 px-3 py-2 rounded-l-md border border-r-0 border-gray-700 text-[#D0D1D3]">
-                      http://
+                      https://
                     </div>
                     <Input
                       id="buttonUrl"
