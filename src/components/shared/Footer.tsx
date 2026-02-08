@@ -22,20 +22,18 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-start gap-4">
             <LogoTitle />
             <p className="text-sm text-center md:text-left">
-              Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie,
-              dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem
-              sollicitudin lacus.
+              {t('description')}
             </p>
           </div>
 
           <div className="flex flex-col gap-4 items-center">
             <div className="flex flex-col gap-1 text-center md:text-left md:min-w-[186px]">
-                <h3 className="text-gray-50 text-lg font-semibold">Contato</h3>
-                <p className="text-sm">contato@bjjlink.com.br</p>
-                <p className="text-sm">(61) 9997-5826</p>
+                <h3 className="text-gray-50 text-lg font-semibold">{t('contact-title')}</h3>
+                <p className="text-sm">{t('email')}</p>
+                <p className="text-sm">{t('phone')}</p>
             </div>
             <div className="text-center md:text-left md:min-w-[186px]">
-                <h3 className="text-gray-50 text-lg font-semibold">Rede sociais</h3>
+                <h3 className="text-gray-50 text-lg font-semibold">{t('social-networks')}</h3>
                 <div className="flex items-center space-x-2">
                     <Link href="#" className="hover:text-brand-blue-100">
                         <Instagram size={24} color="#85CBFF" />
@@ -44,7 +42,7 @@ export function Footer() {
                         <Facebook size={24} color="#85CBFF" />
                     </Link>
                     <Link href="#" className="hover:text-brand-blue-100">
-                        <Image src={XLogoSvg} alt="Logo X antigo twitter" width={24} height={24} />
+                        <Image src={XLogoSvg} alt={t('x-logo-alt')} width={24} height={24} />
                     </Link>
                     <Link href="#" className="hover:text-brand-blue-100">
                         <Linkedin size={24} color="#85CBFF" />
@@ -54,12 +52,12 @@ export function Footer() {
           </div>
 
           <div className="text-center md:text-left">
-            <h3 className="text-gray-50 text-lg font-semibold mb-1">Privacidade</h3>
+            <h3 className="text-gray-50 text-lg font-semibold mb-1">{t('privacy-title')}</h3>
             <Link href="/terms" className="block hover:text-white">
-              Termos e condições de uso
+              {t('terms-link')}
             </Link>
             <Link href="/privacy" className="block hover:text-white">
-              Política de Privacidade
+              {t('privacy-link')}
             </Link>
           </div>
         </div>
@@ -67,7 +65,7 @@ export function Footer() {
         {/* Bottom section */}
         <div className="border-t border-gray-800 bg-gray-900 flex flex-col md:flex-row justify-between items-center py-6 px-12">
           <p className="text-sm mb-4 md:mb-0 text-center md:text-left">
-            Copyright © 2023 Todos os direitores reservados para BJJLink
+            {t('copyright')}
           </p>
           <nav className="hidden md:block">
             <ul className="flex flex-wrap justify-center md:justify-end space-x-4">

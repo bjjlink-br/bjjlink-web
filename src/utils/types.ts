@@ -42,12 +42,18 @@ export type UserResetPassword = {
     passwordConfirmation: string;
 }
 
+export type PlanFeature = {
+    name: string;
+    available: boolean;
+}
+
 export type PlanType = {
     name: string;
     price: number;
     discount?: string;
     description: string;
-    features: string[];
+    descriptionDetail?: string;
+    features: PlanFeature[];
     popular?: boolean;
 }
 

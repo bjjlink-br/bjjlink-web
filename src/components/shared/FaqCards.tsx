@@ -1,36 +1,39 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { useTranslations } from 'next-intl'
 
 export function FaqCards() {
+  const t = useTranslations('faq')
+
   const faqItems = [
     {
       id: "01",
-      question: "Rorem ipsum dolor sit amet, consectetur adipiscing elit?",
-      answer: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar."
+      question: t('items.01.question'),
+      answer: t('items.01.answer')
     },
     {
       id: "02",
-      question: "Rorem ipsum dolor sit amet, consectetur adipiscing elit?",
-      answer: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar."
+      question: t('items.02.question'),
+      answer: t('items.02.answer')
     },
     {
       id: "03",
-      question: "Rorem ipsum dolor sit amet, consectetur adipiscing elit?",
-      answer: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar."
+      question: t('items.03.question'),
+      answer: t('items.03.answer')
     },
     {
       id: "04",
-      question: "Rorem ipsum dolor sit amet, consectetur adipiscing elit?",
-      answer: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar."
+      question: t('items.04.question'),
+      answer: t('items.04.answer')
     },
     {
       id: "05",
-      question: "Rorem ipsum dolor sit amet, consectetur adipiscing elit?",
-      answer: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar."
+      question: t('items.05.question'),
+      answer: t('items.05.answer')
     },
     {
       id: "06",
-      question: "Rorem ipsum dolor sit amet, consectetur adipiscing elit?",
-      answer: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar."
+      question: t('items.06.question'),
+      answer: t('items.06.answer')
     },
   ]
 

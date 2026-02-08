@@ -5,50 +5,7 @@ import { Check } from 'lucide-react'
 import { PlanButton } from './PlanButton'
 import { Separator } from '../ui/separator'
 import { PlanType } from '@/utils/types'
-
-const plans: PlanType[] = [
-  {
-    name: 'Free',
-    price: 0,
-    discount: '100% Off',
-    description: 'Para pessoa',
-    features: [
-      'Yorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      'Yorem ipsum dolor sit amet, consectetur',
-      'Yorem ipsum dolor sit amet, consectetur',
-      'Yorem ipsum dolor sit amet, consectetur',
-      'Yorem ipsum dolor sit amet, consectetur',
-    ],
-  },
-  {
-    name: 'Premium',
-    price: 14,
-    discount: '15% Off',
-    description: 'Para pessoa',
-    features: [
-      'Yorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      'Yorem ipsum dolor sit amet, consectetur',
-      'Yorem ipsum dolor sit amet, consectetur',
-      'Yorem ipsum dolor sit amet, consectetur',
-      'Yorem ipsum dolor sit amet, consectetur',
-      'Yorem ipsum dolor sit amet, consectetur',
-    ],
-    popular: true,
-  },
-  {
-    name: 'Profissional',
-    price: 69.99,
-    description: 'Para pessoa',
-    features: [
-      'Yorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      'Yorem ipsum dolor sit amet, consectetur',
-      'Yorem ipsum dolor sit amet, consectetur',
-      'Yorem ipsum dolor sit amet, consectetur',
-      'Yorem ipsum dolor sit amet, consectetur',
-      'Yorem ipsum dolor sit amet, consectetur',
-    ],
-  },
-]
+import { useTranslations } from 'next-intl'
 
 type PricingComponentProps = {
   handleSelectPlan: ({ plan, isAnnual }: { plan: PlanType; isAnnual: boolean }) => void;
@@ -56,6 +13,40 @@ type PricingComponentProps = {
 
 export default function PricingComponent({ handleSelectPlan }: PricingComponentProps) {
   const [isAnnual, setIsAnnual] = useState(false)
+  const t = useTranslations('pricing')
+
+  const plans: PlanType[] = [
+    {
+      name: t('plans.free.name'),
+      price: 0,
+      discount: t('plans.free.discount'),
+      description: t('plans.free.description'),
+      descriptionDetail: t('plans.free.description-detail'),
+      features: [
+        { name: t('plans.free.features.public-page'), available: true },
+        { name: t('plans.free.features.photo-management'), available: true },
+        { name: t('plans.free.features.basic-access'), available: false },
+        { name: t('plans.free.features.social-links'), available: false },
+        { name: t('plans.free.features.link-management'), available: false },
+        { name: '', available: false },
+      ],
+    },
+    {
+      name: t('plans.professional.name'),
+      price: 14,
+      discount: t('plans.professional.discount'),
+      description: t('plans.professional.description'),
+      descriptionDetail: t('plans.professional.description-detail'),
+      features: [
+        { name: t('plans.professional.features.public-page'), available: true },
+        { name: t('plans.professional.features.photo-management'), available: true },
+        { name: t('plans.professional.features.platform-access'), available: true },
+        { name: t('plans.professional.features.social-links'), available: false },
+        { name: t('plans.professional.features.link-management'), available: false },
+      ],
+      popular: true,
+    },
+  ]
 
   return (
     <div className="text-white md:p-8">
@@ -74,7 +65,7 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center max-w-4xl mx-auto">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -106,19 +97,29 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
                 )}
               </div>
               <span className="text-gray-200 text-sm">
-                Valor cobrado por {isAnnual ? 'ano' : 'mês'}
+                {t('billing-period')}
               </span>
 
               <div className={`${plan.popular ? 'bg-brand-blue-900' : 'bg-gray-800'} p-4 rounded-sm my-6`}>
                 <p className="text-gray-50">{plan.description}</p>
-                <span className="text-gray-200 text-sm">Yorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                <span className="text-gray-200 text-sm">{plan.descriptionDetail}</span>
               </div>
-              <h4 className="font-semibold mb-4">Vantagens</h4>
+              <h4 className="font-semibold mb-4">{t('advantages')}</h4>
               <ul className="space-y-2 mb-6">
                 {plan.features.map((feature, index) => (
                   <li key={index} className="flex items-start">
-                    <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                    <span className="text-sm text-gray-300">{feature}</span>
+                    <Check 
+                      className={`h-5 w-5 mr-2 flex-shrink-0 ${
+                        feature.available ? 'text-green-500' : 'text-gray-600'
+                      }`} 
+                    />
+                    <span 
+                      className={`text-sm ${
+                        feature.available ? 'text-gray-300' : 'text-gray-600'
+                      }`}
+                    >
+                      {feature.name}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -134,7 +135,7 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
                     : 'border border-gray-100 bg-transparent hover:bg-gray-600'
                 }`}
               >
-                Escolher plano
+                {t('choose-plan')}
               </button>
             </div>
           ))}

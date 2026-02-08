@@ -17,7 +17,17 @@
         "how-works": "How works",
         "contact": "Contact",
         "login": "Login",
-        "register": "Start now"
+        "register": "Start now",
+        "description": "BJJLink is the platform that connects athletes to the world, bringing together portfolio, achievements and links in one place in a simple and professional way.",
+        "contact-title": "Contact",
+        "email": "contact@bjjlink.com.br",
+        "phone": "(61) 9997-5826",
+        "social-networks": "Social networks",
+        "x-logo-alt": "X logo formerly twitter",
+        "privacy-title": "Privacy",
+        "terms-link": "Terms and conditions of use",
+        "privacy-link": "Privacy Policy",
+        "copyright": "Copyright © 2025 All rights reserved for BJJLink"
     },
     "home": {
         "new": "New",
@@ -28,26 +38,26 @@
         "create-portifolio-button": "Create a free portfolio",
         "access-button": "Access now",
         "what-bjj-title": "How will BjjLink help you?",
-        "what-bjj-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "what-bjj-description": "Everything you need to present your career in a clear, organized and professional way.",
         "create": "Create in a few minutes",
-        "create-subtitle": "Your portfolio ready in a few minutes", "create-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "create-subtitle": "Your portfolio ready in a few minutes", "create-description": "Without complications, without technical knowledge. You create, customize and share your athlete's portfolio quickly and easily.",
         "badge-description": "Very presentable",
         "your-portifolio": "Your professionally designed portfolio",
-        "your-portifolio-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "your-portifolio-description": "Create a professional portfolio to present your journey, achievements, links and social networks in one place.",
         "social-media-badge": "Social networks",
         "social-media-title": "Centralize all your information in one place!",
-        "social-media-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "social-media-description": "Centralize your links and make it easy to access your content, social networks and results.",
         "our-plans-title": "Our plans",
-        "our-plans-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "our-plans-subtitle": "Choose the ideal plan to present your career in sports in a professional way and go to the next level",
         "testimonials-title": "Athletes who already use the platform",
         "testimonials-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
         "create-portifolio-now-title": "Start creating your portfolio for free",
-        "create-portifolio-now-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.",
+        "create-portifolio-now-subtitle": "Create your portfolio now and showcase your journey in a professional way",
         "start-now": "Start now",
         "blog-title": "Blog posts",
         "blog-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis",
         "faq-title": "Frequently asked questions",
-        "faq-subtitle": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus."
+        "faq-subtitle": "Here are the most frequently asked questions about the platform"
     },
     "register": {
         "title": "Register",
@@ -282,5 +292,66 @@
         "add-more-photos": "Add more photos",
         "profile-image": "Profile image",
         "gallery-image": "Image"
+    },
+    "pricing": {
+        "plans": {
+            "free": {
+                "name": "Free - 7 Days",
+                "discount": "-100% Off",
+                "description": "Per person",
+                "description-detail": "Ideal for athletes who are starting out and want to establish an online presence.",
+                "features": {
+                    "public-page": "Athlete public page",
+                    "photo-management": "Photo management",
+                    "basic-access": "Basic platform access",
+                    "social-links": "Social media links",
+                    "link-management": "Link management"
+                }
+            },
+            "professional": {
+                "name": "Professional",
+                "discount": "-15% Off",
+                "description": "Per person",
+                "description-detail": "Ideal for athletes who want to boost their online presence and showcase their achievements.",
+                "features": {
+                    "public-page": "Athlete public page",
+                    "photo-management": "Photo management",
+                    "platform-access": "Platform access",
+                    "social-links": "Social media links",
+                    "link-management": "Link management"
+                }
+            }
+        },
+        "billing-period": "Amount charged per month",
+        "advantages": "Advantages",
+        "choose-plan": "Choose plan"
+    },
+    "faq": {
+        "items": {
+            "01": {
+                "question": "What is BjjLink?",
+                "answer": "BjjLink is a platform created for athletes to centralize their sports journey in a single link, with a professional profile: achievements, social networks and content."
+            },
+            "02": {
+                "question": "Can I use BjjLink for free?",
+                "answer": "Yes. You can create your portfolio for free and have access to basic features to present your online profile."
+            },
+            "03": {
+                "question": "What changes in the monthly plan?",
+                "answer": "The monthly plan unlocks advanced features such as complete profile customization, visual highlight, personalized link and more space to showcase your career and achievements."
+            },
+            "04": {
+                "question": "Do I need technical knowledge to use it?",
+                "answer": "No. The platform was designed to be simple and intuitive. You create and edit your portfolio without needing technical knowledge."
+            },
+            "05": {
+                "question": "Can I cancel the monthly plan whenever I want?",
+                "answer": "Yes. The monthly plan has no commitment and can be canceled at any time."
+            },
+            "06": {
+                "question": "Who is BjjLink for?",
+                "answer": "BjjLink is ideal for athletes, coaches, competitors and content creators who want to position themselves better in the sport and strengthen their personal brand."
+            }
+        }
     }
 }
