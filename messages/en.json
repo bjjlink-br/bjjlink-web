@@ -125,7 +125,7 @@
     },
     "login": {
         "title": "Welcome!",
-        "description": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "description": "Login to your account and start creating your portfolio.",
         "login-now": "Join Now:",
         "terms-info": "By creating an account, you are agreeing to the",
         "terms-info-description": "of the platform and have read our",
@@ -323,6 +323,7 @@
             }
         },
         "billing-period": "Amount charged per month",
+        "free-period": "Free for 7 days",
         "advantages": "Advantages",
         "choose-plan": "Choose plan"
     },

@@ -126,7 +126,7 @@
     },
     "login": {
         "title": "Seja bem-vindo!",
-        "description": "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "description": "Entre na sua conta e comece a criar seu portfólio.",
         "login-now": "Entre Agora:",
         "terms-info": "Quando criar conta, você está concordando com os",
         "terms-info-description": "da plataforma e leu nosso",
@@ -325,6 +325,7 @@
             }
         },
         "billing-period": "Valor cobrando por mês",
+        "free-period": "Gratuito por 7 dias",
         "advantages": "Vantagens",
         "choose-plan": "Escolher plano"
     },

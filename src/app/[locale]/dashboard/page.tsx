@@ -85,7 +85,7 @@ export default function Dashboard() {
             <VerticalMenu />
 
             <main className="flex-1 p-8">
-                {(user?.status === AccountStatus.NEWLY_CREATED || user?.status == AccountStatus.UNPAID)  && (
+                {(user?.status !== AccountStatus.ACTIVE)  && (
                     <PromotionalBanner />
                 )}
                 <h2 className="text-2xl font-semibold mb-1 text-gray-50">{t('title')}</h2>
