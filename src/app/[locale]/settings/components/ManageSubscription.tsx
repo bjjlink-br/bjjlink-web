@@ -73,7 +73,7 @@ export function ManageSubscription({ user }: ManageSubscriptionProps) {
   ]
 
   // Mostrar cards de pricing se o usuário não tiver assinatura ativa
-  if (user?.status === AccountStatus.NEWLY_CREATED || user?.status === AccountStatus.UNPAID) {
+  if (user?.status !== AccountStatus.ACTIVE) {
     return (
       <div className="text-white w-full px-4 md:px-0">
         <div className="max-w-6xl mx-auto">
