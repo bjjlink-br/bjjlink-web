@@ -37,18 +37,12 @@ export const PhotoGallery = () => {
 
     const handleImageUpload = async (files: File[] | null) => {
         try {
-            setDataSections((prev) => ({
-                ...prev,
-                gallery: {
-                    type: 'GALLERY',
-                    imagesGallery: files
-                },
-            }));
-    
-          toast({
-            title: `${t("steps.profile.toast-upload-success")}`,
-            duration: 3000,
-          });
+            // Não precisa fazer nada aqui porque o UploadImage já gerencia o estado
+            // e atualiza o contexto automaticamente através do useEffect
+            toast({
+                title: `${t("steps.profile.toast-upload-success")}`,
+                duration: 3000,
+            });
         } catch (error) {
             console.log(error)
             toast({

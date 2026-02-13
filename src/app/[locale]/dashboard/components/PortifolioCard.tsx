@@ -26,6 +26,7 @@ import DEFAULT_AVATAR from "@/assets/images/user.png"
 import { useRouter } from "next/navigation"
 import { KEYS_STORAGE } from "@/utils/constants"
 import { Section } from "@/utils/dataSections"
+import { GET_COMPONENTS_KEY } from "@/contexts/AuthContext"
 
 type PortifolioCardProps = {
     user: UserAccountInfo;
@@ -51,6 +52,9 @@ export const PortifolioCard = ({ user, acess_token, portfolioId, onDeleteSuccess
             setIsDeleteDialogOpen(false);
             // Invalidate and refetch the portfolios query
             queryClient.invalidateQueries({ queryKey: ["portfolios", acess_token, locale] });
+            localStorage.removeItem(KEYS_STORAGE.sectionsEdit);
+            localStorage.removeItem(KEYS_STORAGE.sections);
+            localStorage.removeItem(GET_COMPONENTS_KEY);
             onDeleteSuccess?.();
         },
         (error) => {

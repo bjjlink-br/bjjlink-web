@@ -18,7 +18,7 @@ import { defaultDataSections, useDataSections } from '@/contexts/DataSectionsCon
 import { validateDataSections, isPortfolioReadyToPublish } from '@/utils/functions';
 import { toast } from '@/hooks/use-toast'
 import { useRouter } from 'next/navigation';
-import { USER_DATA_STORAGE_KEY } from '@/contexts/AuthContext';
+import { GET_COMPONENTS_KEY, USER_DATA_STORAGE_KEY } from '@/contexts/AuthContext';
 import { UserAccountInfo } from '@/utils/types';
 import { KEYS_STORAGE } from '@/utils/constants';
 
@@ -69,7 +69,9 @@ export default function Create() {
     });
     setDataSections(defaultDataSections);
     localStorage.removeItem(KEYS_STORAGE.sections);
+    localStorage.removeItem(GET_COMPONENTS_KEY);
     router.push(`/portifolio/${user?.domain}`);
+    router.push(`/dashboard`);
   }
 
   const handleCopyPotifolioUrl = () => {
