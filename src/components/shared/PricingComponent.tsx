@@ -28,7 +28,6 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
         { name: t('plans.free.features.basic-access'), available: false },
         { name: t('plans.free.features.social-links'), available: false },
         { name: t('plans.free.features.link-management'), available: false },
-        { name: '', available: false },
       ],
     },
     {
