@@ -115,7 +115,7 @@ export default function EditPortfolio({ params }: { params: { id: string } }) {
 
   const handleCopyPotifolioUrl = () => {
     if(!user?.domain) return;
-    navigator.clipboard.writeText(`https://bjjlink.com/${user?.domain}`);
+    navigator.clipboard.writeText(`https://bjjlink.com.br/${user?.domain}`);
     toast({
       title: "Link copiado com sucesso!",
       duration: 3000,

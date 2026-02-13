@@ -74,7 +74,7 @@ export default function Create() {
 
   const handleCopyPotifolioUrl = () => {
     if(!user?.domain) return;
-    navigator.clipboard.writeText(`https://bjjlink.com/${user?.domain}`);
+    navigator.clipboard.writeText(`https://bjjlink.com.br/${user?.domain}`);
     toast({
       title: `${t("copy-link-toast.success")}`,
       duration: 3000,
