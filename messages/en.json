@@ -133,9 +133,15 @@
         "terms-info-link": "terms and conditions",
         "privacy-link": "privacy notice",
         "or-divider": "or",
+        "password": "Password",
+        "show-password-button": "Show",
+        "hide-password-button": "Hide",
+        "forgot-password": "Forgot password?",
         "login-google-button": "Continue with Google",
         "register-text": "Don't have an account?",
         "register-link": "Sign up",
+        "remember-me": "Remember me",
+        "login-button": "Login now",
         "toast": {
             "title": "Welcome back! 🤩",
             "error-create-user-title": "Oops! 😵 Something went wrong.",
@@ -295,6 +301,8 @@
         "gallery-image": "Image"
     },
     "pricing": {
+        "annual-title": "Annual plan",
+        "monthly-title": "Monthly plan",
         "plans": {
             "free": {
                 "name": "Free - 7 Days",

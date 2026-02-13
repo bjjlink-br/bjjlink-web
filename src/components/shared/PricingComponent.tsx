@@ -40,8 +40,8 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
         { name: t('plans.professional.features.public-page'), available: true },
         { name: t('plans.professional.features.photo-management'), available: true },
         { name: t('plans.professional.features.platform-access'), available: true },
-        { name: t('plans.professional.features.social-links'), available: false },
-        { name: t('plans.professional.features.link-management'), available: false },
+        { name: t('plans.professional.features.social-links'), available: true },
+        { name: t('plans.professional.features.link-management'), available: true },
       ],
       popular: true,
     },
@@ -58,10 +58,10 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
         <div className="flex justify-center mb-8">
           <div className="bg-gray-900 rounded-lg p-2 md:px-4 md:py-2 inline-flex">
             <PlanButton isActive={!isAnnual} onClick={() => setIsAnnual(false)}>
-              Plano mensal
+              {t('monthly-title')}
             </PlanButton>
             <PlanButton isActive={isAnnual} onClick={() => setIsAnnual(true)}>
-              Plano anual
+              {t('annual-title')}
               <span className={`md:block hidden ml-2 text-xs bg-blue-600/15 ${isAnnual ? 'text-white' : 'text-brand-blue-300'} px-2 py-1 rounded-full`}>
                 -20% Off
               </span>
@@ -112,11 +112,13 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
               <ul className="space-y-2 mb-6">
                 {plan.features.map((feature, index) => (
                   <li key={index} className="flex items-start">
-                    <Check 
-                      className={`h-5 w-5 mr-2 flex-shrink-0 ${
-                        feature.available ? 'text-green-500' : 'text-gray-600'
-                      }`} 
-                    />
+                    <div className={`flex items-center border ${feature.available ? 'border-semantic-green-500' : 'border-semantic-green-500/60'} rounded-sm p-1 mr-2`}>
+                      <Check 
+                        className={`h-2 w-2 flex-shrink-0 ${
+                          feature.available ? 'text-semantic-green-500' : 'text-semantic-green-500/60'
+                        }`} 
+                      />
+                    </div>
                     <span 
                       className={`text-sm ${
                         feature.available ? 'text-gray-300' : 'text-gray-600'

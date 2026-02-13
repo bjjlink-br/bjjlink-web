@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 type LoginFormProps = {
   onSubmit: (values: z.infer<typeof loginSchema>) => void;
@@ -17,6 +17,7 @@ type LoginFormProps = {
 }
 
 export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
+  const t = useTranslations("login")
   const locale = useLocale()
   const [showPassword, setShowPassword] = useState(false)
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -57,10 +58,10 @@ export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
                     <div className="space-y-2">
                         <div className="flex items-center justify-between">
                             <Label htmlFor="password" className="text-sm font-medium text-gray-200">
-                                Senha
+                                {t("password")}
                             </Label>
                             <Link href={`/${locale}/reset-password`} className="text-sm text-gray-200 hover:underline">
-                                Esqueceu a senha?
+                                {t("forgot-password")}
                             </Link>
                         </div>
                         <div className="relative">
@@ -77,7 +78,7 @@ export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
                                 className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm rounded-none leading-5 rounded-tr-sm rounded-br-sm hover:bg-brand-blue-700 hover:text-white bg-brand-blue-600 text-white"
                                 onClick={() => setShowPassword(!showPassword)}
                             >
-                                {showPassword ? 'Ocultar' : 'Mostrar'}
+                                {showPassword ? t("hide-password-button") : t("show-password-button")}
                             </Button>
                         </div>
                     </div>
@@ -88,7 +89,7 @@ export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
         <div className="flex items-center space-x-2">
             <Checkbox id="remember" className='border-brand-blue-500' />
             <Label htmlFor="remember" className="text-sm font-medium text-gray-200">
-                Manter logado
+                {t("remember-me")}
             </Label>
         </div>
         <Button 
@@ -96,7 +97,7 @@ export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
           className="w-full bg-blue-600 hover:bg-blue-700 text-white"
           disabled={isLoading || !form.formState.isValid}
         >
-          Entrar agora
+          {t("login-button")}
         </Button>
       </form>
     </Form>

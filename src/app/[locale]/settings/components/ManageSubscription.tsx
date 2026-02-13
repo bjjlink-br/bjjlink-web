@@ -52,7 +52,6 @@ export function ManageSubscription({ user }: ManageSubscriptionProps) {
         { name: tPricing('plans.free.features.basic-access'), available: false },
         { name: tPricing('plans.free.features.social-links'), available: false },
         { name: tPricing('plans.free.features.link-management'), available: false },
-        { name: '', available: false },
       ],
     },
     {
@@ -65,8 +64,8 @@ export function ManageSubscription({ user }: ManageSubscriptionProps) {
         { name: tPricing('plans.professional.features.public-page'), available: true },
         { name: tPricing('plans.professional.features.photo-management'), available: true },
         { name: tPricing('plans.professional.features.platform-access'), available: true },
-        { name: tPricing('plans.professional.features.social-links'), available: false },
-        { name: tPricing('plans.professional.features.link-management'), available: false },
+        { name: tPricing('plans.professional.features.social-links'), available: true },
+        { name: tPricing('plans.professional.features.link-management'), available: true },
       ],
       popular: true,
     },
@@ -85,10 +84,10 @@ export function ManageSubscription({ user }: ManageSubscriptionProps) {
           <div className="flex justify-center mb-8">
             <div className="bg-gray-900 rounded-lg p-2 md:px-4 md:py-2 inline-flex w-full md:w-auto">
               <PlanButton isActive={!isAnnual} onClick={() => setIsAnnual(false)}>
-                Plano mensal
+                {tPricing('monthly-title')}
               </PlanButton>
               <PlanButton isActive={isAnnual} onClick={() => setIsAnnual(true)}>
-                Plano anual
+                {tPricing('annual-title')}
                 <span className={`md:block hidden ml-2 text-xs bg-blue-600/15 ${isAnnual ? 'text-white' : 'text-brand-blue-300'} px-2 py-1 rounded-full`}>
                   -20% Off
                 </span>
@@ -139,11 +138,13 @@ export function ManageSubscription({ user }: ManageSubscriptionProps) {
                 <ul className="space-y-1.5 md:space-y-2 mb-4 md:mb-6">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-start">
-                      <Check 
-                        className={`h-4 w-4 md:h-5 md:w-5 mr-2 flex-shrink-0 ${
-                          feature.available ? 'text-green-500' : 'text-gray-600'
-                        }`} 
-                      />
+                      <div className={`flex items-center border ${feature.available ? 'border-semantic-green-500' : 'border-semantic-green-500/60'} rounded-sm p-1 mr-2`}>
+                        <Check 
+                          className={`h-2 w-2 flex-shrink-0 ${
+                            feature.available ? 'text-semantic-green-500' : 'text-semantic-green-500/60'
+                          }`} 
+                        />
+                      </div>
                       <span 
                         className={`text-xs md:text-sm ${
                           feature.available ? 'text-gray-300' : 'text-gray-600'

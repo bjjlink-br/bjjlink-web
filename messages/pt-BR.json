@@ -137,6 +137,12 @@
         "login-google-button": "Continue com Google",
         "register-text": "Você não tem uma conta?",
         "register-link": "Cadastre-se",
+        "password": "Senha",
+        "forgot-password": "Esqueceu a senha?",
+        "show-password-button": "Mostrar",
+        "hide-password-button": "Ocultar",
+        "remember-me": "Manter logado",
+        "login-button": "Entrar agora",
         "toast": {
             "title": "Bem-vindo de volta!",
             "error-create-user-title": "Ops! 😵 Algo deu errado.",
@@ -298,6 +304,8 @@
     },
     "pricing": {
         "plans": {
+            "annual-title": "Plano anual",
+            "monthly-title": "Plano mensal",
             "free": {
                 "name": "Gratuito - 7 Dias",
                 "discount": "-100% Off",
