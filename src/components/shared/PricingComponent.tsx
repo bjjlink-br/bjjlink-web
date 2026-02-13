@@ -18,7 +18,7 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
   const plans: PlanType[] = [
     {
       name: t('plans.free.name'),
-      price: 14,
+      price: 18,
       discount: t('plans.free.discount'),
       description: t('plans.free.description'),
       descriptionDetail: t('plans.free.description-detail'),
@@ -32,7 +32,7 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
     },
     {
       name: t('plans.professional.name'),
-      price: 14,
+      price: 18,
       discount: t('plans.professional.discount'),
       description: t('plans.professional.description'),
       descriptionDetail: t('plans.professional.description-detail'),
