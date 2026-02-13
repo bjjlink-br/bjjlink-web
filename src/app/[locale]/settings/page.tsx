@@ -46,11 +46,11 @@ export default function Settings() {
     },[locale, router, t])
 
     return (
-        <div className="bg-gray-1300 min-h-screen flex">
+        <div className="bg-gray-1300 min-h-screen flex flex-col md:flex-row overflow-x-hidden">
             <VerticalMenu activeMenu="settings" />
-            <main className="flex-1 p-8">
+            <main className="flex-1 p-4 md:p-8 pb-24 md:pb-8 w-full overflow-x-hidden">
                 <Tabs defaultValue="profile">
-                    <TabsList className="grid grid-cols-2 bg-gray-900 w-[400px]">
+                    <TabsList className="grid grid-cols-2 bg-gray-900 w-full max-w-[400px]">
                         <TabsTrigger 
                             value="profile"
                             onClick={() => setActiveTab('profile')}
@@ -74,12 +74,12 @@ export default function Settings() {
                     </TabsList>
                     <TabsContent 
                         value="profile"
-                        className="flex justify-start items-start mt-6"
+                        className="flex justify-start items-start mt-6 w-full overflow-x-hidden"
                     >
                         {user && <ProfileSettings user={user} components={components} />}
                     </TabsContent>
-                    <TabsContent value="subscription">
-                        <ManageSubscription />
+                    <TabsContent value="subscription" className="w-full overflow-x-hidden">
+                        <ManageSubscription user={user} />
                     </TabsContent>
                 </Tabs>
             </main>

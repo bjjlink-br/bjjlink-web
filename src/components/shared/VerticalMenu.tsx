@@ -32,7 +32,9 @@ export const VerticalMenu = ({ activeMenu = 'dashboard' }: {activeMenu?: string;
     }
 
     return (
-        <aside className={`${isExpanded ? 'w-56' : 'w-16'} bg-gray-900 p-4 flex flex-col items-start transition-all duration-300 ease-in-out`}>
+        <>
+            {/* Desktop Sidebar */}
+            <aside className={`hidden md:flex ${isExpanded ? 'w-56' : 'w-16'} bg-gray-900 p-4 flex-col items-start transition-all duration-300 ease-in-out`}>
                 <div className="mb-8 px-3 flex items-center justify-between w-full">
                     {isExpanded && <LogoTitle />}
                     <Button
@@ -99,5 +101,79 @@ export const VerticalMenu = ({ activeMenu = 'dashboard' }: {activeMenu?: string;
                     </Button>
                 </div>
             </aside>
+
+            {/* Mobile Bottom Navigation */}
+            <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-gray-800 border-t border-gray-600 z-50">
+                <div className="flex items-center justify-around px-4 py-3">
+                    <Link
+                        href={`/${locale}/dashboard`}
+                        className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors ${
+                            activeMenu === 'dashboard' 
+                                ? 'bg-brand-blue-700 text-white' 
+                                : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                    >
+                        <Image 
+                            src={HomeIcon} 
+                            alt={t('navbar.dashboard-alt-icon')} 
+                            className={`w-6 h-6 ${activeMenu === 'dashboard' ? 'brightness-0 invert' : ''}`}
+                        />
+                    </Link>
+                    <Link
+                        href={`/${locale}/portifolio/create`}
+                        className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors ${
+                            activeMenu === 'portifolio' 
+                                ? 'bg-brand-blue-700 text-white' 
+                                : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                    >
+                        <Image 
+                            src={NotebookIcon} 
+                            alt={t('navbar.portifolio-alt-icon')} 
+                            className={`w-6 h-6 ${activeMenu === 'portifolio' ? 'brightness-0 invert' : ''}`}
+                        />
+                    </Link>
+                     <Link
+                        href={`/${locale}/settings`}
+                        className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors ${
+                            activeMenu === 'settings' 
+                                ? 'bg-brand-blue-700 text-white' 
+                                : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                    >
+                        <Image src={SettingsIcon} alt={t('navbar.settings-alt-icon')} className={`w-6 h-6 ${activeMenu === 'settings' ? 'brightness-0 invert' : ''}`} />
+                    </Link>
+                    {/* <Link
+                        href="#"
+                        className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors ${
+                            activeMenu === 'analytics' 
+                                ? 'bg-brand-blue-700 text-white' 
+                                : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                    >
+                        <Image 
+                            src={AnalyticsIcon} 
+                            alt={t('navbar.analytics-alt-icon')} 
+                            className={`w-6 h-6 ${activeMenu === 'analytics' ? 'brightness-0 invert' : ''}`}
+                        />
+                    </Link> */}
+                    <Button
+                        variant="ghost"
+                        onClick={handleLogout}
+                        className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors ${
+                            activeMenu === 'logout' 
+                                ? 'bg-brand-blue-700 text-white' 
+                                : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                    >
+                        <Image 
+                            src={LogoutIcon} 
+                            alt={t('navbar.logout-alt-icon')} 
+                            className="w-6 h-6"
+                        />
+                    </Button>
+                </div>
+            </nav>
+        </>
     )
 }

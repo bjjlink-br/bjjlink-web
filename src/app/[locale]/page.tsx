@@ -30,9 +30,10 @@ export default function Home() {
   const selectPlan = ({ plan, isAnnual }: { plan: PlanType; isAnnual: boolean }) => {
     // const dataUser = localStorage.getItem('@Bjjlink-user');
     const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
+
     if(userToken){
       const token = JSON.parse(userToken)
-      router.push(`/${locale}/loadingpage?token=${token.acess_token}&selectedPlan=${plan.name}`);
+      router.push(`/${locale}/loadingpage?token=${token.acess_token}&selectedPlan=${plan.name}&period=${isAnnual ? "annual" : "monthly"}`);
     } else {
       router.push(`/${locale}/login`);
     }

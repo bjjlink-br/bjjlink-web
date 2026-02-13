@@ -33,7 +33,7 @@ export function ProfileSettings({ user, components }: { user: UserAccountInfo; c
       <CardContent className="space-y-6">
         <div className="flex flex-col items-center gap-4">
           <Avatar className="w-24 h-24">
-            <AvatarImage src={userPhoto.images[0].url ?? DEFAULT_AVATAR} alt="Profile picture" />
+            <AvatarImage src={userPhoto?.images[0].url ?? DEFAULT_AVATAR} alt="Profile picture" />
             <AvatarFallback>{user.username.charAt(0).toUpperCase()}</AvatarFallback>
           </Avatar>
         </div>

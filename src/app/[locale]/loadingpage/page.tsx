@@ -19,8 +19,17 @@ export default function LoadingPage() {
 
   useEffect(() => {
     async function processLoginAndPlan() {
+      const FREE_PLAN_KEY = "Gratuito - 7 Dias";
+      const period = searchParams.get("period");
+      const selectedPlan = searchParams.get("selectedPlan");
+      
+      const priceId = period === "annual" ? process.env.NEXT_PUBLIC_ANNUAL_PRICE : process.env.NEXT_PUBLIC_MONTHLY_PRICE;
+      const freePriceId = process.env.NEXT_PUBLIC_FREE_PRICE;
+
+      const finalPriceId = selectedPlan === FREE_PLAN_KEY ? freePriceId : priceId;
+
       try {
-        const response = await checkoutPayment(token as string, locale);
+        const response = await checkoutPayment(token as string, locale, finalPriceId as string);
         setMessage(t("loading-success"));
         setStatus("success");
 
