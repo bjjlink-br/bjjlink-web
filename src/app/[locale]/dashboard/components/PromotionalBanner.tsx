@@ -38,7 +38,7 @@ export const PromotionalBanner = () => {
             <div className="relative z-10 p-8">
                 <h2 className="text-2xl font-semibold mb-1 text-gray-1300">{t('acquire-title')}</h2>
                 <p className="text-gray-1300 text-sm mb-4">
-                    Yorem ipsum dolor sit amet,<br/> consectetur adipiscing elit.
+                    {t('acquire-description')}
                 </p>
                 <Button 
                     variant="secondary" 

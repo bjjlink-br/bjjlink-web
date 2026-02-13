@@ -15,7 +15,7 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
   const [isAnnual, setIsAnnual] = useState(false)
   const t = useTranslations('pricing')
 
-  const plans: PlanType[] = [
+  const allPlans: PlanType[] = [
     {
       name: t('plans.free.name'),
       price: 18,
@@ -47,6 +47,11 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
     },
   ]
 
+  // Filtra os planos: se for anual, mostra apenas o Professional
+  const plans = isAnnual 
+    ? allPlans.filter(plan => plan.name === t('plans.professional.name'))
+    : allPlans
+
   return (
     <div className="text-white md:p-8">
       <div className="max-w-6xl mx-auto">
@@ -58,17 +63,17 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
             <PlanButton isActive={isAnnual} onClick={() => setIsAnnual(true)}>
               Plano anual
               <span className={`md:block hidden ml-2 text-xs bg-blue-600/15 ${isAnnual ? 'text-white' : 'text-brand-blue-300'} px-2 py-1 rounded-full`}>
-                -15% Off
+                -20% Off
               </span>
             </PlanButton>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center max-w-4xl mx-auto">
+        <div className={`grid grid-cols-1 ${plans.length > 1 ? 'md:grid-cols-2' : ''} gap-8 justify-items-center max-w-4xl mx-auto`}>
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`rounded-lg p-6 flex flex-col ${
+              className={`rounded-lg p-6 flex flex-col max-w-[420px] ${
                 plan.popular ? 'bg-brand-blue-950' : 'bg-gray-900'
               }`}
             >
@@ -87,11 +92,11 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
               </div>
               <div className='flex items-center gap-1'>
                 <span className={`text-3xl font-medium text-white ${plan.name === 'Gratuito - 7 Dias' && 'line-through'}`}>
-                  R$ {isAnnual ? (plan.price * 0.85 * 12).toFixed(2) : plan.price.toFixed(2)}
+                  R$ {isAnnual ? '169,90' : plan.price.toFixed(2)}
                 </span>
                 {plan.discount && (
                   <span className={`ml-2 text-xs ${plan.popular ? 'bg-[#AFFC6D]' : 'bg-blue-600/15'} ${plan.popular ? 'text-[#283819]' : 'text-brand-blue-300'} font-semibold px-2 py-1 rounded-full`}>
-                    {plan.discount}
+                    {isAnnual ? '20% Off' : plan.discount}
                   </span>
                 )}
               </div>

@@ -39,7 +39,7 @@ export function ManageSubscription({ user }: ManageSubscriptionProps) {
     }
   }
 
-  const plans: PlanType[] = [
+  const allPlans: PlanType[] = [
     {
       name: tPricing('plans.free.name'),
       price: 0,
@@ -72,6 +72,11 @@ export function ManageSubscription({ user }: ManageSubscriptionProps) {
     },
   ]
 
+   const plans = isAnnual 
+    ? allPlans.filter(plan => plan.name === t('plans.professional.name'))
+    : allPlans
+
+
   // Mostrar cards de pricing se o usuário não tiver assinatura ativa
   if (user?.status !== AccountStatus.ACTIVE) {
     return (
@@ -85,13 +90,13 @@ export function ManageSubscription({ user }: ManageSubscriptionProps) {
               <PlanButton isActive={isAnnual} onClick={() => setIsAnnual(true)}>
                 Plano anual
                 <span className={`md:block hidden ml-2 text-xs bg-blue-600/15 ${isAnnual ? 'text-white' : 'text-brand-blue-300'} px-2 py-1 rounded-full`}>
-                  -15% Off
+                  -20% Off
                 </span>
               </PlanButton>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 justify-items-center max-w-4xl mx-auto">
+          <div className={`grid grid-cols-1 ${plans.length > 1 ? 'md:grid-cols-2' : ''} gap-8 justify-items-center max-w-4xl mx-auto`}>
             {plans.map((plan) => (
               <div
                 key={plan.name}
@@ -114,11 +119,11 @@ export function ManageSubscription({ user }: ManageSubscriptionProps) {
                 </div>
                 <div className='flex items-center gap-1 flex-wrap'>
                   <span className={`text-2xl md:text-3xl font-medium text-white ${plan.price === 0 && 'line-through'}`}>
-                    R$ {isAnnual ? (plan.price * 0.85 * 12).toFixed(2) : plan.price.toFixed(2)}
+                    R$ {isAnnual ? '169,90' : plan.price.toFixed(2)}
                   </span>
                   {plan.discount && (
                     <span className={`ml-2 text-xs ${plan.popular ? 'bg-[#AFFC6D]' : 'bg-blue-600/15'} ${plan.popular ? 'text-[#283819]' : 'text-brand-blue-300'} font-semibold px-2 py-1 rounded-full`}>
-                      {plan.discount}
+                      {isAnnual ? '20% Off' : plan.discount}
                     </span>
                   )}
                 </div>
