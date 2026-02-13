@@ -97,9 +97,9 @@
     },
     "vertical-menu": {
         "navbar": {
-            "dashboard": "Dashboard",
+            "dashboard": "Início",
             "dashboard-alt-icon": "ícone de uma casa",
-            "portifolio": "Portifólio",
+            "portifolio": "Criar Portifólio",
             "portifolio-alt-icon": "ícone de um caderno aberto",
             "analytics": "Analytics",
             "analytics-alt-icon": "ícone de um pequeno gráfico de barras",

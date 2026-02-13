@@ -187,7 +187,7 @@ export default function EditPortfolio({ params }: { params: { id: string } }) {
   return (
     <EditModeProvider isEditMode={true}>
       <div className="bg-gray-1300 min-h-screen flex">
-        <VerticalMenu activeMenu='portifolio' />
+        <VerticalMenu activeMenu='edit-portifolio' />
 
         <main className="flex-1 p-8">
             <div className="flex items-start w-full justify-between">

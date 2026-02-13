@@ -1,11 +1,33 @@
+"use client"
 import { CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function SuccessPayment() {
     const t = useTranslations("payment")
     const locale = useLocale()
+    const searchParams = useSearchParams()
+
+    useEffect(() => {
+        const statusFromUrl = searchParams.get('status')
+        
+        if (statusFromUrl) {
+            const userDataString = localStorage.getItem('@Bjjlink-user')
+            
+            if (userDataString) {
+                try {
+                    const userData = JSON.parse(userDataString)
+                    userData.status = statusFromUrl
+                    localStorage.setItem('@Bjjlink-user', JSON.stringify(userData))
+                } catch (error) {
+                    console.error('Erro ao atualizar status do usuário:', error)
+                }
+            }
+        }
+    }, [searchParams])
 
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-gray-1300">
