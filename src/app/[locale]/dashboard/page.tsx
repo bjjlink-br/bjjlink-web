@@ -3,7 +3,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { VerticalMenu } from "@/components/shared/VerticalMenu";
 import { PromotionalBanner } from "./components/PromotionalBanner";
 import { PortifolioCard } from "./components/PortifolioCard";
-import { UpgradePlanCard } from "./components/UpgradePlanCard";
 import { useEffect, useState } from "react";
 import { AUTH_STORAGE_KEY, USER_DATA_STORAGE_KEY } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";

@@ -14,7 +14,7 @@ import { Form } from '@/components/ui/form';
 import { PerfilAccordion } from '../../components/PerfilAccordion';
 import { SocialAccordion } from '../../components/SocialAccordion';
 import { PhotoGallery } from '../../components/PhotoGallery';
-import { defaultDataSections, useDataSections } from '@/contexts/DataSectionsContext';
+import { useDataSections } from '@/contexts/DataSectionsContext';
 import { validateDataSections, isPortfolioReadyToPublish } from '@/utils/functions';
 import { toast } from '@/hooks/use-toast'
 import { useRouter } from 'next/navigation';
@@ -90,7 +90,9 @@ export default function EditPortfolio({ params }: { params: { id: string } }) {
     return sections;
   };
 
-  function handleFinalSubmit(values: z.infer<typeof createPortifolioSchema>) {}
+  function handleFinalSubmit(values: z.infer<typeof createPortifolioSchema>) {
+    console.log(values);
+  }
 
   function handleUpdatePortfolio() {
     const validate = validateDataSections(dataSections);

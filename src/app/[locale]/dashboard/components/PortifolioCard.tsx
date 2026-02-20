@@ -36,7 +36,7 @@ type PortifolioCardProps = {
     components: Section[];
 }
 
-export const PortifolioCard = ({ user, acess_token, portfolioId, onDeleteSuccess, components }: PortifolioCardProps) => {
+export const PortifolioCard = ({ user, acess_token, onDeleteSuccess, components }: PortifolioCardProps) => {
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const locale = useLocale();
     const router = useRouter();
@@ -58,6 +58,7 @@ export const PortifolioCard = ({ user, acess_token, portfolioId, onDeleteSuccess
             onDeleteSuccess?.();
         },
         (error) => {
+            console.error("Error deleting portfolio:", error);
             toast({
                 title: "Erro ao excluir",
                 description: "Ocorreu um erro ao excluir o portfólio. Tente novamente.",

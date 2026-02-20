@@ -303,9 +303,9 @@
         "gallery-image": "Imagem"
     },
     "pricing": {
+        "annual-title": "Plano anual",
+        "monthly-title": "Plano mensal",
         "plans": {
-            "annual-title": "Plano anual",
-            "monthly-title": "Plano mensal",
             "free": {
                 "name": "Gratuito - 7 Dias",
                 "discount": "-100% Off",

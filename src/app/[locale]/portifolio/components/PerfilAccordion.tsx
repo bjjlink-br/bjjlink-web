@@ -31,7 +31,7 @@ export function PerfilAccordion() {
   const [loading, setLoading] = useState(false);
   
   // Verifica se está em modo de edição (com fallback para modo criação)
-  const { isEditMode, storageKey } = useMemo(() => {
+  const { storageKey } = useMemo(() => {
     try {
       const editModeContext = useEditMode();
       return {

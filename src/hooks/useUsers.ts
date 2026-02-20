@@ -106,6 +106,7 @@ export const useAuthUser = () => {
             const result = await mutation.mutateAsync(credentials);
             return result;
         } catch (error) {
+            console.error(error);
             // O erro já foi capturado e armazenado no estado local
             return null;
         }

@@ -4,12 +4,10 @@ import { CheckCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 
 const ResetPasswordPage = () => {
   const t = useTranslations("reset-password")
   const locale = useLocale()
-  const { token } = useParams();
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-1300">

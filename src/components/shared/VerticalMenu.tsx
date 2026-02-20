@@ -6,7 +6,6 @@ import HomeIcon from '@/assets/icons/home.svg'
 import NotebookIcon from '@/assets/icons/notebook.svg'
 import SettingsIcon from '@/assets/icons/settings.svg'
 import AnalyticsIcon from '@/assets/icons/analytics-chart.svg'
-import UserIcon from '@/assets/icons/user.svg'
 import LogoutIcon from '@/assets/icons/logout.svg'
 import { LogoTitle } from "@/components/shared/LogoTitle";
 import { useLocale, useTranslations } from "next-intl";

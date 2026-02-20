@@ -8,7 +8,6 @@ import { useCreateUser } from '@/hooks/useUsers'
 
 import { Toaster } from "@/components/ui/toaster"
 import { RegisterForm } from './components/RegisterForm'
-import { Button } from "@/components/ui/button"
 import { Footer } from '@/components/shared/Footer'
 import { toast } from '@/hooks/use-toast'
 import { useRouter } from 'next/navigation'

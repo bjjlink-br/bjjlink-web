@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/shared/Navbar"
-import { ArrowUpRight, ChevronRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import AthleteSvg from "@/assets/images/athlete-man.svg";
 import { Badge } from "@/components/ui/badge"
 import { cardsInfoAdvantages } from "@/utils/constants"
@@ -12,8 +12,6 @@ import AtlheteWomanSvg from "@/assets/images/athlete-woman.svg";
 import AppSvg from "@/assets/images/app.svg";
 import PricingComponent from "@/components/shared/PricingComponent"
 import { Separator } from "@/components/ui/separator"
-import TestimonialCarousel from "@/components/shared/TestimonialCarousel"
-import { BlogCarousel } from "@/components/shared/BlogCarousel"
 import { FaqCards } from "@/components/shared/FaqCards"
 import { Footer } from "@/components/shared/Footer"
 import { useLocale } from "next-intl";
