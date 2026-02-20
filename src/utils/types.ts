@@ -68,7 +68,7 @@ export enum AccountStatus {
 }
 
 export type UserAccountInfo = {
-    username: string;
+    name: string;
     sub: string;
     roles: string[];
     email: string;

@@ -98,6 +98,20 @@ export const PortifolioCard = ({ user, acess_token, onDeleteSuccess, components 
         
         router.push(`/${locale}/portifolio/edit/${user.domain}`);
     };
+
+    const handleViewPortfolio = () => {
+        if (!user.domain) {
+            toast({
+                title: "Erro",
+                description: "Domínio do usuário não encontrado.",
+                variant: "destructive",
+            });
+            return;
+        }
+        
+        router.push(`https://bjjlink.com.br/${user.domain}`);
+    };
+
     return (
         <Card className="bg-gray-900 border-gray-700">
             <CardContent className="p-6">
@@ -110,14 +124,14 @@ export const PortifolioCard = ({ user, acess_token, onDeleteSuccess, components 
                         height={48}
                     />
                     <div className="flex-1">
-                        <h3 className="text-base font-semibold text-gray-50">{user.username}</h3>
-                        <p className="text-sm text-gray-200">bjjlink.site/{user.domain}</p>
+                        <h3 className="text-base font-semibold text-gray-50">{user.name}</h3>
+                        <p className="text-sm text-gray-200">bjjlink.com.br/{user.domain}</p>
                     </div>
                 </div>
                 <Separator className="bg-gray-600 my-4" />
                 <div className="flex items-center justify-between">
-                    <Button className="bg-brand-blue-600/15 text-brand-blue-300">
-                        Editar link
+                    <Button onClick={handleViewPortfolio} className="bg-brand-blue-600/15 text-brand-blue-300">
+                        Ver portfólio
                     </Button>
                     <div className="flex gap-2">
                         <Button 
