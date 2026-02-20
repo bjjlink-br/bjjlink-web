@@ -10,13 +10,12 @@ import {
 } from "@/components/ui/accordion"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { toast } from '@/hooks/use-toast'
 import { useDataSections } from '@/contexts/DataSectionsContext'
 import { AUTH_STORAGE_KEY } from '@/contexts/AuthContext'
 import { saveSectionPortifolioWIthouFormData } from '@/services/portifolio.service'
-import { KEYS_STORAGE } from '@/utils/constants'
 import { DataSections } from '@/utils/dataSections'
 import { useEditMode } from '@/contexts/EditModeContext'
 
@@ -25,22 +24,8 @@ export function SocialAccordion() {
     const locale = useLocale();
     const [loading, setLoading] = useState(false);
     
-    // Verifica se está em modo de edição (com fallback para modo criação)
-    const { isEditMode, storageKey } = useMemo(() => {
-      try {
-        const editModeContext = useEditMode();
-        return {
-          isEditMode: editModeContext.isEditMode,
-          storageKey: editModeContext.getStorageKey()
-        };
-      } catch {
-        // Se não estiver dentro do EditModeProvider, usa o modo padrão (criação)
-        return {
-          isEditMode: false,
-          storageKey: KEYS_STORAGE.sections
-        };
-      }
-    }, []);
+    const { getStorageKey } = useEditMode();
+    const storageKey = getStorageKey();
     const [socialUrls, setSocialUrls] = useState({
         facebook: '',
         instagram: '',

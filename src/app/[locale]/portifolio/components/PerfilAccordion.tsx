@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/accordion"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { toast } from '@/hooks/use-toast'
 import { Toaster } from "@/components/ui/toaster"
@@ -19,7 +19,6 @@ import { useDataSections } from '@/contexts/DataSectionsContext'
 import { AUTH_STORAGE_KEY } from '@/contexts/AuthContext'
 import { saveSectionPortifolio } from '@/services/portifolio.service'
 import { useRouter } from 'next/navigation'
-import { KEYS_STORAGE } from '@/utils/constants'
 import { DataSections } from '@/utils/dataSections'
 import { useEditMode } from '@/contexts/EditModeContext'
 
@@ -30,22 +29,8 @@ export function PerfilAccordion() {
   const { dataSections ,setDataSections } = useDataSections();
   const [loading, setLoading] = useState(false);
   
-  // Verifica se está em modo de edição (com fallback para modo criação)
-  const { storageKey } = useMemo(() => {
-    try {
-      const editModeContext = useEditMode();
-      return {
-        isEditMode: editModeContext.isEditMode,
-        storageKey: editModeContext.getStorageKey()
-      };
-    } catch {
-      // Se não estiver dentro do EditModeProvider, usa o modo padrão (criação)
-      return {
-        isEditMode: false,
-        storageKey: KEYS_STORAGE.sections
-      };
-    }
-  }, []);
+  const { getStorageKey } = useEditMode();
+  const storageKey = getStorageKey();
 
   const [headline, setHeadline] = useState("")
 
@@ -83,7 +68,7 @@ export function PerfilAccordion() {
       const formData = new FormData();
 
       // 1. Adiciona o arquivo (ou vários arquivos, se quiser)
-      formData.append('images', dataSections.profile.image) // Se tiver mais de um, faça um loop
+      formData.append('images', dataSections.profile.image as any) // Se tiver mais de um, faça um loop
 
       // 2. Adiciona os campos normais, mas precisa converter para string os que são objetos
       formData.append('type', 'PROFILE')

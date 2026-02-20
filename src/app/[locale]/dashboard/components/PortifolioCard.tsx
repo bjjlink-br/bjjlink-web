@@ -103,7 +103,7 @@ export const PortifolioCard = ({ user, acess_token, onDeleteSuccess, components 
             <CardContent className="p-6">
                 <div className="flex items-center gap-2">
                     <Image
-                        src={userPhoto.images[0].url ?? DEFAULT_AVATAR}
+                        src={userPhoto?.images[0]?.url ?? DEFAULT_AVATAR}
                         alt="Profile avatar"
                         className="rounded-full"
                         width={48}

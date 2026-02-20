@@ -1,5 +1,6 @@
 "use client"
 import React, { createContext, useContext, ReactNode } from 'react';
+import { KEYS_STORAGE } from '@/utils/constants';
 
 type EditModeContextType = {
   isEditMode: boolean;
@@ -7,6 +8,11 @@ type EditModeContextType = {
 };
 
 const EditModeContext = createContext<EditModeContextType | undefined>(undefined);
+
+const defaultEditModeContext: EditModeContextType = {
+  isEditMode: false,
+  getStorageKey: () => KEYS_STORAGE.sections,
+};
 
 export const EditModeProvider = ({ 
   children, 
@@ -28,8 +34,5 @@ export const EditModeProvider = ({
 
 export const useEditMode = () => {
   const context = useContext(EditModeContext);
-  if (!context) {
-    throw new Error('useEditMode must be used within an EditModeProvider');
-  }
-  return context;
+  return context ?? defaultEditModeContext;
 };

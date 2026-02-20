@@ -8,8 +8,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { useDataSections } from "@/contexts/DataSectionsContext";
 import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext";
 import { saveSectionPortifolio } from "@/services/portifolio.service";
-import { KEYS_STORAGE } from "@/utils/constants";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { DataSections } from "@/utils/dataSections";
 import { useEditMode } from '@/contexts/EditModeContext';
 
@@ -18,22 +17,8 @@ export const PhotoGallery = () => {
     const locale = useLocale()
     const { dataSections ,setDataSections } = useDataSections();
     
-    // Verifica se está em modo de edição (com fallback para modo criação)
-    const { isEditMode, storageKey } = useMemo(() => {
-      try {
-        const editModeContext = useEditMode();
-        return {
-          isEditMode: editModeContext.isEditMode,
-          storageKey: editModeContext.getStorageKey()
-        };
-      } catch {
-        // Se não estiver dentro do EditModeProvider, usa o modo padrão (criação)
-        return {
-          isEditMode: false,
-          storageKey: KEYS_STORAGE.sections
-        };
-      }
-    }, []);
+    const { getStorageKey } = useEditMode();
+    const storageKey = getStorageKey();
 
     const handleImageUpload = async (files: File[] | null) => {
         try {
