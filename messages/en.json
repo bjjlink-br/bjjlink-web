@@ -169,10 +169,11 @@
         "acquire-title": "Get paid plan",
         "acquire-description": "Subscribe now to unlock all features!",
         "acquire-button": "Get now",
-        "title": "My portfolios",
-        "description": "These are your portfolios, here you can see all your portfolios and manage them.",
+        "title": "My portfolio",
+        "description": "This is your portfolio, here you can view it and manage or edit it.",
         "create-title": "Create portfolio",
-        "create-description": "Click on plus to create your portfolio.",
+        "create-description": "Click the plus to create your portfolio.",
+        "view-portfolio": "View portfolio",
         "toast": {
             "title-no-authenticated": "Oops! You are not authenticated. 🤔",
             "description-no-authenticated": "Go back to the login screen and log in with your account."

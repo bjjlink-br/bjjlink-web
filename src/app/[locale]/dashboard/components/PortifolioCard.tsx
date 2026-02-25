@@ -19,7 +19,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { useDeletePortifolio } from "@/hooks/usePortifolio"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { toast } from "@/hooks/use-toast"
 import { useQueryClient } from "@tanstack/react-query"
 import DEFAULT_AVATAR from "@/assets/images/user.png"
@@ -39,6 +39,7 @@ type PortifolioCardProps = {
 export const PortifolioCard = ({ user, acess_token, onDeleteSuccess, components }: PortifolioCardProps) => {
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const locale = useLocale();
+    const t = useTranslations("dashboard");
     const router = useRouter();
     const queryClient = useQueryClient();
     const userPhoto = components.find((component) => component.type === "PROFILE") as any;
@@ -109,7 +110,7 @@ export const PortifolioCard = ({ user, acess_token, onDeleteSuccess, components 
             return;
         }
         
-        router.push(`https://bjjlink.com.br/${user.domain}`);
+        router.push(`https://bjjlink.com.br/portifolio/${user.domain}`);
     };
 
     return (
@@ -131,7 +132,7 @@ export const PortifolioCard = ({ user, acess_token, onDeleteSuccess, components 
                 <Separator className="bg-gray-600 my-4" />
                 <div className="flex items-center justify-between">
                     <Button onClick={handleViewPortfolio} className="bg-brand-blue-600/15 text-brand-blue-300">
-                        Ver portfólio
+                        {t("view-portfolio")}
                     </Button>
                     <div className="flex gap-2">
                         <Button 
