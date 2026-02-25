@@ -45,17 +45,17 @@ export default function Home() {
       <Navbar />
 
       <main>
-        <section className="container mx-auto md:px-12 pt-10 md:py-20 flex flex-col md:flex-row items-center justify-center gap-4">
-          <div className="md:w-1/2 space-y-4 md:space-y-6 px-4">
+        <section className="container mx-auto px-4 pt-10 md:py-20 flex flex-col md:flex-row items-center justify-between gap-4 lg:gap-8">
+          <div className="md:w-1/2 space-y-4 md:space-y-6 flex-shrink-0">
             <div className="flex items-center gap-2 font-secondary">
               <Badge className="bg-brand-blue-600 rounded-sm">{t("new")}</Badge>
               <p className="text-sm text-gray-400">{t("subtitle-tag")}</p>
             </div>
-            <h1 className="text-4xl md:text-6xl text-brand-blue-50">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl text-brand-blue-50">
               {t("title")}<br/>
               <span className="font-bold">{t("subtitle")}</span>
             </h1>
-            <p className="text-sm md:text-base text-gray-200">
+            <p className="text-sm md:text-base text-gray-200 max-w-lg">
               {t("description")}
             </p>
             <div className="flex flex-col md:flex-row gap-4">
@@ -66,8 +66,8 @@ export default function Home() {
               <Button className="text-brand-blue-50 hover:bg-gray-700 hover:text-white" size="lg" variant="ghost">{t("access-button")}</Button>
             </div>
           </div>
-          <div className="md:w-1/2 mt-10 md:mt-0">
-            <Image src={AthleteSvg} width={500} height={500} alt="Athlete in blue gi" className="rounded-lg" />
+          <div className="md:w-1/2 mt-10 md:mt-0 flex-shrink">
+            <Image src={AthleteSvg} width={500} height={500} alt="Athlete in blue gi" className="rounded-lg w-full h-auto max-w-md md:max-w-full mx-auto" />
           </div>
         </section>
 
@@ -87,12 +87,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="container mx-auto md:px-12 pt-10 md:py-20">
+        <section className="container mx-auto px-4 pt-10 md:py-20">
           <div className="flex flex-col-reverse md:flex-row-reverse items-center md:py-16">
             <div className="md:w-1/2 mb-10 md:mb-0">
               <Image src={ManTypeSvg} width={400} height={400} alt="Man typing on a cell phone" className="rounded-lg" />
             </div>
-            <div className="md:w-1/2 md:pr-10 md:pl-0 px-4">
+            <div className="md:w-1/2 md:pr-10">
               <Badge className="bg-brand-blue-600 rounded-sm">{t("create")}</Badge>
               <h3 className="text-3xl md:text-4xl font-medium text-brand-blue-50 my-2">
                 {t("create-subtitle")}
@@ -107,7 +107,7 @@ export default function Home() {
             <div className="md:w-1/2 mb-10 md:mb-0">
               <Image src={AppSvg} width={400} height={400} alt="Print screen of the app" className="rounded-lg" />
             </div>
-            <div className="md:w-1/2 md:pr-10 md:pl-0 px-4">
+            <div className="md:w-1/2 md:pr-10">
               <Badge className="bg-brand-blue-600 rounded-sm">{t("badge-description")}</Badge>
               <h3 className="text-3xl md:text-4xl font-medium text-brand-blue-50 my-2">
                 {t("your-portifolio")}
@@ -122,7 +122,7 @@ export default function Home() {
             <div className="md:w-1/2 mb-10 md:mb-0">
               <Image src={AtlheteWomanSvg} width={400} height={400} alt="Athlete woman with a cell phone" className="rounded-lg" />
             </div>
-            <div className="md:w-1/2 md:pr-10 md:pl-0 px-4">
+            <div className="md:w-1/2 md:pr-10">
               <Badge className="bg-brand-blue-600 rounded-sm">{t("social-media-badge")}</Badge>
               <h3 className="text-3xl md:text-4xl font-medium text-brand-blue-50 my-2">
                 {t("social-media-title")}
@@ -134,8 +134,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto md:px-12 pt-10 md:py-20" id="plans">
-          <div className="container mx-auto px-4">
+        <section className="container mx-auto px-4 pt-10 md:py-20" id="plans">
+          <div>
             <h2 className="text-xl md:text-3xl text-center font-semibold text-brand-blue-50">
               {t("our-plans-title")}
             </h2>
@@ -145,12 +145,12 @@ export default function Home() {
             <PricingComponent handleSelectPlan={selectPlan} />
           </div>
         </section>
-        <div className="md:block hidden py-10 md:px-12">
+        <div className="md:block hidden py-10 container mx-auto px-4">
           <Separator className="bg-gray-600"/>
         </div>
 
-        {/* <section className="mx-auto pt-10 md:py-20 mb-16">
-          <div className="container mx-auto px-4 mb-4">
+        {/* <section className="container mx-auto px-4 pt-10 md:py-20 mb-16">
+          <div className="mb-4">
             <h2 className="text-xl md:text-3xl text-center font-semibold text-brand-blue-50">
               {t("testimonials-title")}
             </h2>
