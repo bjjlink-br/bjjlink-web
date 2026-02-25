@@ -24,6 +24,7 @@ import { Section } from "@/utils/dataSections"
 export function ProfileSettings({ user, components }: { user: UserAccountInfo; components: Section[] }) {
   const t = useTranslations("settings");
   const userPhoto = components.find((component) => component.type === "PROFILE") as any;
+  const userName = user.name ? user.name.charAt(0).toUpperCase() : user.domain.charAt(0).toUpperCase();
 
   return (
     <Card className="w-full mx-auto bg-gray-900 border-none">
@@ -34,7 +35,7 @@ export function ProfileSettings({ user, components }: { user: UserAccountInfo; c
         <div className="flex flex-col items-center gap-4">
           <Avatar className="w-24 h-24">
             <AvatarImage src={userPhoto?.images[0].url ?? DEFAULT_AVATAR} alt="Profile picture" />
-            <AvatarFallback>{user.name.charAt(0).toUpperCase()}</AvatarFallback>
+            <AvatarFallback>{userName}</AvatarFallback>
           </Avatar>
         </div>
 
@@ -44,7 +45,7 @@ export function ProfileSettings({ user, components }: { user: UserAccountInfo; c
             <Input
               className="bg-gray-800 border border-gray-600 text-gray-100"
               id="name"
-              value={user.name}
+              value={user.name ?? user.domain}
               readOnly
             />
           </div>
