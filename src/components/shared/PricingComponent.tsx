@@ -18,7 +18,7 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
   const allPlans: PlanType[] = [
     {
       name: t('plans.free.name'),
-      price: 18,
+      price: 29.90,
       discount: t('plans.free.discount'),
       description: t('plans.free.description'),
       descriptionDetail: t('plans.free.description-detail'),
@@ -32,7 +32,7 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
     },
     {
       name: t('plans.professional.name'),
-      price: 18,
+      price: 29.90,
       discount: t('plans.professional.discount'),
       description: t('plans.professional.description'),
       descriptionDetail: t('plans.professional.description-detail'),
@@ -92,7 +92,7 @@ export default function PricingComponent({ handleSelectPlan }: PricingComponentP
               </div>
               <div className='flex items-center gap-1'>
                 <span className={`text-3xl font-medium text-white ${plan.name === 'Gratuito - 7 Dias' && 'line-through'}`}>
-                  R$ {isAnnual ? '169,90' : plan.price.toFixed(2)}
+                  R$ {isAnnual ? '287,04' : plan.price.toFixed(2)}
                 </span>
                 {plan.discount && (
                   <span className={`ml-2 text-xs ${plan.popular ? 'bg-[#AFFC6D]' : 'bg-blue-600/15'} ${plan.popular ? 'text-[#283819]' : 'text-brand-blue-300'} font-semibold px-2 py-1 rounded-full`}>

@@ -21,13 +21,67 @@
         "description": "BJJLink é a plataforma que conecta atletas ao mundo, reunindo portfólio, conquistas e links em um só lugar de forma simples e profissional.",
         "contact-title": "Contato",
         "email": "contato@bjjlink.com.br",
-        "phone": "(61) 9997-5826",
+        "phone": "+55 (48) 99639-2916",
         "social-networks": "Rede sociais",
         "x-logo-alt": "Logo X antigo twitter",
         "privacy-title": "Privacidade",
         "terms-link": "Termos e condições de uso",
         "privacy-link": "Política de Privacidade",
         "copyright": "Copyright © 2025 Todos os direitores reservados para BJJLink"
+    },
+    "terms": {
+        "title": "Termos e Condições de Uso",
+        "last-update": "Última atualização: Janeiro de 2025",
+        "intro": "Bem-vindo ao BJJLink! Ao utilizar nossa plataforma, você concorda com os seguintes termos e condições. Por favor, leia atentamente.",
+        "section1-title": "1. Aceitação dos Termos",
+        "section1-content": "Ao acessar e usar o BJJLink, você aceita e concorda em cumprir estes Termos e Condições de Uso. Se você não concordar com qualquer parte destes termos, não deve usar nossa plataforma.",
+        "section2-title": "2. Descrição do Serviço",
+        "section2-content": "O BJJLink é uma plataforma que permite aos atletas de Jiu-Jitsu Brasileiro criar portfólios profissionais online, exibindo suas conquistas, links de redes sociais e informações de contato em um único lugar.",
+        "section3-title": "3. Cadastro e Conta de Usuário",
+        "section3-content": "Para utilizar determinados recursos da plataforma, você deve criar uma conta fornecendo informações precisas e completas. Você é responsável por manter a confidencialidade de sua senha e por todas as atividades que ocorram em sua conta.",
+        "section4-title": "4. Uso Aceitável",
+        "section4-content": "Você concorda em usar o BJJLink apenas para fins legais e de acordo com estes termos. Você não deve: (a) usar a plataforma de maneira que viole qualquer lei ou regulamento; (b) transmitir conteúdo ofensivo, difamatório ou ilegal; (c) tentar obter acesso não autorizado a qualquer parte da plataforma.",
+        "section5-title": "5. Conteúdo do Usuário",
+        "section5-content": "Você mantém todos os direitos sobre o conteúdo que carrega no BJJLink. Ao publicar conteúdo, você nos concede uma licença mundial, não exclusiva e isenta de royalties para usar, reproduzir e exibir esse conteúdo na plataforma.",
+        "section6-title": "6. Propriedade Intelectual",
+        "section6-content": "Todo o conteúdo, design, logotipos e funcionalidades do BJJLink são de propriedade exclusiva da plataforma e estão protegidos por leis de direitos autorais e propriedade intelectual.",
+        "section7-title": "7. Planos e Pagamentos",
+        "section7-content": "O BJJLink oferece planos gratuitos e pagos. Os detalhes de cada plano, incluindo preços e recursos, estão disponíveis em nossa página de planos. Os pagamentos são processados de forma segura através de nossos parceiros de pagamento.",
+        "section8-title": "8. Cancelamento e Reembolso",
+        "section8-content": "Você pode cancelar sua assinatura a qualquer momento através das configurações da sua conta. Reembolsos serão processados de acordo com nossa política de reembolso vigente.",
+        "section9-title": "9. Limitação de Responsabilidade",
+        "section9-content": "O BJJLink não se responsabiliza por quaisquer danos diretos, indiretos, incidentais ou consequenciais resultantes do uso ou incapacidade de usar a plataforma.",
+        "section10-title": "10. Modificações dos Termos",
+        "section10-content": "Reservamos o direito de modificar estes termos a qualquer momento. Notificaremos os usuários sobre mudanças significativas através de e-mail ou aviso na plataforma.",
+        "section11-title": "11. Contato",
+        "section11-content": "Se você tiver dúvidas sobre estes Termos e Condições, entre em contato conosco através do e-mail contato@bjjlink.com.br"
+    },
+    "privacy": {
+        "title": "Política de Privacidade",
+        "last-update": "Última atualização: Janeiro de 2025",
+        "intro": "No BJJLink, levamos sua privacidade a sério. Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações pessoais.",
+        "section1-title": "1. Informações que Coletamos",
+        "section1-content": "Coletamos informações que você nos fornece diretamente, incluindo: nome, e-mail, fotos de perfil, informações de conquistas esportivas, links de redes sociais e outras informações que você escolhe compartilhar em seu portfólio.",
+        "section2-title": "2. Como Usamos suas Informações",
+        "section2-content": "Usamos suas informações para: (a) fornecer e melhorar nossos serviços; (b) criar e gerenciar seu portfólio; (c) processar pagamentos; (d) enviar comunicações importantes sobre sua conta; (e) personalizar sua experiência na plataforma.",
+        "section3-title": "3. Compartilhamento de Informações",
+        "section3-content": "Não vendemos suas informações pessoais. Podemos compartilhar suas informações apenas nas seguintes situações: (a) com seu consentimento explícito; (b) para cumprir obrigações legais; (c) com prestadores de serviços que nos auxiliam na operação da plataforma.",
+        "section4-title": "4. Segurança dos Dados",
+        "section4-content": "Implementamos medidas de segurança técnicas e organizacionais para proteger suas informações contra acesso não autorizado, alteração, divulgação ou destruição. Utilizamos criptografia SSL e armazenamento seguro de dados.",
+        "section5-title": "5. Cookies e Tecnologias Similares",
+        "section5-content": "Utilizamos cookies e tecnologias similares para melhorar sua experiência, analisar o uso da plataforma e personalizar conteúdo. Você pode gerenciar suas preferências de cookies através das configurações do seu navegador.",
+        "section6-title": "6. Seus Direitos",
+        "section6-content": "Você tem o direito de: (a) acessar suas informações pessoais; (b) corrigir informações incorretas; (c) solicitar a exclusão de suas informações; (d) exportar seus dados; (e) revogar consentimentos previamente dados.",
+        "section7-title": "7. Retenção de Dados",
+        "section7-content": "Mantemos suas informações pessoais pelo tempo necessário para fornecer nossos serviços e cumprir obrigações legais. Quando você excluir sua conta, removeremos suas informações de nossos sistemas ativos.",
+        "section8-title": "8. Privacidade de Menores",
+        "section8-content": "O BJJLink não é destinado a menores de 13 anos. Não coletamos intencionalmente informações de crianças. Se tomarmos conhecimento de que coletamos informações de uma criança, tomaremos medidas para excluir essas informações.",
+        "section9-title": "9. Transferência Internacional de Dados",
+        "section9-content": "Suas informações podem ser transferidas e mantidas em servidores localizados fora do seu país de residência. Ao usar o BJJLink, você consente com essa transferência.",
+        "section10-title": "10. Alterações nesta Política",
+        "section10-content": "Podemos atualizar esta Política de Privacidade periodicamente. Notificaremos você sobre mudanças significativas através de e-mail ou aviso na plataforma.",
+        "section11-title": "11. Contato",
+        "section11-content": "Para questões sobre privacidade ou para exercer seus direitos, entre em contato conosco através do e-mail contato@bjjlink.com.br"
     },
     "home": {
         "new": "Novo",
@@ -236,6 +290,34 @@
         "subscription": {
             "title": "Minha assinatura",
             "manage-button": "Gerenciar minha assinatura"
+        },
+        "plans": {
+            "free": {
+                "name": "Gratuito - 7 Dias",
+                "discount": "-100% Off",
+                "description": "Para pessoa",
+                "description-detail": "Ideal para atletas que estão começando e querem marcar presença online.",
+                "features": {
+                    "public-page": "Página pública do atleta",
+                    "photo-management": "Gerenciamento de fotos",
+                    "basic-access": "Acesso básico à plataforma",
+                    "social-links": "Links para redes sociais",
+                    "link-management": "Gerenciamento de links"
+                }
+            },
+            "professional": {
+                "name": "Profissional",
+                "discount": "-15% Off",
+                "description": "Para pessoa",
+                "description-detail": "Ideal para atletas que querem impulsionar sua presença online. E mostrar seus resultados.",
+                "features": {
+                    "public-page": "Página pública do atleta",
+                    "photo-management": "Gerenciamento de fotos",
+                    "platform-access": "Acesso à plataforma",
+                    "social-links": "Links para redes sociais",
+                    "link-management": "Gerenciamento de links"
+                }
+            }
         }
     },
     "reset-password": {

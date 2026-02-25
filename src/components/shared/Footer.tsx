@@ -4,10 +4,11 @@ import { Facebook, Instagram, Linkedin } from "lucide-react"
 import { LogoTitle } from "./LogoTitle"
 import XLogoSvg from '@/assets/icons/x.svg'
 import Image from "next/image"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 
 export function Footer() {
   const t = useTranslations("footer")
+  const locale = useLocale()
 
   const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
@@ -35,28 +36,28 @@ export function Footer() {
             <div className="text-center md:text-left md:min-w-[186px]">
                 <h3 className="text-gray-50 text-lg font-semibold">{t('social-networks')}</h3>
                 <div className="flex items-center space-x-2">
-                    <Link href="#" className="hover:text-brand-blue-100">
+                    <Link href="https://www.instagram.com/bjjlinkpro" target="_blank" className="hover:text-brand-blue-100">
                         <Instagram size={24} color="#85CBFF" />
                     </Link>
-                    <Link href="#" className="hover:text-brand-blue-100">
-                        <Facebook size={24} color="#85CBFF" />
-                    </Link>
-                    <Link href="#" className="hover:text-brand-blue-100">
+                      {/* <Link href="#" target="_blank" className="hover:text-brand-blue-100">
+                          <Facebook size={24} color="#85CBFF" />
+                      </Link> */}
+                    {/* <Link href="https://x.com/bjjlinkpro" target="_blank" className="hover:text-brand-blue-100">
                         <Image src={XLogoSvg} alt={t('x-logo-alt')} width={24} height={24} />
-                    </Link>
-                    <Link href="#" className="hover:text-brand-blue-100">
+                    </Link> */}
+                    {/* <Link href="https://www.linkedin.com/company/bjjlinkpro" target="_blank" className="hover:text-brand-blue-100">
                         <Linkedin size={24} color="#85CBFF" />
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
           </div>
 
           <div className="text-center md:text-left">
             <h3 className="text-gray-50 text-lg font-semibold mb-1">{t('privacy-title')}</h3>
-            <Link href="/terms" className="block hover:text-white">
+            <Link href={`/${locale}/terms`} className="block hover:text-white">
               {t('terms-link')}
             </Link>
-            <Link href="/privacy" className="block hover:text-white">
+            <Link href={`/${locale}/privacy`} className="block hover:text-white">
               {t('privacy-link')}
             </Link>
           </div>

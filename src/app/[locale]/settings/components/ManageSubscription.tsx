@@ -56,7 +56,7 @@ export function ManageSubscription({ user }: ManageSubscriptionProps) {
     },
     {
       name: tPricing('plans.professional.name'),
-      price: 14,
+      price: 29.90,
       discount: tPricing('plans.professional.discount'),
       description: tPricing('plans.professional.description'),
       descriptionDetail: tPricing('plans.professional.description-detail'),
@@ -118,7 +118,7 @@ export function ManageSubscription({ user }: ManageSubscriptionProps) {
                 </div>
                 <div className='flex items-center gap-1 flex-wrap'>
                   <span className={`text-2xl md:text-3xl font-medium text-white ${plan.price === 0 && 'line-through'}`}>
-                    R$ {isAnnual ? '169,90' : plan.price.toFixed(2)}
+                    R$ {isAnnual ? '287,04' : plan.price.toFixed(2)}
                   </span>
                   {plan.discount && (
                     <span className={`ml-2 text-xs ${plan.popular ? 'bg-[#AFFC6D]' : 'bg-blue-600/15'} ${plan.popular ? 'text-[#283819]' : 'text-brand-blue-300'} font-semibold px-2 py-1 rounded-full`}>
