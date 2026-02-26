@@ -78,10 +78,13 @@ export default function Dashboard() {
             handleError(error);
         }
     }, [error]);
+    
+    // const hideCreatePortifolio = user?.status !== AccountStatus.ACTIVE || (data?.length ?? 0) > 0;
+    const hideCreatePortifolio = (data?.length ?? 0) > 0;
 
     return (
         <div className="bg-gray-1300 min-h-screen flex">
-            <VerticalMenu />
+            <VerticalMenu hideCreatePortifolio={hideCreatePortifolio} />
 
             <main className="flex-1 p-8">
                 {(user?.status !== AccountStatus.ACTIVE)  && (

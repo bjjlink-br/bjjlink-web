@@ -18,14 +18,16 @@ import { defaultDataSections, useDataSections } from '@/contexts/DataSectionsCon
 import { validateDataSections, isPortfolioReadyToPublish } from '@/utils/functions';
 import { toast } from '@/hooks/use-toast'
 import { useRouter } from 'next/navigation';
-import { GET_COMPONENTS_KEY, USER_DATA_STORAGE_KEY } from '@/contexts/AuthContext';
+import { AUTH_STORAGE_KEY, GET_COMPONENTS_KEY, USER_DATA_STORAGE_KEY } from '@/contexts/AuthContext';
 import { UserAccountInfo } from '@/utils/types';
 import { KEYS_STORAGE } from '@/utils/constants';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function Create() {
   const t = useTranslations("create-portfolio");
   const router = useRouter();
   const locale = useLocale();
+  const queryClient = useQueryClient();
   const [user, setUser] = useState<UserAccountInfo>();
   const [isPublishEnabled, setIsPublishEnabled] = useState(false);
   const form = useForm<z.infer<typeof createPortifolioSchema>>({
@@ -53,6 +55,8 @@ export default function Create() {
 
   function handlePublishPortifolio() {
     const validate = validateDataSections(dataSections);
+    const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
+    const token = JSON.parse(userToken!)
 
     if (!validate.isValid) {
       toast({
@@ -70,13 +74,16 @@ export default function Create() {
     setDataSections(defaultDataSections);
     localStorage.removeItem(KEYS_STORAGE.sections);
     localStorage.removeItem(GET_COMPONENTS_KEY);
+    queryClient.invalidateQueries({
+      queryKey: ["portfolios", token.acess_token, locale],
+    });
     router.push(`/portifolio/${user?.domain}`);
     router.push(`/dashboard`);
   }
 
   const handleCopyPotifolioUrl = () => {
     if(!user?.domain) return;
-    navigator.clipboard.writeText(`https://bjjlink.com.br/${user?.domain}`);
+    navigator.clipboard.writeText(`https://bjjlink.com.br/portifolio/${user?.domain}`);
     toast({
       title: `${t("copy-link-toast.success")}`,
       duration: 3000,

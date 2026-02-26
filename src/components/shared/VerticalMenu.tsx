@@ -15,7 +15,12 @@ import { signOut } from "@/utils/functions";
 import { useRouter } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export const VerticalMenu = ({ activeMenu = 'dashboard' }: {activeMenu?: string; }) => {
+type VerticalMenuProps = {
+    activeMenu?: string;
+    hideCreatePortifolio?: boolean;
+}
+
+export const VerticalMenu = ({ activeMenu = 'dashboard', hideCreatePortifolio = false }: VerticalMenuProps) => {
     const t = useTranslations("vertical-menu");
     const router = useRouter()
     const locale = useLocale()
@@ -55,14 +60,16 @@ export const VerticalMenu = ({ activeMenu = 'dashboard' }: {activeMenu?: string;
                         <Image src={HomeIcon} alt={t('navbar.dashboard-alt-icon')} />
                         {isExpanded && t('navbar.dashboard')}
                     </Link>
-                    <Link
-                        href={`/${locale}/portifolio/create`}
-                        className={`font-sans text-base flex items-center ${isExpanded ? 'gap-3 px-3' : 'justify-center px-2'} py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'portifolio' ? 'bg-zinc-900' : ''}`}
-                        title={!isExpanded ? t('navbar.portifolio') : undefined}
-                    >
-                        <Image src={NotebookIcon} alt={t('navbar.portifolio-alt-icon')} />
-                        {isExpanded && t('navbar.portifolio')}
-                    </Link>
+                    {!hideCreatePortifolio && (
+                        <Link
+                            href={`/${locale}/portifolio/create`}
+                            className={`font-sans text-base flex items-center ${isExpanded ? 'gap-3 px-3' : 'justify-center px-2'} py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'portifolio' ? 'bg-zinc-900' : ''}`}
+                            title={!isExpanded ? t('navbar.portifolio') : undefined}
+                        >
+                            <Image src={NotebookIcon} alt={t('navbar.portifolio-alt-icon')} />
+                            {isExpanded && t('navbar.portifolio')}
+                        </Link>
+                    )}
                     <Link
                         href="#"
                         className={`font-sans text-base flex items-center ${isExpanded ? 'gap-3 px-3' : 'justify-center px-2'} py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'analytics' ? 'bg-zinc-900' : ''}`}

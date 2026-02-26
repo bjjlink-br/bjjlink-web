@@ -88,6 +88,8 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
       twitter: normalizeLink(getTextByOrder(socialSection, 3)),
     };
 
+    console.log('AQUI ->',socialLinks)
+
     const profileImageSource = profileSection?.images?.[0] ?? profileSection?.image ?? null;
     const galleryTitle = getTextByOrder(gallerySection, 1) || "Sobre o meu trabalho";
 
@@ -151,36 +153,42 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
                             <div className="space-y-2 mt-8">
                                 <h3 className="font-semibold text-xl">Minhas redes:</h3>
                                 <div className="flex gap-4">
-                                    <Button 
-                                        variant="ghost" 
-                                        size="icon" 
-                                        className="h-6 w-6 p-0" 
-                                        onClick={() => handleOpenLink(socialLinks.facebook)}
-                                    >
-                                        <Facebook 
-                                            className={`w-6 h-6 ${socialLinks.facebook ? "text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" : "text-zinc-600"}`}
-                                        />
-                                    </Button>
-                                    <Button 
-                                        variant="ghost" 
-                                        size="icon" 
-                                        className="h-6 w-6 p-0" 
-                                        onClick={() => handleOpenLink(socialLinks.instagram)}
-                                    >
-                                        <Instagram 
-                                            className={`w-6 h-6 ${socialLinks.instagram ? "text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" : "text-zinc-600"}`}
-                                        />
-                                    </Button>
-                                    <Button 
-                                        variant="ghost" 
-                                        size="icon" 
-                                        className="h-6 w-6 p-0" 
-                                        onClick={() => handleOpenLink(socialLinks.twitter)}
-                                    >
-                                        <Twitter 
-                                            className={`w-6 h-6 ${socialLinks.twitter ? "text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" : "text-zinc-600"}`}
-                                        />
-                                    </Button>
+                                    {socialLinks.facebook.length > 0 && (
+                                        <Button 
+                                            variant="ghost" 
+                                            size="icon" 
+                                            className="h-6 w-6 p-0" 
+                                            onClick={() => handleOpenLink(socialLinks.facebook)}
+                                        >
+                                            <Facebook 
+                                                className={`w-6 h-6 ${socialLinks.facebook ? "text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" : "text-zinc-600"}`}
+                                            />
+                                        </Button>
+                                    )}
+                                    {socialLinks.instagram.length > 0 && (
+                                        <Button 
+                                            variant="ghost" 
+                                            size="icon" 
+                                            className="h-6 w-6 p-0" 
+                                            onClick={() => handleOpenLink(socialLinks.instagram)}
+                                        >
+                                            <Instagram 
+                                                className={`w-6 h-6 ${socialLinks.instagram ? "text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" : "text-zinc-600"}`}
+                                            />
+                                        </Button>
+                                    )}
+                                    {socialLinks.twitter.length > 0 && (
+                                        <Button 
+                                            variant="ghost" 
+                                            size="icon" 
+                                            className="h-6 w-6 p-0" 
+                                            onClick={() => handleOpenLink(socialLinks.twitter)}
+                                        >
+                                            <Twitter 
+                                                className={`w-6 h-6 ${socialLinks.twitter ? "text-brand-blue-300 hover:text-brand-blue-400 cursor-pointer" : "text-zinc-600"}`}
+                                            />
+                                        </Button>
+                                    )}
                                 </div>
                             </div>
                             <div className="space-y-2 mt-8">
@@ -217,7 +225,7 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
                             </div>
                         </CardContent>
                         <CardFooter className="py-2 border-t border-zinc-800">
-                            <p className="text-base text-zinc-500">Página criada na plataforma BjjLink</p>
+                            <p className="text-base text-zinc-500">Página criada na plataforma <a className="font-semibold no-underline" href="https://bjjlink.com.br" target="_blank">BjjLink</a></p>
                         </CardFooter>
                     </Card>
                 )}
