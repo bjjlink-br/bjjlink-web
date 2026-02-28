@@ -9,6 +9,7 @@ import Image from "next/image";
 import React, { useRef } from "react";
 
 type ImageObject = { preview?: string; url?: string };
+
 type ImageType = string | ImageObject | File | null;
 
 type RemoteImage = {
