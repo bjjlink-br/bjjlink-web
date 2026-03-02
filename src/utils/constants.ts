@@ -6,25 +6,25 @@ import PhoneSvg from "@/assets/icons/phone.svg";
 
 export const cardsInfoAdvantages = [
     {
-        title: "Melhor envolvimento com seus seguidores e fãs",
+        titleKey: "advantage-card-1",
         img: HappySvg,
         bgColor: "rgba(116, 214, 51, 0.15)",
     },
     
     {
-        title: "Deixar o seu ambiente apresentável e agradável.",
+        titleKey: "advantage-card-2",
         img: DocIdSvg,
         bgColor: "rgba(244, 174, 34, 0.15)",
     },
     
     {
-        title: "Todos os seus links de uma forma organizada.",
+        titleKey: "advantage-card-3",
         img: ChainLink,
         bgColor: "rgba(14, 227, 247, 0.15)",
     },
     
     {
-        title: "Apresentar o seu portfólio como um cartão de visita!",
+        titleKey: "advantage-card-4",
         img: PhoneSvg,
         bgColor: "rgba(216, 49, 34, 0.15)",
     },

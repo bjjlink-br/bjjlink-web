@@ -37,6 +37,24 @@ export default function Home() {
     }
   }
 
+  const handleGoToLogin = () => {
+    const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
+    if(userToken){
+      router.push(`/dashboard`);
+      return;
+    }
+    router.push(`/${locale}/login`);
+  }
+
+  const handleGoToCreatePortifolio = () => {
+    const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
+    if(userToken){
+      router.push(`/dashboard`);
+      return;
+    }
+    router.push(`/${locale}/register`);
+  }
+
   return (
     <div className="min-h-screen bg-gray-1300 text-gray-50 hidden-scroll-bar">
         {/* <div className="hidden md:flex md:justify-end md:pt-1">
@@ -59,11 +77,11 @@ export default function Home() {
               {t("description")}
             </p>
             <div className="flex flex-col md:flex-row gap-4">
-              <Button size="lg" className="flex flex-row gap-1 items-center text-white bg-brand-blue-600 hover:bg-brand-blue-700">
+              <Button onClick={handleGoToCreatePortifolio} size="lg" className="flex flex-row gap-1 items-center text-white bg-brand-blue-600 hover:bg-brand-blue-700">
                 {t("create-portifolio-button")}
                 <ArrowUpRight size={18} color="#fff" />
               </Button>
-              <Button className="text-brand-blue-50 hover:bg-gray-700 hover:text-white" size="lg" variant="ghost">{t("access-button")}</Button>
+              <Button onClick={handleGoToLogin} className="text-brand-blue-50 hover:bg-gray-700 hover:text-white" size="lg" variant="ghost">{t("access-button")}</Button>
             </div>
           </div>
           <div className="md:w-1/2 mt-10 md:mt-0 flex-shrink">
@@ -81,7 +99,7 @@ export default function Home() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
               {cardsInfoAdvantages.map((card, index) => (
-                <CardInfo key={index} title={card.title} img={card.img} bgColor={card.bgColor} />
+                <CardInfo key={index} titleKey={card.titleKey} img={card.img} bgColor={card.bgColor} />
               ))}
             </div>
           </div>
@@ -171,7 +189,7 @@ export default function Home() {
                 {t("create-portifolio-now-subtitle")}
               </p>
             </div>
-            <Button className="max-w-44 text-white bg-brand-blue-600 hover:bg-brand-blue-700 mt-1">{t("start-now")}</Button>
+            <Button onClick={handleGoToCreatePortifolio} className="max-w-44 text-white bg-brand-blue-600 hover:bg-brand-blue-700 mt-1">{t("start-now")}</Button>
           </div>
         </section>
 

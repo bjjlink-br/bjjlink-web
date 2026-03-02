@@ -1,13 +1,17 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader } from "../ui/card";
+import { useTranslations } from "next-intl";
 
 type CardInfoProps = {
-    title: string;
+    titleKey: string;
     img: string;
     bgColor: string;
 }
 
-export const CardInfo = ({ title, img, bgColor }: CardInfoProps) => {
+export const CardInfo = ({ titleKey, img, bgColor }: CardInfoProps) => {
+  const t = useTranslations("home");
+  const title = t(titleKey as any);
+
   return (
     <Card 
         className="bg-gray-900 border-gray-700 flex items-center gap-4 p-4"
