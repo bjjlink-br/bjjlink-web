@@ -13,7 +13,7 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { signOut } from "@/utils/functions";
 import { useRouter } from "next/navigation";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, RefreshCw } from "lucide-react";
 
 type VerticalMenuProps = {
     activeMenu?: string;
@@ -93,6 +93,14 @@ export const VerticalMenu = ({ activeMenu = 'dashboard', hideCreatePortifolio = 
                         <Image src={SettingsIcon} alt={t('navbar.settings-alt-icon')} />
                         {isExpanded && t('navbar.settings')}
                     </Link>
+                    <Link
+                        href={`/${locale}/recurrence`}
+                        className={`font-sans text-base flex items-center ${isExpanded ? 'gap-3 px-3' : 'justify-center px-2'} py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'recurrence' ? 'bg-zinc-900' : ''}`}
+                        title={!isExpanded ? t('navbar.recurrence') : undefined}
+                    >
+                        <RefreshCw size={20} className="text-gray-400 shrink-0" />
+                        {isExpanded && t('navbar.recurrence')}
+                    </Link>
                 </nav>
 
                 <div className="mt-auto pt-4 border-t border-zinc-800 w-full">
@@ -142,12 +150,22 @@ export const VerticalMenu = ({ activeMenu = 'dashboard', hideCreatePortifolio = 
                      <Link
                         href={`/${locale}/settings`}
                         className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors ${
-                            activeMenu === 'settings' 
-                                ? 'bg-brand-blue-700 text-white' 
+                            activeMenu === 'settings'
+                                ? 'bg-brand-blue-700 text-white'
                                 : 'text-gray-600 hover:text-gray-900'
                         }`}
                     >
                         <Image src={SettingsIcon} alt={t('navbar.settings-alt-icon')} className={`w-6 h-6 ${activeMenu === 'settings' ? 'brightness-0 invert' : ''}`} />
+                    </Link>
+                    <Link
+                        href={`/${locale}/recurrence`}
+                        className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors ${
+                            activeMenu === 'recurrence'
+                                ? 'bg-brand-blue-700 text-white'
+                                : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                    >
+                        <RefreshCw size={24} className={`${activeMenu === 'recurrence' ? 'text-white' : 'text-gray-400'}`} />
                     </Link>
                     {/* <Link
                         href="#"

@@ -137,6 +137,8 @@
             "confirmation-password": "Confirmar senha",
             "password-placeholder": "Digite a sua senha",
             "confirmation-placeholder": "Digite a sua senha novamente",
+            "phone": "Telefone (opcional)",
+            "phone-placeholder": "Digite seu número de telefone",
             "hidden-password-button": "Ocultar",
             "show-password-button": "Mostrar",
             "start-now-button": "Entrar agora",
@@ -165,6 +167,8 @@
             "my-account-alt-icon": "ícone de uma pessoa",
             "settings": "Configurações",
             "settings-alt-icon": "ícone de engrenagens",
+            "recurrence": "Recorrência",
+            "recurrence-alt-icon": "ícone de recorrência",
             "logout": "Sair",
             "logout-alt-icon": "ícone de uma porta"
         }
@@ -194,6 +198,7 @@
         "privacy-link": "aviso de privacidade",
         "or-divider": "ou",
         "login-google-button": "Continue com Google",
+        "already-authenticated": "Você já está logado.",
         "register-text": "Você não tem uma conta?",
         "register-link": "Cadastre-se",
         "password": "Senha",
@@ -273,13 +278,18 @@
         }
     },
     "settings": {
-        "tabs": {
-            "profile": "Perfil",
-            "subscription": "Assinatura"
-        },
+        "page-title": "Configurações",
+        "page-subtitle": "Gerencie sua conta e preferências",
         "profile": {
             "title": "Minha conta",
             "name": "Nome",
+            "full-name": "Nome Completo",
+            "phone": "Telefone",
+            "phone-placeholder": "+55 11 98765-4321",
+            "username": "Nome de Usuário",
+            "manage-subscription": "Gerenciar Assinatura",
+            "save-changes": "Salvar Alterações",
+            "cancel": "Cancelar",
             "button-delete-account": "Excluir minha conta",
             "dialog-confirmation": {
                 "title": "Você tem certeza?",
@@ -287,14 +297,113 @@
                 "cancel": "Cancelar",
                 "delete": "Excluir minha conta"
             },
+            "status": {
+                "active": "Ativo",
+                "trialing": "Período de teste",
+                "past-due": "Pagamento atrasado",
+                "unpaid": "Não pago",
+                "canceled": "Cancelado",
+                "incomplete": "Incompleto",
+                "newly-created": "Conta nova"
+            }
+        },
+        "security": {
+            "title": "Segurança",
+            "description": "Gerencie sua senha e autenticação",
+            "current-password": "Senha Atual",
+            "current-password-placeholder": "Digite sua senha atual",
+            "new-password": "Nova Senha",
+            "new-password-placeholder": "Digite sua nova senha",
+            "confirm-password": "Confirmar Nova Senha",
+            "confirm-password-placeholder": "Confirme sua nova senha",
+            "change-password": "Alterar Senha",
+            "recover-by-email": "Recuperar por E-mail",
+            "requirements": {
+                "title": "Requisitos de senha:",
+                "min-length": "Mínimo de 8 caracteres",
+                "uppercase": "Pelo menos uma letra maiúscula",
+                "number": "Pelo menos um número",
+                "special": "Pelo menos um caractere especial"
+            },
             "toast": {
-                "title-no-authenticated": "Ops! Você não está autenticado. 🤔",
-                "description-no-authenticated": "Volte para a tela de login e entre com a sua conta."
+                "fill-all-fields": "Preencha todos os campos",
+                "password-requirements-not-met": "A senha não atende aos requisitos",
+                "passwords-dont-match": "As senhas não coincidem",
+                "password-updated": "Senha atualizada com sucesso",
+                "password-update-error": "Erro ao atualizar senha. Verifique sua senha atual."
             }
         },
         "subscription": {
-            "title": "Minha assinatura",
-            "manage-button": "Gerenciar minha assinatura"
+            "title": "Gerenciar Assinatura",
+            "manage-button": "Gerenciar minha assinatura",
+            "no-subscription": "Você ainda não possui uma assinatura ativa.",
+            "get-plan": "Adquira seu plano agora"
+        },
+        "privacy": {
+            "title": "Privacidade",
+            "description": "Controle suas informações e privacidade",
+            "show-profile": "Perfil Público",
+            "show-profile-description": "Permitir que outros vejam seu perfil",
+            "show-achievements": "Mostrar conquistas",
+            "show-achievements-description": "Exibir suas conquistas no seu perfil público.",
+            "show-social-links": "Mostrar links sociais",
+            "show-social-links-description": "Exibir seus links de redes sociais no seu perfil público."
+        },
+        "donations": {
+            "title": "Doações",
+            "description": "Configure sua conta para receber doações",
+            "enabled": "Ativo",
+            "enabled-description": "Seus apoiadores agora podem enviar doações para você.",
+            "not-configured": "Doações ainda não estão configuradas. Complete o cadastro para começar a receber doações.",
+            "configure-button": "Configurar Doações",
+            "stripe-integration": "Integração com Stripe",
+            "stripe-description": "Gerencie suas doações recebidas, configure payouts e veja o histórico de transações através do dashboard do Stripe.",
+            "access-donations": "Acessar Doações",
+            "dashboard": {
+                "current-balance": "Saldo Atual",
+                "this-month": "Este Mês",
+                "total-donors": "Total Doadores",
+                "monthly-revenue": "Receita Mensal",
+                "active-supporters": "Apoiadores Ativos",
+                "total-supporters": "Total de Apoiadores",
+                "supporters-title": "Apoiadores",
+                "no-supporters": "Nenhum apoiador ainda. Compartilhe seu link de doação para começar a receber apoio.",
+                "table": {
+                    "name": "Nome",
+                    "email": "Email",
+                    "amount": "Valor",
+                    "date": "Data",
+                    "status": "Status"
+                }
+            }
+        },
+        "account-actions": {
+            "title": "Ações da conta",
+            "cancel-subscription": "Cancelar Assinatura",
+            "cancel-subscription-description": "Você perderá acesso aos recursos premium",
+            "cancel-plan-button": "Cancelar Plano",
+            "deactivate-account": "Desativar Conta",
+            "deactivate-description": "Sua conta ficará temporariamente inativa",
+            "deactivate-button": "Desativar Conta",
+            "deactivate-dialog": {
+                "title": "Desativar conta?",
+                "description": "Sua conta ficará temporariamente inativa. Você poderá reativá-la a qualquer momento.",
+                "cancel": "Cancelar",
+                "confirm": "Desativar"
+            },
+            "delete-account": "Excluir Conta Permanentemente",
+            "delete-description": "Esta ação não pode ser desfeita. Todos os seus dados serão perdidos.",
+            "delete-button": "Excluir Conta",
+            "delete-dialog": {
+                "title": "Você tem certeza?",
+                "description": "Esta ação não pode ser desfeita. Isso excluirá permanentemente sua conta e removerá seus dados de nossos servidores.",
+                "cancel": "Cancelar",
+                "confirm": "Excluir minha conta"
+            }
+        },
+        "toast": {
+            "title-no-authenticated": "Ops! Você não está autenticado. 🤔",
+            "description-no-authenticated": "Volte para a tela de login e entre com a sua conta."
         },
         "plans": {
             "free": {
@@ -451,6 +560,64 @@
                 "question": "Para quem o BjjLink é indicado?",
                 "answer": "O BjjLink é ideal para atletas, professores, competidores e criadores de conteúdo que desejam se posicionar melhor no esporte e fortalecer sua marca pessoal."
             }
+        }
+    },
+    "recurrence": {
+        "page-title": "Recorrência",
+        "page-subtitle": "Gerencie seus apoios mensais e visualize o patrocínio recorrente.",
+        "system-status": "Status do sistema:",
+        "operational": "Operacional",
+        "cards": {
+            "monthly-support": "Apoio Mensal Ativo",
+            "monthly-estimate": "Estimativa para este mês",
+            "active-sponsors": "Patrocinadores Ativos",
+            "this-month": "este mês",
+            "next-payout": "Próximo Repasse",
+            "payout-estimate": "Previsão de depósito na conta"
+        },
+        "chart": {
+            "title": "Evolução de Recorrência",
+            "description": "Valores recebidos e total de apoiadores ativos",
+            "monthly-value": "Valor (R$)",
+            "supporters": "Apoiadores",
+            "value-axis": "Valor (R$)",
+            "supporters-axis": "Apoiadores"
+        },
+        "supporters": {
+            "title": "Meus Apoiadores",
+            "view-all": "Ver todos",
+            "empty": "Nenhum apoiador ainda.",
+            "status-active": "ATIVO",
+            "status-paused": "PAUSADO"
+        },
+        "stats": {
+            "monthly-growth": "Crescimento Mensal (Média)",
+            "new-supporters": "Novos Apoiadores (Últ. 30d)"
+        },
+        "transfers": {
+            "title": "Histórico de Repasses",
+            "description": "Registros de transferências recebidas",
+            "view-stripe": "Ver no Stripe",
+            "empty": "Nenhum repasse registrado ainda.",
+            "table": {
+                "id": "ID Transação",
+                "date": "Data",
+                "amount": "Valor",
+                "status": "Status",
+                "actions": "Ações"
+            }
+        },
+        "onboarding": {
+            "title": "Onboarding Necessário",
+            "description": "Para utilizar a página de recorrência e receber doações recorrentes, é necessário completar o processo de onboarding do Stripe Connect.",
+            "steps": "Isso vai configurar sua conta de pagamento para que você receba os repasses diretamente na sua conta bancária.",
+            "start-button": "Iniciar Onboarding",
+            "go-back": "Voltar",
+            "error": "Falha ao iniciar onboarding. Tente novamente."
+        },
+        "toast": {
+            "title-no-authenticated": "Ops! Você não está autenticado. 🤔",
+            "description-no-authenticated": "Volte para a tela de login e entre com a sua conta."
         }
     }
 }

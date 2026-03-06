@@ -136,6 +136,8 @@
             "confirmation-password": "Confirm your password",
             "password-placeholder": "Type your password",
             "confirmation-placeholder": "Type your password again",
+            "phone": "Phone (optional)",
+            "phone-placeholder": "Enter your phone number",
             "hidden-password-button": "Hidden",
             "show-password-button": "Show",
             "start-now-button": "Register now",
@@ -164,6 +166,8 @@
             "my-account-alt-icon": "person icon",
             "settings": "Settings",
             "settings-alt-icon": "gear icon",
+            "recurrence": "recurrence",
+            "recurrence-alt-icon": "recurrence icon",
             "logout": "Logout",
             "logout-alt-icon": "door icon"
         }
@@ -197,6 +201,7 @@
         "hide-password-button": "Hide",
         "forgot-password": "Forgot password?",
         "login-google-button": "Continue with Google",
+        "already-authenticated": "You are already logged in.",
         "register-text": "Don't have an account?",
         "register-link": "Sign up",
         "remember-me": "Remember me",
@@ -272,24 +277,128 @@
         }
     },
     "settings": {
-        "tabs": {
-            "profile": "Profile",
-            "subscription": "Subscription"
-        },
+        "page-title": "Settings",
+        "page-subtitle": "Manage your account and preferences",
         "profile": {
             "title": "My Account",
             "name": "Name",
+            "full-name": "Full Name",
+            "phone": "Phone",
+            "phone-placeholder": "+1 (555) 123-4567",
+            "username": "Username",
+            "manage-subscription": "Manage Subscription",
+            "save-changes": "Save Changes",
+            "cancel": "Cancel",
             "button-delete-account": "Delete my account",
             "dialog-confirmation": {
                 "title": "Are you sure?",
                 "description": "This action cannot be undone. This will permanently delete your account and remove your data from our servers.",
                 "cancel": "Cancel",
                 "delete": "Delete my account"
+            },
+            "status": {
+                "active": "Active",
+                "trialing": "Trial",
+                "past-due": "Past Due",
+                "unpaid": "Unpaid",
+                "canceled": "Canceled",
+                "incomplete": "Incomplete",
+                "newly-created": "New Account"
+            }
+        },
+        "security": {
+            "title": "Security",
+            "description": "Manage your password and authentication",
+            "current-password": "Current Password",
+            "current-password-placeholder": "Enter your current password",
+            "new-password": "New Password",
+            "new-password-placeholder": "Enter your new password",
+            "confirm-password": "Confirm New Password",
+            "confirm-password-placeholder": "Confirm your new password",
+            "change-password": "Change Password",
+            "recover-by-email": "Recover by Email",
+            "requirements": {
+                "title": "Password requirements:",
+                "min-length": "Minimum of 8 characters",
+                "uppercase": "At least one uppercase letter",
+                "number": "At least one number",
+                "special": "At least one special character"
+            },
+            "toast": {
+                "fill-all-fields": "Please fill in all fields",
+                "password-requirements-not-met": "Password does not meet the requirements",
+                "passwords-dont-match": "Passwords don't match",
+                "password-updated": "Password updated successfully",
+                "password-update-error": "Failed to update password. Check your current password."
             }
         },
         "subscription": {
-            "title": "My subscription",
-            "manage-button": "Manage my subscription"
+            "title": "Manage Subscription",
+            "manage-button": "Manage my subscription",
+            "no-subscription": "You don't have an active subscription yet.",
+            "get-plan": "Get your plan now"
+        },
+        "privacy": {
+            "title": "Privacy",
+            "description": "Control your information and privacy",
+            "show-profile": "Public Profile",
+            "show-profile-description": "Allow others to view your profile",
+            "show-achievements": "Show achievements",
+            "show-achievements-description": "Display your achievements on your public profile.",
+            "show-social-links": "Show social links",
+            "show-social-links-description": "Display your social media links on your public profile."
+        },
+        "donations": {
+            "title": "Donations",
+            "description": "Configure your account to receive donations",
+            "enabled": "Active",
+            "enabled-description": "Your supporters can now send you donations.",
+            "not-configured": "Donations are not configured yet. Complete the onboarding to start receiving donations.",
+            "configure-button": "Configure Donations",
+            "stripe-integration": "Stripe Integration",
+            "stripe-description": "Manage your received donations, configure payouts and view transaction history through the Stripe dashboard.",
+            "access-donations": "Access Donations",
+            "dashboard": {
+                "current-balance": "Current Balance",
+                "this-month": "This Month",
+                "total-donors": "Total Donors",
+                "monthly-revenue": "Monthly Revenue",
+                "active-supporters": "Active Supporters",
+                "total-supporters": "Total Supporters",
+                "supporters-title": "Supporters",
+                "no-supporters": "No supporters yet. Share your donation link to start receiving support.",
+                "table": {
+                    "name": "Name",
+                    "email": "Email",
+                    "amount": "Amount",
+                    "date": "Date",
+                    "status": "Status"
+                }
+            }
+        },
+        "account-actions": {
+            "title": "Account actions",
+            "cancel-subscription": "Cancel Subscription",
+            "cancel-subscription-description": "You will lose access to premium features",
+            "cancel-plan-button": "Cancel Plan",
+            "deactivate-account": "Deactivate Account",
+            "deactivate-description": "Your account will be temporarily inactive",
+            "deactivate-button": "Deactivate Account",
+            "deactivate-dialog": {
+                "title": "Deactivate account?",
+                "description": "Your account will be temporarily inactive. You can reactivate it at any time.",
+                "cancel": "Cancel",
+                "confirm": "Deactivate"
+            },
+            "delete-account": "Delete Account Permanently",
+            "delete-description": "This action cannot be undone. All your data will be lost.",
+            "delete-button": "Delete Account",
+            "delete-dialog": {
+                "title": "Are you sure?",
+                "description": "This action cannot be undone. This will permanently delete your account and remove your data from our servers.",
+                "cancel": "Cancel",
+                "confirm": "Delete my account"
+            }
         },
         "toast": {
             "title-no-authenticated": "Oops! You are not authenticated. 🤔",
@@ -449,6 +558,64 @@
                 "question": "Who is BjjLink for?",
                 "answer": "BjjLink is ideal for athletes, coaches, competitors and content creators who want to position themselves better in the sport and strengthen their personal brand."
             }
+        }
+    },
+    "recurrence": {
+        "page-title": "recurrence",
+        "page-subtitle": "Manage your monthly support and view recurring sponsorship.",
+        "system-status": "System status:",
+        "operational": "Operational",
+        "cards": {
+            "monthly-support": "Active Monthly Support",
+            "monthly-estimate": "Estimate for this month",
+            "active-sponsors": "Active Sponsors",
+            "this-month": "this month",
+            "next-payout": "Next Payout",
+            "payout-estimate": "Estimated deposit date"
+        },
+        "chart": {
+            "title": "Recurrence Evolution",
+            "description": "Values received and total active supporters",
+            "monthly-value": "Value",
+            "supporters": "Supporters",
+            "value-axis": "Value",
+            "supporters-axis": "Supporters"
+        },
+        "supporters": {
+            "title": "My Supporters",
+            "view-all": "View all",
+            "empty": "No supporters yet.",
+            "status-active": "ACTIVE",
+            "status-paused": "PAUSED"
+        },
+        "stats": {
+            "monthly-growth": "Monthly Growth (Average)",
+            "new-supporters": "New Supporters (Last 30d)"
+        },
+        "transfers": {
+            "title": "Transfer History",
+            "description": "Records of received transfers",
+            "view-stripe": "View on Stripe",
+            "empty": "No transfers recorded yet.",
+            "table": {
+                "id": "Transaction ID",
+                "date": "Date",
+                "amount": "Amount",
+                "status": "Status",
+                "actions": "Actions"
+            }
+        },
+        "onboarding": {
+            "title": "Onboarding Required",
+            "description": "To use the recurrence page and receive recurring donations, you need to complete the Stripe Connect onboarding process.",
+            "steps": "This will set up your payment account so you can receive payouts directly to your bank account.",
+            "start-button": "Start Onboarding",
+            "go-back": "Go Back",
+            "error": "Failed to start onboarding. Please try again."
+        },
+        "toast": {
+            "title-no-authenticated": "Oops! You are not authenticated. 🤔",
+            "description-no-authenticated": "Go back to the login screen and log in with your account."
         }
     }
 }

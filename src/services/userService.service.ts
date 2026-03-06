@@ -14,3 +14,15 @@ export const authUser = async (userData: UserLogin): Promise<{ acess_token: stri
 export const resetPassword = async (userData: UserResetPassword): Promise<void> => {
     await api.post<void>('/account/password/recovery', userData);
 };
+
+export const updatePassword = async (
+    token: string,
+    currentPassword: string,
+    newPassword: string,
+): Promise<void> => {
+    await api.patch<void>(
+        '/account/password',
+        { currentPassword, newPassword },
+        { headers: { Authorization: `Bearer ${token}` } },
+    );
+};
