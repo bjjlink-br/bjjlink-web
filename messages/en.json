@@ -296,6 +296,11 @@
                 "cancel": "Cancel",
                 "delete": "Delete my account"
             },
+            "save-success-title": "Changes saved",
+            "save-success-description": "Your profile has been updated successfully.",
+            "save-error-title": "Error",
+            "save-error": "Failed to save changes. Please try again.",
+            "domain-already-exists": "This username is already taken by another account.",
             "status": {
                 "active": "Active",
                 "trialing": "Trial",
@@ -436,11 +441,19 @@
     "reset-password": {
         "title": "Reset your password",
         "description": "Forgot your password? No problem, enter your registered email and type your new password. And we will send you a confirmation email.",
+        "new-password-description": "Enter your new password below to reset your account password.",
         "title-reset-succes": "The password reset link has been sent to your email.",
         "description-reset-succes": "Please check your email and confirm your password reset.",
         "login-text": "Do you already have an account?",
         "login-link": "Log in",
         "continue-back-login": "Continue",
+        "requirements": {
+            "title": "Password requirements:",
+            "min-length": "Minimum of 8 characters",
+            "uppercase": "At least one uppercase letter",
+            "number": "At least one number",
+            "special": "At least one special character"
+        },
         "form": {
             "passwords-not-matching": "The values ​​in the Password and Confirm Password fields do not match",
             "weak-password": "The password must contain at least one uppercase letter, one lowercase letter, one number and one special character.",

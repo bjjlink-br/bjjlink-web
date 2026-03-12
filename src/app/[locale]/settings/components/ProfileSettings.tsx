@@ -9,7 +9,10 @@ import { useTranslations } from "next-intl"
 import { AccountStatus, UserAccountInfo } from "@/utils/types"
 import DEFAULT_AVATAR from "@/assets/images/user.png"
 import { Section } from "@/utils/dataSections"
-import { Camera, Check } from "lucide-react"
+import { Camera, Check, Loader2 } from "lucide-react"
+import { updateAccount } from "@/services/userService.service"
+import { AUTH_STORAGE_KEY, USER_DATA_STORAGE_KEY } from "@/contexts/AuthContext"
+import { useToast } from "@/hooks/use-toast"
 
 function getStatusLabel(status: AccountStatus, t: (key: string) => string): string {
   const statusMap: Record<AccountStatus, string> = {
@@ -52,6 +55,56 @@ export function ProfileSettings({ user, components }: { user: UserAccountInfo; c
   const [email, setEmail] = useState(user.email)
   const [phone, setPhone] = useState("")
   const [username, setUsername] = useState(user.domain ? `${user.domain}` : "")
+  const [isSaving, setIsSaving] = useState(false)
+  const { toast } = useToast()
+
+  const handleSaveChanges = async () => {
+    try {
+      setIsSaving(true)
+
+      const storedAuth = localStorage.getItem(AUTH_STORAGE_KEY)
+      if (!storedAuth) return
+
+      const { acess_token } = JSON.parse(storedAuth)
+
+      await updateAccount(acess_token, {
+        name,
+        domain: username,
+        phone,
+      })
+
+      const storedUser = localStorage.getItem(USER_DATA_STORAGE_KEY)
+      if (storedUser) {
+        const userData = JSON.parse(storedUser)
+        const updatedUser = {
+          ...userData,
+          name,
+          domain: username,
+          email: user.email,
+        }
+        localStorage.setItem(USER_DATA_STORAGE_KEY, JSON.stringify(updatedUser))
+      }
+
+      toast({
+        title: t("save-success-title"),
+        description: t("save-success-description"),
+        duration: 3000,
+      })
+    } catch (error: any) {
+      const message = error?.response?.status === 409
+        ? t("domain-already-exists")
+        : t("save-error")
+
+      toast({
+        title: t("save-error-title"),
+        description: message,
+        variant: "destructive",
+        duration: 3000,
+      })
+    } finally {
+      setIsSaving(false)
+    }
+  }
 
   const handleManageSubscription = () => {
     // PROD URL
@@ -139,8 +192,12 @@ export function ProfileSettings({ user, components }: { user: UserAccountInfo; c
 
       {/* Action buttons */}
       <div className="flex gap-3">
-        <Button className="bg-brand-blue-600 hover:bg-brand-blue-700">
-          <Check className="h-4 w-4" />
+        <Button
+          className="bg-brand-blue-600 hover:bg-brand-blue-700"
+          onClick={handleSaveChanges}
+          disabled={isSaving}
+        >
+          {isSaving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
           {t("save-changes")}
         </Button>
         <Button variant="secondary" className="bg-gray-700 hover:bg-gray-600 text-gray-200">

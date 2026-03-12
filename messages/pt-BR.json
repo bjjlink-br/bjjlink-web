@@ -297,6 +297,11 @@
                 "cancel": "Cancelar",
                 "delete": "Excluir minha conta"
             },
+            "save-success-title": "Alterações salvas",
+            "save-success-description": "Seu perfil foi atualizado com sucesso.",
+            "save-error-title": "Erro",
+            "save-error": "Falha ao salvar as alterações. Tente novamente.",
+            "domain-already-exists": "Este nome de usuário já está em uso por outra conta.",
             "status": {
                 "active": "Ativo",
                 "trialing": "Período de teste",
@@ -436,12 +441,20 @@
     },
     "reset-password": {
         "title": "Redefina sua senha",
-        "description": "Esqueceu sua senha? Sem problemas, insira seu email cadastrado e digite sua nova senha. E enviaremos um email de confirmação.",
+        "description": "Esqueceu sua senha? Sem problemas, insira seu email cadastrado. E enviaremos um email para redefinir sua senha.",
+        "new-password-description": "Digite sua nova senha abaixo para redefinir a senha da sua conta.",
         "title-reset-succes": "O link de redefinição de senha foi enviada para o seu email.",
         "description-reset-succes": "Verifique seu email e confirme a redefinição da sua senha.",
         "login-text": "Você já possui uma conta?",
         "login-link": "Entrar",
         "continue-back-login": "Continuar",
+        "requirements": {
+            "title": "Requisitos de senha:",
+            "min-length": "Mínimo de 8 caracteres",
+            "uppercase": "Pelo menos uma letra maiúscula",
+            "number": "Pelo menos um número",
+            "special": "Pelo menos um caractere especial"
+        },
         "form": {
             "passwords-not-matching": "Os valores nos campos Senha e Confirmar Senha não correspondem",
             "weak-password": "A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.",
@@ -456,7 +469,7 @@
             "reset-password-button": "Redefinir senha"
         },
         "toast": {
-            "success": "Senha redefinida com sucesso! ✅",
+            "success": "Enviamos o e-mail de redefinição de senha ! ✅",
             "error-title": "Ops! 😵 Algo deu errado.",
             "error-description": "Verifique se o email digitado está correto e tente novamente"
         },

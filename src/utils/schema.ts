@@ -14,8 +14,7 @@ export const registerSchema = z.object({
 
 export const resetPasswordSchema = z.object({
     email: z.string().min(2).email(),
-    password: z.string().min(2),
-    confirm_password: z.string().min(2)
+
 })
 
 export const createPortifolioSchema = z.object({

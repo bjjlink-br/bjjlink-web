@@ -26,3 +26,25 @@ export const updatePassword = async (
         { headers: { Authorization: `Bearer ${token}` } },
     );
 };
+
+export const updateAccount = async (
+    token: string,
+    data: { name: string; domain: string; phone: string },
+): Promise<void> => {
+    await api.put<void>(
+        '/account',
+        data,
+        { headers: { Authorization: `Bearer ${token}` } },
+    );
+};
+
+export const resetPasswordWithToken = async (
+    token: string,
+    password: string,
+    passwordConfirmation: string,
+): Promise<void> => {
+    await api.post<void>(
+        `/account/password/reset/${token}`,
+        { password, passwordConfirmation },
+    );
+};
