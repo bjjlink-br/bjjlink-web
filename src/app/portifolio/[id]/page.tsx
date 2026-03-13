@@ -7,6 +7,9 @@ import { usePortifolioByDomain } from "@/hooks/usePortifolio";
 import { ChevronLeft, ChevronRight, Facebook, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
 import React, { useRef } from "react";
+import { SponsorsSection } from "../components/SponsorsSection";
+import { AchievementsSection } from "../components/AchievementsSection";
+import { DonationsSection } from "../components/DonationsSection";
 
 type ImageObject = { preview?: string; url?: string };
 
@@ -21,7 +24,7 @@ type RemoteImage = {
 
 type PortfolioSection = {
     _id?: string;
-    type: "PROFILE" | "BIOGRAPHY" | "SOCIAL_MEDIA" | "GALLERY";
+    type: "PROFILE" | "BIOGRAPHY" | "SOCIAL_MEDIA" | "GALLERY" | "SPONSORS" | "ACHIEVEMENTS" | "DONATIONS";
     account_id?: string;
     images?: RemoteImage[];
     texts?: { order: number; text: string }[];
@@ -75,6 +78,9 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
     const biographySection = sections.find((section) => section.type === "BIOGRAPHY");
     const socialSection = sections.find((section) => section.type === "SOCIAL_MEDIA");
     const gallerySection = sections.find((section) => section.type === "GALLERY");
+    const sponsorsSection = sections.find((section) => section.type === "SPONSORS");
+    const achievementsSection = sections.find((section) => section.type === "ACHIEVEMENTS");
+    const donationsSection = sections.find((section) => section.type === "DONATIONS");
 
     const profileTitle = getTextByOrder(profileSection, 1) || "BJJ Master";
     const profileSubtitle = getTextByOrder(profileSection, 2) || "Atleta/BR";
@@ -192,6 +198,48 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
                                     )}
                                 </div>
                             </div>
+
+                            {/* Seção de Patrocinadores */}
+                            {sponsorsSection && (
+                                <SponsorsSection 
+                                    texts={sponsorsSection.texts || []}
+                                    onOpenLink={handleOpenLink}
+                                    normalizeLink={normalizeLink}
+                                />
+                            )}
+
+                            {/* Seção de Campeonatos/Prêmios */}
+                            {achievementsSection && (
+                                <AchievementsSection texts={achievementsSection.texts || []} />
+                            )}
+
+                            {/* Seção de Doações */}
+                            {donationsSection && (
+                                <DonationsSection 
+                                    message={getTextByOrder(donationsSection, 1)}
+                                    donationLink={getTextByOrder(donationsSection, 2)}
+                                    onOpenLink={handleOpenLink}
+                                    normalizeLink={normalizeLink}
+                                />
+                            )}
+                            <SponsorsSection 
+                                texts={[
+                                    { text: "Patrocinador 1", order: 1 },
+                                    { text: "Patrocinador 2", order: 2 },
+                                    { text: "Patrocinador 2", order: 3 },
+                                    { text: "Patrocinador 2", order: 4 }
+                                ]}
+                                onOpenLink={handleOpenLink}
+                                normalizeLink={normalizeLink}
+                            />
+                            <AchievementsSection texts={[{ text: "Campeão Brasileiro 2022", order: 1 }, { text: "Campeão Sul-Americano 2023", order: 2 }]} />
+                            <DonationsSection 
+                                message="Apoie minha jornada"
+                                donationLink="https://example.com"
+                                onOpenLink={handleOpenLink}
+                                normalizeLink={normalizeLink}
+                            />
+
                             <div className="space-y-2 mt-8">
                                 <div className="flex justify-between items-center">
                                     <h3 className="font-semibold text-sm">{galleryTitle}</h3>
