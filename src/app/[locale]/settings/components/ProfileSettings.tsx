@@ -53,7 +53,7 @@ export function ProfileSettings({ user, components }: { user: UserAccountInfo; c
 
   const [name, setName] = useState(user.name ?? user.domain)
   const [email, setEmail] = useState(user.email)
-  const [phone, setPhone] = useState("")
+  const [phone, setPhone] = useState(user.phone)
   const [username, setUsername] = useState(user.domain ? `${user.domain}` : "")
   const [isSaving, setIsSaving] = useState(false)
   const { toast } = useToast()
@@ -104,6 +104,12 @@ export function ProfileSettings({ user, components }: { user: UserAccountInfo; c
     } finally {
       setIsSaving(false)
     }
+  }
+
+  const restoreDefault = async () => {
+    setName(user.name || user.domain)
+    setPhone(user.phone)
+    setUsername(user.domain)
   }
 
   const handleManageSubscription = () => {
@@ -174,7 +180,7 @@ export function ProfileSettings({ user, components }: { user: UserAccountInfo; c
             className="bg-gray-800 border border-gray-600 text-gray-100"
             id="phone"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
             placeholder={t("phone-placeholder")}
           />
         </div>
@@ -200,7 +206,9 @@ export function ProfileSettings({ user, components }: { user: UserAccountInfo; c
           {isSaving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
           {t("save-changes")}
         </Button>
-        <Button variant="secondary" className="bg-gray-700 hover:bg-gray-600 text-gray-200">
+        <Button variant="secondary" 
+          onClick={restoreDefault}
+        className="bg-gray-700 hover:bg-gray-600 text-gray-200">
           {t("cancel")}
         </Button>
       </div>

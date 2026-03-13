@@ -3,6 +3,9 @@
 import { useState } from "react"
 import { useTranslations } from "next-intl"
 import { LockKeyhole } from "lucide-react"
+import { updatePublicProfile } from "@/services/userService.service"
+import { AUTH_STORAGE_KEY, USER_DATA_STORAGE_KEY } from "@/contexts/AuthContext"
+import { UserAccountInfo } from "@/utils/types"
 
 type ToggleProps = {
   enabled: boolean;
@@ -29,14 +32,37 @@ function Toggle({ enabled, onChange }: ToggleProps) {
   )
 }
 
-export function PrivacySettings() {
+
+const getToken = (): string  => {
+  const stored = localStorage.getItem(AUTH_STORAGE_KEY)
+  if (!stored) return ''
+  return JSON.parse(stored).acess_token
+}
+
+export function PrivacySettings({ user }: { user: UserAccountInfo }) {
   const t = useTranslations("settings.privacy")
 
-  const [showProfile, setShowProfile] = useState(true)
+  const [showProfile, setShowProfile] = useState(!!user.public)
 
   async function handleToggleShowProfile(value: boolean) {
     setShowProfile(value)
-    // TODO: Call backend API when ready
+
+    const storedUser = localStorage.getItem(USER_DATA_STORAGE_KEY)
+    if (storedUser) {
+      const userData = JSON.parse(storedUser)
+      const updatedUser = {
+        ...userData,
+        public: showProfile
+      }
+      localStorage.setItem(USER_DATA_STORAGE_KEY, JSON.stringify(updatedUser))
+    }
+    
+    const storedAuth = localStorage.getItem(AUTH_STORAGE_KEY)
+    if (!storedAuth) return
+
+    const token = getToken();
+
+    await updatePublicProfile(token);
   }
 
   return (

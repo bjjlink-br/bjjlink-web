@@ -77,5 +77,7 @@ export type UserAccountInfo = {
     domain: string;
     profile_photo?: string;
     iat: number;
-    exp: number
+    exp: number;
+    phone: string;
+    public: boolean;
 }
