@@ -38,8 +38,7 @@ export interface AuthContextData extends AuthState {
 
 export type UserResetPassword = {
     email: string;
-    password: string;
-    passwordConfirmation: string;
+
 }
 
 export type PlanFeature = {

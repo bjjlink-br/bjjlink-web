@@ -335,7 +335,9 @@
                 "password-requirements-not-met": "A senha não atende aos requisitos",
                 "passwords-dont-match": "As senhas não coincidem",
                 "password-updated": "Senha atualizada com sucesso",
-                "password-update-error": "Erro ao atualizar senha. Verifique sua senha atual."
+                "password-update-error": "Erro ao atualizar senha. Verifique sua senha atual.",
+                "recovery-email-sent": "E-mail de recuperação enviado! Verifique sua caixa de entrada.",
+                "recovery-email-error": "Falha ao enviar e-mail de recuperação. Tente novamente."
             }
         },
         "subscription": {

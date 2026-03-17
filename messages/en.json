@@ -334,7 +334,9 @@
                 "password-requirements-not-met": "Password does not meet the requirements",
                 "passwords-dont-match": "Passwords don't match",
                 "password-updated": "Password updated successfully",
-                "password-update-error": "Failed to update password. Check your current password."
+                "password-update-error": "Failed to update password. Check your current password.",
+                "recovery-email-sent": "Recovery email sent! Check your inbox.",
+                "recovery-email-error": "Failed to send recovery email. Please try again."
             }
         },
         "subscription": {

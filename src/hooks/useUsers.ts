@@ -126,10 +126,10 @@ export const useRecoveryPassword = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchRecoveryPassword = async ({ email, password, passwordConfirmation }: UserResetPassword) => {
+    const fetchRecoveryPassword = async ({ email }: UserResetPassword) => {
         setLoading(true);
         try {
-            await resetPassword({ email, password, passwordConfirmation });
+            await resetPassword({ email });
             setError(null);
             return 'success';
         } catch (err) {

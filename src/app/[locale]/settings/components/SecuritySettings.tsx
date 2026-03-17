@@ -6,8 +6,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useTranslations } from "next-intl"
 import { Shield, Lock, Mail, Info, Loader2, Check, X } from "lucide-react"
-import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext"
-import { updatePassword } from "@/services/userService.service"
+import { AUTH_STORAGE_KEY, USER_DATA_STORAGE_KEY } from "@/contexts/AuthContext"
+import { updatePassword, resetPassword } from "@/services/userService.service"
 import { useToast } from "@/hooks/use-toast"
 
 export function SecuritySettings() {
@@ -18,6 +18,7 @@ export function SecuritySettings() {
   const [newPassword, setNewPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [loading, setLoading] = useState(false)
+  const [recoveryLoading, setRecoveryLoading] = useState(false)
 
   const hasMinLength = newPassword.length >= 8
   const hasUppercase = /[A-Z]/.test(newPassword)
@@ -61,6 +62,24 @@ export function SecuritySettings() {
       toast({ title: t("toast.password-update-error"), variant: "destructive" })
     } finally {
       setLoading(false)
+    }
+  }
+
+  const handleRecoverByEmail = async () => {
+    const storedUser = localStorage.getItem(USER_DATA_STORAGE_KEY)
+    if (!storedUser) return
+
+    const { email } = JSON.parse(storedUser)
+    if (!email) return
+
+    setRecoveryLoading(true)
+    try {
+      await resetPassword({ email })
+      toast({ title: t("toast.recovery-email-sent") })
+    } catch {
+      toast({ title: t("toast.recovery-email-error"), variant: "destructive" })
+    } finally {
+      setRecoveryLoading(false)
     }
   }
 
@@ -158,8 +177,12 @@ export function SecuritySettings() {
           {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Lock className="h-4 w-4" />}
           {t("change-password")}
         </Button>
-        <Button className="bg-brand-blue-600 hover:bg-brand-blue-700">
-          <Mail className="h-4 w-4" />
+        <Button
+          className="bg-brand-blue-600 hover:bg-brand-blue-700"
+          onClick={handleRecoverByEmail}
+          disabled={recoveryLoading}
+        >
+          {recoveryLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Mail className="h-4 w-4" />}
           {t("recover-by-email")}
         </Button>
       </div>
