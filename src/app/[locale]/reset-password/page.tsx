@@ -20,9 +20,7 @@ export default function ResetPassword() {
 
     async function handleResetPasswordSubmit(values: z.infer<typeof resetPasswordSchema>) {
         const response = await fetchRecoveryPassword({
-            email: values.email,
-            password: values.password,
-            passwordConfirmation: values.confirm_password,
+            email: values.email
         });
 
         if(!!response){

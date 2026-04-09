@@ -124,7 +124,30 @@ export function RegisterForm({ onSubmit, isLoading }: RegisterFormProps) {
             </FormItem>
           )}
         />
-        <FormField 
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <div className="space-y-1">
+                    <Label htmlFor="phone" className="text-sm font-normal text-gray-200">
+                        {t('form.phone')}
+                    </Label>
+                    <Input
+                        id="phone"
+                        placeholder={t('form.phone-placeholder')}
+                        type="tel"
+                        className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                        disabled={isLoading}
+                        {...field}
+                    />
+                </div>
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
           control={form.control}
           name="password"
           render={({ field }) => (

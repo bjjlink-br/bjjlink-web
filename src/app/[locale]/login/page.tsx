@@ -11,14 +11,16 @@ import { useRouter } from 'next/navigation'
 import { useAuthUser } from '@/hooks/useUsers'
 import { toast } from '@/hooks/use-toast'
 import { Toaster } from "@/components/ui/toaster"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext"
+import { Button } from "@/components/ui/button"
 
 export default function Login() {
     const t = useTranslations("login")
     const router = useRouter()
     const locale = useLocale()
     const { fetchAuthUser, loading, error } = useAuthUser();
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
 
     async function handleLoginSubmit(values: z.infer<typeof loginSchema>) {
         const response = await fetchAuthUser({
@@ -60,13 +62,13 @@ export default function Login() {
     useEffect(() => {
         const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
         if(userToken) {
-            toast({
-                title: `${t('toast.title')}`,
-                duration: 3000,
-            });
-            router.push(`/${locale}/dashboard`);
+            setIsAuthenticated(true)
         }
     },[])
+
+  if (isAuthenticated) {
+    router.push(`/${locale}/dashboard`)
+  }
 
   return (
     <div className="min-h-screen">
