@@ -11,6 +11,7 @@ import ManTypeSvg from "@/assets/images/man-type.svg";
 import AtlheteWomanSvg from "@/assets/images/athlete-woman.svg";
 import AppSvg from "@/assets/images/app.svg";
 import PricingComponent from "@/components/shared/PricingComponent"
+import { LandingRecurrencyChart } from "@/components/shared/LandingRecurrencyChart"
 import { Separator } from "@/components/ui/separator"
 import { FaqCards } from "@/components/shared/FaqCards"
 import { Footer } from "@/components/shared/Footer"
@@ -149,6 +150,18 @@ export default function Home() {
                 {t("social-media-description")}
               </p>
             </div>
+          </div>
+        </section>
+
+        <section className="container mx-auto px-4 pt-10 md:py-20">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-xl md:text-3xl text-center font-semibold text-brand-blue-50 mb-2">
+              {t("recurrency-chart.section-title")}
+            </h2>
+            <p className="text-sm md:text-base text-gray-200 text-center mb-8">
+              {t("recurrency-chart.section-subtitle")}
+            </p>
+            <LandingRecurrencyChart />
           </div>
         </section>
 
