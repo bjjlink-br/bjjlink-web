@@ -115,7 +115,17 @@
         "blog-title": "Blog posts",
         "blog-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis",
         "faq-title": "Frequently asked questions",
-        "faq-subtitle": "Here are the most frequently asked questions about the platform"
+        "faq-subtitle": "Here are the most frequently asked questions about the platform",
+        "recurrency-chart": {
+            "section-title": "Earn with recurring support",
+            "section-subtitle": "See how your revenue can grow month by month with the support of your fans and sponsors.",
+            "title": "Recurrence Evolution",
+            "description": "Simulated values received and total active supporters",
+            "monthly-value": "Value",
+            "supporters": "Supporters",
+            "value-axis": "Value",
+            "supporters-axis": "Supporters"
+        }
     },
     "register": {
         "title": "Register",

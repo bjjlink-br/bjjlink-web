@@ -116,7 +116,17 @@
         "blog-title": "Publicações do blog",
         "blog-description": "Rorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis",
         "faq-title": "Perguntas frequentes",
-        "faq-subtitle": "Aqui estão as perguntas mais frequentes sobre a plataforma"
+        "faq-subtitle": "Aqui estão as perguntas mais frequentes sobre a plataforma",
+        "recurrency-chart": {
+            "section-title": "Ganhe com apoio recorrente",
+            "section-subtitle": "Veja como sua receita pode crescer mês a mês com o apoio dos seus fãs e patrocinadores.",
+            "title": "Evolução da Recorrência",
+            "description": "Valores simulados recebidos e total de apoiadores ativos",
+            "monthly-value": "Valor",
+            "supporters": "Apoiadores",
+            "value-axis": "Valor",
+            "supporters-axis": "Apoiadores"
+        }
     },
     "register": {
         "title": "Registrar-se",
