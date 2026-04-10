@@ -2,21 +2,29 @@ import { Button } from "@/components/ui/button"
 import { useLocale, useTranslations } from "next-intl"
 import { AccountStatus, UserAccountInfo } from "@/utils/types"
 import { useRouter } from "next/navigation"
+import { manageSubscription } from "@/services/checkout.service"
+import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext"
 
 type ManageSubscriptionProps = {
   user?: UserAccountInfo
 }
+const getToken = (): string  => {
+  const stored = localStorage.getItem(AUTH_STORAGE_KEY)
+  if (!stored) return ''
+  return JSON.parse(stored).acess_token
+}
+
 
 export function ManageSubscription({ user }: ManageSubscriptionProps) {
   const t = useTranslations("settings.subscription")
   const router = useRouter()
   const locale = useLocale()
+  const token = getToken();
 
-  const handleManagementSubscription = () => {
-    // PROD URL
-    // https://billing.stripe.com/p/login/8wM9EF2t0bGucJa8ww
-    // TESTE URL
-    const url = 'https://billing.stripe.com/p/login/test_cN29CJ45N5NN5ZC4gg'
+
+  const handleManagementSubscription = async () => {
+    const { url } = await manageSubscription(token,locale)
+
     window.open(url, '_blank')
   }
 
