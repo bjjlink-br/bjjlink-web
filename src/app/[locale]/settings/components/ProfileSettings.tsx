@@ -158,6 +158,7 @@ export function ProfileSettings({
               <AvatarImage
                 src={userPhoto?.images[0]?.url ?? DEFAULT_AVATAR}
                 alt="Profile picture"
+                className="object-cover"
               />
               <AvatarFallback>{userName}</AvatarFallback>
             </Avatar>
