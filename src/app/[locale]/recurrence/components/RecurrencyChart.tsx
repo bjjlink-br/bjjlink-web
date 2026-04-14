@@ -8,6 +8,7 @@ const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 type MonthlyData = {
   month: string
   valueInCents: number
+  
   supporters: number
 }
 

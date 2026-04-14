@@ -47,6 +47,7 @@ export type DonationSummary = {
 export type Supporter = {
   _id: string;
   amountInCents: number;
+  athleteNetInCents: number;
   createdAt: string;
   currency: string;
   donorEmail: string;
@@ -75,6 +76,7 @@ export type MonthlyHistoryItem = {
   monthNum: number;
   valueInCents: number;
   supporters: number;
+  athleteNetInCents: number;
 };
 
 export async function getDonationMonthlyHistory(
