@@ -19,12 +19,18 @@ export default function Register() {
     const t = useTranslations("register")
     const { fetchCreateUser, error, loading } = useCreateUser()
 
+    function formatPhoneToE164(phone: string): string {
+        const digits = phone.replace(/[^\d+]/g, '')
+        return digits.startsWith('+') ? digits : `+${digits}`
+    }
+
     async function handleRegisterSubmit(values: z.infer<typeof registerSchema>) {
         const response = await fetchCreateUser({
             name: values.username,
             email: values.email,
             domain: values.username,
-            password: values.password
+            password: values.password,
+            ...(values.phone && { phone: formatPhoneToE164(values.phone) }),
         });
 
         if(!!response){
