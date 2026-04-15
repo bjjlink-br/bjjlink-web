@@ -76,7 +76,7 @@ export function SupportersList({ supporters, currency }: SupportersListProps) {
                 </div>
               </div>
               <span className="text-sm font-semibold text-brand-blue-400">
-                {formatCurrency(supporter.amountInCents, currency)}
+                {formatCurrency(supporter.athleteNetInCents, currency)}
               </span>
             </div>
           ))}
