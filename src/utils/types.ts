@@ -23,6 +23,7 @@ export type RegisterUserBody = {
 	email: string;
     password: string;
     domain: string
+    phone?: string;
 }
 
 export interface AuthState {
