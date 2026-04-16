@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import HomeIcon from '@/assets/icons/home.svg'
 import NotebookIcon from '@/assets/icons/notebook.svg'
@@ -14,17 +14,29 @@ import { Button } from "../ui/button";
 import { signOut } from "@/utils/functions";
 import { useRouter } from "next/navigation";
 import { ChevronLeft, ChevronRight, RefreshCw } from "lucide-react";
+import { AUTH_STORAGE_KEY } from "@/contexts/AuthContext";
+import { useGetListPortifolio } from "@/hooks/usePortifolio";
 
 type VerticalMenuProps = {
     activeMenu?: string;
-    hideCreatePortifolio?: boolean;
 }
 
-export const VerticalMenu = ({ activeMenu = 'dashboard', hideCreatePortifolio = false }: VerticalMenuProps) => {
+export const VerticalMenu = ({ activeMenu = 'dashboard' }: VerticalMenuProps) => {
     const t = useTranslations("vertical-menu");
     const router = useRouter()
     const locale = useLocale()
     const [isExpanded, setIsExpanded] = useState(true);
+    const [accessToken, setAccessToken] = useState<string | null>(null);
+
+    useEffect(() => {
+        const userToken = localStorage.getItem(AUTH_STORAGE_KEY);
+        if (userToken) {
+            setAccessToken(JSON.parse(userToken).acess_token);
+        }
+    }, []);
+
+    const { data: portfolios } = useGetListPortifolio(accessToken, locale);
+    const hideCreatePortifolio = (portfolios?.length ?? 0) > 0;
 
     const handleLogout = () => {
         signOut();
@@ -57,7 +69,7 @@ export const VerticalMenu = ({ activeMenu = 'dashboard', hideCreatePortifolio = 
                         className={`font-sans text-base flex items-center ${isExpanded ? 'gap-3 px-3' : 'justify-center px-2'} py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'dashboard' ? 'bg-zinc-900' : ''}`}
                         title={!isExpanded ? t('navbar.dashboard') : undefined}
                     >
-                        <Image src={HomeIcon} alt={t('navbar.dashboard-alt-icon')} />
+                        <Image src={HomeIcon} alt={t('navbar.dashboard-alt-icon')} className="w-5 h-5 shrink-0" />
                         {isExpanded && t('navbar.dashboard')}
                     </Link>
                     {!hideCreatePortifolio && (
@@ -66,7 +78,7 @@ export const VerticalMenu = ({ activeMenu = 'dashboard', hideCreatePortifolio = 
                             className={`font-sans text-base flex items-center ${isExpanded ? 'gap-3 px-3' : 'justify-center px-2'} py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'portifolio' ? 'bg-zinc-900' : ''}`}
                             title={!isExpanded ? t('navbar.portifolio') : undefined}
                         >
-                            <Image src={NotebookIcon} alt={t('navbar.portifolio-alt-icon')} />
+                            <Image src={NotebookIcon} alt={t('navbar.portifolio-alt-icon')} className="w-5 h-5 shrink-0" />
                             {isExpanded && t('navbar.portifolio')}
                         </Link>
                     )}
@@ -75,7 +87,7 @@ export const VerticalMenu = ({ activeMenu = 'dashboard', hideCreatePortifolio = 
                         className={`font-sans text-base flex items-center ${isExpanded ? 'gap-3 px-3' : 'justify-center px-2'} py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'analytics' ? 'bg-zinc-900' : ''}`}
                         title={!isExpanded ? t('navbar.analytics') : undefined}
                     >
-                        <Image src={AnalyticsIcon} alt={t('navbar.analytics-alt-icon')} />
+                        <Image src={AnalyticsIcon} alt={t('navbar.analytics-alt-icon')} className="w-5 h-5 shrink-0" />
                         {isExpanded && t('navbar.analytics')}
                     </Link>
                     {/* <Link
@@ -90,7 +102,7 @@ export const VerticalMenu = ({ activeMenu = 'dashboard', hideCreatePortifolio = 
                         className={`font-sans text-base flex items-center ${isExpanded ? 'gap-3 px-3' : 'justify-center px-2'} py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors ${activeMenu === 'settings' ? 'bg-zinc-900' : ''}`}
                         title={!isExpanded ? t('navbar.settings') : undefined}
                     >
-                        <Image src={SettingsIcon} alt={t('navbar.settings-alt-icon')} />
+                        <Image src={SettingsIcon} alt={t('navbar.settings-alt-icon')} className="w-5 h-5 shrink-0" />
                         {isExpanded && t('navbar.settings')}
                     </Link>
                     <Link
@@ -110,7 +122,7 @@ export const VerticalMenu = ({ activeMenu = 'dashboard', hideCreatePortifolio = 
                         className={`font-sans text-base flex items-center ${isExpanded ? 'gap-3 px-3' : 'justify-center px-2'} py-2 text-gray-200 hover:text-white hover:bg-zinc-900 rounded-lg transition-colors w-full`}
                         title={!isExpanded ? t('navbar.logout') : undefined}
                     >
-                        <Image src={LogoutIcon} alt={t('navbar.logout-alt-icon')} />
+                        <Image src={LogoutIcon} alt={t('navbar.logout-alt-icon')} className="w-5 h-5 shrink-0" />
                         {isExpanded && t('navbar.logout')}
                     </Button>
                 </div>
@@ -133,20 +145,22 @@ export const VerticalMenu = ({ activeMenu = 'dashboard', hideCreatePortifolio = 
                             className={`w-6 h-6 ${activeMenu === 'dashboard' ? 'brightness-0 invert' : ''}`}
                         />
                     </Link>
-                    <Link
-                        href={`/${locale}/portifolio/create`}
-                        className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors ${
-                            activeMenu === 'portifolio' 
-                                ? 'bg-brand-blue-700 text-white' 
-                                : 'text-gray-600 hover:text-gray-900'
-                        }`}
-                    >
-                        <Image 
-                            src={NotebookIcon} 
-                            alt={t('navbar.portifolio-alt-icon')} 
-                            className={`w-6 h-6 ${activeMenu === 'portifolio' ? 'brightness-0 invert' : ''}`}
-                        />
-                    </Link>
+                    {!hideCreatePortifolio && (
+                        <Link
+                            href={`/${locale}/portifolio/create`}
+                            className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors ${
+                                activeMenu === 'portifolio'
+                                    ? 'bg-brand-blue-700 text-white'
+                                    : 'text-gray-600 hover:text-gray-900'
+                            }`}
+                        >
+                            <Image
+                                src={NotebookIcon}
+                                alt={t('navbar.portifolio-alt-icon')}
+                                className={`w-6 h-6 ${activeMenu === 'portifolio' ? 'brightness-0 invert' : ''}`}
+                            />
+                        </Link>
+                    )}
                      <Link
                         href={`/${locale}/settings`}
                         className={`flex flex-col items-center justify-center p-2 rounded-full transition-colors ${
