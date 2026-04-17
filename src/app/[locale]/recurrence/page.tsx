@@ -112,7 +112,7 @@ export default function Recurrence() {
       setChartData(
         historyData.map((item) => ({
           month: MONTH_NAMES_PT[item.monthNum - 1].slice(0, 3),
-          valueInCents: item.athleteNetInCents,
+          valueInCents: item.valueInCents,
           supporters: item.supporters,
         }))
       )
