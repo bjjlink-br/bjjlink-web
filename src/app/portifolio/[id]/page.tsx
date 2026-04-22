@@ -4,9 +4,10 @@ import PortfolioLoadingSkeleton from "@/components/shared/PortfolioLoadingSkelet
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { usePortifolioByDomain } from "@/hooks/usePortifolio";
-import { ChevronLeft, ChevronRight, Facebook, Instagram, Twitter } from "lucide-react";
+import { createDonationCheckout } from "@/services/portifolio.service";
+import { ChevronLeft, ChevronRight, Facebook, Instagram, Twitter, Heart } from "lucide-react";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 type ImageObject = { preview?: string; url?: string };
 
@@ -31,6 +32,8 @@ type PortfolioSection = {
 export default function PortifolioViewPage({ params }: { params: { id: string } }) {
     const { data, isLoading, isError } = usePortifolioByDomain(params.id);
     const scrollRef = useRef<HTMLDivElement>(null);
+    const [showDonationModal, setShowDonationModal] = useState(false);
+    const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
 
     const exampleImage = 'https://i.ibb.co/gFg9NLy1/young-woman-doing-karate.jpg';
     const exampleImage2 = "https://i.ibb.co/SDV9sVSf/black-belt-athlete-practicing-jujitsu-with-determination-generative-ai.jpg";
@@ -59,7 +62,7 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
         return exampleImage;
     };
 
-    const sections = (data ?? []) as PortfolioSection[];
+    const sections = (data?.components ?? []) as PortfolioSection[];
 
     const getTextByOrder = (section: PortfolioSection | undefined, order: number) => {
       return section?.texts?.find((text) => text.order === order)?.text?.trim() ?? "";
@@ -111,6 +114,22 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
       window.open(url, '_blank', 'noopener,noreferrer');
     };
 
+    const donationsEnabled = data?.account?.donationsEnabled ?? false;
+
+    const handleDonationCheckout = async () => {
+      setIsCheckoutLoading(true);
+      try {
+        const { url } = await createDonationCheckout(params.id, 1000);
+        if (url) {
+          window.location.href = url;
+        }
+      } catch (error) {
+        console.error("Error creating donation checkout:", error);
+      } finally {
+        setIsCheckoutLoading(false);
+      }
+    };
+
     if(isLoading) {
         return <PortfolioLoadingSkeleton />
     }
@@ -118,7 +137,7 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
     return (
         <div className="min-h-screen bg-[#0D0D18]">
             <div className="max-w-[490px] mx-auto py-12">
-                {!isLoading && !isError && data && data.length > 0 && (
+                {!isLoading && !isError && data && sections.length > 0 && (
                     <Card className="w-full h-full bg-gray-1300 text-white border-none rounded-none">
                         <CardContent className="p-4 space-y-4">
                             <div className="flex items-center gap-3">
@@ -224,6 +243,17 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
                                     ))}
                                 </div>
                             </div>
+                            {donationsEnabled && (
+                                <div className="mt-8">
+                                    <Button
+                                        className="w-full bg-brand-blue-600 hover:bg-brand-blue-700 text-sm py-3 rounded-full font-semibold flex items-center justify-center gap-2"
+                                        onClick={() => setShowDonationModal(true)}
+                                    >
+                                        <Heart className="w-4 h-4" />
+                                        Seja um assinante
+                                    </Button>
+                                </div>
+                            )}
                         </CardContent>
                         <CardFooter className="py-2 border-t border-zinc-800">
                             <p className="text-base text-zinc-500">Página criada na plataforma <a className="font-semibold no-underline" href="https://bjjlink.com.br" target="_blank">BjjLink</a></p>
@@ -242,7 +272,7 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
                         </Button>
                     </div>
                 )}
-                {!isLoading && !isError && data?.length === 0 && (
+                {!isLoading && !isError && sections.length === 0 && (
                     <Card className="w-full h-full bg-gray-1300 text-white border-none rounded-none">
                         <CardContent className="p-4 space-y-4">
                             <h2 className="font-semibold text-2xl">Nenhum portifólio encontrado.</h2>
@@ -253,6 +283,48 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
                     </Card>
                 )}
             </div>
+
+            {showDonationModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setShowDonationModal(false)}>
+                    <div className="bg-[#1A1A2E] rounded-2xl p-6 max-w-sm w-full mx-4 border border-zinc-700" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="text-white font-semibold text-lg">Seja um assinante</h2>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-6 w-6 p-0 text-zinc-400 hover:text-white"
+                                onClick={() => setShowDonationModal(false)}
+                            >
+                                ✕
+                            </Button>
+                        </div>
+                        <div className="space-y-3 mb-6">
+                            <div className="flex items-start gap-3">
+                                <div className="w-2 h-2 rounded-full bg-brand-blue-600 mt-2 flex-shrink-0" />
+                                <p className="text-zinc-300 text-sm">Acesso a conteúdo privado</p>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <div className="w-2 h-2 rounded-full bg-brand-blue-600 mt-2 flex-shrink-0" />
+                                <p className="text-zinc-300 text-sm">Cursos exclusivos do atleta</p>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <div className="w-2 h-2 rounded-full bg-brand-blue-600 mt-2 flex-shrink-0" />
+                                <p className="text-zinc-300 text-sm">Rotina de treino do atleta</p>
+                            </div>
+                        </div>
+                        <p className="text-zinc-400 text-xs mb-4 text-center">
+                            R$ 10,00/mês
+                        </p>
+                        <Button
+                            className="w-full bg-brand-blue-600 hover:bg-brand-blue-700 text-sm py-3 rounded-full font-semibold"
+                            onClick={handleDonationCheckout}
+                            disabled={isCheckoutLoading}
+                        >
+                            {isCheckoutLoading ? "Redirecionando..." : "Assinar agora"}
+                        </Button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 } 

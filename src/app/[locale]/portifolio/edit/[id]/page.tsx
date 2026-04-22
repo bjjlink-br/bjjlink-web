@@ -141,10 +141,10 @@ export default function EditPortfolio({ params }: { params: { id: string } }) {
 
   // Carrega dados do portfólio quando disponível
   useEffect(() => {
-    if (portfolioData && portfolioData.length > 0) {
-      const convertedSections = convertApiDataToSections(portfolioData);
+    if (portfolioData && portfolioData.components && portfolioData.components.length > 0) {
+      const convertedSections = convertApiDataToSections(portfolioData.components);
       setDataSections(convertedSections);
-      
+
       // Salva no localStorage para que os componentes funcionem (usando chave específica para edição)
       localStorage.setItem(KEYS_STORAGE.sectionsEdit, JSON.stringify(convertedSections));
       setIsLoading(false);
@@ -169,7 +169,7 @@ export default function EditPortfolio({ params }: { params: { id: string } }) {
     return <PortfolioLoadingSkeleton />;
   }
 
-  if (isError || !portfolioData || portfolioData.length === 0) {
+  if (isError || !portfolioData || !portfolioData.components || portfolioData.components.length === 0) {
     return (
       <div className="bg-gray-1300 min-h-screen flex items-center justify-center">
         <div className="text-center text-white">

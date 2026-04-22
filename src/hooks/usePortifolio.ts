@@ -1,11 +1,11 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { getPortifolioByDomainUser, getPortifolios, deletePortifolio } from "@/services/portifolio.service";
+import { getPortifolioByDomainUser, getPortifolios, deletePortifolio, PortifolioByDomainResponse } from "@/services/portifolio.service";
 import { Section } from "@/utils/dataSections";
 import { useEffect } from "react";
 import { GET_COMPONENTS_KEY } from "@/contexts/AuthContext";
 
 export function usePortifolioByDomain(domain: string | undefined) {
-  return useQuery<Section[], Error>({
+  return useQuery<PortifolioByDomainResponse, Error>({
     queryKey: ["portifolio", domain],
     queryFn: () => getPortifolioByDomainUser(domain!),
     enabled: !!domain,
