@@ -642,5 +642,46 @@
             "title-no-authenticated": "Oops! You are not authenticated. 🤔",
             "description-no-authenticated": "Go back to the login screen and log in with your account."
         }
+    },
+    "donation-modal": {
+        "close": "Close",
+        "pro-member-badge": "PRO MEMBER",
+        "header-subtitle": "Join my exclusive team",
+        "benefits-title": "Exclusive Benefits",
+        "benefits": {
+            "premium-content": {
+                "title": "Premium Content",
+                "description": "Access to training, behind-the-scenes content and exclusive techniques in posts and videos."
+            },
+            "vip-group": {
+                "title": "VIP Group",
+                "description": "Interact directly with me and other members in the private group."
+            },
+            "monthly-raffles": {
+                "title": "Monthly Raffles",
+                "description": "Win kimonos, rash guards and event tickets raffled by the platform."
+            },
+            "continuous-evolution": {
+                "title": "Continuous Evolution",
+                "description": "Receive guidance and content focused on your evolution on and off the mat."
+            }
+        },
+        "pricing": {
+            "plan-name": "Monthly Plan",
+            "per-month": "/month",
+            "cancel-anytime": "Cancel anytime",
+            "secure-payment": "Secure Payment"
+        },
+        "cta": {
+            "subscribe": "Become a Member Now",
+            "loading": "Redirecting..."
+        },
+        "agreement": {
+            "prefix": "By subscribing, you agree to our ",
+            "terms-link": "Terms of Service",
+            "and": " and ",
+            "privacy-link": "Privacy Policy",
+            "suffix": "."
+        }
     }
 }

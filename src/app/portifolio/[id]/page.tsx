@@ -1,6 +1,7 @@
 "use client"
 
 import PortfolioLoadingSkeleton from "@/components/shared/PortfolioLoadingSkeleton";
+import { DonationModal } from "@/components/shared/DonationModal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { usePortifolioByDomain } from "@/hooks/usePortifolio";
@@ -116,10 +117,12 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
 
     const donationsEnabled = data?.account?.donationsEnabled ?? false;
 
+    const DONATION_AMOUNT_IN_CENTS = 4900;
+
     const handleDonationCheckout = async () => {
       setIsCheckoutLoading(true);
       try {
-        const { url } = await createDonationCheckout(params.id, 1000);
+        const { url } = await createDonationCheckout(params.id, DONATION_AMOUNT_IN_CENTS);
         if (url) {
           window.location.href = url;
         }
@@ -284,47 +287,15 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
                 )}
             </div>
 
-            {showDonationModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setShowDonationModal(false)}>
-                    <div className="bg-[#1A1A2E] rounded-2xl p-6 max-w-sm w-full mx-4 border border-zinc-700" onClick={(e) => e.stopPropagation()}>
-                        <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-white font-semibold text-lg">Seja um assinante</h2>
-                            <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-6 w-6 p-0 text-zinc-400 hover:text-white"
-                                onClick={() => setShowDonationModal(false)}
-                            >
-                                ✕
-                            </Button>
-                        </div>
-                        <div className="space-y-3 mb-6">
-                            <div className="flex items-start gap-3">
-                                <div className="w-2 h-2 rounded-full bg-brand-blue-600 mt-2 flex-shrink-0" />
-                                <p className="text-zinc-300 text-sm">Acesso a conteúdo privado</p>
-                            </div>
-                            <div className="flex items-start gap-3">
-                                <div className="w-2 h-2 rounded-full bg-brand-blue-600 mt-2 flex-shrink-0" />
-                                <p className="text-zinc-300 text-sm">Cursos exclusivos do atleta</p>
-                            </div>
-                            <div className="flex items-start gap-3">
-                                <div className="w-2 h-2 rounded-full bg-brand-blue-600 mt-2 flex-shrink-0" />
-                                <p className="text-zinc-300 text-sm">Rotina de treino do atleta</p>
-                            </div>
-                        </div>
-                        <p className="text-zinc-400 text-xs mb-4 text-center">
-                            R$ 10,00/mês
-                        </p>
-                        <Button
-                            className="w-full bg-brand-blue-600 hover:bg-brand-blue-700 text-sm py-3 rounded-full font-semibold"
-                            onClick={handleDonationCheckout}
-                            disabled={isCheckoutLoading}
-                        >
-                            {isCheckoutLoading ? "Redirecionando..." : "Assinar agora"}
-                        </Button>
-                    </div>
-                </div>
-            )}
+            <DonationModal
+                open={showDonationModal}
+                onClose={() => setShowDonationModal(false)}
+                onSubscribe={handleDonationCheckout}
+                isLoading={isCheckoutLoading}
+                athleteName={profileTitle}
+                athleteImage={getImageUrl(profileImageSource)}
+                priceInCents={DONATION_AMOUNT_IN_CENTS}
+            />
         </div>
     )
-} 
+}

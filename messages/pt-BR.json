@@ -644,5 +644,46 @@
             "title-no-authenticated": "Ops! Você não está autenticado. 🤔",
             "description-no-authenticated": "Volte para a tela de login e entre com a sua conta."
         }
+    },
+    "donation-modal": {
+        "close": "Fechar",
+        "pro-member-badge": "PRO MEMBER",
+        "header-subtitle": "Junte-se à minha equipe exclusiva",
+        "benefits-title": "Benefícios Exclusivos",
+        "benefits": {
+            "premium-content": {
+                "title": "Conteúdo Premium",
+                "description": "Acesso a treinos, bastidores e técnicas exclusivas em posts e vídeos."
+            },
+            "vip-group": {
+                "title": "Grupo VIP",
+                "description": "Interaja diretamente comigo e outros membros no grupo fechado."
+            },
+            "monthly-raffles": {
+                "title": "Sorteios Mensais",
+                "description": "Concorra a kimonos, rash guards e ingressos para eventos sorteados pela plataforma."
+            },
+            "continuous-evolution": {
+                "title": "Evolução Contínua",
+                "description": "Receba direcionamentos e conteúdos focados na sua evolução dentro e fora do tatame."
+            }
+        },
+        "pricing": {
+            "plan-name": "Plano Mensal",
+            "per-month": "/mês",
+            "cancel-anytime": "Cancele quando quiser",
+            "secure-payment": "Pagamento Seguro"
+        },
+        "cta": {
+            "subscribe": "Torne-se Membro Agora",
+            "loading": "Redirecionando..."
+        },
+        "agreement": {
+            "prefix": "Ao assinar, você concorda com os ",
+            "terms-link": "Termos de Serviço",
+            "and": " e ",
+            "privacy-link": "Política de Privacidade",
+            "suffix": "."
+        }
     }
 }

@@ -20,12 +20,6 @@ const FAKE_DATA = [
   { month: "Apr", valueInCents: 72000, supporters: 21 },
   { month: "May", valueInCents: 89000, supporters: 28 },
   { month: "Jun", valueInCents: 115000, supporters: 35 },
-  { month: "Jul", valueInCents: 142000, supporters: 42 },
-  { month: "Aug", valueInCents: 168000, supporters: 50 },
-  { month: "Sep", valueInCents: 195000, supporters: 58 },
-  { month: "Oct", valueInCents: 230000, supporters: 67 },
-  { month: "Nov", valueInCents: 275000, supporters: 78 },
-  { month: "Dec", valueInCents: 320000, supporters: 90 },
 ]
 
 export function LandingRecurrencyChart() {
