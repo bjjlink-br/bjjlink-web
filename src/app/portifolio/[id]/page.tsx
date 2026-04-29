@@ -117,7 +117,7 @@ export default function PortifolioViewPage({ params }: { params: { id: string } 
 
     const donationsEnabled = data?.account?.donationsEnabled ?? false;
 
-    const DONATION_AMOUNT_IN_CENTS = 4900;
+    const DONATION_AMOUNT_IN_CENTS = 2900;
 
     const handleDonationCheckout = async () => {
       setIsCheckoutLoading(true);
