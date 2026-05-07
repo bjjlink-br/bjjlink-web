@@ -15,6 +15,7 @@ import { LandingRecurrencyChart } from "@/components/shared/LandingRecurrencyCha
 import { Separator } from "@/components/ui/separator"
 import { FaqCards } from "@/components/shared/FaqCards"
 import { Footer } from "@/components/shared/Footer"
+import { AcademiesGlobeSection } from "@/components/shared/AcademiesGlobeSection"
 import { useLocale } from "next-intl";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -164,6 +165,9 @@ export default function Home() {
             <LandingRecurrencyChart />
           </div>
         </section>
+
+        <AcademiesGlobeSection />
+
 
         <section className="container mx-auto px-4 pt-10 md:py-20" id="plans">
           <div>

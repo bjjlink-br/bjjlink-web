@@ -125,6 +125,13 @@
             "supporters": "Supporters",
             "value-axis": "Value",
             "supporters-axis": "Supporters"
+        },
+        "academies-globe": {
+            "title": "Be part of a network of academies around the world",
+            "subtitle": "Connect with athletes and academies on every continent and grow your presence in global Jiu-Jitsu.",
+            "card-title": "Academy locations",
+            "toggle-globe": "Globe",
+            "toggle-flat": "Map"
         }
     },
     "register": {
